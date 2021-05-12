@@ -23,6 +23,7 @@ import DialogBox from '../components/dialogBox'
 import Button from '../components/button'
 import Textfield from '../components/textfield'
 import Loader from '../components/loader'
+import TextField from '@material-ui/core/TextField'
 
 const addSystemList = [{
   name:'Export',
@@ -231,7 +232,7 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
                   title={e.id} 
                   subHeader={`${e.complex} / ${e.operator} / ${e.facility} / ${e.yard}`} 
                   action 
-                  actionsLabel='Connect'
+                  actionsLabel='Ping'
                   />)}
                 </div>
               </TabPanel>

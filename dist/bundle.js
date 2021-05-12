@@ -73252,7 +73252,7 @@ const react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules
 const TextField_1 = __importDefault(__webpack_require__(/*! @material-ui/core/TextField */ "./node_modules/@material-ui/core/esm/TextField/index.js"));
 function Textfield(props) {
     const { id, required, label, defaultValue, error, type, className } = props;
-    return (react_1.default.createElement(TextField_1.default, Object.assign({ className: 'textfield', error: error, required: required, id: id, label: label, type: type, defaultValue: defaultValue, variant: 'outlined' }, props)));
+    return (react_1.default.createElement(TextField_1.default, Object.assign({ className: 'textfield', error: error, required: required, id: id, label: label, type: type, defaultValue: defaultValue, variant: 'outlined', size: 'small' }, props)));
 }
 exports.default = Textfield;
 
@@ -73834,7 +73834,7 @@ function Homepage() {
                         react_1.default.createElement("div", { className: 'flex-list' }, (importList || []).map((e, i) => react_1.default.createElement(card_1.default, { avatar: e.id.charAt(0).toUpperCase(), key: i, onShowIconClick: () => handleShow(e, 'imp'), actionClick: handleActionClick, title: e.id, action: true, subHeader: `${e.complex} / ${e.operator} / ${e.facility} / ${e.yard}` })))),
                     react_1.default.createElement(TabPanel_1.default, { value: "export" },
                         expLoading && react_1.default.createElement(loader_1.default, null),
-                        react_1.default.createElement("div", { className: 'flex-list' }, (exportList || []).map((e, i) => react_1.default.createElement(card_1.default, { avatar: e.id.charAt(0).toUpperCase(), key: i, linkLabel: 'Visit', linkLabelLink: `/${e.id}`, onShowIconClick: () => handleShow(e, 'exp'), actionClick: handleActionClick, title: e.id, subHeader: `${e.complex} / ${e.operator} / ${e.facility} / ${e.yard}`, action: true, actionsLabel: 'Connect' })))),
+                        react_1.default.createElement("div", { className: 'flex-list' }, (exportList || []).map((e, i) => react_1.default.createElement(card_1.default, { avatar: e.id.charAt(0).toUpperCase(), key: i, linkLabel: 'Visit', linkLabelLink: `/${e.id}`, onShowIconClick: () => handleShow(e, 'exp'), actionClick: handleActionClick, title: e.id, subHeader: `${e.complex} / ${e.operator} / ${e.facility} / ${e.yard}`, action: true, actionsLabel: 'Ping' })))),
                     react_1.default.createElement(TabPanel_1.default, { value: "import" },
                         impLoading && react_1.default.createElement(loader_1.default, null),
                         react_1.default.createElement("div", { className: 'flex-list' }, (importList || []).map((e, i) => react_1.default.createElement(card_1.default, { avatar: e.id.charAt(0).toUpperCase(), key: i, onShowIconClick: () => handleShow(e, 'imp'), actionClick: handleActionClick, title: e.id, action: true, subHeader: `${e.complex} / ${e.operator} / ${e.facility} / ${e.yard}` }))))),
