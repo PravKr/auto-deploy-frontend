@@ -23,6 +23,8 @@ import DialogBox from '../components/dialogBox'
 import Button from '../components/button'
 import Textfield from '../components/textfield'
 import Loader from '../components/loader'
+import { Add } from '@material-ui/icons'
+import { IconButton } from '@material-ui/core'
 
 const addSystemList = [{
   name:'Export',
@@ -177,9 +179,9 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
           <div className='system-panel'>
             <TabContext value={value}>
               <TabList className='tab-list' onChange={handleChange} aria-label="icon label tabs example">
-                <Tab icon={<ImportExportIcon/>} label="All" value="all" />
-                <Tab icon={<ImportExportIcon/>} label="Export" value="export" />
-                <Tab icon={<ImportExportIcon/>} label="Import" value="import" />
+                <Tab icon={<ImportExportIcon />} label="All" value="all" />
+                <Tab icon={<ImportExportIcon />} label="Export" value="export" />
+                <Tab icon={<ImportExportIcon />} label="Import" value="import" />
               </TabList>
               <div className='add-system'>
                 <Button onClick={handleOpenSystemUpdateDialogBox} variant='contained' type='submit' color='primary' label='Add System'/>

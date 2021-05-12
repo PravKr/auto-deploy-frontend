@@ -97,7 +97,7 @@ return(<section className='cart'>
 <Table style={{ tableLayout: 'fixed' }} size="small" stickyHeader aria-label="sticky table">
 <TableHead>
           <TableRow>
-          <TableCell align="left" colSpan={4}>
+          <TableCell style={{backgroundColor: 'black', color: 'white'}} align="left" colSpan={4}>
           <Typography variant='h6' label={el.category}/>
             </TableCell> 
             </TableRow>
