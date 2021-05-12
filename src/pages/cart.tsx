@@ -80,7 +80,7 @@ console.log('type', type)
 return(<section className='cart'>
 
  <div className='heading'>
- <Typography variant='h5' label='Products on Cart'/>
+ <Typography variant='h5' label='My Cart'/>
    <div className='action'>
    <Button variant='outlined' color='primary' onClick={()=>handleImportExport('import')} label='Import'/>
    <Button variant='outlined' color='primary' onClick={()=>handleImportExport('export')} label='Export'/>

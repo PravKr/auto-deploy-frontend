@@ -73482,7 +73482,7 @@ function MyCart(props) {
     console.log('type', type);
     return (react_1.default.createElement("section", { className: 'cart' },
         react_1.default.createElement("div", { className: 'heading' },
-            react_1.default.createElement(typography_1.default, { variant: 'h5', label: 'Products on Cart' }),
+            react_1.default.createElement(typography_1.default, { variant: 'h5', label: 'My Cart' }),
             react_1.default.createElement("div", { className: 'action' },
                 react_1.default.createElement(button_1.default, { variant: 'outlined', color: 'primary', onClick: () => handleImportExport('import'), label: 'Import' }),
                 react_1.default.createElement(button_1.default, { variant: 'outlined', color: 'primary', onClick: () => handleImportExport('export'), label: 'Export' }),
