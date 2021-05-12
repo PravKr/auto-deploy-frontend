@@ -1,0 +1,23 @@
+.card{
+    margin: .25rem;
+    align-self: flex-start;
+    width: 25rem;
+    h6{
+        color:$color-primary;
+    }
+    .cardMedia{
+        height: 14rem;
+    }
+    a{
+        margin-left: auto;
+    }
+    .avatar{
+        background-color: $color-primary;
+    }
+    .title{
+        color:$color-primary;
+    }
+    .caption{
+        color: $color-black;
+    }
+}

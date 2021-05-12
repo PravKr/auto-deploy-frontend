@@ -1,0 +1,17 @@
+.homepage{
+     .system-panel{
+          .tab-list{
+              margin: 0 auto;
+              width: 40%;
+          }
+          .flex-list{
+              display: flex;
+              margin-bottom: 1rem;
+              flex-wrap: wrap;
+          }
+           .add-system{
+               display: flex;
+               justify-content: flex-end;
+           }
+     }
+}
