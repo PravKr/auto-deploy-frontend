@@ -23,7 +23,6 @@ import DialogBox from '../components/dialogBox'
 import Button from '../components/button'
 import Textfield from '../components/textfield'
 import Loader from '../components/loader'
-import TextField from '@material-ui/core/TextField'
 
 const addSystemList = [{
   name:'Export',
@@ -176,11 +175,11 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
     return( <Fragment>
         <section className='homepage'>
           <div className='system-panel'>
-            <TabContext  value={value}>
-              <TabList className='tab-list' onChange={handleChange} aria-label="simple tabs example">
+            <TabContext value={value}>
+              <TabList className='tab-list' onChange={handleChange} aria-label="icon label tabs example">
                 <Tab icon={<ImportExportIcon/>} label="All" value="all" />
-                <Tab label="Export" icon={<ImportExportIcon/>} value="export" />
-                <Tab label="Import" icon={<ImportExportIcon/>} value="import" />
+                <Tab icon={<ImportExportIcon/>} label="Export" value="export" />
+                <Tab icon={<ImportExportIcon/>} label="Import" value="import" />
               </TabList>
               <div className='add-system'>
                 <Button onClick={handleOpenSystemUpdateDialogBox} variant='contained' type='submit' color='primary' label='Add System'/>
@@ -201,7 +200,7 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
                     title={e.id} 
                     subHeader={`${e.complex} / ${e.operator} / ${e.facility} / ${e.yard}`} 
                     action 
-                    actionsLabel='Connect'
+                    actionsLabel='Ping'
                   />)}
                 </div>
                 <Divider orientation='horizontal'/>
@@ -210,12 +209,15 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
                 <div className='flex-list'>
                   {(importList || []).map((e,i)=> <Card 
                   avatar={e.id.charAt(0).toUpperCase()}
+                  linkLabel='Visit'
+                  linkLabelLink={`/${e.id}`}
                   key={i} 
                   onShowIconClick={()=>handleShow(e, 'imp')} 
                   actionClick={handleActionClick} 
                   title={e.id} 
+                  subHeader={`${e.complex} / ${e.operator} / ${e.facility} / ${e.yard}`}
                   action 
-                  subHeader={`${e.complex} / ${e.operator} / ${e.facility} / ${e.yard}`} 
+                  actionsLabel='Ping'
                   />)}
                 </div>
               </TabPanel>
