@@ -108,7 +108,7 @@ return(<section className='cart'>
         </TableHead>
         <TableBody>
           {(el.values || []).map((e,i)=> <TableRow key={i}>
-          <TableCell component="th" scope="row">
+          <TableCell  style={{ fontSize: '10' }} component="th" scope="row">
           <Tooltip title='Remove' placement='bottom'>
           <IconButton size='small' onClick={()=>handleRemoveFromCart(el.category, withGkey[el.category][i])}>
           <DeleteIcon fontSize='small'/>

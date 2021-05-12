@@ -188,7 +188,7 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
               </div>
               <TabPanel value="all">
                 <div className='label-with-add'>
-                  <Typography variant='overline' label='Export'/>
+                  <Typography variant='h6' label='Export System'/>
                   {expLoading && <Loader/>}
                 </div>
                 <div className='flex-list'>
@@ -200,14 +200,14 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
                     onShowIconClick={()=>handleShow(e,'exp')} 
                     actionClick={handleActionClick} 
                     title={e.id} 
-                    subHeader={`${e.complex} / ${e.operator} / ${e.facility} / ${e.yard}`} 
+                    subHeader={`${e.complex}/${e.operator}/${e.facility}/${e.yard}`} 
                     action 
                     actionsLabel='Ping'
                   />)}
                 </div>
                 <Divider orientation='horizontal'/>
                 {impLoading && <Loader/>}
-                <Typography variant='overline' label='Import'/>
+                <Typography variant='h6' label='Import System'/>
                 <div className='flex-list'>
                   {(importList || []).map((e,i)=> <Card 
                   avatar={e.id.charAt(0).toUpperCase()}
@@ -217,7 +217,7 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
                   onShowIconClick={()=>handleShow(e, 'imp')} 
                   actionClick={handleActionClick} 
                   title={e.id} 
-                  subHeader={`${e.complex} / ${e.operator} / ${e.facility} / ${e.yard}`}
+                  subHeader={`${e.complex}/${e.operator}/${e.facility}/${e.yard}`}
                   action 
                   actionsLabel='Ping'
                   />)}
