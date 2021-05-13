@@ -24,7 +24,7 @@ const root = document.getElementById('root')
  
 ReactDOM.render(
     <Provider store={store}>
-<App />
+      <App />
     </Provider>
 ,
     root
