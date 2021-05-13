@@ -14,6 +14,7 @@ function SelectBox(props){
           labelId="demo-simple-select-outlined-label"
           id="demo-simple-select-outlined"
           label={label}
+          size='small'
           {...props}
         >
 {menu.map((e,i)=><MenuItem key={i} value={e.value}>{e.name}</MenuItem>)}

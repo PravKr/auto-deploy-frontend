@@ -9,11 +9,9 @@ import Cart from '../pages/cart'
 const Main=()=>(
     <Router>
         <Switch>
-            
             <Route path='/' exact component={Homepage} />
             <Route path='/:system' exact component={ConnectedSystem} />
             <Route path='/cart/:system' exact component={Cart} />
-            
         </Switch>
     </Router>
 )
