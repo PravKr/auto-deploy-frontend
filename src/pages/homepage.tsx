@@ -198,7 +198,7 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
                     onShowIconClick={()=>handleShow(e,'exp')} 
                     actionClick={handleActionClick} 
                     title={e.id} 
-                    subHeader={`${e.complex}/${e.operator}/${e.facility}/${e.yard}`} 
+                    subHeader={`${e.operator}/${e.complex}/${e.facility}/${e.yard}`} 
                     action 
                     actionsLabel='Ping'
                   />)}
@@ -209,13 +209,11 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
                 <div className='flex-list'>
                   {(importList || []).map((e,i)=> <Card 
                   avatar={e.id.charAt(0).toUpperCase()}
-                  linkLabel='Visit'
-                  linkLabelLink={`/${e.id}`}
                   key={i} 
                   onShowIconClick={()=>handleShow(e, 'imp')} 
                   actionClick={handleActionClick} 
                   title={e.id} 
-                  subHeader={`${e.complex}/${e.operator}/${e.facility}/${e.yard}`}
+                  subHeader={`${e.operator}/${e.complex}/${e.facility}/${e.yard}`}
                   action 
                   actionsLabel='Ping'
                   />)}
@@ -232,7 +230,7 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
                   onShowIconClick={()=>handleShow(e,'exp')} 
                   actionClick={handleActionClick} 
                   title={e.id} 
-                  subHeader={`${e.complex} / ${e.operator} / ${e.facility} / ${e.yard}`} 
+                  subHeader={`${e.operator}/${e.complex}/${e.facility}/${e.yard}`} 
                   action 
                   actionsLabel='Ping'
                   />)}

@@ -84,7 +84,7 @@ return(<section className='cart'>
    <div className='action'>
    <Button variant='outlined' color='primary' onClick={()=>handleImportExport('import')} label='Import'/>
    <Button variant='outlined' color='primary' onClick={()=>handleImportExport('export')} label='Export'/>
-   <Button variant='contained' color='primary' onClick={()=>handleImportExport('export_import')} label='Export & Import'/> 
+   {/*<Button variant='contained' color='primary' onClick={()=>handleImportExport('export_import')} label='Export & Import'/>*/}
    </div>
  </div>
  
@@ -94,17 +94,25 @@ return(<section className='cart'>
      { (el.values || []).length> 0 && <Fragment>
        
    <TableContainer component={Paper}  key={i}>
-<Table style={{ tableLayout: 'fixed' }} size="small" stickyHeader aria-label="sticky table">
-<TableHead>
-          <TableRow>
-          <TableCell style={{backgroundColor: 'black', color: 'white'}} align="left" colSpan={4}>
-          <Typography variant='h6' label={el.category}/>
-            </TableCell> 
-            </TableRow>
-            <TableRow>
-            {(el.header || []).length>0 && <TableCell>Remove</TableCell>} 
-              {(el.header || []).map((e,i)=><TableCell key={i}>{e}</TableCell>)}
-          </TableRow>
+    <Table style={{ tableLayout: 'fixed' }} size="small" stickyHeader aria-label="sticky table">
+      <TableHead>
+        <TableRow>
+          {/*style={{backgroundColor: 'black', color: 'white'}}*/}
+          <TableCell align="left" colSpan={4}>
+            <Typography variant='h6' label={el.category}/>
+          </TableCell> 
+          {/*<TableCell align="left">
+            <Tooltip title={el.category} placement='bottom'>
+              <IconButton size='small' onClick={()=>handleRemoveFromCart(el.category, withGkey[el.category][i])}>
+                <DeleteIcon fontSize='large'/>
+              </IconButton>
+            </Tooltip>
+          </TableCell>*/} 
+        </TableRow>
+        <TableRow>
+           {(el.header || []).length>0 && <TableCell>Remove</TableCell>} 
+          {(el.header || []).map((e,i)=><TableCell key={i}>{e}</TableCell>)}
+        </TableRow>
         </TableHead>
         <TableBody>
           {(el.values || []).map((e,i)=> <TableRow key={i}>
