@@ -13,7 +13,7 @@ import Collapse from '@material-ui/core/Collapse';
 import CardContent from '@material-ui/core/CardContent';
 import EditIcon from '@material-ui/icons/Edit';
 import Checkbox from './checkbox'
-
+import DeleteIcon from '@material-ui/icons/Delete';
 function Cards(props){
   const { title, 
     subHeader,
@@ -25,7 +25,7 @@ function Cards(props){
         action, 
         onShowIconClick,
           linkLabel,
-           linkLabelLink, checkbox, onCheckBoxClick, checkBoxId, checked } = props
+           linkLabelLink, checkbox, onCheckBoxClick, checkBoxId, checked, deleteIcon, onRemoveClick} = props
   const onShowIconClicks = (e)=> {
     e.stopPropagation()
     onShowIconClick()
@@ -45,14 +45,22 @@ function Cards(props){
     title={ title}
     subheader={<Typography variant='caption' label={subHeader}/>}
     action={
-        action ?( <IconButton onClick={onShowIconClicks}>
+    <Fragment>
+   { action  && ( <IconButton onClick={onShowIconClicks}>
         <EditIcon fontSize='small' />
-      </IconButton>) :checkbox ?
+      </IconButton>)}
+{checkbox &&
       ( <Checkbox 
         id={ checkBoxId}
            checked={checked || false}
            onChange={onCheckBoxClick}
-      />) :''
+      />)}
+{deleteIcon && (
+      <IconButton onClick={onRemoveClick}>
+        <DeleteIcon fontSize='small' />
+      </IconButton>
+      ) }
+    </Fragment>
       }
     />
     {mediaTitle && <CardMedia

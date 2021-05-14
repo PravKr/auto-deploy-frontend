@@ -14,6 +14,7 @@ import Loader from '../components/loader'
 import IconButton from '@material-ui/core/IconButton'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Tooltip from '@material-ui/core/Tooltip';
+import Badge from '@material-ui/core/Badge';
 import { useSelector, useDispatch } from 'react-redux'
 import { 
   entitiesByIDAction, 
@@ -28,6 +29,8 @@ function ConnectedSystem(props){
     const { match } = props
 
     const connectedSystemName = match.params.system
+    {/*const connectedSystemType = match.params.type
+    console.log(connectedSystemType)*/}
 
     const entitiesById = useSelector(state=>state.entitiesById)
     const entitiesValues = useSelector(state=> state.entitiesValues)
@@ -61,13 +64,16 @@ function ConnectedSystem(props){
      setChecked({...isChecked, [e.target.id]:e.target.checked })
      dispatch(selectedEntitiesValuesByCategoryAction({...isChecked, [e.target.id]:e.target.checked }))
     }
+
 return  (
           <section className='connected-system'>
             <div className='heading'>
               <Typography variant='h5' label={connectedSystemName}/>
               <Tooltip title='My Cart' placement='left'>
                 <IconButton href={`/cart/${connectedSystemName}`}>
-                  <ShoppingCartIcon />
+                  <Badge badgeContent={active.length} color="primary">
+                    <ShoppingCartIcon />
+                  </Badge>
                 </IconButton>
               </Tooltip>
             </div>

@@ -149,6 +149,11 @@ function Homepage(){
     const handleOpenSystemUpdateDialogBox = (e) =>{
       setAddSystem(true)
     }
+
+    const handleRemove=(id)=>{
+      console.log('trigger remove', id)
+      }
+
     const handleSystemUpdate = (e) =>{
       e.preventDefault()
       resetSystemList()
@@ -176,13 +181,16 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
         <section className='homepage'>
           <div className='system-panel'>
             <TabContext value={value}>
-              <TabList className='tab-list' onChange={handleChange} aria-label="icon label tabs example">
+            <div className='tabs'>
+             <TabList className='tab-list' onChange={handleChange} aria-label="icon label tabs example">
                 <Tab icon={<ImportExportIcon />} label="All" value="all" />
                 <Tab icon={<ImportExportIcon />} label="Export" value="export" />
                 <Tab icon={<ImportExportIcon />} label="Import" value="import" />
               </TabList>
               <div className='add-system'>
-                <Button onClick={handleOpenSystemUpdateDialogBox} variant='contained' type='submit' color='primary' label='Add System'/>
+                <Button onClick={handleOpenSystemUpdateDialogBox} 
+                variant='contained' type='submit' color='primary' label='Add System'/>
+              </div>
               </div>
               <TabPanel value="all">
                 <div className='label-with-add'>
@@ -201,6 +209,8 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
                     subHeader={`${e.operator}/${e.complex}/${e.facility}/${e.yard}`} 
                     action 
                     actionsLabel='Ping'
+                    deleteIcon
+                    onRemoveClick={()=>handleRemove(e.id)}
                   />)}
                 </div>
                 <Divider orientation='horizontal'/>

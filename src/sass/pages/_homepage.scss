@@ -1,18 +1,22 @@
 .homepage{
-     .system-panel{
-          .tab-list{
-              margin: 0 auto;
-              width: 60%;
-              height: 10%;
+    .system-panel{
+    .tabs{
+    display: flex;
+     .add-system{
+              
+              align-self: flex-start;
           }
-          .flex-list{
-              display: flex;
-              margin-bottom: 1rem;
-              flex-wrap: wrap;
-          }
-           .add-system{
-               display: flex;
-               justify-content: flex-end;
-           }
-     }
+    }
+         .tab-list{
+             margin-right: auto;
+             width: 60%;
+             height: 10%;
+         }
+         .flex-list{
+             display: flex;
+             margin-bottom: 1rem;
+             flex-wrap: wrap;
+         }
+         
+    }
 }
