@@ -10,6 +10,7 @@ import {
     updateImportSystemAction,
     connectExportSystemAction,
     addSystemAction,
+    removeSystem,
   } from '../redux/actions/system'
 import Tab from '@material-ui/core/Tab'
 import TabContext from '@material-ui/lab/TabContext'
@@ -150,8 +151,8 @@ function Homepage(){
       setAddSystem(true)
     }
 
-    const handleRemove=(id)=>{
-      console.log('trigger remove', id)
+    const handleRemoveSystem=(connectedSystemType, connectedSystemId)=>{
+        dispatch(removeSystem(connectedSystemType, connectedSystemId))
       }
 
     const handleSystemUpdate = (e) =>{
@@ -201,7 +202,7 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
                     {( exportList || []).map((e,i)=> <Card 
                     avatar={e.id.charAt(0).toUpperCase()}
                     linkLabel='Visit'
-                    linkLabelLink={`/${e.id}`}
+                    linkLabelLink={`/export/${e.id}`}
                     key={i} 
                     onShowIconClick={()=>handleShow(e,'exp')} 
                     actionClick={handleActionClick} 
@@ -210,7 +211,7 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
                     action 
                     actionsLabel='Ping'
                     deleteIcon
-                    onRemoveClick={()=>handleRemove(e.id)}
+                    onRemoveClick={()=>handleRemoveSystem('export', e.id)}
                   />)}
                 </div>
                 <Divider orientation='horizontal'/>
@@ -226,6 +227,8 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
                   subHeader={`${e.operator}/${e.complex}/${e.facility}/${e.yard}`}
                   action 
                   actionsLabel='Ping'
+                  deleteIcon
+                  onRemoveClick={()=>handleRemoveSystem('import', e.id)}
                   />)}
                 </div>
               </TabPanel>
@@ -236,13 +239,15 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
                   avatar={e.id.charAt(0).toUpperCase()}
                   key={i} 
                   linkLabel='Visit'
-                  linkLabelLink={`/${e.id}`}
+                  linkLabelLink={`/export/${e.id}`}
                   onShowIconClick={()=>handleShow(e,'exp')} 
                   actionClick={handleActionClick} 
                   title={e.id} 
                   subHeader={`${e.operator}/${e.complex}/${e.facility}/${e.yard}`} 
                   action 
                   actionsLabel='Ping'
+                  deleteIcon
+                  onRemoveClick={()=>handleRemoveSystem('export', e.id)}
                   />)}
                 </div>
               </TabPanel>
@@ -257,6 +262,8 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
                   title={e.id} 
                   action 
                   subHeader={`${e.complex} / ${e.operator} / ${e.facility} / ${e.yard}`} 
+                  deleteIcon
+                  onRemoveClick={()=>handleRemoveSystem('import', e.id)}
                   />)}
                 </div>
               </TabPanel>

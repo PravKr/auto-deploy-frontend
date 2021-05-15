@@ -173,7 +173,7 @@ export function importListCheckReducer(state=null,action){
         case actions.importListCheck:
             const { payload={ } } = action
             const identifiers = Object.keys(payload)  
-           const active = identifiers.filter((id)=> payload[id] )
+            const active = identifiers.filter((id)=> payload[id] )
             return{...state, active}
             default:
                 return {...state}

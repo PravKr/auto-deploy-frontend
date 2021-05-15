@@ -4,10 +4,6 @@ import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
-import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
-import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
-import Collapse from '@material-ui/core/Collapse';
-import Box from '@material-ui/core/Box';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
@@ -30,6 +26,7 @@ function MyCart(props){
   const { match } = props
 
   const systemCart = match.params.system
+  const systemType = match.params.type
 
   const [isChecked, setChecked] = useState({})
 
@@ -48,16 +45,16 @@ function MyCart(props){
   const {active=[]} = importListCheck
 
   useEffect(()=>{
-    dispatch(systemCartListAction(systemCart))
+    dispatch(systemCartListAction(systemCart, systemType))
 },[])
 
 const handleRemoveFromCart=(cat,gkey)=> {
-  dispatch(removeFromCartEntitiesAction(systemCart,cat,[gkey]))
+  dispatch(removeFromCartEntitiesAction(systemCart,systemType,cat,[gkey]))
 }
 
 const handleImportExport = (type)=>{
   if(type==='export'){
-    dispatch(entityExportAction(systemCart))
+    dispatch(entityExportAction(systemCart, systemType))
   } 
   if(type === 'import'){
 dispatch(importDialogBoxAction(true,'import'))
@@ -73,17 +70,14 @@ const handleCloseImportDialogBox=()=>{
   dispatch(importListCheckedAction({}))
 }
 const handleConfirmImport = (type) => {
-    dispatch(importSystemAction(systemCart,active,type))
+    dispatch(importSystemAction(systemCart,systemType,active,type))
 }
 
 const handleImportCheckbox=(e)=>{
   setChecked({...isChecked, [e.target.id]:e.target.checked })
   dispatch(importListCheckedAction({...isChecked, [e.target.id]:e.target.checked }))
 }
-
-const [open, setOpen] = React.useState(false);
-
-console.log(list)
+console.log('type', type)
 return(<section className='cart'>
 
  <div className='heading'>
@@ -100,48 +94,42 @@ return(<section className='cart'>
    <div key={i}>
      { (el.values || []).length> 0 && <Fragment>
        
-  <TableContainer component={Paper}  key={i}>
+   <TableContainer component={Paper}  key={i}>
     <Table style={{ tableLayout: 'fixed' }} size="small" stickyHeader aria-label="sticky table">
-      <TableRow>
-        <TableCell colSpan={4}>
-          <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)}>
-            {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-            <Typography variant='h6' label={el.category}/>
-          </IconButton>
-        </TableCell>
+      <TableHead>
+        <TableRow>
           {/*style={{backgroundColor: 'black', color: 'white'}}*/}
+          <TableCell align="left" colSpan={4}>
+            <Typography variant='h6' label={el.category}/>
+          </TableCell> 
+          {/*<TableCell align="left">
+            <Tooltip title={el.category} placement='bottom'>
+              <IconButton size='small' onClick={()=>handleRemoveFromCart(el.category, withGkey[el.category][i])}>
+                <DeleteIcon fontSize='large'/>
+              </IconButton>
+            </Tooltip>
+          </TableCell>*/} 
         </TableRow>
         <TableRow>
-        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={4}>
-          <Collapse in={open} timeout="auto" unmountOnExit>
-            <Box margin={1}>
-              <Table size="small" aria-label="purchases">
-                <TableHead>
-                  <TableRow>
-                  {(el.header || []).length>0 && <TableCell>Remove</TableCell>} 
-                  {(el.header || []).map((e,i)=><TableCell key={i}>{e}</TableCell>)}
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                {(el.values || []).map((e,i)=> <TableRow key={i}>
-                <TableCell  style={{ fontSize: '10' }} component="th" scope="row">
-                <Tooltip title='Remove' placement='bottom'>
-                  <IconButton size='small' onClick={()=>handleRemoveFromCart(el.category, withGkey[el.category][i])}>
-                    <DeleteIcon fontSize='small'/>
-                  </IconButton>
-                </Tooltip>
+           {(el.header || []).length>0 && <TableCell>Remove</TableCell>} 
+          {(el.header || []).map((e,i)=><TableCell key={i}>{e}</TableCell>)}
+        </TableRow>
+        </TableHead>
+        <TableBody>
+          {(el.values || []).map((e,i)=> <TableRow key={i}>
+          <TableCell  style={{ fontSize: '10' }} component="th" scope="row">
+          <Tooltip title='Remove' placement='bottom'>
+          <IconButton size='small' onClick={()=>handleRemoveFromCart(el.category, withGkey[el.category][i])}>
+          <DeleteIcon fontSize='small'/>
+          </IconButton>
+          </Tooltip>
                </TableCell> 
               {(e || []).map((ee,ii)=><TableCell key={ii} component="th" scope="row">
                 {ee}
                </TableCell>)}
              </TableRow>
           )}
-                </TableBody>
-              </Table>
-            </Box>
-          </Collapse>
-        </TableCell>
-        </TableRow>
+        </TableBody>
 </Table>
 </TableContainer>
      </Fragment> }

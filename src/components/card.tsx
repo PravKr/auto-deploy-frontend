@@ -57,7 +57,7 @@ function Cards(props){
       />)}
 {deleteIcon && (
       <IconButton onClick={onRemoveClick}>
-        <DeleteIcon fontSize='small' />
+        <DeleteIcon fontSize='inherit' />
       </IconButton>
       ) }
     </Fragment>

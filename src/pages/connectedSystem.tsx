@@ -29,8 +29,7 @@ function ConnectedSystem(props){
     const { match } = props
 
     const connectedSystemName = match.params.system
-    {/*const connectedSystemType = match.params.type
-    console.log(connectedSystemType)*/}
+    const connectedSystemType = match.params.type
 
     const entitiesById = useSelector(state=>state.entitiesById)
     const entitiesValues = useSelector(state=> state.entitiesValues)
@@ -39,25 +38,25 @@ function ConnectedSystem(props){
 
     const { loading:entitiesLoading, entities=[] } = entitiesById
     const {loading: entitiesValuesLoading, tableHeaders=[], tableValues=[], withGkey=[]} = entitiesValues
-    const { active=[] } = selectedEntitiesValues
+    const { active=[]} = selectedEntitiesValues
     const [category, setCategory] = useState('')
     const [isChecked, setChecked] = useState({})
 
     useEffect(()=>{
-      dispatch(entitiesByIDAction(connectedSystemName))
+      dispatch(entitiesByIDAction(connectedSystemName, connectedSystemType))
   },[category])
    
 
   const handleCategory = useCallback((e) => {
     setCategory(e.target.value)
-    dispatch(entitiesValuesByCategoryAction(connectedSystemName,e.target.value))
+    dispatch(entitiesValuesByCategoryAction(connectedSystemName, connectedSystemType,e.target.value))
     setChecked({})
     dispatch(selectedEntitiesValuesByCategoryAction({}))
   },[])
 
   const handleAddToCart = ()=>{
     const list = active.map(e=> e.split(`${category}-`)[1])
-    dispatch(entitiesAddToCartAction(connectedSystemName,category,list))
+    dispatch(entitiesAddToCartAction(connectedSystemName, connectedSystemType, category,list))
   }
 
     const handleSingleChecked=(e,i)=>{  
@@ -70,7 +69,7 @@ return  (
             <div className='heading'>
               <Typography variant='h5' label={connectedSystemName}/>
               <Tooltip title='My Cart' placement='left'>
-                <IconButton href={`/cart/${connectedSystemName}`}>
+                <IconButton href={`/${connectedSystemType}/cart/${connectedSystemName}`}>
                   <Badge badgeContent={active.length} color="primary">
                     <ShoppingCartIcon />
                   </Badge>
