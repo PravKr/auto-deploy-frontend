@@ -11,6 +11,14 @@ export const actions = {
      addSystem: 'ADD_SYSTEM',
      addSystemError: 'ADD_SYSTEM_ERROR',
 
+     removeSystemLoading: 'REMOVE_SYSTEM_LOADING',
+     removeSystem: 'REMOVE_SYSTEM',
+     removeSystemError: 'REMOVE_SYSTEM_ERROR',
+
+     pingSystemLoading: 'PING_SYSTEM_LOADING',
+     pingSystem: 'PING_SYSTEM',
+     pingSystemError: 'PING_SYSTEM_ERROR',
+
      updateExportSystemLoading: 'UPDATE_EXPORT_SYSTEM_LOADING',
      updateExportSystem: 'UPDATE_EXPORT_SYSTEM',
      updateExportSystemError: 'UPDATE_EXPORT_SYSTEM_ERROR',

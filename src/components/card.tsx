@@ -6,11 +6,7 @@ import CardActions from '@material-ui/core/CardActions'
 import Button from './button'
 import Typography from './typography'
 import Avatar from '@material-ui/core/Avatar'
-import VisibilityIcon from '@material-ui/icons/Visibility';
 import IconButton from '@material-ui/core/IconButton';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Collapse from '@material-ui/core/Collapse';
-import CardContent from '@material-ui/core/CardContent';
 import EditIcon from '@material-ui/icons/Edit';
 import Checkbox from './checkbox'
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -18,8 +14,8 @@ function Cards(props){
   const { title, 
     subHeader,
      imgUrl,
-      actionsLabel,
-      actionClick,
+     pingActionsLabel,
+     pingActionClick,
        mediaTitle,
         avatar, 
         action, 
@@ -32,7 +28,7 @@ function Cards(props){
   }
    const actionsClick = (e)=> {
     e.stopPropagation()
-    actionClick()
+    pingActionClick()
    }
     return(<Fragment>
 <Card elevation={2} square className='card'  >
@@ -46,20 +42,22 @@ function Cards(props){
     subheader={<Typography variant='caption' label={subHeader}/>}
     action={
     <Fragment>
-   { action  && ( <IconButton onClick={onShowIconClicks}>
-        <EditIcon fontSize='small' />
-      </IconButton>)}
-{checkbox &&
-      ( <Checkbox 
-        id={ checkBoxId}
-           checked={checked || false}
-           onChange={onCheckBoxClick}
-      />)}
-{deleteIcon && (
-      <IconButton onClick={onRemoveClick}>
-        <DeleteIcon fontSize='inherit' />
-      </IconButton>
-      ) }
+        { action  && ( 
+          <IconButton size="small" onClick={onShowIconClicks}>
+            <EditIcon fontSize='small' />
+          </IconButton>)}
+          {checkbox &&
+          ( <Checkbox 
+            id={ checkBoxId}
+              checked={checked || false}
+              onChange={onCheckBoxClick}
+          />)}
+          {deleteIcon && (
+          <IconButton size="small" onClick={onRemoveClick}>
+            <DeleteIcon fontSize='small' />
+          </IconButton>
+        ) 
+      }
     </Fragment>
       }
     />
@@ -70,7 +68,7 @@ title={mediaTitle}
 />}
 
 <CardActions disableSpacing>
-  {actionsLabel && <Button variant='contained' color='primary' onClick={actionsClick} label={actionsLabel}/>}
+  {pingActionsLabel && <Button variant='contained' color='primary' onClick={actionsClick} label={pingActionsLabel}/>}
   {linkLabel && <Button variant='outlined' href={linkLabelLink} color='primary' label={linkLabel}/>}
 </CardActions> 
 </Card>

@@ -11,6 +11,7 @@ import {
     connectExportSystemAction,
     addSystemAction,
     removeSystem,
+    pingToSystemAction,
   } from '../redux/actions/system'
 import Tab from '@material-ui/core/Tab'
 import TabContext from '@material-ui/lab/TabContext'
@@ -99,8 +100,8 @@ function Homepage(){
         dispatch(importSystemListAction())
       }
     };
-    const handleActionClick = ()=>{
-      console.log('click')
+    const handlePingActionClick = (systemType, systemId)=>{
+      dispatch(pingToSystemAction(systemType, systemId))
     }
     const handleShow = (e,type) => {
       st(true)
@@ -205,11 +206,11 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
                     linkLabelLink={`/export/${e.id}`}
                     key={i} 
                     onShowIconClick={()=>handleShow(e,'exp')} 
-                    actionClick={handleActionClick} 
                     title={e.id} 
                     subHeader={`${e.operator}/${e.complex}/${e.facility}/${e.yard}`} 
                     action 
-                    actionsLabel='Ping'
+                    pingActionsLabel='Ping'
+                    pingActionClick={()=>handlePingActionClick('export', e.id)}
                     deleteIcon
                     onRemoveClick={()=>handleRemoveSystem('export', e.id)}
                   />)}
@@ -220,13 +221,15 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
                 <div className='flex-list'>
                   {(importList || []).map((e,i)=> <Card 
                   avatar={e.id.charAt(0).toUpperCase()}
+                  linkLabel='Visit'
+                  linkLabelLink={`/import/${e.id}`}
                   key={i} 
                   onShowIconClick={()=>handleShow(e, 'imp')} 
-                  actionClick={handleActionClick} 
                   title={e.id} 
                   subHeader={`${e.operator}/${e.complex}/${e.facility}/${e.yard}`}
                   action 
-                  actionsLabel='Ping'
+                  pingActionsLabel='Ping'
+                  pingActionClick={()=>handlePingActionClick('import', e.id)}
                   deleteIcon
                   onRemoveClick={()=>handleRemoveSystem('import', e.id)}
                   />)}
@@ -240,12 +243,12 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
                   key={i} 
                   linkLabel='Visit'
                   linkLabelLink={`/export/${e.id}`}
-                  onShowIconClick={()=>handleShow(e,'exp')} 
-                  actionClick={handleActionClick} 
+                  onShowIconClick={()=>handleShow(e,'exp')}  
                   title={e.id} 
                   subHeader={`${e.operator}/${e.complex}/${e.facility}/${e.yard}`} 
                   action 
-                  actionsLabel='Ping'
+                  pingActionsLabel='Ping'
+                  pingActionClick={()=>handlePingActionClick('export', e.id)}
                   deleteIcon
                   onRemoveClick={()=>handleRemoveSystem('export', e.id)}
                   />)}
@@ -256,12 +259,15 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
                   <div className='flex-list'>
                   {(importList || []).map((e,i)=> <Card 
                   avatar={e.id.charAt(0).toUpperCase()}
+                  linkLabel='Visit'
+                  linkLabelLink={`/import/${e.id}`}
                   key={i} 
-                  onShowIconClick={()=>handleShow(e,'imp')} 
-                  actionClick={handleActionClick} 
+                  onShowIconClick={()=>handleShow(e,'imp')}  
                   title={e.id} 
+                  subHeader={`${e.complex}/ ${e.operator}/${e.facility}/${e.yard}`} 
                   action 
-                  subHeader={`${e.complex} / ${e.operator} / ${e.facility} / ${e.yard}`} 
+                  pingActionsLabel='Ping'
+                  pingActionClick={()=>handlePingActionClick('import', e.id)}
                   deleteIcon
                   onRemoveClick={()=>handleRemoveSystem('import', e.id)}
                   />)}

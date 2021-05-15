@@ -45,14 +45,37 @@ export const addSystemAction = (type,values) => async dispatch => {
     }
 }
 
+export const pingToSystemAction = (systemType, systemId) => async dispatch => {
+    try {
+        dispatch({type: actions.pingSystemLoading})
+        const res = await axios.post(`ping/argo/${systemType}/${systemId}`)
+        console.log(res)
+        const {data} = res
+        if( Object.keys(data).length > 0){
+            dispatch({type:actions.pingSystem, payload: 'Successfull'})
+        }
+    } catch (er){
+        dispatch({type: actions.pingSystemError, payload: 'Something went wrong'})
+    }
+}
+
 export const removeSystem = (connectedSystemType, connectedSystemId) => async dispatch => {
     try {
-        dispatch({type: actions.addSystemLoading})
+        dispatch({type: actions.removeSystemLoading})
         const res = await axios.post(`remove/argo/${connectedSystemType}/${connectedSystemId}`)
         console.log(res)
         const {data} = res
+        if( Object.keys(data).length > 0){
+            dispatch({type:actions.removeSystem, payload: 'System removed Successfully'})
+            if(connectedSystemType === 'export'){
+                await dispatch (exportSystemListAction())
+            } 
+            if( connectedSystemType === 'import'){
+                await dispatch(importSystemListAction()) 
+            }
+        }
     } catch (er){
-        dispatch({type: actions.addSystemError, payload: 'Something went wrong'})
+        dispatch({type: actions.removeSystemError, payload: 'Something went wrong'})
     }
 }
 
