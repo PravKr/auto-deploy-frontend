@@ -206,6 +206,7 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
                     linkLabelLink={`/export/${e.id}`}
                     key={i} 
                     onShowIconClick={()=>handleShow(e,'exp')} 
+													
                     title={e.id} 
                     subHeader={`${e.operator}/${e.complex}/${e.facility}/${e.yard}`} 
                     action 
@@ -225,6 +226,7 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
                   linkLabelLink={`/import/${e.id}`}
                   key={i} 
                   onShowIconClick={()=>handleShow(e, 'imp')} 
+												  
                   title={e.id} 
                   subHeader={`${e.operator}/${e.complex}/${e.facility}/${e.yard}`}
                   action 
@@ -244,6 +246,7 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
                   linkLabel='Visit'
                   linkLabelLink={`/export/${e.id}`}
                   onShowIconClick={()=>handleShow(e,'exp')}  
+												  
                   title={e.id} 
                   subHeader={`${e.operator}/${e.complex}/${e.facility}/${e.yard}`} 
                   action 
@@ -263,6 +266,7 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
                   linkLabelLink={`/import/${e.id}`}
                   key={i} 
                   onShowIconClick={()=>handleShow(e,'imp')}  
+												  
                   title={e.id} 
                   subHeader={`${e.complex}/ ${e.operator}/${e.facility}/${e.yard}`} 
                   action 
@@ -322,7 +326,7 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
               />
           </div>
           
-              {openSnack && <Snackbar open={expUpdate || impUpdate} label={expUpdate || impUpdate}/>}
+          {openSnack && <Snackbar open={(expUpdate || impUpdate)} label={(expUpdate || impUpdate)}/>}
         </section>
       
     </Fragment>)

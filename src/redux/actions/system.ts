@@ -193,7 +193,7 @@ export const entityExportAction = (sys, connectedSystemType) => async dispatch =
         const url = await window.URL.createObjectURL(new Blob([data]));
         const link = await document.createElement('a');
         link.href = url;
-        await link.setAttribute('download', `${sys}.xml`);
+        await link.setAttribute('download', `${sys + new Date()}.xml`);
         await document.body.appendChild(link);
             await link.click();
     } catch (er){

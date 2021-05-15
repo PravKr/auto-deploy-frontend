@@ -6,8 +6,9 @@ import {
          entitiesValuesByCategoryReducer, selectedEntitiesValuesByCategoryReducer, systemCartListReducer,
          removeFromCartEntitiesReducer, importListCheckReducer, importSystemReducer } from './system'
 
-import {importDialogBoxReducer} from './component'
+import {importDialogBoxReducer, loginDialogBoxReducer} from './component'
 
+import { userLoginReducer} from './user'
 
 export default combineReducers({
     exportSystemList:exportSystemListReducer,
@@ -24,5 +25,7 @@ export default combineReducers({
     removeFromCart:removeFromCartEntitiesReducer,
     importDialogBox:importDialogBoxReducer,
     importListCheck:importListCheckReducer,
-    importSystem:importSystemReducer
+    importSystem:importSystemReducer,
+    loginDialogBox:loginDialogBoxReducer,
+    userLogin: userLoginReducer
 })

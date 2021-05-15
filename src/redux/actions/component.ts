@@ -10,3 +10,13 @@ try{
         dispatch({type: actions.importDialogBoxError, payload: 'Something went wrong'})
 }
 }
+
+
+export const openLoginDialogBoxAction = (e) => async dispatch => {
+try{
+await dispatch({type: actions.openLoginDialogBox, payload: e})
+}
+catch(er){
+dispatch({type: actions.openLoginDialogBoxError, payload: 'Something went wrong'})
+}
+}

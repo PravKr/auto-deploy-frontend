@@ -7,3 +7,12 @@ export function importDialogBoxReducer(state=null,action){
                 return {...state}
     }
 }
+
+export function loginDialogBoxReducer(state=null,action){
+    switch(action.type){
+        case actions.openLoginDialogBox:
+            return{...state, trigger: action.payload }
+            default:
+                return {...state}
+    }
+}

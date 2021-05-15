@@ -1275,6 +1275,333 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/@material-ui/core/esm/Badge/Badge.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/@material-ui/core/esm/Badge/Badge.js ***!
+  \***********************************************************/
+/*! exports provided: styles, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "styles", function() { return styles; });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.m.js");
+/* harmony import */ var _styles_withStyles__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../styles/withStyles */ "./node_modules/@material-ui/core/esm/styles/withStyles.js");
+/* harmony import */ var _utils_capitalize__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/capitalize */ "./node_modules/@material-ui/core/esm/utils/capitalize.js");
+
+
+
+
+
+
+
+var RADIUS_STANDARD = 10;
+var RADIUS_DOT = 4;
+var styles = function styles(theme) {
+  return {
+    /* Styles applied to the root element. */
+    root: {
+      position: 'relative',
+      display: 'inline-flex',
+      // For correct alignment with the text.
+      verticalAlign: 'middle',
+      flexShrink: 0
+    },
+
+    /* Styles applied to the badge `span` element. */
+    badge: {
+      display: 'flex',
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      justifyContent: 'center',
+      alignContent: 'center',
+      alignItems: 'center',
+      position: 'absolute',
+      boxSizing: 'border-box',
+      fontFamily: theme.typography.fontFamily,
+      fontWeight: theme.typography.fontWeightMedium,
+      fontSize: theme.typography.pxToRem(12),
+      minWidth: RADIUS_STANDARD * 2,
+      lineHeight: 1,
+      padding: '0 6px',
+      height: RADIUS_STANDARD * 2,
+      borderRadius: RADIUS_STANDARD,
+      zIndex: 1,
+      // Render the badge on top of potential ripples.
+      transition: theme.transitions.create('transform', {
+        easing: theme.transitions.easing.easeInOut,
+        duration: theme.transitions.duration.enteringScreen
+      })
+    },
+
+    /* Styles applied to the root element if `color="primary"`. */
+    colorPrimary: {
+      backgroundColor: theme.palette.primary.main,
+      color: theme.palette.primary.contrastText
+    },
+
+    /* Styles applied to the root element if `color="secondary"`. */
+    colorSecondary: {
+      backgroundColor: theme.palette.secondary.main,
+      color: theme.palette.secondary.contrastText
+    },
+
+    /* Styles applied to the root element if `color="error"`. */
+    colorError: {
+      backgroundColor: theme.palette.error.main,
+      color: theme.palette.error.contrastText
+    },
+
+    /* Styles applied to the root element if `variant="dot"`. */
+    dot: {
+      borderRadius: RADIUS_DOT,
+      height: RADIUS_DOT * 2,
+      minWidth: RADIUS_DOT * 2,
+      padding: 0
+    },
+
+    /* Styles applied to the root element if `anchorOrigin={{ 'top', 'right' }} overlap="rectangle"`. */
+    anchorOriginTopRightRectangle: {
+      top: 0,
+      right: 0,
+      transform: 'scale(1) translate(50%, -50%)',
+      transformOrigin: '100% 0%',
+      '&$invisible': {
+        transform: 'scale(0) translate(50%, -50%)'
+      }
+    },
+
+    /* Styles applied to the root element if `anchorOrigin={{ 'bottom', 'right' }} overlap="rectangle"`. */
+    anchorOriginBottomRightRectangle: {
+      bottom: 0,
+      right: 0,
+      transform: 'scale(1) translate(50%, 50%)',
+      transformOrigin: '100% 100%',
+      '&$invisible': {
+        transform: 'scale(0) translate(50%, 50%)'
+      }
+    },
+
+    /* Styles applied to the root element if `anchorOrigin={{ 'top', 'left' }} overlap="rectangle"`. */
+    anchorOriginTopLeftRectangle: {
+      top: 0,
+      left: 0,
+      transform: 'scale(1) translate(-50%, -50%)',
+      transformOrigin: '0% 0%',
+      '&$invisible': {
+        transform: 'scale(0) translate(-50%, -50%)'
+      }
+    },
+
+    /* Styles applied to the root element if `anchorOrigin={{ 'bottom', 'left' }} overlap="rectangle"`. */
+    anchorOriginBottomLeftRectangle: {
+      bottom: 0,
+      left: 0,
+      transform: 'scale(1) translate(-50%, 50%)',
+      transformOrigin: '0% 100%',
+      '&$invisible': {
+        transform: 'scale(0) translate(-50%, 50%)'
+      }
+    },
+
+    /* Styles applied to the root element if `anchorOrigin={{ 'top', 'right' }} overlap="circle"`. */
+    anchorOriginTopRightCircle: {
+      top: '14%',
+      right: '14%',
+      transform: 'scale(1) translate(50%, -50%)',
+      transformOrigin: '100% 0%',
+      '&$invisible': {
+        transform: 'scale(0) translate(50%, -50%)'
+      }
+    },
+
+    /* Styles applied to the root element if `anchorOrigin={{ 'bottom', 'right' }} overlap="circle"`. */
+    anchorOriginBottomRightCircle: {
+      bottom: '14%',
+      right: '14%',
+      transform: 'scale(1) translate(50%, 50%)',
+      transformOrigin: '100% 100%',
+      '&$invisible': {
+        transform: 'scale(0) translate(50%, 50%)'
+      }
+    },
+
+    /* Styles applied to the root element if `anchorOrigin={{ 'top', 'left' }} overlap="circle"`. */
+    anchorOriginTopLeftCircle: {
+      top: '14%',
+      left: '14%',
+      transform: 'scale(1) translate(-50%, -50%)',
+      transformOrigin: '0% 0%',
+      '&$invisible': {
+        transform: 'scale(0) translate(-50%, -50%)'
+      }
+    },
+
+    /* Styles applied to the root element if `anchorOrigin={{ 'bottom', 'left' }} overlap="circle"`. */
+    anchorOriginBottomLeftCircle: {
+      bottom: '14%',
+      left: '14%',
+      transform: 'scale(1) translate(-50%, 50%)',
+      transformOrigin: '0% 100%',
+      '&$invisible': {
+        transform: 'scale(0) translate(-50%, 50%)'
+      }
+    },
+
+    /* Pseudo-class to the badge `span` element if `invisible={true}`. */
+    invisible: {
+      transition: theme.transitions.create('transform', {
+        easing: theme.transitions.easing.easeInOut,
+        duration: theme.transitions.duration.leavingScreen
+      })
+    }
+  };
+};
+var Badge = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__["forwardRef"](function Badge(props, ref) {
+  var _props$anchorOrigin = props.anchorOrigin,
+      anchorOrigin = _props$anchorOrigin === void 0 ? {
+    vertical: 'top',
+    horizontal: 'right'
+  } : _props$anchorOrigin,
+      badgeContent = props.badgeContent,
+      children = props.children,
+      classes = props.classes,
+      className = props.className,
+      _props$color = props.color,
+      color = _props$color === void 0 ? 'default' : _props$color,
+      _props$component = props.component,
+      ComponentProp = _props$component === void 0 ? 'span' : _props$component,
+      invisibleProp = props.invisible,
+      _props$max = props.max,
+      max = _props$max === void 0 ? 99 : _props$max,
+      _props$overlap = props.overlap,
+      overlap = _props$overlap === void 0 ? 'rectangle' : _props$overlap,
+      _props$showZero = props.showZero,
+      showZero = _props$showZero === void 0 ? false : _props$showZero,
+      _props$variant = props.variant,
+      variant = _props$variant === void 0 ? 'standard' : _props$variant,
+      other = Object(_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__["default"])(props, ["anchorOrigin", "badgeContent", "children", "classes", "className", "color", "component", "invisible", "max", "overlap", "showZero", "variant"]);
+
+  var invisible = invisibleProp;
+
+  if (invisibleProp == null && (badgeContent === 0 && !showZero || badgeContent == null && variant !== 'dot')) {
+    invisible = true;
+  }
+
+  var displayValue = '';
+
+  if (variant !== 'dot') {
+    displayValue = badgeContent > max ? "".concat(max, "+") : badgeContent;
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__["createElement"](ComponentProp, Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    className: Object(clsx__WEBPACK_IMPORTED_MODULE_4__["default"])(classes.root, className),
+    ref: ref
+  }, other), children, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__["createElement"]("span", {
+    className: Object(clsx__WEBPACK_IMPORTED_MODULE_4__["default"])(classes.badge, classes["".concat(anchorOrigin.horizontal).concat(Object(_utils_capitalize__WEBPACK_IMPORTED_MODULE_6__["default"])(anchorOrigin.vertical), "}")], classes["anchorOrigin".concat(Object(_utils_capitalize__WEBPACK_IMPORTED_MODULE_6__["default"])(anchorOrigin.vertical)).concat(Object(_utils_capitalize__WEBPACK_IMPORTED_MODULE_6__["default"])(anchorOrigin.horizontal)).concat(Object(_utils_capitalize__WEBPACK_IMPORTED_MODULE_6__["default"])(overlap))], color !== 'default' && classes["color".concat(Object(_utils_capitalize__WEBPACK_IMPORTED_MODULE_6__["default"])(color))], invisible && classes.invisible, variant === 'dot' && classes.dot)
+  }, displayValue));
+});
+ true ? Badge.propTypes = {
+  // ----------------------------- Warning --------------------------------
+  // | These PropTypes are generated from the TypeScript type definitions |
+  // |     To update them edit the d.ts file and run "yarn proptypes"     |
+  // ----------------------------------------------------------------------
+
+  /**
+   * The anchor of the badge.
+   */
+  anchorOrigin: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.shape({
+    horizontal: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.oneOf(['left', 'right']).isRequired,
+    vertical: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.oneOf(['bottom', 'top']).isRequired
+  }),
+
+  /**
+   * The content rendered within the badge.
+   */
+  badgeContent: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.node,
+
+  /**
+   * The badge will be added relative to this node.
+   */
+  children: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.node,
+
+  /**
+   * Override or extend the styles applied to the component.
+   * See [CSS API](#css) below for more details.
+   */
+  classes: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.object,
+
+  /**
+   * @ignore
+   */
+  className: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.string,
+
+  /**
+   * The color of the component. It supports those theme colors that make sense for this component.
+   */
+  color: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.oneOf(['default', 'error', 'primary', 'secondary']),
+
+  /**
+   * The component used for the root node.
+   * Either a string to use a HTML element or a component.
+   */
+  component: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a
+  /* @typescript-to-proptypes-ignore */
+  .elementType,
+
+  /**
+   * If `true`, the badge will be invisible.
+   */
+  invisible: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.bool,
+
+  /**
+   * Max count to show.
+   */
+  max: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.number,
+
+  /**
+   * Wrapped shape the badge should overlap.
+   */
+  overlap: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.oneOf(['circle', 'rectangle']),
+
+  /**
+   * Controls whether the badge is hidden when `badgeContent` is zero.
+   */
+  showZero: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.bool,
+
+  /**
+   * The variant to use.
+   */
+  variant: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.oneOf(['dot', 'standard'])
+} : undefined;
+/* harmony default export */ __webpack_exports__["default"] = (Object(_styles_withStyles__WEBPACK_IMPORTED_MODULE_5__["default"])(styles, {
+  name: 'MuiBadge'
+})(Badge));
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/esm/Badge/index.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/@material-ui/core/esm/Badge/index.js ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Badge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Badge */ "./node_modules/@material-ui/core/esm/Badge/Badge.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _Badge__WEBPACK_IMPORTED_MODULE_0__["default"]; });
+
+
+
+/***/ }),
+
 /***/ "./node_modules/@material-ui/core/esm/Button/Button.js":
 /*!*************************************************************!*\
   !*** ./node_modules/@material-ui/core/esm/Button/Button.js ***!
@@ -27909,7 +28236,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default.a);
 // Module
-___CSS_LOADER_EXPORT___.push([module.i, "@keyframes zoom-1 {\n  from {\n    transform: scale(0); }\n  to {\n    transform: scale(1); } }\n\n@keyframes zoom-2 {\n  0% {\n    transform: scale(0); }\n  50% {\n    transform: scale(1.1); }\n  100% {\n    transform: scale(1); } }\n\n@keyframes zoom-3 {\n  0% {\n    transform: scale(0); }\n  50% {\n    transform: scale(1.2); }\n  100% {\n    transform: scale(1); } }\n\n*, *::before, *::after {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box; }\n\nmain {\n  min-height: 100vh; }\n  main section {\n    padding: .5rem; }\n    main section h5 {\n      margin-bottom: 2rem !important; }\n\n#appbar {\n  background-color: #087995 !important; }\n  #appbar .title {\n    text-decoration: none;\n    margin-right: auto !important;\n    color: #fff; }\n\n.selectbox {\n  width: 100%;\n  margin: 0 0 1rem 0 !important; }\n\n.card {\n  margin: .25rem;\n  align-self: flex-start;\n  width: 25rem; }\n  .card h6 {\n    color: #087995; }\n  .card .cardMedia {\n    height: 14rem; }\n  .card a {\n    margin-left: auto; }\n  .card .avatar {\n    background-color: #087995; }\n  .card .title {\n    color: #087995; }\n  .card .caption {\n    color: black; }\n\nbutton {\n  margin: 0 .5rem 0 .5rem !important; }\n\n.primary-contained {\n  background-color: #087995 !important;\n  color: #fff !important; }\n\n.secondary-contained {\n  background-color: #fff !important;\n  color: #087995 !important; }\n\n.primary-outlined {\n  border-color: #087995 !important;\n  color: #087995 !important; }\n\n.import-list {\n  display: flex; }\n\n.textfield {\n  width: 100%;\n  margin-bottom: 1rem !important; }\n\n.MuiCheckbox-colorPrimary.Mui-checked {\n  color: #087995 !important; }\n\n.load {\n  display: flex;\n  justify-content: center; }\n  .load .loader {\n    border: 2px solid #fff;\n    border-radius: 50%;\n    border-top: 2px solid #087995;\n    width: 20px;\n    height: 20px;\n    -webkit-animation: spin .3s linear infinite;\n    /* Safari */\n    animation: spin .3s linear infinite; }\n\n/* Safari */\n@-webkit-keyframes spin {\n  0% {\n    -webkit-transform: rotate(0deg); }\n  100% {\n    -webkit-transform: rotate(360deg); } }\n\n@keyframes spin {\n  0% {\n    transform: rotate(0deg); }\n  100% {\n    transform: rotate(360deg); } }\n\n.homepage .system-panel .tab-list {\n  margin: 0 auto;\n  width: 60%;\n  height: 10%; }\n\n.homepage .system-panel .flex-list {\n  display: flex;\n  margin-bottom: 1rem;\n  flex-wrap: wrap; }\n\n.homepage .system-panel .add-system {\n  display: flex;\n  justify-content: flex-end; }\n\n.connected-system .top, .connected-system .heading {\n  display: flex;\n  justify-content: space-between;\n  align-items: baseline; }\n\n.cart .heading {\n  display: flex;\n  justify-content: space-between;\n  align-items: baseline; }\n", "",{"version":3,"sources":["webpack://./src/sass/base/_animations.scss","webpack://./src/sass/base/_base.scss","webpack://./src/sass/base/_main.scss","webpack://./src/sass/components/_appbar.scss","webpack://./src/sass/abstracts/_variables.scss","webpack://./src/sass/components/_selectbox.scss","webpack://./src/sass/components/_card.scss","webpack://./src/sass/components/_button.scss","webpack://./src/sass/components/_dialogBox.scss","webpack://./src/sass/components/_textfield.scss","webpack://./src/sass/components/_checkbox.scss","webpack://./src/sass/components/_loader.scss","webpack://./src/sass/pages/_homepage.scss","webpack://./src/sass/pages/_connectedSystem.scss","webpack://./src/sass/pages/_cart.scss"],"names":[],"mappings":"AAAA;EACI;IAAO,mBAAmB,EAAA;EAC1B;IAAK,mBAAmB,EAAA,EAAA;;AAG5B;EACI;IAAI,mBAAmB,EAAA;EACvB;IAAK,qBAAqB,EAAA;EAC1B;IAAK,mBAAmB,EAAA,EAAA;;AAG5B;EACI;IAAI,mBAAmB,EAAA;EACvB;IAAK,qBAAqB,EAAA;EAC1B;IAAK,mBAAmB,EAAA,EAAA;;ACd5B;EACI,SAAS;EACT,UAAU;EACV,sBAAsB,EAAA;;ACH1B;EACI,iBAAiB,EAAA;EADrB;IAGQ,cAAc,EAAA;IAHtB;MAKY,8BAA8B,EAAA;;ACL1C;EACI,oCAA2C,EAAA;EAD/C;IAMQ,qBAAqB;IACrB,6BAA6B;IAC7B,WCHU,EAAA;;ACLjB;EACO,WAAW;EACX,6BAA6B,EAAA;;ACFrC;EACI,cAAc;EACd,sBAAsB;EACtB,YAAY,EAAA;EAHhB;IAKQ,cFJe,EAAA;EEDvB;IAQQ,aAAa,EAAA;EARrB;IAWQ,iBAAiB,EAAA;EAXzB;IAcQ,yBFbe,EAAA;EEDvB;IAiBQ,cFhBe,EAAA;EEDvB;IAoBQ,YFZW,EAAA;;AGRnB;EACI,kCAAkC,EAAA;;AAGtC;EACI,oCAA2C;EAC3C,sBAA8B,EAAA;;AAElC;EACI,iCAAyC;EACzC,yBAAgC,EAAA;;AAEpC;EACI,gCAAuC;EACvC,yBAAgC,EAAA;;ACdpC;EACI,aAAa,EAAA;;ACDjB;EACI,WAAW;EACX,8BAA6B,EAAA;;ACFjC;EACI,yBAAiC,EAAA;;ACDrC;EACE,aAAa;EACb,uBAAuB,EAAA;EAFzB;IAII,sBPCc;IOAd,kBAAkB;IAClB,6BPLmB;IOMnB,WAAW;IACX,YAAY;IACZ,2CAA2C;IAAE,WAAA;IAC7C,mCAAmC,EAAA;;AAGrC,WAAA;AACA;EACE;IAAK,+BAA+B,EAAA;EACpC;IAAO,iCAAiC,EAAA,EAAA;;AAG1C;EACE;IAAK,uBAAuB,EAAA;EAC5B;IAAO,yBAAyB,EAAA,EAAA;;ACrBpC;EAGc,cAAc;EACd,UAAU;EACV,WAAW,EAAA;;AALzB;EAQc,aAAa;EACb,mBAAmB;EACnB,eAAe,EAAA;;AAV7B;EAae,aAAa;EACb,yBAAyB,EAAA;;ACdxC;EAEQ,aAAa;EACb,8BAA8B;EAC9B,qBAAqB,EAAA;;ACJ7B;EAEQ,aAAa;EACb,8BAA8B;EAC9B,qBAAqB,EAAA","sourcesContent":["@keyframes zoom-1{\r\n    from { transform: scale(0);}\r\n    to { transform: scale(1);}\r\n}\r\n\r\n@keyframes zoom-2{\r\n    0% {transform: scale(0);}\r\n    50% {transform: scale(1.1);}\r\n    100%{transform: scale(1);}\r\n}\r\n\r\n@keyframes zoom-3{\r\n    0% {transform: scale(0);}\r\n    50% {transform: scale(1.2);}\r\n    100%{transform: scale(1);}\r\n}","*,*::before,*::after{\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n}","main{\r\n    min-height: 100vh;\r\n    section{\r\n        padding: .5rem;\r\n        h5{\r\n            margin-bottom: 2rem !important;\r\n        }\r\n    }\r\n}","#appbar{\r\n    background-color: $color-primary !important;\r\n//     .toolbar{\r\n// min-height: 0 !important;\r\n//     }\r\n    .title{\r\n        text-decoration: none;\r\n        margin-right: auto !important;\r\n        color: $color-white;\r\n    }\r\n}\r\n ","// Colors\r\n$color-primary: #087995;\r\n\r\n//#c11616;\r\n$color-footer: #90b8bd;\r\n$color-white: #fff;\r\n$color-grey: grey;\r\n$color-red: red;\r\n$color-black: black;\r\n$color-blue: cadetBlue;\r\n$color-brick:firebrick;\r\n$color-teal: teal;\r\n$color-antique-white:antiquewhite;\r\n$color-brown: brown;\r\n$color-alice-blue: aliceblue;\r\n$color-darks-late-gray: darkslategray;"," .selectbox{\r\n        width: 100%;\r\n        margin: 0 0 1rem 0 !important;\r\n}",".card{\r\n    margin: .25rem;\r\n    align-self: flex-start;\r\n    width: 25rem;\r\n    h6{\r\n        color:$color-primary;\r\n    }\r\n    .cardMedia{\r\n        height: 14rem;\r\n    }\r\n    a{\r\n        margin-left: auto;\r\n    }\r\n    .avatar{\r\n        background-color: $color-primary;\r\n    }\r\n    .title{\r\n        color:$color-primary;\r\n    }\r\n    .caption{\r\n        color: $color-black;\r\n    }\r\n}","button{\r\n    margin: 0 .5rem 0 .5rem !important;\r\n}\r\n\r\n.primary-contained{\r\n    background-color: $color-primary !important;\r\n    color: $color-white !important;\r\n}\r\n.secondary-contained{\r\n    background-color: $color-white !important;\r\n    color: $color-primary !important;\r\n}\r\n.primary-outlined{\r\n    border-color: $color-primary !important;\r\n    color: $color-primary !important;\r\n}",".import-list{\r\n    display: flex;\r\n}",".textfield{\r\n    width: 100%;\r\n    margin-bottom:1rem !important;\r\n}",".MuiCheckbox-colorPrimary.Mui-checked{\r\n    color:  $color-primary !important;\r\n}",".load{\r\n  display: flex;\r\n  justify-content: center;\r\n  .loader {\r\n    border: 2px solid $color-white;\r\n    border-radius: 50%;\r\n    border-top: 2px solid $color-primary;\r\n    width: 20px;\r\n    height: 20px;\r\n    -webkit-animation: spin .3s linear infinite; /* Safari */\r\n    animation: spin .3s linear infinite;\r\n  }\r\n}\r\n  /* Safari */\r\n  @-webkit-keyframes spin {\r\n    0% { -webkit-transform: rotate(0deg); }\r\n    100% { -webkit-transform: rotate(360deg); }\r\n  }\r\n  \r\n  @keyframes spin {\r\n    0% { transform: rotate(0deg); }\r\n    100% { transform: rotate(360deg); }\r\n  }\r\n  ",".homepage{\r\n     .system-panel{\r\n          .tab-list{\r\n              margin: 0 auto;\r\n              width: 60%;\r\n              height: 10%;\r\n          }\r\n          .flex-list{\r\n              display: flex;\r\n              margin-bottom: 1rem;\r\n              flex-wrap: wrap;\r\n          }\r\n           .add-system{\r\n               display: flex;\r\n               justify-content: flex-end;\r\n           }\r\n     }\r\n}",".connected-system{\r\n    .top, .heading{\r\n        display: flex;\r\n        justify-content: space-between;\r\n        align-items: baseline;\r\n    }\r\n}",".cart{\r\n    .heading{\r\n        display: flex;\r\n        justify-content: space-between;\r\n        align-items: baseline;\r\n    }\r\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.i, "@keyframes zoom-1 {\n  from {\n    transform: scale(0); }\n  to {\n    transform: scale(1); } }\n\n@keyframes zoom-2 {\n  0% {\n    transform: scale(0); }\n  50% {\n    transform: scale(1.1); }\n  100% {\n    transform: scale(1); } }\n\n@keyframes zoom-3 {\n  0% {\n    transform: scale(0); }\n  50% {\n    transform: scale(1.2); }\n  100% {\n    transform: scale(1); } }\n\n*, *::before, *::after {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box; }\n\nmain {\n  min-height: 100vh; }\n  main section {\n    padding: .5rem; }\n    main section h5 {\n      margin-bottom: 2rem !important; }\n\n#appbar {\n  background-color: #087995 !important; }\n  #appbar .title {\n    text-decoration: none;\n    margin-right: auto !important;\n    color: #fff; }\n\n.selectbox {\n  width: 100%;\n  margin: 0 0 1rem 0 !important; }\n\n.card {\n  margin: .25rem;\n  align-self: flex-start;\n  width: 25rem; }\n  .card h6 {\n    color: #087995; }\n  .card .cardMedia {\n    height: 14rem; }\n  .card a {\n    margin-left: auto; }\n  .card .avatar {\n    background-color: #087995; }\n  .card .title {\n    color: #087995; }\n  .card .caption {\n    color: black; }\n\nbutton {\n  margin: 0 .5rem 0 .5rem !important; }\n\n.primary-contained {\n  background-color: #087995 !important;\n  color: #fff !important; }\n\n.secondary-contained {\n  background-color: #fff !important;\n  color: #087995 !important; }\n\n.primary-outlined {\n  border-color: #087995 !important;\n  color: #087995 !important; }\n\n.import-list {\n  display: flex; }\n\n.textfield {\n  width: 100%;\n  margin-bottom: 1rem !important; }\n\n.MuiCheckbox-colorPrimary.Mui-checked {\n  color: #087995 !important; }\n\n.load {\n  display: flex;\n  justify-content: center; }\n  .load .loader {\n    border: 2px solid #fff;\n    border-radius: 50%;\n    border-top: 2px solid #087995;\n    width: 20px;\n    height: 20px;\n    -webkit-animation: spin .3s linear infinite;\n    /* Safari */\n    animation: spin .3s linear infinite; }\n\n/* Safari */\n@-webkit-keyframes spin {\n  0% {\n    -webkit-transform: rotate(0deg); }\n  100% {\n    -webkit-transform: rotate(360deg); } }\n\n@keyframes spin {\n  0% {\n    transform: rotate(0deg); }\n  100% {\n    transform: rotate(360deg); } }\n\n.homepage .system-panel .tabs {\n  display: flex; }\n  .homepage .system-panel .tabs .add-system {\n    align-self: flex-start; }\n\n.homepage .system-panel .tab-list {\n  margin-right: auto;\n  width: 60%;\n  height: 10%; }\n\n.homepage .system-panel .flex-list {\n  display: flex;\n  margin-bottom: 1rem;\n  flex-wrap: wrap; }\n\n.connected-system .top, .connected-system .heading {\n  display: flex;\n  justify-content: space-between;\n  align-items: baseline; }\n\n.cart .heading {\n  display: flex;\n  justify-content: space-between;\n  align-items: baseline; }\n", "",{"version":3,"sources":["webpack://./src/sass/base/_animations.scss","webpack://./src/sass/base/_base.scss","webpack://./src/sass/base/_main.scss","webpack://./src/sass/components/_appbar.scss","webpack://./src/sass/abstracts/_variables.scss","webpack://./src/sass/components/_selectbox.scss","webpack://./src/sass/components/_card.scss","webpack://./src/sass/components/_button.scss","webpack://./src/sass/components/_dialogBox.scss","webpack://./src/sass/components/_textfield.scss","webpack://./src/sass/components/_checkbox.scss","webpack://./src/sass/components/_loader.scss","webpack://./src/sass/pages/_homepage.scss","webpack://./src/sass/pages/_connectedSystem.scss","webpack://./src/sass/pages/_cart.scss"],"names":[],"mappings":"AAAA;EACI;IAAO,mBAAmB,EAAA;EAC1B;IAAK,mBAAmB,EAAA,EAAA;;AAG5B;EACI;IAAI,mBAAmB,EAAA;EACvB;IAAK,qBAAqB,EAAA;EAC1B;IAAK,mBAAmB,EAAA,EAAA;;AAG5B;EACI;IAAI,mBAAmB,EAAA;EACvB;IAAK,qBAAqB,EAAA;EAC1B;IAAK,mBAAmB,EAAA,EAAA;;ACd5B;EACI,SAAS;EACT,UAAU;EACV,sBAAsB,EAAA;;ACH1B;EACI,iBAAiB,EAAA;EADrB;IAGQ,cAAc,EAAA;IAHtB;MAKY,8BAA8B,EAAA;;ACL1C;EACI,oCAA2C,EAAA;EAD/C;IAMQ,qBAAqB;IACrB,6BAA6B;IAC7B,WCHU,EAAA;;ACLjB;EACO,WAAW;EACX,6BAA6B,EAAA;;ACFrC;EACI,cAAc;EACd,sBAAsB;EACtB,YAAY,EAAA;EAHhB;IAKQ,cFJe,EAAA;EEDvB;IAQQ,aAAa,EAAA;EARrB;IAWQ,iBAAiB,EAAA;EAXzB;IAcQ,yBFbe,EAAA;EEDvB;IAiBQ,cFhBe,EAAA;EEDvB;IAoBQ,YFZW,EAAA;;AGRnB;EACI,kCAAkC,EAAA;;AAGtC;EACI,oCAA2C;EAC3C,sBAA8B,EAAA;;AAElC;EACI,iCAAyC;EACzC,yBAAgC,EAAA;;AAEpC;EACI,gCAAuC;EACvC,yBAAgC,EAAA;;ACdpC;EACI,aAAa,EAAA;;ACDjB;EACI,WAAW;EACX,8BAA6B,EAAA;;ACFjC;EACI,yBAAiC,EAAA;;ACDrC;EACE,aAAa;EACb,uBAAuB,EAAA;EAFzB;IAII,sBPCc;IOAd,kBAAkB;IAClB,6BPLmB;IOMnB,WAAW;IACX,YAAY;IACZ,2CAA2C;IAAE,WAAA;IAC7C,mCAAmC,EAAA;;AAGrC,WAAA;AACA;EACE;IAAK,+BAA+B,EAAA;EACpC;IAAO,iCAAiC,EAAA,EAAA;;AAG1C;EACE;IAAK,uBAAuB,EAAA;EAC5B;IAAO,yBAAyB,EAAA,EAAA;;ACrBpC;EAGI,aAAa,EAAA;EAHjB;IAMc,sBAAsB,EAAA;;AANpC;EAUa,kBAAkB;EAClB,UAAU;EACV,WAAW,EAAA;;AAZxB;EAea,aAAa;EACb,mBAAmB;EACnB,eAAe,EAAA;;ACjB5B;EAEQ,aAAa;EACb,8BAA8B;EAC9B,qBAAqB,EAAA;;ACJ7B;EAEQ,aAAa;EACb,8BAA8B;EAC9B,qBAAqB,EAAA","sourcesContent":["@keyframes zoom-1{\r\n    from { transform: scale(0);}\r\n    to { transform: scale(1);}\r\n}\r\n\r\n@keyframes zoom-2{\r\n    0% {transform: scale(0);}\r\n    50% {transform: scale(1.1);}\r\n    100%{transform: scale(1);}\r\n}\r\n\r\n@keyframes zoom-3{\r\n    0% {transform: scale(0);}\r\n    50% {transform: scale(1.2);}\r\n    100%{transform: scale(1);}\r\n}","*,*::before,*::after{\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n}","main{\r\n    min-height: 100vh;\r\n    section{\r\n        padding: .5rem;\r\n        h5{\r\n            margin-bottom: 2rem !important;\r\n        }\r\n    }\r\n}","#appbar{\r\n    background-color: $color-primary !important;\r\n//     .toolbar{\r\n// min-height: 0 !important;\r\n//     }\r\n    .title{\r\n        text-decoration: none;\r\n        margin-right: auto !important;\r\n        color: $color-white;\r\n    }\r\n}\r\n ","// Colors\r\n$color-primary: #087995;\r\n\r\n//#c11616;\r\n$color-footer: #90b8bd;\r\n$color-white: #fff;\r\n$color-grey: grey;\r\n$color-red: red;\r\n$color-black: black;\r\n$color-blue: cadetBlue;\r\n$color-brick:firebrick;\r\n$color-teal: teal;\r\n$color-antique-white:antiquewhite;\r\n$color-brown: brown;\r\n$color-alice-blue: aliceblue;\r\n$color-darks-late-gray: darkslategray;"," .selectbox{\r\n        width: 100%;\r\n        margin: 0 0 1rem 0 !important;\r\n}",".card{\r\n    margin: .25rem;\r\n    align-self: flex-start;\r\n    width: 25rem;\r\n    h6{\r\n        color:$color-primary;\r\n    }\r\n    .cardMedia{\r\n        height: 14rem;\r\n    }\r\n    a{\r\n        margin-left: auto;\r\n    }\r\n    .avatar{\r\n        background-color: $color-primary;\r\n    }\r\n    .title{\r\n        color:$color-primary;\r\n    }\r\n    .caption{\r\n        color: $color-black;\r\n    }\r\n}","button{\r\n    margin: 0 .5rem 0 .5rem !important;\r\n}\r\n\r\n.primary-contained{\r\n    background-color: $color-primary !important;\r\n    color: $color-white !important;\r\n}\r\n.secondary-contained{\r\n    background-color: $color-white !important;\r\n    color: $color-primary !important;\r\n}\r\n.primary-outlined{\r\n    border-color: $color-primary !important;\r\n    color: $color-primary !important;\r\n}",".import-list{\r\n    display: flex;\r\n}",".textfield{\r\n    width: 100%;\r\n    margin-bottom:1rem !important;\r\n}",".MuiCheckbox-colorPrimary.Mui-checked{\r\n    color:  $color-primary !important;\r\n}",".load{\r\n  display: flex;\r\n  justify-content: center;\r\n  .loader {\r\n    border: 2px solid $color-white;\r\n    border-radius: 50%;\r\n    border-top: 2px solid $color-primary;\r\n    width: 20px;\r\n    height: 20px;\r\n    -webkit-animation: spin .3s linear infinite; /* Safari */\r\n    animation: spin .3s linear infinite;\r\n  }\r\n}\r\n  /* Safari */\r\n  @-webkit-keyframes spin {\r\n    0% { -webkit-transform: rotate(0deg); }\r\n    100% { -webkit-transform: rotate(360deg); }\r\n  }\r\n  \r\n  @keyframes spin {\r\n    0% { transform: rotate(0deg); }\r\n    100% { transform: rotate(360deg); }\r\n  }\r\n  ",".homepage{\r\n    .system-panel{\r\n    .tabs{\r\n    display: flex;\r\n     .add-system{\r\n              \r\n              align-self: flex-start;\r\n          }\r\n    }\r\n         .tab-list{\r\n             margin-right: auto;\r\n             width: 60%;\r\n             height: 10%;\r\n         }\r\n         .flex-list{\r\n             display: flex;\r\n             margin-bottom: 1rem;\r\n             flex-wrap: wrap;\r\n         }\r\n         \r\n    }\r\n}",".connected-system{\r\n    .top, .heading{\r\n        display: flex;\r\n        justify-content: space-between;\r\n        align-items: baseline;\r\n    }\r\n}",".cart{\r\n    .heading{\r\n        display: flex;\r\n        justify-content: space-between;\r\n        align-items: baseline;\r\n    }\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -72839,13 +73166,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 const appbar_1 = __importDefault(__webpack_require__(/*! ./components/appbar */ "./src/components/appbar.tsx"));
+const footer_1 = __importDefault(__webpack_require__(/*! ./components/footer */ "./src/components/footer.tsx"));
 const main_1 = __importDefault(__webpack_require__(/*! ./routes/main */ "./src/routes/main.tsx"));
 __webpack_require__(/*! ./sass/main.scss */ "./src/sass/main.scss");
 function App() {
     return (react_1.default.createElement(react_1.Fragment, null,
         react_1.default.createElement(appbar_1.default, null),
         react_1.default.createElement("main", { className: 'main' },
-            react_1.default.createElement(main_1.default, null))));
+            react_1.default.createElement(main_1.default, null)),
+        react_1.default.createElement(footer_1.default, null)));
 }
 exports.default = App;
 
@@ -72888,12 +73217,49 @@ const react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/re
 const AppBar_1 = __importDefault(__webpack_require__(/*! @material-ui/core/AppBar */ "./node_modules/@material-ui/core/esm/AppBar/index.js"));
 const Toolbar_1 = __importDefault(__webpack_require__(/*! @material-ui/core/Toolbar */ "./node_modules/@material-ui/core/esm/Toolbar/index.js"));
 const typography_1 = __importDefault(__webpack_require__(/*! ./typography */ "./src/components/typography.tsx"));
+const dialogBox_1 = __importDefault(__webpack_require__(/*! ./dialogBox */ "./src/components/dialogBox.tsx"));
+const input_1 = __webpack_require__(/*! ./input */ "./src/components/input.tsx");
+const textfield_1 = __importDefault(__webpack_require__(/*! ./textfield */ "./src/components/textfield.tsx"));
+const button_1 = __importDefault(__webpack_require__(/*! ./button */ "./src/components/button.tsx"));
+const Button_1 = __importDefault(__webpack_require__(/*! @material-ui/core/Button */ "./node_modules/@material-ui/core/esm/Button/index.js"));
+const react_redux_1 = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+const component_1 = __webpack_require__(/*! ../redux/actions/component */ "./src/redux/actions/component.ts");
+const user_1 = __webpack_require__(/*! ../redux/actions/user */ "./src/redux/actions/user.ts");
 function Appbar() {
+    const dispatch = react_redux_1.useDispatch();
+    const { value: userName, bind: bindUserName, reset: resetUserName } = input_1.useInputString('');
+    const { value: password, bind: bindPassword, reset: resetPassword } = input_1.useInputString('');
+    const loginDialogBox = react_redux_1.useSelector(state => state.loginDialogBox);
+    const userLogin = react_redux_1.useSelector(state => state.userLogin);
+    const { user, loading, isAuthenticated = false } = userLogin;
+    const { trigger } = loginDialogBox;
+    const handleLogin = (e) => {
+        e.preventDefault();
+        dispatch(user_1.userLoginAction({ userName, password }));
+    };
+    const handleLogout = () => {
+        dispatch(user_1.userLogoutAction());
+    };
+    const handleDialogBox = (e) => {
+        dispatch(component_1.openLoginDialogBoxAction(e));
+        if (e === false) {
+            resetUserName();
+            resetPassword();
+        }
+    };
+    console.log(isAuthenticated, user);
     return (react_1.default.createElement(react_1.Fragment, null,
         react_1.default.createElement(AppBar_1.default, { position: "sticky", id: 'appbar' },
             react_1.default.createElement(Toolbar_1.default, { className: 'toolbar' },
                 react_1.default.createElement("a", { href: '/', className: 'title' },
-                    react_1.default.createElement(typography_1.default, { variant: 'h6', label: 'Navis - Auto Deploy', className: 'appbarTitle' }))))));
+                    react_1.default.createElement(typography_1.default, { variant: 'h6', label: 'Navis - Auto Deploy', className: 'appbarTitle' })),
+                react_1.default.createElement(react_1.Fragment, null, isAuthenticated ?
+                    react_1.default.createElement(Button_1.default, { color: "inherit", onClick: handleLogout }, "Logout")
+                    : react_1.default.createElement(Button_1.default, { color: "inherit", onClick: () => handleDialogBox(true) }, "Login"))),
+            react_1.default.createElement(dialogBox_1.default, { title: 'Login', maxWidth: 'sm', open: trigger, handleClose: () => handleDialogBox(false), content: react_1.default.createElement("form", { onSubmit: handleLogin },
+                    react_1.default.createElement(textfield_1.default, Object.assign({ type: 'text', required: true, label: 'Username' }, bindUserName)),
+                    react_1.default.createElement(textfield_1.default, Object.assign({ type: 'text', required: true, label: 'password' }, bindPassword)),
+                    react_1.default.createElement(button_1.default, { variant: 'contained', disabled: !userName || !password, type: 'submit', color: 'primary', label: 'Login' })) }))));
 }
 exports.default = Appbar;
 
@@ -72996,24 +73362,29 @@ const Avatar_1 = __importDefault(__webpack_require__(/*! @material-ui/core/Avata
 const IconButton_1 = __importDefault(__webpack_require__(/*! @material-ui/core/IconButton */ "./node_modules/@material-ui/core/esm/IconButton/index.js"));
 const Edit_1 = __importDefault(__webpack_require__(/*! @material-ui/icons/Edit */ "./node_modules/@material-ui/icons/Edit.js"));
 const checkbox_1 = __importDefault(__webpack_require__(/*! ./checkbox */ "./src/components/checkbox.tsx"));
+const Delete_1 = __importDefault(__webpack_require__(/*! @material-ui/icons/Delete */ "./node_modules/@material-ui/icons/Delete.js"));
 function Cards(props) {
-    const { title, subHeader, imgUrl, actionsLabel, actionClick, mediaTitle, avatar, action, onShowIconClick, linkLabel, linkLabelLink, checkbox, onCheckBoxClick, checkBoxId, checked } = props;
+    const { title, subHeader, imgUrl, pingActionsLabel, pingActionClick, mediaTitle, avatar, action, onShowIconClick, linkLabel, linkLabelLink, checkbox, onCheckBoxClick, checkBoxId, checked, deleteIcon, onRemoveClick } = props;
     const onShowIconClicks = (e) => {
         e.stopPropagation();
         onShowIconClick();
     };
     const actionsClick = (e) => {
         e.stopPropagation();
-        actionClick();
+        pingActionClick();
     };
     return (react_1.default.createElement(react_1.Fragment, null,
         react_1.default.createElement(Card_1.default, { elevation: 2, square: true, className: 'card' },
-            react_1.default.createElement(CardHeader_1.default, { avatar: react_1.default.createElement(Avatar_1.default, { "aria-label": "recipe", className: 'avatar' }, avatar), title: title, subheader: react_1.default.createElement(typography_1.default, { variant: 'caption', label: subHeader }), action: action ? (react_1.default.createElement(IconButton_1.default, { onClick: onShowIconClicks },
-                    react_1.default.createElement(Edit_1.default, { fontSize: 'small' }))) : checkbox ?
-                    (react_1.default.createElement(checkbox_1.default, { id: checkBoxId, checked: checked || false, onChange: onCheckBoxClick })) : '' }),
+            react_1.default.createElement(CardHeader_1.default, { avatar: react_1.default.createElement(Avatar_1.default, { "aria-label": "recipe", className: 'avatar' }, avatar), title: title, subheader: react_1.default.createElement(typography_1.default, { variant: 'caption', label: subHeader }), action: react_1.default.createElement(react_1.Fragment, null,
+                    action && (react_1.default.createElement(IconButton_1.default, { size: "small", onClick: onShowIconClicks },
+                        react_1.default.createElement(Edit_1.default, { fontSize: 'small' }))),
+                    checkbox &&
+                        (react_1.default.createElement(checkbox_1.default, { id: checkBoxId, checked: checked || false, onChange: onCheckBoxClick })),
+                    deleteIcon && (react_1.default.createElement(IconButton_1.default, { size: "small", onClick: onRemoveClick },
+                        react_1.default.createElement(Delete_1.default, { fontSize: 'small' })))) }),
             mediaTitle && react_1.default.createElement(CardMedia_1.default, { className: 'cardMedia', image: imgUrl, title: mediaTitle }),
             react_1.default.createElement(CardActions_1.default, { disableSpacing: true },
-                actionsLabel && react_1.default.createElement(button_1.default, { variant: 'contained', color: 'primary', onClick: actionsClick, label: actionsLabel }),
+                pingActionsLabel && react_1.default.createElement(button_1.default, { variant: 'contained', color: 'primary', onClick: actionsClick, label: pingActionsLabel }),
                 linkLabel && react_1.default.createElement(button_1.default, { variant: 'outlined', href: linkLabelLink, color: 'primary', label: linkLabel })))));
 }
 exports.default = Cards;
@@ -73096,6 +73467,53 @@ function Divide(props) {
     return (react_1.default.createElement(Divider_1.default, { orientation: orientation, flexItem: flexItem }));
 }
 exports.default = Divide;
+
+
+/***/ }),
+
+/***/ "./src/components/footer.tsx":
+/*!***********************************!*\
+  !*** ./src/components/footer.tsx ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+const AppBar_1 = __importDefault(__webpack_require__(/*! @material-ui/core/AppBar */ "./node_modules/@material-ui/core/esm/AppBar/index.js"));
+const Toolbar_1 = __importDefault(__webpack_require__(/*! @material-ui/core/Toolbar */ "./node_modules/@material-ui/core/esm/Toolbar/index.js"));
+const typography_1 = __importDefault(__webpack_require__(/*! ./typography */ "./src/components/typography.tsx"));
+function Footer() {
+    return (react_1.default.createElement(react_1.Fragment, null,
+        react_1.default.createElement(AppBar_1.default, { position: "sticky", id: 'appbar' },
+            react_1.default.createElement(Toolbar_1.default, { className: 'toolbar' },
+                react_1.default.createElement(typography_1.default, { label: '@Navis 2021 All Rights Reserved' })))));
+}
+exports.default = Footer;
 
 
 /***/ }),
@@ -73199,7 +73617,7 @@ function SelectBox(props) {
     const { label, required, menu = [] } = props;
     return (react_1.default.createElement(FormControl_1.default, { variant: "outlined", className: 'selectbox' },
         react_1.default.createElement(InputLabel_1.default, { id: "demo-simple-select-outlined-label" }, label),
-        react_1.default.createElement(Select_1.default, Object.assign({ required: required, labelId: "demo-simple-select-outlined-label", id: "demo-simple-select-outlined", label: label }, props), menu.map((e, i) => react_1.default.createElement(MenuItem_1.default, { key: i, value: e.value }, e.name)))));
+        react_1.default.createElement(Select_1.default, Object.assign({ required: required, labelId: "demo-simple-select-outlined-label", id: "demo-simple-select-outlined", label: label, size: 'small' }, props), menu.map((e, i) => react_1.default.createElement(MenuItem_1.default, { key: i, value: e.value }, e.name)))));
 }
 exports.default = SelectBox;
 
@@ -73303,6 +73721,33 @@ exports.default = TypographyComponent;
 
 /***/ }),
 
+/***/ "./src/config/authToken.ts":
+/*!*********************************!*\
+  !*** ./src/config/authToken.ts ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const axios_1 = __importDefault(__webpack_require__(/*! axios */ "./node_modules/axios/index.js"));
+const setAuthtoken = token => {
+    if (token) {
+        axios_1.default.defaults.headers.common['Authorization'] = `${token}`;
+    }
+    else {
+        delete axios_1.default.defaults.headers.common['Authorization'];
+    }
+};
+exports.default = setAuthtoken;
+
+
+/***/ }),
+
 /***/ "./src/config/axios.ts":
 /*!*****************************!*\
   !*** ./src/config/axios.ts ***!
@@ -73344,6 +73789,23 @@ exports._basePath = 'http://localhost:8008/ad/';
 
 /***/ }),
 
+/***/ "./src/config/function.ts":
+/*!********************************!*\
+  !*** ./src/config/function.ts ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.isEmpty = void 0;
+const isEmpty = value => value === undefined || value === null || (typeof value === 'object' && Object.keys(value).length === 0) || (typeof value === 'string' && value.trim().length === 0);
+exports.isEmpty = isEmpty;
+
+
+/***/ }),
+
 /***/ "./src/index.tsx":
 /*!***********************!*\
   !*** ./src/index.tsx ***!
@@ -73366,6 +73828,8 @@ const index_1 = __importDefault(__webpack_require__(/*! ./redux/reducers/index *
 const store = redux_1.createStore(index_1.default, redux_1.applyMiddleware(redux_thunk_1.default));
 const app_1 = __importDefault(__webpack_require__(/*! ./app */ "./src/app.tsx"));
 const axios_1 = __importDefault(__webpack_require__(/*! ./config/axios */ "./src/config/axios.ts"));
+const authToken_1 = __importDefault(__webpack_require__(/*! ./config/authToken */ "./src/config/authToken.ts"));
+const user_1 = __webpack_require__(/*! ./redux/actions/user */ "./src/redux/actions/user.ts");
 axios_1.default.interceptors.request.use((req) => {
     return req;
 }, (error) => {
@@ -73376,6 +73840,26 @@ axios_1.default.interceptors.response.use((response) => {
 }, (error) => {
     return Promise.reject(error);
 });
+try {
+    function getCookie(name) {
+        var cookieArr = document.cookie.split(";");
+        for (var i = 0; i < cookieArr.length; i++) {
+            var cookiePair = cookieArr[i].split("=");
+            if (name == cookiePair[0].trim()) {
+                return decodeURIComponent(cookiePair[1]);
+            }
+        }
+        return null;
+    }
+    if (getCookie('token')) {
+        const cookie = getCookie('token');
+        authToken_1.default(JSON.parse(cookie));
+        store.dispatch(user_1.setCurrentUserAction(JSON.parse(cookie)));
+    }
+}
+catch (er) {
+    console.log('You are not login');
+}
 const root = document.getElementById('root');
 react_dom_1.default.render(react_1.default.createElement(react_redux_1.Provider, { store: store },
     react_1.default.createElement(app_1.default, null)), root);
@@ -73438,6 +73922,7 @@ function MyCart(props) {
     const dispatch = react_redux_1.useDispatch();
     const { match } = props;
     const systemCart = match.params.system;
+    const systemType = match.params.type;
     const [isChecked, setChecked] = react_1.useState({});
     const cartList = react_redux_1.useSelector(state => state.systemCartList);
     const removeFromCart = react_redux_1.useSelector(state => state.removeFromCart);
@@ -73451,14 +73936,14 @@ function MyCart(props) {
     const { trigger, type } = importDialogBox;
     const { active = [] } = importListCheck;
     react_1.useEffect(() => {
-        dispatch(system_1.systemCartListAction(systemCart));
+        dispatch(system_1.systemCartListAction(systemCart, systemType));
     }, []);
     const handleRemoveFromCart = (cat, gkey) => {
-        dispatch(system_1.removeFromCartEntitiesAction(systemCart, cat, [gkey]));
+        dispatch(system_1.removeFromCartEntitiesAction(systemCart, systemType, cat, [gkey]));
     };
     const handleImportExport = (type) => {
         if (type === 'export') {
-            dispatch(system_1.entityExportAction(systemCart));
+            dispatch(system_1.entityExportAction(systemCart, systemType));
         }
         if (type === 'import') {
             dispatch(component_1.importDialogBoxAction(true, 'import'));
@@ -73473,7 +73958,7 @@ function MyCart(props) {
         dispatch(system_1.importListCheckedAction({}));
     };
     const handleConfirmImport = (type) => {
-        dispatch(system_1.importSystemAction(systemCart, active, type));
+        dispatch(system_1.importSystemAction(systemCart, systemType, active, type));
     };
     const handleImportCheckbox = (e) => {
         setChecked(Object.assign(Object.assign({}, isChecked), { [e.target.id]: e.target.checked }));
@@ -73485,15 +73970,14 @@ function MyCart(props) {
             react_1.default.createElement(typography_1.default, { variant: 'h5', label: 'My Cart' }),
             react_1.default.createElement("div", { className: 'action' },
                 react_1.default.createElement(button_1.default, { variant: 'outlined', color: 'primary', onClick: () => handleImportExport('import'), label: 'Import' }),
-                react_1.default.createElement(button_1.default, { variant: 'outlined', color: 'primary', onClick: () => handleImportExport('export'), label: 'Export' }),
-                react_1.default.createElement(button_1.default, { variant: 'contained', color: 'primary', onClick: () => handleImportExport('export_import'), label: 'Export & Import' }))),
+                react_1.default.createElement(button_1.default, { variant: 'outlined', color: 'primary', onClick: () => handleImportExport('export'), label: 'Export' }))),
         cartListLoading && react_1.default.createElement(loader_1.default, null),
         list.map((el, i) => (react_1.default.createElement("div", { key: i }, (el.values || []).length > 0 && react_1.default.createElement(react_1.Fragment, null,
             react_1.default.createElement(TableContainer_1.default, { component: Paper_1.default, key: i },
                 react_1.default.createElement(Table_1.default, { style: { tableLayout: 'fixed' }, size: "small", stickyHeader: true, "aria-label": "sticky table" },
                     react_1.default.createElement(TableHead_1.default, null,
                         react_1.default.createElement(TableRow_1.default, null,
-                            react_1.default.createElement(TableCell_1.default, { style: { backgroundColor: 'black', color: 'white' }, align: "left", colSpan: 4 },
+                            react_1.default.createElement(TableCell_1.default, { align: "left", colSpan: 4 },
                                 react_1.default.createElement(typography_1.default, { variant: 'h6', label: el.category }))),
                         react_1.default.createElement(TableRow_1.default, null,
                             (el.header || []).length > 0 && react_1.default.createElement(TableCell_1.default, null, "Remove"),
@@ -73565,12 +74049,14 @@ const loader_1 = __importDefault(__webpack_require__(/*! ../components/loader */
 const IconButton_1 = __importDefault(__webpack_require__(/*! @material-ui/core/IconButton */ "./node_modules/@material-ui/core/esm/IconButton/index.js"));
 const ShoppingCart_1 = __importDefault(__webpack_require__(/*! @material-ui/icons/ShoppingCart */ "./node_modules/@material-ui/icons/ShoppingCart.js"));
 const Tooltip_1 = __importDefault(__webpack_require__(/*! @material-ui/core/Tooltip */ "./node_modules/@material-ui/core/esm/Tooltip/index.js"));
+const Badge_1 = __importDefault(__webpack_require__(/*! @material-ui/core/Badge */ "./node_modules/@material-ui/core/esm/Badge/index.js"));
 const react_redux_1 = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 const system_1 = __webpack_require__(/*! ../redux/actions/system */ "./src/redux/actions/system.ts");
 function ConnectedSystem(props) {
     const dispatch = react_redux_1.useDispatch();
     const { match } = props;
     const connectedSystemName = match.params.system;
+    const connectedSystemType = match.params.type;
     const entitiesById = react_redux_1.useSelector(state => state.entitiesById);
     const entitiesValues = react_redux_1.useSelector(state => state.entitiesValues);
     const addToCart = react_redux_1.useSelector(state => state.entitiesAddToCart);
@@ -73581,17 +74067,17 @@ function ConnectedSystem(props) {
     const [category, setCategory] = react_1.useState('');
     const [isChecked, setChecked] = react_1.useState({});
     react_1.useEffect(() => {
-        dispatch(system_1.entitiesByIDAction(connectedSystemName));
+        dispatch(system_1.entitiesByIDAction(connectedSystemName, connectedSystemType));
     }, [category]);
     const handleCategory = react_1.useCallback((e) => {
         setCategory(e.target.value);
-        dispatch(system_1.entitiesValuesByCategoryAction(connectedSystemName, e.target.value));
+        dispatch(system_1.entitiesValuesByCategoryAction(connectedSystemName, connectedSystemType, e.target.value));
         setChecked({});
         dispatch(system_1.selectedEntitiesValuesByCategoryAction({}));
     }, []);
     const handleAddToCart = () => {
         const list = active.map(e => e.split(`${category}-`)[1]);
-        dispatch(system_1.entitiesAddToCartAction(connectedSystemName, category, list));
+        dispatch(system_1.entitiesAddToCartAction(connectedSystemName, connectedSystemType, category, list));
     };
     const handleSingleChecked = (e, i) => {
         setChecked(Object.assign(Object.assign({}, isChecked), { [e.target.id]: e.target.checked }));
@@ -73601,8 +74087,9 @@ function ConnectedSystem(props) {
         react_1.default.createElement("div", { className: 'heading' },
             react_1.default.createElement(typography_1.default, { variant: 'h5', label: connectedSystemName }),
             react_1.default.createElement(Tooltip_1.default, { title: 'My Cart', placement: 'left' },
-                react_1.default.createElement(IconButton_1.default, { href: `/cart/${connectedSystemName}` },
-                    react_1.default.createElement(ShoppingCart_1.default, null)))),
+                react_1.default.createElement(IconButton_1.default, { href: `/${connectedSystemType}/cart/${connectedSystemName}` },
+                    react_1.default.createElement(Badge_1.default, { badgeContent: active.length, color: "primary" },
+                        react_1.default.createElement(ShoppingCart_1.default, null))))),
         entitiesLoading && react_1.default.createElement(loader_1.default, null),
         react_1.default.createElement(select_1.default, { label: 'Select Category', value: category, onChange: handleCategory, menu: entities }),
         react_1.default.createElement("div", { className: 'top' }, active.length > 0 && (react_1.default.createElement(react_1.Fragment, null,
@@ -73741,8 +74228,8 @@ function Homepage() {
             dispatch(system_1.importSystemListAction());
         }
     };
-    const handleActionClick = () => {
-        console.log('click');
+    const handlePingActionClick = (systemType, systemId) => {
+        dispatch(system_1.pingToSystemAction(systemType, systemId));
     };
     const handleShow = (e, type) => {
         st(true);
@@ -73792,6 +74279,9 @@ function Homepage() {
     const handleOpenSystemUpdateDialogBox = (e) => {
         setAddSystem(true);
     };
+    const handleRemoveSystem = (connectedSystemType, connectedSystemId) => {
+        dispatch(system_1.removeSystem(connectedSystemType, connectedSystemId));
+    };
     const handleSystemUpdate = (e) => {
         e.preventDefault();
         resetSystemList();
@@ -73817,27 +74307,28 @@ function Homepage() {
         react_1.default.createElement("section", { className: 'homepage' },
             react_1.default.createElement("div", { className: 'system-panel' },
                 react_1.default.createElement(TabContext_1.default, { value: value },
-                    react_1.default.createElement(TabList_1.default, { className: 'tab-list', onChange: handleChange, "aria-label": "icon label tabs example" },
-                        react_1.default.createElement(Tab_1.default, { icon: react_1.default.createElement(ImportExport_1.default, null), label: "All", value: "all" }),
-                        react_1.default.createElement(Tab_1.default, { icon: react_1.default.createElement(ImportExport_1.default, null), label: "Export", value: "export" }),
-                        react_1.default.createElement(Tab_1.default, { icon: react_1.default.createElement(ImportExport_1.default, null), label: "Import", value: "import" })),
-                    react_1.default.createElement("div", { className: 'add-system' },
-                        react_1.default.createElement(button_1.default, { onClick: handleOpenSystemUpdateDialogBox, variant: 'contained', type: 'submit', color: 'primary', label: 'Add System' })),
+                    react_1.default.createElement("div", { className: 'tabs' },
+                        react_1.default.createElement(TabList_1.default, { className: 'tab-list', onChange: handleChange, "aria-label": "icon label tabs example" },
+                            react_1.default.createElement(Tab_1.default, { icon: react_1.default.createElement(ImportExport_1.default, null), label: "All", value: "all" }),
+                            react_1.default.createElement(Tab_1.default, { icon: react_1.default.createElement(ImportExport_1.default, null), label: "Export", value: "export" }),
+                            react_1.default.createElement(Tab_1.default, { icon: react_1.default.createElement(ImportExport_1.default, null), label: "Import", value: "import" })),
+                        react_1.default.createElement("div", { className: 'add-system' },
+                            react_1.default.createElement(button_1.default, { onClick: handleOpenSystemUpdateDialogBox, variant: 'contained', type: 'submit', color: 'primary', label: 'Add System' }))),
                     react_1.default.createElement(TabPanel_1.default, { value: "all" },
                         react_1.default.createElement("div", { className: 'label-with-add' },
                             react_1.default.createElement(typography_1.default, { variant: 'h6', label: 'Export System' }),
                             expLoading && react_1.default.createElement(loader_1.default, null)),
-                        react_1.default.createElement("div", { className: 'flex-list' }, (exportList || []).map((e, i) => react_1.default.createElement(card_1.default, { avatar: e.id.charAt(0).toUpperCase(), linkLabel: 'Visit', linkLabelLink: `/${e.id}`, key: i, onShowIconClick: () => handleShow(e, 'exp'), actionClick: handleActionClick, title: e.id, subHeader: `${e.complex}/${e.operator}/${e.facility}/${e.yard}`, action: true, actionsLabel: 'Ping' }))),
+                        react_1.default.createElement("div", { className: 'flex-list' }, (exportList || []).map((e, i) => react_1.default.createElement(card_1.default, { avatar: e.id.charAt(0).toUpperCase(), linkLabel: 'Visit', linkLabelLink: `/export/${e.id}`, key: i, onShowIconClick: () => handleShow(e, 'exp'), title: e.id, subHeader: `${e.operator}/${e.complex}/${e.facility}/${e.yard}`, action: true, pingActionsLabel: 'Ping', pingActionClick: () => handlePingActionClick('export', e.id), deleteIcon: true, onRemoveClick: () => handleRemoveSystem('export', e.id) }))),
                         react_1.default.createElement(divider_1.default, { orientation: 'horizontal' }),
                         impLoading && react_1.default.createElement(loader_1.default, null),
                         react_1.default.createElement(typography_1.default, { variant: 'h6', label: 'Import System' }),
-                        react_1.default.createElement("div", { className: 'flex-list' }, (importList || []).map((e, i) => react_1.default.createElement(card_1.default, { avatar: e.id.charAt(0).toUpperCase(), linkLabel: 'Visit', linkLabelLink: `/${e.id}`, key: i, onShowIconClick: () => handleShow(e, 'imp'), actionClick: handleActionClick, title: e.id, subHeader: `${e.complex}/${e.operator}/${e.facility}/${e.yard}`, action: true, actionsLabel: 'Ping' })))),
+                        react_1.default.createElement("div", { className: 'flex-list' }, (importList || []).map((e, i) => react_1.default.createElement(card_1.default, { avatar: e.id.charAt(0).toUpperCase(), linkLabel: 'Visit', linkLabelLink: `/import/${e.id}`, key: i, onShowIconClick: () => handleShow(e, 'imp'), title: e.id, subHeader: `${e.operator}/${e.complex}/${e.facility}/${e.yard}`, action: true, pingActionsLabel: 'Ping', pingActionClick: () => handlePingActionClick('import', e.id), deleteIcon: true, onRemoveClick: () => handleRemoveSystem('import', e.id) })))),
                     react_1.default.createElement(TabPanel_1.default, { value: "export" },
                         expLoading && react_1.default.createElement(loader_1.default, null),
-                        react_1.default.createElement("div", { className: 'flex-list' }, (exportList || []).map((e, i) => react_1.default.createElement(card_1.default, { avatar: e.id.charAt(0).toUpperCase(), key: i, linkLabel: 'Visit', linkLabelLink: `/${e.id}`, onShowIconClick: () => handleShow(e, 'exp'), actionClick: handleActionClick, title: e.id, subHeader: `${e.complex} / ${e.operator} / ${e.facility} / ${e.yard}`, action: true, actionsLabel: 'Ping' })))),
+                        react_1.default.createElement("div", { className: 'flex-list' }, (exportList || []).map((e, i) => react_1.default.createElement(card_1.default, { avatar: e.id.charAt(0).toUpperCase(), key: i, linkLabel: 'Visit', linkLabelLink: `/export/${e.id}`, onShowIconClick: () => handleShow(e, 'exp'), title: e.id, subHeader: `${e.operator}/${e.complex}/${e.facility}/${e.yard}`, action: true, pingActionsLabel: 'Ping', pingActionClick: () => handlePingActionClick('export', e.id), deleteIcon: true, onRemoveClick: () => handleRemoveSystem('export', e.id) })))),
                     react_1.default.createElement(TabPanel_1.default, { value: "import" },
                         impLoading && react_1.default.createElement(loader_1.default, null),
-                        react_1.default.createElement("div", { className: 'flex-list' }, (importList || []).map((e, i) => react_1.default.createElement(card_1.default, { avatar: e.id.charAt(0).toUpperCase(), key: i, onShowIconClick: () => handleShow(e, 'imp'), actionClick: handleActionClick, title: e.id, action: true, subHeader: `${e.complex} / ${e.operator} / ${e.facility} / ${e.yard}` }))))),
+                        react_1.default.createElement("div", { className: 'flex-list' }, (importList || []).map((e, i) => react_1.default.createElement(card_1.default, { avatar: e.id.charAt(0).toUpperCase(), linkLabel: 'Visit', linkLabelLink: `/import/${e.id}`, key: i, onShowIconClick: () => handleShow(e, 'imp'), title: e.id, subHeader: `${e.complex}/ ${e.operator}/${e.facility}/${e.yard}`, action: true, pingActionsLabel: 'Ping', pingActionClick: () => handlePingActionClick('import', e.id), deleteIcon: true, onRemoveClick: () => handleRemoveSystem('import', e.id) }))))),
                 react_1.default.createElement(dialogBox_1.default, { handleClose: handleCloseDialogBox, open: t, title: 'Update System', maxWidth: 'sm', content: react_1.default.createElement(react_1.Fragment, null,
                         react_1.default.createElement("form", { onSubmit: handleSystemUpdate },
                             react_1.default.createElement(textfield_1.default, Object.assign({ type: 'text', required: true, label: 'Operator' }, bindUpdateOperator)),
@@ -73863,7 +74354,7 @@ function Homepage() {
                             addSystemLoading && react_1.default.createElement(loader_1.default, null),
                             react_1.default.createElement(button_1.default, { variant: 'contained', disabled: addSystemLoading || !bindAddId || !addComplex || !addFacility || !addOperator || !addYard || !systemList || !addEndPoint || !addUsername || !addPassword, type: 'submit', color: 'primary', label: 'Add' }),
                             react_1.default.createElement(button_1.default, { variant: 'outlined', disabled: addSystemLoading, onClick: handleResetAddSystem, color: 'primary', label: 'Reset' }))) })),
-            openSnack && react_1.default.createElement(snackbar_1.default, { open: expUpdate || impUpdate, label: expUpdate || impUpdate }))));
+            openSnack && react_1.default.createElement(snackbar_1.default, { open: (expUpdate || impUpdate), label: (expUpdate || impUpdate) }))));
 }
 exports.default = Homepage;
 
@@ -73891,6 +74382,12 @@ exports.actions = {
     addSystemLoading: 'ADD_SYSTEM_LOADING',
     addSystem: 'ADD_SYSTEM',
     addSystemError: 'ADD_SYSTEM_ERROR',
+    pingSystemLoading: 'PING_SYSTEM_LOADING',
+    pingSystem: 'PING_SYSTEM',
+    pingSystemError: 'PING_SYSTEM_ERROR',
+    removeSystemLoading: 'REMOVE_SYSTEM_LOADING',
+    removeSystem: 'REMOVE_SYSTEM',
+    removeSystemError: 'REMOVE_SYSTEM_ERROR',
     updateExportSystemLoading: 'UPDATE_EXPORT_SYSTEM_LOADING',
     updateExportSystem: 'UPDATE_EXPORT_SYSTEM',
     updateExportSystemError: 'UPDATE_EXPORT_SYSTEM_ERROR',
@@ -73925,7 +74422,13 @@ exports.actions = {
     importListCheckError: 'IMPORT_LIST_CHECK_ERROR',
     importSystemLoading: 'IMPORT_SYSTEM_LOADING',
     importSystem: 'IMPORT_SYSTEM',
-    importSystemError: 'IMPORT_SYSTEM_ERROR'
+    importSystemError: 'IMPORT_SYSTEM_ERROR',
+    openLoginDialogBox: 'OPEN_LOGIN_DIALOG_BOX',
+    openLoginDialogBoxError: 'OPEN_LOGIN_DIALOG_BOX_ERROR',
+    userLoginLoading: 'USER_LOGIN_LOADING',
+    userLogin: 'USER_LOGIN',
+    userLoginError: 'USER_LOGIN_ERROR',
+    userLogout: 'USER_LOGOUT'
 };
 
 
@@ -73950,7 +74453,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.importDialogBoxAction = void 0;
+exports.openLoginDialogBoxAction = exports.importDialogBoxAction = void 0;
 const actionTypes_1 = __webpack_require__(/*! ../actionTypes */ "./src/redux/actionTypes.ts");
 const system_1 = __webpack_require__(/*! ./system */ "./src/redux/actions/system.ts");
 const importDialogBoxAction = (e, dialogType) => (dispatch) => __awaiter(void 0, void 0, void 0, function* () {
@@ -73965,6 +74468,15 @@ const importDialogBoxAction = (e, dialogType) => (dispatch) => __awaiter(void 0,
     }
 });
 exports.importDialogBoxAction = importDialogBoxAction;
+const openLoginDialogBoxAction = (e) => (dispatch) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        yield dispatch({ type: actionTypes_1.actions.openLoginDialogBox, payload: e });
+    }
+    catch (er) {
+        dispatch({ type: actionTypes_1.actions.openLoginDialogBoxError, payload: 'Something went wrong' });
+    }
+});
+exports.openLoginDialogBoxAction = openLoginDialogBoxAction;
 
 
 /***/ }),
@@ -73991,7 +74503,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.importSystemAction = exports.importListCheckedAction = exports.entityExportAction = exports.removeFromCartEntitiesAction = exports.systemCartListAction = exports.entitiesAddToCartAction = exports.selectedEntitiesValuesByCategoryAction = exports.entitiesValuesByCategoryAction = exports.entitiesByIDAction = exports.connectExportSystemAction = exports.updateImportSystemAction = exports.updateExportSystemAction = exports.addSystemAction = exports.importSystemListAction = exports.exportSystemListAction = void 0;
+exports.importSystemAction = exports.importListCheckedAction = exports.entityExportAction = exports.removeFromCartEntitiesAction = exports.systemCartListAction = exports.entitiesAddToCartAction = exports.selectedEntitiesValuesByCategoryAction = exports.entitiesValuesByCategoryAction = exports.entitiesByIDAction = exports.connectExportSystemAction = exports.updateImportSystemAction = exports.updateExportSystemAction = exports.removeSystem = exports.pingToSystemAction = exports.addSystemAction = exports.importSystemListAction = exports.exportSystemListAction = void 0;
 const actionTypes_1 = __webpack_require__(/*! ../actionTypes */ "./src/redux/actionTypes.ts");
 const axios_1 = __importDefault(__webpack_require__(/*! ../../config/axios */ "./src/config/axios.ts"));
 const exportSystemListAction = () => (dispatch) => __awaiter(void 0, void 0, void 0, function* () {
@@ -74039,6 +74551,42 @@ const addSystemAction = (type, values) => (dispatch) => __awaiter(void 0, void 0
     }
 });
 exports.addSystemAction = addSystemAction;
+const pingToSystemAction = (systemType, systemId) => (dispatch) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        dispatch({ type: actionTypes_1.actions.pingSystemLoading });
+        const res = yield axios_1.default.post(`ping/argo/${systemType}/${systemId}`);
+        console.log(res);
+        const { data } = res;
+        if (Object.keys(data).length > 0) {
+            dispatch({ type: actionTypes_1.actions.pingSystem, payload: 'Successfull' });
+        }
+    }
+    catch (er) {
+        dispatch({ type: actionTypes_1.actions.pingSystemError, payload: 'Something went wrong' });
+    }
+});
+exports.pingToSystemAction = pingToSystemAction;
+const removeSystem = (connectedSystemType, connectedSystemId) => (dispatch) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        dispatch({ type: actionTypes_1.actions.removeSystemLoading });
+        const res = yield axios_1.default.post(`remove/argo/${connectedSystemType}/${connectedSystemId}`);
+        console.log(res);
+        const { data } = res;
+        if (Object.keys(data).length > 0) {
+            dispatch({ type: actionTypes_1.actions.removeSystem, payload: 'System removed Successfully' });
+            if (connectedSystemType === 'export') {
+                yield dispatch(exports.exportSystemListAction());
+            }
+            if (connectedSystemType === 'import') {
+                yield dispatch(exports.importSystemListAction());
+            }
+        }
+    }
+    catch (er) {
+        dispatch({ type: actionTypes_1.actions.removeSystemError, payload: 'Something went wrong' });
+    }
+});
+exports.removeSystem = removeSystem;
 const updateExportSystemAction = (values) => (dispatch) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         dispatch({ type: actionTypes_1.actions.updateExportSystemLoading });
@@ -74079,10 +74627,10 @@ const connectExportSystemAction = (e) => (dispatch) => __awaiter(void 0, void 0,
     }
 });
 exports.connectExportSystemAction = connectExportSystemAction;
-const entitiesByIDAction = (id) => (dispatch) => __awaiter(void 0, void 0, void 0, function* () {
+const entitiesByIDAction = (id, connectedSystemType) => (dispatch) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         dispatch({ type: actionTypes_1.actions.entitiesByIdLoading });
-        const res = yield axios_1.default.post(`entities/${id}`);
+        const res = yield axios_1.default.post(`/entities/${connectedSystemType}/${id}`);
         const { data } = res;
         dispatch({ type: actionTypes_1.actions.entitiesById, payload: data });
     }
@@ -74091,10 +74639,10 @@ const entitiesByIDAction = (id) => (dispatch) => __awaiter(void 0, void 0, void 
     }
 });
 exports.entitiesByIDAction = entitiesByIDAction;
-const entitiesValuesByCategoryAction = (id, cat) => (dispatch) => __awaiter(void 0, void 0, void 0, function* () {
+const entitiesValuesByCategoryAction = (id, connectedSystemType, cat) => (dispatch) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         dispatch({ type: actionTypes_1.actions.entitiesValuesByCategoryLoading });
-        const res = yield axios_1.default.post(`entities/${id}/${cat}`);
+        const res = yield axios_1.default.post(`/entities/${connectedSystemType}/${id}/${cat}`);
         const { data } = res;
         dispatch({ type: actionTypes_1.actions.entitiesValuesByCategory, payload: data });
     }
@@ -74112,10 +74660,10 @@ const selectedEntitiesValuesByCategoryAction = (val) => (dispatch) => __awaiter(
     }
 });
 exports.selectedEntitiesValuesByCategoryAction = selectedEntitiesValuesByCategoryAction;
-const entitiesAddToCartAction = (sys, id, list) => (dispatch) => __awaiter(void 0, void 0, void 0, function* () {
+const entitiesAddToCartAction = (sys, connectedSystemType, id, list) => (dispatch) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         dispatch({ type: actionTypes_1.actions.entitiesAddToCartLoading });
-        const res = yield axios_1.default.post(`/entities/${sys}/addToCart/${id}`, list);
+        const res = yield axios_1.default.post(`/entities/${connectedSystemType}/${sys}/addToCart/${id}`, list);
         const { data } = res;
         dispatch({ type: actionTypes_1.actions.entitiesAddToCart, payload: data, });
     }
@@ -74124,10 +74672,10 @@ const entitiesAddToCartAction = (sys, id, list) => (dispatch) => __awaiter(void 
     }
 });
 exports.entitiesAddToCartAction = entitiesAddToCartAction;
-const systemCartListAction = (sys) => (dispatch) => __awaiter(void 0, void 0, void 0, function* () {
+const systemCartListAction = (sys, connectedSystemType) => (dispatch) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         dispatch({ type: actionTypes_1.actions.systemCartListLoading });
-        const res = yield axios_1.default.post(`/entities/${sys}/cart`);
+        const res = yield axios_1.default.post(`/entities/${connectedSystemType}/${sys}/cart`);
         const { data } = res;
         dispatch({ type: actionTypes_1.actions.systemCartList, payload: data, });
     }
@@ -74136,28 +74684,28 @@ const systemCartListAction = (sys) => (dispatch) => __awaiter(void 0, void 0, vo
     }
 });
 exports.systemCartListAction = systemCartListAction;
-const removeFromCartEntitiesAction = (sys, cat, ls) => (dispatch) => __awaiter(void 0, void 0, void 0, function* () {
+const removeFromCartEntitiesAction = (sys, connectedSystemType, cat, ls) => (dispatch) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         dispatch({ type: actionTypes_1.actions.removeFromCartEntitiesLoading });
-        const res = yield axios_1.default.post(`/entities/${sys}/removeFromCart/${cat}`, ls);
+        const res = yield axios_1.default.post(`/entities/${connectedSystemType}/${sys}/removeFromCart/${cat}`, ls);
         const { data } = res;
         dispatch({ type: actionTypes_1.actions.removeFromCartEntities, payload: data, });
-        yield dispatch(exports.systemCartListAction(sys));
+        yield dispatch(exports.systemCartListAction(sys, connectedSystemType));
     }
     catch (er) {
         dispatch({ type: actionTypes_1.actions.removeFromCartEntitiesError, payload: 'Something went wrong' });
     }
 });
 exports.removeFromCartEntitiesAction = removeFromCartEntitiesAction;
-const entityExportAction = (sys) => (dispatch) => __awaiter(void 0, void 0, void 0, function* () {
+const entityExportAction = (sys, connectedSystemType) => (dispatch) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         dispatch({ type: actionTypes_1.actions.entityExportLoading });
-        const res = yield axios_1.default.post(`/entities/${sys}/export`);
+        const res = yield axios_1.default.post(`/entities/${connectedSystemType}/${sys}/export`);
         const { data } = res;
         const url = yield window.URL.createObjectURL(new Blob([data]));
         const link = yield document.createElement('a');
         link.href = url;
-        yield link.setAttribute('download', `${sys}.xml`);
+        yield link.setAttribute('download', `${sys + new Date()}.xml`);
         yield document.body.appendChild(link);
         yield link.click();
     }
@@ -74175,19 +74723,19 @@ const importListCheckedAction = (val) => (dispatch) => __awaiter(void 0, void 0,
     }
 });
 exports.importListCheckedAction = importListCheckedAction;
-const importSystemAction = (sys, ls, type) => (dispatch) => __awaiter(void 0, void 0, void 0, function* () {
+const importSystemAction = (sys, connectedSystemType, ls, type) => (dispatch) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         dispatch({ type: actionTypes_1.actions.importSystemLoading });
         if (type === 'import') {
-            const res = yield axios_1.default.post(`/entities/${sys}/import`, ls);
+            const res = yield axios_1.default.post(`/entities/${connectedSystemType}/${sys}/import`, ls);
             const { data } = res;
             dispatch({ type: actionTypes_1.actions.importSystem, payload: data });
         }
         if (type === 'export_import') {
-            const res = yield axios_1.default.post(`/entities/${sys}/import`, ls);
+            const res = yield axios_1.default.post(`/entities/${connectedSystemType}/${sys}/import`, ls);
             const { data } = res;
             dispatch({ type: actionTypes_1.actions.importSystem, payload: data });
-            dispatch(exports.entityExportAction(sys));
+            dispatch(exports.entityExportAction(sys, connectedSystemType));
         }
     }
     catch (er) {
@@ -74195,6 +74743,63 @@ const importSystemAction = (sys, ls, type) => (dispatch) => __awaiter(void 0, vo
     }
 });
 exports.importSystemAction = importSystemAction;
+
+
+/***/ }),
+
+/***/ "./src/redux/actions/user.ts":
+/*!***********************************!*\
+  !*** ./src/redux/actions/user.ts ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.userLogoutAction = exports.setCurrentUserAction = exports.userLoginAction = void 0;
+const actionTypes_1 = __webpack_require__(/*! ../actionTypes */ "./src/redux/actionTypes.ts");
+const authToken_1 = __importDefault(__webpack_require__(/*! ../../config/authToken */ "./src/config/authToken.ts"));
+const component_1 = __webpack_require__(/*! ./component */ "./src/redux/actions/component.ts");
+const userLoginAction = (val) => (dispatch) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        yield dispatch({ type: actionTypes_1.actions.userLoginLoading });
+        const token = JSON.stringify(val);
+        document.cookie = `token=${token};`;
+        authToken_1.default(val);
+        dispatch(exports.setCurrentUserAction(val));
+        dispatch(component_1.openLoginDialogBoxAction(false));
+    }
+    catch (er) {
+        dispatch({ type: actionTypes_1.actions.userLoginError, payload: 'Something went wrong' });
+    }
+});
+exports.userLoginAction = userLoginAction;
+const setCurrentUserAction = (e) => {
+    return {
+        type: actionTypes_1.actions.userLogin,
+        payload: e
+    };
+};
+exports.setCurrentUserAction = setCurrentUserAction;
+const userLogoutAction = () => {
+    document.cookie = `token=;`;
+    authToken_1.default(false);
+    return { type: actionTypes_1.actions.userLogout };
+};
+exports.userLogoutAction = userLogoutAction;
 
 
 /***/ }),
@@ -74209,7 +74814,7 @@ exports.importSystemAction = importSystemAction;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.importDialogBoxReducer = void 0;
+exports.loginDialogBoxReducer = exports.importDialogBoxReducer = void 0;
 const actionTypes_1 = __webpack_require__(/*! ../actionTypes */ "./src/redux/actionTypes.ts");
 function importDialogBoxReducer(state = null, action) {
     switch (action.type) {
@@ -74220,6 +74825,15 @@ function importDialogBoxReducer(state = null, action) {
     }
 }
 exports.importDialogBoxReducer = importDialogBoxReducer;
+function loginDialogBoxReducer(state = null, action) {
+    switch (action.type) {
+        case actionTypes_1.actions.openLoginDialogBox:
+            return Object.assign(Object.assign({}, state), { trigger: action.payload });
+        default:
+            return Object.assign({}, state);
+    }
+}
+exports.loginDialogBoxReducer = loginDialogBoxReducer;
 
 
 /***/ }),
@@ -74237,6 +74851,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const redux_1 = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 const system_1 = __webpack_require__(/*! ./system */ "./src/redux/reducers/system.ts");
 const component_1 = __webpack_require__(/*! ./component */ "./src/redux/reducers/component.ts");
+const user_1 = __webpack_require__(/*! ./user */ "./src/redux/reducers/user.ts");
 exports.default = redux_1.combineReducers({
     exportSystemList: system_1.exportSystemListReducer,
     importSystemList: system_1.importSystemListReducer,
@@ -74252,7 +74867,9 @@ exports.default = redux_1.combineReducers({
     removeFromCart: system_1.removeFromCartEntitiesReducer,
     importDialogBox: component_1.importDialogBoxReducer,
     importListCheck: system_1.importListCheckReducer,
-    importSystem: system_1.importSystemReducer
+    importSystem: system_1.importSystemReducer,
+    loginDialogBox: component_1.loginDialogBoxReducer,
+    userLogin: user_1.userLoginReducer
 });
 
 
@@ -74456,6 +75073,36 @@ exports.importSystemReducer = importSystemReducer;
 
 /***/ }),
 
+/***/ "./src/redux/reducers/user.ts":
+/*!************************************!*\
+  !*** ./src/redux/reducers/user.ts ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.userLoginReducer = void 0;
+const actionTypes_1 = __webpack_require__(/*! ../actionTypes */ "./src/redux/actionTypes.ts");
+const function_1 = __webpack_require__(/*! ../../config/function */ "./src/config/function.ts");
+function userLoginReducer(state = null, action) {
+    switch (action.type) {
+        case actionTypes_1.actions.userLoginLoading:
+            return Object.assign(Object.assign({}, state), { loading: true });
+        case actionTypes_1.actions.userLogin:
+            return Object.assign(Object.assign({}, state), { isAuthenticated: !function_1.isEmpty(action.payload), user: action.payload, loading: false });
+        case actionTypes_1.actions.userLogout:
+            return Object.assign(Object.assign({}, state), { isAuthenticated: false, user: null, loading: false });
+        default:
+            return Object.assign({}, state);
+    }
+}
+exports.userLoginReducer = userLoginReducer;
+
+
+/***/ }),
+
 /***/ "./src/routes/main.tsx":
 /*!*****************************!*\
   !*** ./src/routes/main.tsx ***!
@@ -74471,15 +75118,57 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 const react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+const private_1 = __importDefault(__webpack_require__(/*! ./private */ "./src/routes/private.tsx"));
 const homepage_1 = __importDefault(__webpack_require__(/*! ../pages/homepage */ "./src/pages/homepage.tsx"));
 const connectedSystem_1 = __importDefault(__webpack_require__(/*! ../pages/connectedSystem */ "./src/pages/connectedSystem.tsx"));
 const cart_1 = __importDefault(__webpack_require__(/*! ../pages/cart */ "./src/pages/cart.tsx"));
 const Main = () => (react_1.default.createElement(react_router_dom_1.BrowserRouter, null,
     react_1.default.createElement(react_router_dom_1.Switch, null,
         react_1.default.createElement(react_router_dom_1.Route, { path: '/', exact: true, component: homepage_1.default }),
-        react_1.default.createElement(react_router_dom_1.Route, { path: '/:system', exact: true, component: connectedSystem_1.default }),
-        react_1.default.createElement(react_router_dom_1.Route, { path: '/cart/:system', exact: true, component: cart_1.default }))));
+        react_1.default.createElement(private_1.default, { path: '/:type/:system', exact: true, component: connectedSystem_1.default }),
+        react_1.default.createElement(private_1.default, { path: '/:type/cart/:system', exact: true, component: cart_1.default }))));
 exports.default = Main;
+
+
+/***/ }),
+
+/***/ "./src/routes/private.tsx":
+/*!********************************!*\
+  !*** ./src/routes/private.tsx ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+const react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+const react_redux_1 = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+const PrivateRoute = (_a) => {
+    var { component: Component, user } = _a, rest = __rest(_a, ["component", "user"]);
+    return (react_1.default.createElement(react_router_dom_1.Route, Object.assign({}, rest, { render: props => user.isAuthenticated === true ? (react_1.default.createElement(Component, Object.assign({}, props))) : (react_1.default.createElement(react_router_dom_1.Redirect, { to: '/' })) })));
+};
+function mapStatetoProps(state) {
+    return {
+        user: state.userLogin
+    };
+}
+exports.default = react_redux_1.connect(mapStatetoProps)(PrivateRoute);
 
 
 /***/ }),

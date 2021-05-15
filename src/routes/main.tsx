@@ -10,8 +10,8 @@ const Main=()=>(
     <Router>
         <Switch>
             <Route path='/' exact component={Homepage} />
-            <Route path='/:type/:system' exact component={ConnectedSystem} />
-            <Route path='/:type/cart/:system' exact component={Cart} />
+            <PrivateRoute path='/:type/:system' exact component={ConnectedSystem} />
+            <PrivateRoute path='/:type/cart/:system' exact component={Cart} />
         </Switch>
     </Router>
 )
