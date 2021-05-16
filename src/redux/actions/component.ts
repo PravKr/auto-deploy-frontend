@@ -1,5 +1,6 @@
 import { actions } from '../actionTypes'
 import {importSystemListAction} from './system'
+
 export const importDialogBoxAction = (e, dialogType) => async dispatch=> {
 try{  
         if(e===true){
@@ -13,10 +14,10 @@ try{
 
 
 export const openLoginDialogBoxAction = (e) => async dispatch => {
-try{
-await dispatch({type: actions.openLoginDialogBox, payload: e})
-}
-catch(er){
-dispatch({type: actions.openLoginDialogBoxError, payload: 'Something went wrong'})
-}
+        try{
+                await dispatch({type: actions.openLoginDialogBox, payload: e})
+        }
+        catch(er){
+                dispatch({type: actions.openLoginDialogBoxError, payload: 'Something went wrong'})
+        }
 }

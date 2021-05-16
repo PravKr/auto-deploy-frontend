@@ -25,7 +25,7 @@ const { trigger} = loginDialogBox
 
 const handleLogin =(e) => {
     e.preventDefault()
-    dispatch(userLoginAction({userName, password}))
+    dispatch(userLoginAction(userName, password))
 }
 const handleLogout = () => {
     dispatch(userLogoutAction())
