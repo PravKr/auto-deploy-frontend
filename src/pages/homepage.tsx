@@ -268,7 +268,7 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
                   onShowIconClick={()=>handleShow(e,'imp')}  
 												  
                   title={e.id} 
-                  subHeader={`${e.complex}/ ${e.operator}/${e.facility}/${e.yard}`} 
+                  subHeader={`${e.complex}/${e.operator}/${e.facility}/${e.yard}`} 
                   action 
                   pingActionsLabel='Ping'
                   pingActionClick={()=>handlePingActionClick('import', e.id)}

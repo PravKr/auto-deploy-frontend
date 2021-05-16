@@ -73235,7 +73235,7 @@ function Appbar() {
     const { trigger } = loginDialogBox;
     const handleLogin = (e) => {
         e.preventDefault();
-        dispatch(user_1.userLoginAction({ userName, password }));
+        dispatch(user_1.userLoginAction(userName, password));
     };
     const handleLogout = () => {
         dispatch(user_1.userLogoutAction());
@@ -74112,6 +74112,44 @@ exports.default = ConnectedSystem;
 
 /***/ }),
 
+/***/ "./src/pages/default.tsx":
+/*!*******************************!*\
+  !*** ./src/pages/default.tsx ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+function Default() {
+    return (react_1.default.createElement(react_1.Fragment, null, "Please Login to start"));
+}
+exports.default = Default;
+
+
+/***/ }),
+
 /***/ "./src/pages/homepage.tsx":
 /*!********************************!*\
   !*** ./src/pages/homepage.tsx ***!
@@ -74328,7 +74366,7 @@ function Homepage() {
                         react_1.default.createElement("div", { className: 'flex-list' }, (exportList || []).map((e, i) => react_1.default.createElement(card_1.default, { avatar: e.id.charAt(0).toUpperCase(), key: i, linkLabel: 'Visit', linkLabelLink: `/export/${e.id}`, onShowIconClick: () => handleShow(e, 'exp'), title: e.id, subHeader: `${e.operator}/${e.complex}/${e.facility}/${e.yard}`, action: true, pingActionsLabel: 'Ping', pingActionClick: () => handlePingActionClick('export', e.id), deleteIcon: true, onRemoveClick: () => handleRemoveSystem('export', e.id) })))),
                     react_1.default.createElement(TabPanel_1.default, { value: "import" },
                         impLoading && react_1.default.createElement(loader_1.default, null),
-                        react_1.default.createElement("div", { className: 'flex-list' }, (importList || []).map((e, i) => react_1.default.createElement(card_1.default, { avatar: e.id.charAt(0).toUpperCase(), linkLabel: 'Visit', linkLabelLink: `/import/${e.id}`, key: i, onShowIconClick: () => handleShow(e, 'imp'), title: e.id, subHeader: `${e.complex}/ ${e.operator}/${e.facility}/${e.yard}`, action: true, pingActionsLabel: 'Ping', pingActionClick: () => handlePingActionClick('import', e.id), deleteIcon: true, onRemoveClick: () => handleRemoveSystem('import', e.id) }))))),
+                        react_1.default.createElement("div", { className: 'flex-list' }, (importList || []).map((e, i) => react_1.default.createElement(card_1.default, { avatar: e.id.charAt(0).toUpperCase(), linkLabel: 'Visit', linkLabelLink: `/import/${e.id}`, key: i, onShowIconClick: () => handleShow(e, 'imp'), title: e.id, subHeader: `${e.complex}/${e.operator}/${e.facility}/${e.yard}`, action: true, pingActionsLabel: 'Ping', pingActionClick: () => handlePingActionClick('import', e.id), deleteIcon: true, onRemoveClick: () => handleRemoveSystem('import', e.id) }))))),
                 react_1.default.createElement(dialogBox_1.default, { handleClose: handleCloseDialogBox, open: t, title: 'Update System', maxWidth: 'sm', content: react_1.default.createElement(react_1.Fragment, null,
                         react_1.default.createElement("form", { onSubmit: handleSystemUpdate },
                             react_1.default.createElement(textfield_1.default, Object.assign({ type: 'text', required: true, label: 'Operator' }, bindUpdateOperator)),
@@ -74769,24 +74807,37 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.userLogoutAction = exports.setCurrentUserAction = exports.userLoginAction = void 0;
+exports.isUserLoggedIn = exports.setupAxiosInterceptors = exports.userLogoutAction = exports.setCurrentUserAction = exports.createBasicAuthToken = exports.userLoginAction = exports.registerSuccessfulLogin = exports.executeBasicAuthenticationService = exports.USER_NAME_SESSION_ATTRIBUTE_NAME = void 0;
 const actionTypes_1 = __webpack_require__(/*! ../actionTypes */ "./src/redux/actionTypes.ts");
-const authToken_1 = __importDefault(__webpack_require__(/*! ../../config/authToken */ "./src/config/authToken.ts"));
+const axios_1 = __importDefault(__webpack_require__(/*! ../../config/axios */ "./src/config/axios.ts"));
 const component_1 = __webpack_require__(/*! ./component */ "./src/redux/actions/component.ts");
-const userLoginAction = (val) => (dispatch) => __awaiter(void 0, void 0, void 0, function* () {
+exports.USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser';
+const executeBasicAuthenticationService = (username, password) => {
+    return axios_1.default.get(`/basicauth/login`, { headers: { Authorization: exports.createBasicAuthToken(username, password) } });
+};
+exports.executeBasicAuthenticationService = executeBasicAuthenticationService;
+const registerSuccessfulLogin = (username, password) => {
     try {
-        yield dispatch({ type: actionTypes_1.actions.userLoginLoading });
-        const token = JSON.stringify(val);
-        document.cookie = `token=${token};`;
-        authToken_1.default(val);
-        dispatch(exports.setCurrentUserAction(val));
-        dispatch(component_1.openLoginDialogBoxAction(false));
+        sessionStorage.setItem(exports.USER_NAME_SESSION_ATTRIBUTE_NAME, username + ":" + password);
+        exports.setupAxiosInterceptors(exports.createBasicAuthToken(username, password));
+        component_1.openLoginDialogBoxAction(false);
     }
     catch (er) {
-        dispatch({ type: actionTypes_1.actions.userLoginError, payload: 'Something went wrong' });
     }
+};
+exports.registerSuccessfulLogin = registerSuccessfulLogin;
+const userLoginAction = (userName, password) => (dispatch) => __awaiter(void 0, void 0, void 0, function* () {
+    exports.executeBasicAuthenticationService(userName, password)
+        .then(() => {
+        exports.registerSuccessfulLogin(userName, password);
+    }).catch(() => {
+    });
 });
 exports.userLoginAction = userLoginAction;
+const createBasicAuthToken = (username, password) => {
+    return 'Basic ' + window.btoa(username + ":" + password);
+};
+exports.createBasicAuthToken = createBasicAuthToken;
 const setCurrentUserAction = (e) => {
     return {
         type: actionTypes_1.actions.userLogin,
@@ -74795,11 +74846,27 @@ const setCurrentUserAction = (e) => {
 };
 exports.setCurrentUserAction = setCurrentUserAction;
 const userLogoutAction = () => {
-    document.cookie = `token=;`;
-    authToken_1.default(false);
-    return { type: actionTypes_1.actions.userLogout };
+    sessionStorage.removeItem(exports.USER_NAME_SESSION_ATTRIBUTE_NAME);
 };
 exports.userLogoutAction = userLogoutAction;
+const setupAxiosInterceptors = (token) => {
+    axios_1.default.interceptors.request.use((config) => {
+        if (exports.isUserLoggedIn()) {
+            config.headers.authorization = token;
+        }
+        return config;
+    });
+};
+exports.setupAxiosInterceptors = setupAxiosInterceptors;
+const isUserLoggedIn = () => {
+    let user = sessionStorage.getItem(exports.USER_NAME_SESSION_ATTRIBUTE_NAME);
+    if (user === null)
+        return false;
+    return true;
+};
+exports.isUserLoggedIn = isUserLoggedIn;
+{
+}
 
 
 /***/ }),
@@ -75118,57 +75185,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 const react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-const private_1 = __importDefault(__webpack_require__(/*! ./private */ "./src/routes/private.tsx"));
 const homepage_1 = __importDefault(__webpack_require__(/*! ../pages/homepage */ "./src/pages/homepage.tsx"));
+const default_1 = __importDefault(__webpack_require__(/*! ../pages/default */ "./src/pages/default.tsx"));
 const connectedSystem_1 = __importDefault(__webpack_require__(/*! ../pages/connectedSystem */ "./src/pages/connectedSystem.tsx"));
 const cart_1 = __importDefault(__webpack_require__(/*! ../pages/cart */ "./src/pages/cart.tsx"));
 const Main = () => (react_1.default.createElement(react_router_dom_1.BrowserRouter, null,
     react_1.default.createElement(react_router_dom_1.Switch, null,
-        react_1.default.createElement(react_router_dom_1.Route, { path: '/', exact: true, component: homepage_1.default }),
-        react_1.default.createElement(private_1.default, { path: '/:type/:system', exact: true, component: connectedSystem_1.default }),
-        react_1.default.createElement(private_1.default, { path: '/:type/cart/:system', exact: true, component: cart_1.default }))));
+        react_1.default.createElement(react_router_dom_1.Route, { path: '/', exact: true, component: default_1.default }),
+        react_1.default.createElement(react_router_dom_1.Route, { path: '/homepage', exact: true, component: homepage_1.default }),
+        react_1.default.createElement(react_router_dom_1.Route, { path: '/:type/:system', exact: true, component: connectedSystem_1.default }),
+        react_1.default.createElement(react_router_dom_1.Route, { path: '/:type/cart/:system', exact: true, component: cart_1.default }))));
 exports.default = Main;
-
-
-/***/ }),
-
-/***/ "./src/routes/private.tsx":
-/*!********************************!*\
-  !*** ./src/routes/private.tsx ***!
-  \********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __rest = (this && this.__rest) || function (s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-const react_router_dom_1 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-const react_redux_1 = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-const PrivateRoute = (_a) => {
-    var { component: Component, user } = _a, rest = __rest(_a, ["component", "user"]);
-    return (react_1.default.createElement(react_router_dom_1.Route, Object.assign({}, rest, { render: props => user.isAuthenticated === true ? (react_1.default.createElement(Component, Object.assign({}, props))) : (react_1.default.createElement(react_router_dom_1.Redirect, { to: '/' })) })));
-};
-function mapStatetoProps(state) {
-    return {
-        user: state.userLogin
-    };
-}
-exports.default = react_redux_1.connect(mapStatetoProps)(PrivateRoute);
 
 
 /***/ }),
