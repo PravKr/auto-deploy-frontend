@@ -44,6 +44,7 @@ function Homepage(){
   const updateImp = useSelector(state=>state.updateImportSystem)
   const connectExp = useSelector(state=>state.connectExportSystem)
   const addSystem = useSelector(state=> state.addSystem)
+  const pingSystem = useSelector(state=> state.pingSystem)
 
   useEffect(()=>{
     dispatch(exportSystemListAction())
@@ -178,6 +179,7 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
     const { msg: addSystemMsg, loading: addSystemLoading } = addSystem
     const { msg: expUpdate, loading: expUpdateLoading} = updateExp
     const { msg: impUpdate, loading: impUpdateLoading} = updateImp
+    const { msg: pingSystemMsg, loading: pingSystemLoading} = pingSystem
 
     return( <Fragment>
         <section className='homepage'>
@@ -205,8 +207,7 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
                     linkLabel='Visit'
                     linkLabelLink={`/export/${e.id}`}
                     key={i} 
-                    onShowIconClick={()=>handleShow(e,'exp')} 
-													
+                    onShowIconClick={()=>handleShow(e,'exp')} 			
                     title={e.id} 
                     subHeader={`${e.operator}/${e.complex}/${e.facility}/${e.yard}`} 
                     action 
@@ -226,7 +227,6 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
                   linkLabelLink={`/import/${e.id}`}
                   key={i} 
                   onShowIconClick={()=>handleShow(e, 'imp')} 
-												  
                   title={e.id} 
                   subHeader={`${e.operator}/${e.complex}/${e.facility}/${e.yard}`}
                   action 
@@ -246,7 +246,6 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
                   linkLabel='Visit'
                   linkLabelLink={`/export/${e.id}`}
                   onShowIconClick={()=>handleShow(e,'exp')}  
-												  
                   title={e.id} 
                   subHeader={`${e.operator}/${e.complex}/${e.facility}/${e.yard}`} 
                   action 
@@ -265,8 +264,7 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
                   linkLabel='Visit'
                   linkLabelLink={`/import/${e.id}`}
                   key={i} 
-                  onShowIconClick={()=>handleShow(e,'imp')}  
-												  
+                  onShowIconClick={()=>handleShow(e,'imp')}  			  
                   title={e.id} 
                   subHeader={`${e.complex}/${e.operator}/${e.facility}/${e.yard}`} 
                   action 
@@ -326,7 +324,8 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
               />
           </div>
           
-          {openSnack && <Snackbar open={(expUpdate || impUpdate)} label={(expUpdate || impUpdate)}/>}
+          {openSnack && <Snackbar type={'success'} open={(expUpdate || impUpdate || pingSystemMsg)} label={(expUpdate || impUpdate || pingSystemMsg)}/>}
+          {openSnack && <Snackbar type={pingSystemMsg === 'Not successfull' ? 'error':'success'} open={(pingSystemMsg)} label={(pingSystemMsg)}/>}
         </section>
       
     </Fragment>)

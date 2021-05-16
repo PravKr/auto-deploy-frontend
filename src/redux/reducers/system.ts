@@ -43,6 +43,17 @@ export function updateExportSystemReducer(state=null,action){
     }
 }
 
+export function pingSystemReducer(state=null,action){
+    switch(action.type){
+        case actions.pingSystemLoading:
+            return{...state,loading:true}
+            case actions.pingSystem:
+                return {...state, msg: action.payload, loading: false }
+            default:
+                return {...state}
+    }
+}
+
 export function updateImportSystemReducer(state=null,action){
     switch(action.type){
         case actions.updateImportSystemLoading:

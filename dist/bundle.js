@@ -73644,9 +73644,9 @@ function Alert(props) {
     return react_1.default.createElement(Alert_1.default, Object.assign({ elevation: 6, variant: "filled" }, props));
 }
 function SnackbarCmp(props) {
-    const { open, handleClose, label } = props;
+    const { open, handleClose, label, type } = props;
     return react_1.default.createElement(Snackbar_1.default, { open: open, autoHideDuration: 6000, onClose: handleClose },
-        react_1.default.createElement(Alert, { onClose: handleClose, severity: "success" }, label));
+        react_1.default.createElement(Alert, { onClose: handleClose, severity: type }, label));
 }
 exports.default = SnackbarCmp;
 
@@ -74216,6 +74216,7 @@ function Homepage() {
     const updateImp = react_redux_1.useSelector(state => state.updateImportSystem);
     const connectExp = react_redux_1.useSelector(state => state.connectExportSystem);
     const addSystem = react_redux_1.useSelector(state => state.addSystem);
+    const pingSystem = react_redux_1.useSelector(state => state.pingSystem);
     react_1.useEffect(() => {
         dispatch(system_1.exportSystemListAction());
         dispatch(system_1.importSystemListAction());
@@ -74341,6 +74342,7 @@ function Homepage() {
     const { msg: addSystemMsg, loading: addSystemLoading } = addSystem;
     const { msg: expUpdate, loading: expUpdateLoading } = updateExp;
     const { msg: impUpdate, loading: impUpdateLoading } = updateImp;
+    const { msg: pingSystemMsg, loading: pingSystemLoading } = pingSystem;
     return (react_1.default.createElement(react_1.Fragment, null,
         react_1.default.createElement("section", { className: 'homepage' },
             react_1.default.createElement("div", { className: 'system-panel' },
@@ -74392,7 +74394,8 @@ function Homepage() {
                             addSystemLoading && react_1.default.createElement(loader_1.default, null),
                             react_1.default.createElement(button_1.default, { variant: 'contained', disabled: addSystemLoading || !bindAddId || !addComplex || !addFacility || !addOperator || !addYard || !systemList || !addEndPoint || !addUsername || !addPassword, type: 'submit', color: 'primary', label: 'Add' }),
                             react_1.default.createElement(button_1.default, { variant: 'outlined', disabled: addSystemLoading, onClick: handleResetAddSystem, color: 'primary', label: 'Reset' }))) })),
-            openSnack && react_1.default.createElement(snackbar_1.default, { open: (expUpdate || impUpdate), label: (expUpdate || impUpdate) }))));
+            openSnack && react_1.default.createElement(snackbar_1.default, { type: 'success', open: (expUpdate || impUpdate || pingSystemMsg), label: (expUpdate || impUpdate || pingSystemMsg) }),
+            openSnack && react_1.default.createElement(snackbar_1.default, { type: pingSystemMsg === 'Not successfull' ? 'error' : 'success', open: (pingSystemMsg), label: (pingSystemMsg) }))));
 }
 exports.default = Homepage;
 
@@ -74596,7 +74599,7 @@ const pingToSystemAction = (systemType, systemId) => (dispatch) => __awaiter(voi
         console.log(res);
         const { data } = res;
         if (Object.keys(data).length > 0) {
-            dispatch({ type: actionTypes_1.actions.pingSystem, payload: 'Successfull' });
+            dispatch({ type: actionTypes_1.actions.pingSystem, payload: data });
         }
     }
     catch (er) {
@@ -74923,6 +74926,7 @@ exports.default = redux_1.combineReducers({
     exportSystemList: system_1.exportSystemListReducer,
     importSystemList: system_1.importSystemListReducer,
     updateExportSystem: system_1.updateExportSystemReducer,
+    pingSystem: system_1.pingSystemReducer,
     updateImportSystem: system_1.updateImportSystemReducer,
     connectExportSystem: system_1.connectExportSystemReducer,
     addSystem: system_1.addSystemReducer,
@@ -74952,7 +74956,7 @@ exports.default = redux_1.combineReducers({
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.importSystemReducer = exports.importListCheckReducer = exports.removeFromCartEntitiesReducer = exports.systemCartListReducer = exports.entitiesAddToCartReducer = exports.selectedEntitiesValuesByCategoryReducer = exports.entitiesValuesByCategoryReducer = exports.entitiesByIdReducer = exports.connectExportSystemReducer = exports.updateImportSystemReducer = exports.updateExportSystemReducer = exports.addSystemReducer = exports.importSystemListReducer = exports.exportSystemListReducer = void 0;
+exports.importSystemReducer = exports.importListCheckReducer = exports.removeFromCartEntitiesReducer = exports.systemCartListReducer = exports.entitiesAddToCartReducer = exports.selectedEntitiesValuesByCategoryReducer = exports.entitiesValuesByCategoryReducer = exports.entitiesByIdReducer = exports.connectExportSystemReducer = exports.updateImportSystemReducer = exports.pingSystemReducer = exports.updateExportSystemReducer = exports.addSystemReducer = exports.importSystemListReducer = exports.exportSystemListReducer = void 0;
 const actionTypes_1 = __webpack_require__(/*! ../actionTypes */ "./src/redux/actionTypes.ts");
 function exportSystemListReducer(state = null, action) {
     switch (action.type) {
@@ -74998,6 +75002,17 @@ function updateExportSystemReducer(state = null, action) {
     }
 }
 exports.updateExportSystemReducer = updateExportSystemReducer;
+function pingSystemReducer(state = null, action) {
+    switch (action.type) {
+        case actionTypes_1.actions.pingSystemLoading:
+            return Object.assign(Object.assign({}, state), { loading: true });
+        case actionTypes_1.actions.pingSystem:
+            return Object.assign(Object.assign({}, state), { msg: action.payload, loading: false });
+        default:
+            return Object.assign({}, state);
+    }
+}
+exports.pingSystemReducer = pingSystemReducer;
 function updateImportSystemReducer(state = null, action) {
     switch (action.type) {
         case actionTypes_1.actions.updateImportSystemLoading:

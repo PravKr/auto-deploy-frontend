@@ -38,34 +38,35 @@ const handleDialogBox = (e)=> {
     }
 }
 console.log(isAuthenticated, user)
-return (<Fragment>
-    <AppBar position="sticky" id='appbar'>
-        <Toolbar className='toolbar'>
-            <a href='/' className='title'>
-            <Typography variant='h6' label='Navis - Auto Deploy' className='appbarTitle'/>
-            </a>
-            <Fragment>
-            { isAuthenticated ? 
-                <LoginButton color="inherit" onClick={handleLogout}>Logout</LoginButton>
-                : <LoginButton color="inherit" onClick={()=>handleDialogBox(true)}>Login</LoginButton>  }
-            </Fragment>
-           
-        </Toolbar>
-         <DialogBox
-      title='Login'
-      maxWidth='sm'
-      open={trigger}
-      handleClose={()=>handleDialogBox(false)}
-      content={
-      <form onSubmit={handleLogin}>
-      <Textfield type='text' required label='Username' {...bindUserName}/>
-      <Textfield type='text' required label='password' {...bindPassword}/>
-       <Button variant='contained' disabled={!userName || !password} type='submit' color='primary' label='Login'/>
-      </form>}
-      
-      />
-      </AppBar>
-     
-</Fragment>)
+return (
+    <Fragment>
+        <AppBar position="sticky" id='appbar'>
+            <Toolbar className='toolbar'>
+                <a href='/' className='title'>
+                    <Typography variant='h6' label='Navis - Auto Deploy' className='appbarTitle'/>
+                </a>
+                <Fragment>
+                { isAuthenticated ? 
+                    <LoginButton color="inherit" onClick={handleLogout}>Logout</LoginButton>
+                    : <LoginButton color="inherit" onClick={()=>handleDialogBox(true)}>Login</LoginButton>  }
+                </Fragment>
+            
+            </Toolbar>
+            <DialogBox
+                title='Login'
+                maxWidth='sm'
+                open={trigger}
+                handleClose={()=>handleDialogBox(false)}
+                content={
+                <form onSubmit={handleLogin}>
+                    <Textfield type='text' required label='Username' {...bindUserName}/>
+                    <Textfield type='text' required label='password' {...bindPassword}/>
+                    <Button variant='contained' disabled={!userName || !password} type='submit' color='primary' label='Login'/>
+                </form>}
+            
+            />
+        </AppBar>   
+    </Fragment>
+    )
 }
 export default Appbar

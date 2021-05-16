@@ -52,7 +52,7 @@ export const pingToSystemAction = (systemType, systemId) => async dispatch => {
         console.log(res)
         const {data} = res
         if( Object.keys(data).length > 0){
-            dispatch({type:actions.pingSystem, payload: 'Successfull'})
+            dispatch({type:actions.pingSystem, payload: data})
         }
     } catch (er){
         dispatch({type: actions.pingSystemError, payload: 'Something went wrong'})
@@ -68,7 +68,7 @@ export const removeSystem = (connectedSystemType, connectedSystemId) => async di
         if( Object.keys(data).length > 0){
             dispatch({type:actions.removeSystem, payload: 'System removed Successfully'})
             if(connectedSystemType === 'export'){
-                await dispatch (exportSystemListAction())
+                await dispatch(exportSystemListAction())
             } 
             if( connectedSystemType === 'import'){
                 await dispatch(importSystemListAction()) 
