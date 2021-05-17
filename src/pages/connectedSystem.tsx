@@ -62,12 +62,12 @@ function ConnectedSystem(props){
     console.log(event.target.value)
   }
 
-  const searchRowsBasedOnWhileCardChar = useCallback((e) => {
-    console.log(searchText)
+  const searchRowsBasedOnWhileCardChar = () => {
+    //console.log(searchText)
     //dispatch(entitiesValuesByCategoryAndSearchTextAction(connectedSystemName, connectedSystemType, category, searchText))
     //setChecked({})
     //dispatch(selectedEntitiesValuesByCategoryAction({}))
-  },[])
+  }
 
   const handleCategory = useCallback((e) => {
     setCategory(e.target.value)
@@ -106,7 +106,7 @@ return  (
             <div className='sub-heading'>
               <Select label='Select Category' value={category} onChange={handleCategory} menu={entities} />
               <Textfield size='small' type='text' onChange={searchTextFieldOnChange} placement='left'/>
-              <Button variant='contained' color='primary' onClick={searchRowsBasedOnWhileCardChar} label='Search'/>
+              <Button variant='contained' color='primary' onClick={()=>searchRowsBasedOnWhileCardChar} label='Search'/>
             </div>
             <div className='top'>
               {

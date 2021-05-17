@@ -14,8 +14,13 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import Tooltip from '@material-ui/core/Tooltip';
 import Button from '../components/button'
 import { useSelector, useDispatch } from 'react-redux'
-import { systemCartListAction, removeFromCartEntitiesAction,
-   entityExportAction, importListCheckedAction, importSystemAction} from '../redux/actions/system'
+import { systemCartListAction,
+   removeFromCartEntitiesAction,
+   entityExportAction, 
+   importListCheckedAction, 
+   importSystemAction,
+   removeByEntityFromCartEntitiesAction
+  } from '../redux/actions/system'
 import {importDialogBoxAction} from '../redux/actions/component'
 import Card from '../components/card'
 import Alert from '@material-ui/lab/Alert';
@@ -51,6 +56,10 @@ function MyCart(props){
 
 const handleRemoveFromCart=(cat,gkey)=> {
   dispatch(removeFromCartEntitiesAction(systemCart,systemType,cat,[gkey]))
+}
+
+const handleRemoveByEntityFromCart=(cat)=> {
+  dispatch(removeByEntityFromCartEntitiesAction(systemCart, systemType, cat))
 }
 
 const handleImportExport = (type)=>{
@@ -100,9 +109,16 @@ return(<section className='cart'>
       <TableHead>
         <TableRow>
           {/*style={{backgroundColor: 'black', color: 'white'}}*/}
-          <TableCell align="left" colSpan={4}>
+          <TableCell align="left" colSpan={3}>
             <Typography variant='h6' label={el.category}/>
           </TableCell> 
+          <TableCell colSpan={1}>
+            <Tooltip title={`Remove all ${el.category} from cart`} placement='left'>
+              <IconButton size='small' onClick={()=>handleRemoveByEntityFromCart(el.category)}>
+                <DeleteIcon fontSize='small'/>
+              </IconButton>
+            </Tooltip>
+          </TableCell>
           {/*<TableCell align="left">
             <Tooltip title={el.category} placement='bottom'>
               <IconButton size='small' onClick={()=>handleRemoveFromCart(el.category, withGkey[el.category][i])}>
@@ -118,14 +134,15 @@ return(<section className='cart'>
         </TableHead>
         <TableBody>
           {(el.values || []).map((e,i)=> <TableRow key={i}>
-          <TableCell  style={{ fontSize: '10' }} component="th" scope="row">
-          <Tooltip title='Remove' placement='bottom'>
-          <IconButton size='small' onClick={()=>handleRemoveFromCart(el.category, withGkey[el.category][i])}>
-          <DeleteIcon fontSize='small'/>
-          </IconButton>
-          </Tooltip>
-               </TableCell> 
-              {(e || []).map((ee,ii)=><TableCell key={ii} component="th" scope="row">
+            <TableCell  style={{ fontSize: '10' }} component="th" scope="row">
+              <Tooltip title='Remove' placement='bottom'>
+                <IconButton size='small' onClick={()=>handleRemoveFromCart(el.category, withGkey[el.category][i])}>
+                <DeleteIcon fontSize='small'/>
+                </IconButton>
+              </Tooltip>
+            </TableCell> 
+              {(e || []).map((ee,ii)=>
+              <TableCell key={ii} component="th" scope="row">
                 {ee}
                </TableCell>)}
              </TableRow>

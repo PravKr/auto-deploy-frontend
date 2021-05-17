@@ -89786,6 +89786,9 @@ function MyCart(props) {
     const handleRemoveFromCart = (cat, gkey) => {
         dispatch(system_1.removeFromCartEntitiesAction(systemCart, systemType, cat, [gkey]));
     };
+    const handleRemoveByEntityFromCart = (cat) => {
+        dispatch(system_1.removeByEntityFromCartEntitiesAction(systemCart, systemType, cat));
+    };
     const handleImportExport = (type) => {
         if (type === 'export') {
             dispatch(system_1.entityExportAction(systemCart, systemType));
@@ -89822,8 +89825,12 @@ function MyCart(props) {
                 react_1.default.createElement(Table_1.default, { style: { tableLayout: 'fixed' }, size: "small", stickyHeader: true, "aria-label": "sticky table" },
                     react_1.default.createElement(TableHead_1.default, null,
                         react_1.default.createElement(TableRow_1.default, null,
-                            react_1.default.createElement(TableCell_1.default, { align: "left", colSpan: 4 },
-                                react_1.default.createElement(typography_1.default, { variant: 'h6', label: el.category }))),
+                            react_1.default.createElement(TableCell_1.default, { align: "left", colSpan: 3 },
+                                react_1.default.createElement(typography_1.default, { variant: 'h6', label: el.category })),
+                            react_1.default.createElement(TableCell_1.default, { colSpan: 1 },
+                                react_1.default.createElement(Tooltip_1.default, { title: `Remove all ${el.category} from cart`, placement: 'left' },
+                                    react_1.default.createElement(IconButton_1.default, { size: 'small', onClick: () => handleRemoveByEntityFromCart(el.category) },
+                                        react_1.default.createElement(Delete_1.default, { fontSize: 'small' }))))),
                         react_1.default.createElement(TableRow_1.default, null,
                             (el.header || []).length > 0 && react_1.default.createElement(TableCell_1.default, null, "Remove"),
                             (el.header || []).map((e, i) => react_1.default.createElement(TableCell_1.default, { key: i }, e)))),
@@ -89924,9 +89931,8 @@ function ConnectedSystem(props) {
         setSearchText(searchText);
         console.log(event.target.value);
     };
-    const searchRowsBasedOnWhileCardChar = react_1.useCallback((e) => {
-        console.log(searchText);
-    }, []);
+    const searchRowsBasedOnWhileCardChar = () => {
+    };
     const handleCategory = react_1.useCallback((e) => {
         setCategory(e.target.value);
         dispatch(system_1.entitiesValuesByCategoryAction(connectedSystemName, connectedSystemType, e.target.value));
@@ -89954,7 +89960,7 @@ function ConnectedSystem(props) {
         react_1.default.createElement("div", { className: 'sub-heading' },
             react_1.default.createElement(select_1.default, { label: 'Select Category', value: category, onChange: handleCategory, menu: entities }),
             react_1.default.createElement(textfield_1.default, { size: 'small', type: 'text', onChange: searchTextFieldOnChange, placement: 'left' }),
-            react_1.default.createElement(button_1.default, { variant: 'contained', color: 'primary', onClick: searchRowsBasedOnWhileCardChar, label: 'Search' })),
+            react_1.default.createElement(button_1.default, { variant: 'contained', color: 'primary', onClick: () => searchRowsBasedOnWhileCardChar, label: 'Search' })),
         react_1.default.createElement("div", { className: 'top' }, active.length > 0 && (react_1.default.createElement(react_1.Fragment, null,
             react_1.default.createElement(typography_1.default, { label: `${category} Selected: ${active.length}` }),
             react_1.default.createElement(button_1.default, { variant: 'contained', color: 'primary', onClick: handleAddToCart, label: 'Add to cart' })))),
@@ -90410,7 +90416,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.importSystemAction = exports.importListCheckedAction = exports.entityExportAction = exports.removeFromCartEntitiesAction = exports.systemCartListAction = exports.entitiesAddToCartAction = exports.selectedEntitiesValuesByCategoryAction = exports.entitiesValuesByCategoryAndSearchTextAction = exports.entitiesValuesByCategoryAction = exports.entitiesByIDAction = exports.connectExportSystemAction = exports.updateImportSystemAction = exports.updateExportSystemAction = exports.removeSystem = exports.pingToSystemAction = exports.addSystemAction = exports.importSystemListAction = exports.exportSystemListAction = void 0;
+exports.importSystemAction = exports.importListCheckedAction = exports.entityExportAction = exports.removeByEntityFromCartEntitiesAction = exports.removeFromCartEntitiesAction = exports.systemCartListAction = exports.entitiesAddToCartAction = exports.selectedEntitiesValuesByCategoryAction = exports.entitiesValuesByCategoryAndSearchTextAction = exports.entitiesValuesByCategoryAction = exports.entitiesByIDAction = exports.connectExportSystemAction = exports.updateImportSystemAction = exports.updateExportSystemAction = exports.removeSystem = exports.pingToSystemAction = exports.addSystemAction = exports.importSystemListAction = exports.exportSystemListAction = void 0;
 const actionTypes_1 = __webpack_require__(/*! ../actionTypes */ "./src/redux/actionTypes.ts");
 const axios_1 = __importDefault(__webpack_require__(/*! ../../config/axios */ "./src/config/axios.ts"));
 const exportSystemListAction = () => (dispatch) => __awaiter(void 0, void 0, void 0, function* () {
@@ -90616,6 +90622,19 @@ const removeFromCartEntitiesAction = (sys, connectedSystemType, cat, ls) => (dis
     }
 });
 exports.removeFromCartEntitiesAction = removeFromCartEntitiesAction;
+const removeByEntityFromCartEntitiesAction = (sys, connectedSystemType, cat) => (dispatch) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        dispatch({ type: actionTypes_1.actions.removeFromCartEntitiesLoading });
+        const res = yield axios_1.default.post(`/entities/${connectedSystemType}/${sys}/removeByEntityFromCart/${cat}`);
+        const { data } = res;
+        dispatch({ type: actionTypes_1.actions.removeFromCartEntities, payload: data, });
+        yield dispatch(exports.systemCartListAction(sys, connectedSystemType));
+    }
+    catch (er) {
+        dispatch({ type: actionTypes_1.actions.removeFromCartEntitiesError, payload: 'Something went wrong' });
+    }
+});
+exports.removeByEntityFromCartEntitiesAction = removeByEntityFromCartEntitiesAction;
 const entityExportAction = (sys, connectedSystemType) => (dispatch) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         dispatch({ type: actionTypes_1.actions.entityExportLoading });

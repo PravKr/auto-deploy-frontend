@@ -195,6 +195,18 @@ export const removeFromCartEntitiesAction = (sys,connectedSystemType,cat,ls) => 
         dispatch({type: actions.removeFromCartEntitiesError, payload: 'Something went wrong'})
     }
 }
+
+export const removeByEntityFromCartEntitiesAction = (sys,connectedSystemType,cat) => async dispatch => {
+    try {
+        dispatch({type: actions.removeFromCartEntitiesLoading})
+            const res = await axios.post(`/entities/${connectedSystemType}/${sys}/removeByEntityFromCart/${cat}`)
+        const {data} = res
+        dispatch({ type:actions.removeFromCartEntities,  payload: data, })
+        await dispatch(systemCartListAction(sys, connectedSystemType))
+    } catch (er){
+        dispatch({type: actions.removeFromCartEntitiesError, payload: 'Something went wrong'})
+    }
+}
     
 export const entityExportAction = (sys, connectedSystemType) => async dispatch => {
     try {
