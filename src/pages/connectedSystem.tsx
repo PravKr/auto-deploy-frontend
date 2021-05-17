@@ -15,11 +15,16 @@ import IconButton from '@material-ui/core/IconButton'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Tooltip from '@material-ui/core/Tooltip';
 import Badge from '@material-ui/core/Badge';
+import Toolbar from '@material-ui/core/Toolbar'
+import Textfield from '../components/textfield'
+
 import { useSelector, useDispatch } from 'react-redux'
 import { 
   entitiesByIDAction, 
   entitiesAddToCartAction, 
-  entitiesValuesByCategoryAction, selectedEntitiesValuesByCategoryAction
+  entitiesValuesByCategoryAction,
+  selectedEntitiesValuesByCategoryAction,
+  entitiesValuesByCategoryAndSearchTextAction
  } from '../redux/actions/system'
 
 function ConnectedSystem(props){
@@ -35,17 +40,34 @@ function ConnectedSystem(props){
     const entitiesValues = useSelector(state=> state.entitiesValues)
     const addToCart = useSelector(state=>state.entitiesAddToCart)
     const selectedEntitiesValues = useSelector(state=> state.selectedEntitiesValues)
+    //const searchTextt = props.searchText;
 
     const { loading:entitiesLoading, entities=[] } = entitiesById
     const {loading: entitiesValuesLoading, tableHeaders=[], tableValues=[], withGkey=[]} = entitiesValues
     const { active=[]} = selectedEntitiesValues
     const [category, setCategory] = useState('')
     const [isChecked, setChecked] = useState({})
+    const [searchText, setSearchText] = useState(null)
 
     useEffect(()=>{
       dispatch(entitiesByIDAction(connectedSystemName, connectedSystemType))
   },[category])
    
+  const handleReloadSystemData = () => {
+    dispatch(entitiesByIDAction(connectedSystemName, connectedSystemType))
+  }
+
+  const searchTextFieldOnChange = (event) => {
+    setSearchText(searchText)
+    console.log(event.target.value)
+  }
+
+  const searchRowsBasedOnWhileCardChar = useCallback((e) => {
+    console.log(searchText)
+    //dispatch(entitiesValuesByCategoryAndSearchTextAction(connectedSystemName, connectedSystemType, category, searchText))
+    //setChecked({})
+    //dispatch(selectedEntitiesValuesByCategoryAction({}))
+  },[])
 
   const handleCategory = useCallback((e) => {
     setCategory(e.target.value)
@@ -67,7 +89,11 @@ function ConnectedSystem(props){
 return  (
           <section className='connected-system'>
             <div className='heading'>
-              <Typography variant='h5' label={connectedSystemName}/>
+            <Toolbar>
+            <a href={`/${connectedSystemType}/${connectedSystemName}`} onClick={handleReloadSystemData} className='title'>
+                <Typography variant='h5' label={connectedSystemName}/>
+              </a>
+            </Toolbar>
               <Tooltip title='My Cart' placement='left'>
                 <IconButton href={`/${connectedSystemType}/cart/${connectedSystemName}`}>
                   <Badge badgeContent={active.length} color="primary">
@@ -77,7 +103,11 @@ return  (
               </Tooltip>
             </div>
             {entitiesLoading && <Loader/>}
-            <Select label='Select Category' value={category} onChange={handleCategory} menu={entities} />
+            <div className='sub-heading'>
+              <Select label='Select Category' value={category} onChange={handleCategory} menu={entities} />
+              <Textfield size='small' type='text' onChange={searchTextFieldOnChange} placement='left'/>
+              <Button variant='contained' color='primary' onClick={searchRowsBasedOnWhileCardChar} label='Search'/>
+            </div>
             <div className='top'>
               {
                 active.length > 0 && (

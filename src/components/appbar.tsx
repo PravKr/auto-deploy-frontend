@@ -25,7 +25,7 @@ const { trigger} = loginDialogBox
 
 const handleLogin =(e) => {
     e.preventDefault()
-    dispatch(userLoginAction(userName, password))
+    dispatch(userLoginAction({userName, password}))
 }
 const handleLogout = () => {
     dispatch(userLogoutAction())
@@ -46,9 +46,9 @@ return (
                     <Typography variant='h6' label='Navis - Auto Deploy' className='appbarTitle'/>
                 </a>
                 <Fragment>
-                { isAuthenticated ? 
+                {/*{ isAuthenticated ? 
                     <LoginButton color="inherit" onClick={handleLogout}>Logout</LoginButton>
-                    : <LoginButton color="inherit" onClick={()=>handleDialogBox(true)}>Login</LoginButton>  }
+                    : <LoginButton color="inherit" onClick={()=>handleDialogBox(true)}>Login</LoginButton>  }*/}
                 </Fragment>
             
             </Toolbar>

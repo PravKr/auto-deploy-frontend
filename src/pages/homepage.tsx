@@ -157,6 +157,11 @@ function Homepage(){
         dispatch(removeSystem(connectedSystemType, connectedSystemId))
       }
 
+      const handleMyCartClick=(connectedSystemType, connectedSystemId)=>{
+        console.log("my cart")
+        //dispatch(removeSystem(connectedSystemType, connectedSystemId))
+      }
+
     const handleSystemUpdate = (e) =>{
       e.preventDefault()
       resetSystemList()
@@ -215,6 +220,8 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
                     pingActionClick={()=>handlePingActionClick('export', e.id)}
                     deleteIcon
                     onRemoveClick={()=>handleRemoveSystem('export', e.id)}
+                    myCartIcon
+                    onMyCartIconLebel={`/export/cart/${e.id}`}
                   />)}
                 </div>
                 <Divider orientation='horizontal'/>
@@ -253,6 +260,8 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
                   pingActionClick={()=>handlePingActionClick('export', e.id)}
                   deleteIcon
                   onRemoveClick={()=>handleRemoveSystem('export', e.id)}
+                  myCartIcon
+                  onMyCartIconLebel={`/export/cart/${e.id}`}
                   />)}
                 </div>
               </TabPanel>
@@ -324,8 +333,11 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
               />
           </div>
           
-          {openSnack && <Snackbar type={'success'} open={(expUpdate || impUpdate || pingSystemMsg)} label={(expUpdate || impUpdate || pingSystemMsg)}/>}
-          {openSnack && <Snackbar type={pingSystemMsg === 'Not successfull' ? 'error':'success'} open={(pingSystemMsg)} label={(pingSystemMsg)}/>}
+          {openSnack && 
+            <Snackbar type={'success'} 
+            open={(expUpdate || impUpdate || addSystemMsg || pingSystemMsg)} 
+            label={(expUpdate || impUpdate || addSystemMsg || pingSystemMsg)}/>}
+          {/*{openSnack && <Snackbar type={pingSystemMsg === 'Not successfull' ? 'error':'success'} open={(pingSystemMsg)} label={(pingSystemMsg)}/>}*/}
         </section>
       
     </Fragment>)

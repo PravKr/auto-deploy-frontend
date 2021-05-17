@@ -9,10 +9,10 @@ function Alert(props) {
 function SnackbarCmp(props){
     const {open, handleClose, label, type} = props
 
-return <Snackbar open={open} autoHideDuration={6000} onClose={handleClose} >
-<Alert onClose={handleClose} severity={type}>
-          {label}
-        </Alert>
-</Snackbar> 
+return <Snackbar open={open} autoHideDuration={2000} onClose={handleClose} >
+          <Alert onClose={handleClose} severity={type}>
+            {label}
+          </Alert>
+        </Snackbar> 
 }
 export default SnackbarCmp

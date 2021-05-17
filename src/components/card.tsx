@@ -6,10 +6,13 @@ import CardActions from '@material-ui/core/CardActions'
 import Button from './button'
 import Typography from './typography'
 import Avatar from '@material-ui/core/Avatar'
-import IconButton from '@material-ui/core/IconButton';
-import EditIcon from '@material-ui/icons/Edit';
+import IconButton from '@material-ui/core/IconButton'
+import EditIcon from '@material-ui/icons/Edit'
 import Checkbox from './checkbox'
-import DeleteIcon from '@material-ui/icons/Delete';
+import DeleteIcon from '@material-ui/icons/Delete'
+import { Tooltip } from '@material-ui/core'
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
+
 function Cards(props){
   const { title, 
     subHeader,
@@ -21,7 +24,15 @@ function Cards(props){
         action, 
         onShowIconClick,
           linkLabel,
-           linkLabelLink, checkbox, onCheckBoxClick, checkBoxId, checked, deleteIcon, onRemoveClick} = props
+           linkLabelLink, 
+           checkbox, 
+           onCheckBoxClick, 
+           checkBoxId, 
+           checked, 
+           deleteIcon, 
+           onRemoveClick,
+           myCartIcon,
+           onMyCartIconLebel} = props
   const onShowIconClicks = (e)=> {
     e.stopPropagation()
     onShowIconClick()
@@ -43,9 +54,11 @@ function Cards(props){
     action={
     <Fragment>
         { action  && ( 
-          <IconButton size="small" onClick={onShowIconClicks}>
-            <EditIcon fontSize='small' />
-          </IconButton>)}
+          <Tooltip title='Update the system' placement='top'>
+            <IconButton size="small" onClick={onShowIconClicks}>
+              <EditIcon fontSize='small' />
+            </IconButton>
+          </Tooltip>)}
           {checkbox &&
           ( <Checkbox 
             id={ checkBoxId}
@@ -53,11 +66,19 @@ function Cards(props){
               onChange={onCheckBoxClick}
           />)}
           {deleteIcon && (
-          <IconButton size="small" onClick={onRemoveClick}>
-            <DeleteIcon fontSize='small' />
-          </IconButton>
-        ) 
-      }
+            <Tooltip title='Remove the system' placement='top'>
+              <IconButton size="small" onClick={onRemoveClick}>
+                <DeleteIcon fontSize='small' />
+              </IconButton>
+          </Tooltip>
+          )}
+          {myCartIcon && (
+            <Tooltip title='My Cart' placement='top'>
+            <IconButton size="small" href={onMyCartIconLebel}>
+                <ShoppingCartIcon />
+            </IconButton>
+          </Tooltip>
+          )}
     </Fragment>
       }
     />

@@ -140,7 +140,18 @@ export const entitiesValuesByCategoryAction = (id,connectedSystemType,cat) => as
     } catch (er){
         dispatch({type: actions.entitiesValuesByCategoryError, payload: 'Something went wrong'})
     }
-}    
+}  
+
+export const entitiesValuesByCategoryAndSearchTextAction = (id,connectedSystemType,cat, searchText) => async dispatch => {
+    try {
+        dispatch({type: actions.entitiesValuesByCategoryLoading})
+            const res = await axios.post(`/entities/${connectedSystemType}/${id}/${cat}/${searchText}`)
+        const {data} = res
+        dispatch({ type:actions.entitiesValuesByCategory, payload: data })
+    } catch (er){
+        dispatch({type: actions.entitiesValuesByCategoryError, payload: 'Something went wrong'})
+    }
+}  
 
 export const selectedEntitiesValuesByCategoryAction = (val) => async dispatch => {
     try {

@@ -18,6 +18,7 @@ import { systemCartListAction, removeFromCartEntitiesAction,
    entityExportAction, importListCheckedAction, importSystemAction} from '../redux/actions/system'
 import {importDialogBoxAction} from '../redux/actions/component'
 import Card from '../components/card'
+import Alert from '@material-ui/lab/Alert';
 
 function MyCart(props){
 
@@ -57,7 +58,7 @@ const handleImportExport = (type)=>{
     dispatch(entityExportAction(systemCart, systemType))
   } 
   if(type === 'import'){
-dispatch(importDialogBoxAction(true,'import'))
+    dispatch(importDialogBoxAction(true,'import'))
   }
   if(type==='export_import'){
     dispatch(importDialogBoxAction(true,'export_import'))
@@ -158,7 +159,7 @@ return(<section className='cart'>
  </Fragment>}
  action={
    <Fragment>
-     <Button variant='outlined' color='primary' onClick={ handleCloseImportDialogBox} label='Cancel'/>
+     <Button variant='outlined' color='primary' onClick={handleCloseImportDialogBox} label='Cancel'/>
      {type ==='import' ? 
      <Button variant='contained' disabled={!active.length} color='primary' onClick={()=>handleConfirmImport('import')} label='Confirm Import'/> 
      : <Button variant='contained' disabled={!active.length} color='primary' onClick={()=>handleConfirmImport('export_import')} label='Confirm Export & Import'/>
