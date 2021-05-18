@@ -19,7 +19,8 @@ import { systemCartListAction,
    entityExportAction, 
    importListCheckedAction, 
    importSystemAction,
-   removeByEntityFromCartEntitiesAction
+   removeByEntityFromCartEntitiesAction,
+   emptyCartAction
   } from '../redux/actions/system'
 import {importDialogBoxAction} from '../redux/actions/component'
 import Card from '../components/card'
@@ -62,6 +63,10 @@ const handleRemoveByEntityFromCart=(cat)=> {
   dispatch(removeByEntityFromCartEntitiesAction(systemCart, systemType, cat))
 }
 
+const emptyCart = () => {
+  dispatch(emptyCartAction(systemCart, systemType))
+}
+
 const handleImportExport = (type)=>{
   if(type==='export'){
     dispatch(entityExportAction(systemCart, systemType))
@@ -93,6 +98,7 @@ return(<section className='cart'>
  <div className='heading'>
  <Typography variant='h5' label='My Cart'/>
    <div className='action'>
+   <Button variant='outlined' color='primary' onClick={()=>emptyCart()} label='Empty Cart'/>
    <Button variant='outlined' color='primary' onClick={()=>handleImportExport('import')} label='Import'/>
    <Button variant='outlined' color='primary' onClick={()=>handleImportExport('export')} label='Export'/>
    {/*<Button variant='contained' color='primary' onClick={()=>handleImportExport('export_import')} label='Export & Import'/>*/}

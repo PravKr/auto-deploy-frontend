@@ -89789,6 +89789,9 @@ function MyCart(props) {
     const handleRemoveByEntityFromCart = (cat) => {
         dispatch(system_1.removeByEntityFromCartEntitiesAction(systemCart, systemType, cat));
     };
+    const emptyCart = () => {
+        dispatch(system_1.emptyCartAction(systemCart, systemType));
+    };
     const handleImportExport = (type) => {
         if (type === 'export') {
             dispatch(system_1.entityExportAction(systemCart, systemType));
@@ -89817,6 +89820,7 @@ function MyCart(props) {
         react_1.default.createElement("div", { className: 'heading' },
             react_1.default.createElement(typography_1.default, { variant: 'h5', label: 'My Cart' }),
             react_1.default.createElement("div", { className: 'action' },
+                react_1.default.createElement(button_1.default, { variant: 'outlined', color: 'primary', onClick: () => emptyCart(), label: 'Empty Cart' }),
                 react_1.default.createElement(button_1.default, { variant: 'outlined', color: 'primary', onClick: () => handleImportExport('import'), label: 'Import' }),
                 react_1.default.createElement(button_1.default, { variant: 'outlined', color: 'primary', onClick: () => handleImportExport('export'), label: 'Export' }))),
         cartListLoading && react_1.default.createElement(loader_1.default, null),
@@ -90327,6 +90331,12 @@ exports.actions = {
     removeFromCartEntitiesLoading: 'REMOVE_CART_ENTITIES_LOADING',
     removeFromCartEntities: 'REMOVE_CART_ENTITIES',
     removeFromCartEntitiesError: 'REMOVE_CART_ENTITIES_ERROR',
+    removeByEntityFromCartEntitiesLoading: 'REMOVE_BY_ENTITY_FROM_CART_ENTITIES_LOADING',
+    removeByEntityFromCartEntities: 'REMOVE_BY_ENTITY_FROM_CART_ENTITIES',
+    removeByEntityFromCartEntitiesError: 'REMOVE_BY_ENTITY_FROM_CART_ENTITIES_ERROR',
+    emptyCartLoading: 'EMPTY_CART_LOADING',
+    emptyCart: 'EMPTY_CART',
+    emptyCartError: 'EMPTY_CART_ERROR',
     entityExportLoading: 'ENTITY_EXPORT_LOADING',
     entityExportError: 'ENTITY_EXPORT_ERROR',
     importDialogBox: 'IMPORT_DIALOG_BOX',
@@ -90416,7 +90426,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.importSystemAction = exports.importListCheckedAction = exports.entityExportAction = exports.removeByEntityFromCartEntitiesAction = exports.removeFromCartEntitiesAction = exports.systemCartListAction = exports.entitiesAddToCartAction = exports.selectedEntitiesValuesByCategoryAction = exports.entitiesValuesByCategoryAndSearchTextAction = exports.entitiesValuesByCategoryAction = exports.entitiesByIDAction = exports.connectExportSystemAction = exports.updateImportSystemAction = exports.updateExportSystemAction = exports.removeSystem = exports.pingToSystemAction = exports.addSystemAction = exports.importSystemListAction = exports.exportSystemListAction = void 0;
+exports.importSystemAction = exports.importListCheckedAction = exports.entityExportAction = exports.emptyCartAction = exports.removeByEntityFromCartEntitiesAction = exports.removeFromCartEntitiesAction = exports.systemCartListAction = exports.entitiesAddToCartAction = exports.selectedEntitiesValuesByCategoryAction = exports.entitiesValuesByCategoryAndSearchTextAction = exports.entitiesValuesByCategoryAction = exports.entitiesByIDAction = exports.connectExportSystemAction = exports.updateImportSystemAction = exports.updateExportSystemAction = exports.removeSystem = exports.pingToSystemAction = exports.addSystemAction = exports.importSystemListAction = exports.exportSystemListAction = void 0;
 const actionTypes_1 = __webpack_require__(/*! ../actionTypes */ "./src/redux/actionTypes.ts");
 const axios_1 = __importDefault(__webpack_require__(/*! ../../config/axios */ "./src/config/axios.ts"));
 const exportSystemListAction = () => (dispatch) => __awaiter(void 0, void 0, void 0, function* () {
@@ -90624,17 +90634,30 @@ const removeFromCartEntitiesAction = (sys, connectedSystemType, cat, ls) => (dis
 exports.removeFromCartEntitiesAction = removeFromCartEntitiesAction;
 const removeByEntityFromCartEntitiesAction = (sys, connectedSystemType, cat) => (dispatch) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        dispatch({ type: actionTypes_1.actions.removeFromCartEntitiesLoading });
+        dispatch({ type: actionTypes_1.actions.removeByEntityFromCartEntitiesLoading });
         const res = yield axios_1.default.post(`/entities/${connectedSystemType}/${sys}/removeByEntityFromCart/${cat}`);
         const { data } = res;
-        dispatch({ type: actionTypes_1.actions.removeFromCartEntities, payload: data, });
+        dispatch({ type: actionTypes_1.actions.removeByEntityFromCartEntities, payload: data, });
         yield dispatch(exports.systemCartListAction(sys, connectedSystemType));
     }
     catch (er) {
-        dispatch({ type: actionTypes_1.actions.removeFromCartEntitiesError, payload: 'Something went wrong' });
+        dispatch({ type: actionTypes_1.actions.removeByEntityFromCartEntitiesError, payload: 'Something went wrong' });
     }
 });
 exports.removeByEntityFromCartEntitiesAction = removeByEntityFromCartEntitiesAction;
+const emptyCartAction = (sys, connectedSystemType) => (dispatch) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        dispatch({ type: actionTypes_1.actions.emptyCartLoading });
+        const res = yield axios_1.default.post(`/entities/${connectedSystemType}/${sys}/emptyCart`);
+        const { data } = res;
+        dispatch({ type: actionTypes_1.actions.emptyCart, payload: data, });
+        yield dispatch(exports.systemCartListAction(sys, connectedSystemType));
+    }
+    catch (er) {
+        dispatch({ type: actionTypes_1.actions.emptyCartError, payload: 'Something went wrong' });
+    }
+});
+exports.emptyCartAction = emptyCartAction;
 const entityExportAction = (sys, connectedSystemType) => (dispatch) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         dispatch({ type: actionTypes_1.actions.entityExportLoading });
