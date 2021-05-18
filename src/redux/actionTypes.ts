@@ -55,6 +55,10 @@ export const actions = {
     systemCartList: 'SYSTEM_CART_LIST',
     systemCartListError: 'SYSTEM_CART_LIST_ERROR',
 
+    getHistoryByDateLoading: 'GET_HISTORY_BY_DATE_LOADING',
+    getHistoryByDate: 'GET_HISTORY_BY_DATE',
+    getHistoryByDateError: 'GET_HISTORY_BY_DATE_ERROR',
+
     removeFromCartEntitiesLoading: 'REMOVE_CART_ENTITIES_LOADING',
     removeFromCartEntities: 'REMOVE_CART_ENTITIES',
     removeFromCartEntitiesError: 'REMOVE_CART_ENTITIES_ERROR',

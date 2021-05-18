@@ -12,7 +12,6 @@ return(<TextField
     type={type}
     defaultValue={defaultValue}
     variant='outlined'
-    size='small'
     {...props}
   />)
 }

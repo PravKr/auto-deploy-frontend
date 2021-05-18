@@ -11,28 +11,15 @@ import EditIcon from '@material-ui/icons/Edit'
 import Checkbox from './checkbox'
 import DeleteIcon from '@material-ui/icons/Delete'
 import { Tooltip } from '@material-ui/core'
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
+import HistoryIcon from '@material-ui/icons/History';
+import AddToQueueIcon from '@material-ui/icons/AddToQueue';
 
 function Cards(props){
-  const { title, 
-    subHeader,
-     imgUrl,
-     pingActionsLabel,
-     pingActionClick,
-       mediaTitle,
-        avatar, 
-        action, 
-        onShowIconClick,
-          linkLabel,
-           linkLabelLink, 
-           checkbox, 
-           onCheckBoxClick, 
-           checkBoxId, 
-           checked, 
-           deleteIcon, 
-           onRemoveClick,
-           myCartIcon,
-           onMyCartIconLebel} = props
+  const { title, subHeader, imgUrl, pingActionsLabel, pingActionClick,
+      mediaTitle, avatar, action, onShowIconClick, linkLabel, linkLabelLink, 
+      checkbox, onCheckBoxClick, checkBoxId, checked, deleteIcon, onRemoveClick,
+      myCartIcon, onMyCartIconLebel, historyIcon, historyIconLebelLink
+    } = props
   const onShowIconClicks = (e)=> {
     e.stopPropagation()
     onShowIconClick()
@@ -73,9 +60,16 @@ function Cards(props){
           </Tooltip>
           )}
           {myCartIcon && (
-            <Tooltip title='My Cart' placement='top'>
+            <Tooltip title='Queue' placement='top'>
             <IconButton size="small" href={onMyCartIconLebel}>
-                <ShoppingCartIcon />
+                <AddToQueueIcon />
+            </IconButton>
+          </Tooltip>
+          )}
+          {historyIcon && (
+            <Tooltip title='History' placement='top'>
+            <IconButton size="small" href={historyIconLebelLink}>
+                <HistoryIcon />
             </IconButton>
           </Tooltip>
           )}

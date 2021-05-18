@@ -96,9 +96,9 @@ console.log('type', type)
 return(<section className='cart'>
 
  <div className='heading'>
- <Typography variant='h5' label='My Cart'/>
+ <Typography variant='h5' label='Items in Queue'/>
    <div className='action'>
-   <Button variant='outlined' color='primary' onClick={()=>emptyCart()} label='Empty Cart'/>
+   <Button variant='outlined' color='primary' onClick={()=>emptyCart()} label='Empty Queue'/>
    <Button variant='outlined' color='primary' onClick={()=>handleImportExport('import')} label='Import'/>
    <Button variant='outlined' color='primary' onClick={()=>handleImportExport('export')} label='Export'/>
    {/*<Button variant='contained' color='primary' onClick={()=>handleImportExport('export_import')} label='Export & Import'/>*/}
@@ -111,7 +111,7 @@ return(<section className='cart'>
      { (el.values || []).length> 0 && <Fragment>
        
    <TableContainer component={Paper}  key={i}>
-    <Table style={{ tableLayout: 'fixed' }} size="small" stickyHeader aria-label="sticky table">
+    <Table style={{ tableLayout: 'fixed', fontSize: '15px' }} size="small" stickyHeader aria-label="sticky table">
       <TableHead>
         <TableRow>
           {/*style={{backgroundColor: 'black', color: 'white'}}*/}
@@ -120,18 +120,9 @@ return(<section className='cart'>
           </TableCell> 
           <TableCell colSpan={1}>
             <Tooltip title={`Remove all ${el.category} from cart`} placement='left'>
-              <IconButton size='small' onClick={()=>handleRemoveByEntityFromCart(el.category)}>
-                <DeleteIcon fontSize='small'/>
-              </IconButton>
+              <Button variant='outlined' size='small' onClick={()=>handleRemoveByEntityFromCart(el.category)} label='Remove'/>
             </Tooltip>
           </TableCell>
-          {/*<TableCell align="left">
-            <Tooltip title={el.category} placement='bottom'>
-              <IconButton size='small' onClick={()=>handleRemoveFromCart(el.category, withGkey[el.category][i])}>
-                <DeleteIcon fontSize='large'/>
-              </IconButton>
-            </Tooltip>
-          </TableCell>*/} 
         </TableRow>
         <TableRow>
            {(el.header || []).length>0 && <TableCell>Remove</TableCell>} 
@@ -140,7 +131,7 @@ return(<section className='cart'>
         </TableHead>
         <TableBody>
           {(el.values || []).map((e,i)=> <TableRow key={i}>
-            <TableCell  style={{ fontSize: '10' }} component="th" scope="row">
+            <TableCell component="th" scope="row">
               <Tooltip title='Remove' placement='bottom'>
                 <IconButton size='small' onClick={()=>handleRemoveFromCart(el.category, withGkey[el.category][i])}>
                 <DeleteIcon fontSize='small'/>
@@ -176,7 +167,7 @@ return(<section className='cart'>
           checkBoxId={e.id}
           checked={isChecked[e.id]}
           onCheckBoxClick={handleImportCheckbox}
-          subHeader={`${e.complex} / ${e.operator} / ${e.facility} / ${e.yard}`} 
+          subHeader={`${e.operator}/${e.complex}/${e.facility}/${e.yard}`} 
            />)}
     </div>
  </Fragment>}

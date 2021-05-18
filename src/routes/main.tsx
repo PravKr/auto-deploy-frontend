@@ -6,6 +6,7 @@ import Homepage from '../pages/homepage'
 import Default from '../pages/default'
 import ConnectedSystem from '../pages/connectedSystem'
 import Cart from '../pages/cart'
+import HistoryPage from '../pages/history'
 
 const Main=()=>(
     <Router>
@@ -14,6 +15,7 @@ const Main=()=>(
             <Route path='/homepage' exact component={Homepage} />
             <Route path='/:type/:system' exact component={ConnectedSystem} />
             <Route path='/:type/cart/:system' exact component={Cart} />
+            <Route path='/history/:type/:system' exact component={HistoryPage} />
         </Switch>
     </Router>
 )

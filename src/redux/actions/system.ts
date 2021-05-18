@@ -119,11 +119,21 @@ export const connectExportSystemAction = (e) => async dispatch => {
     }
 } 
                         
-
 export const entitiesByIDAction = (id, connectedSystemType) => async dispatch => {
     try {
         dispatch({type: actions.entitiesByIdLoading})
             const res = await axios.post(`/entities/${connectedSystemType}/${id}`)
+        const {data} = res
+        dispatch({ type:actions.entitiesById, payload: data })
+    } catch (er){
+        dispatch({type: actions.entitiesByIdError, payload: 'Something went wrong'})
+    }
+}
+
+export const getHistory = (id, connectedSystemType) => async dispatch => {
+    try {
+        dispatch({type: actions.entitiesByIdLoading})
+            const res = await axios.post(`/history/${connectedSystemType}/${id}`)
         const {data} = res
         dispatch({ type:actions.entitiesById, payload: data })
     } catch (er){
@@ -180,6 +190,17 @@ export const systemCartListAction = (sys, connectedSystemType) => async dispatch
         dispatch({ type:actions.systemCartList,  payload: data, })
     } catch (er){
         dispatch({type: actions.systemCartListError, payload: 'Something went wrong'})
+    }
+}
+
+export const getHistoryByDate = (sys, connectedSystemType, date) => async dispatch => {
+    try {
+        dispatch({type: actions.getHistoryByDateLoading})
+            const res = await axios.post(`/history/${connectedSystemType}/${sys}/${date}`)
+        const {data} = res
+        dispatch({ type:actions.getHistoryByDate,  payload: data, })
+    } catch (er){
+        dispatch({type: actions.getHistoryByDateError, payload: 'Something went wrong'})
     }
 }
 

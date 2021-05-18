@@ -4,7 +4,7 @@ import {
          exportSystemListReducer, importSystemListReducer, updateExportSystemReducer, pingSystemReducer, updateImportSystemReducer,
          connectExportSystemReducer, addSystemReducer, entitiesByIdReducer, entitiesAddToCartReducer, 
          entitiesValuesByCategoryReducer, selectedEntitiesValuesByCategoryReducer, systemCartListReducer,
-         removeFromCartEntitiesReducer, importListCheckReducer, importSystemReducer } from './system'
+         removeFromCartEntitiesReducer, importListCheckReducer, importSystemReducer, getHistoryByDateReducer } from './system'
 
 import {importDialogBoxReducer, loginDialogBoxReducer} from './component'
 
@@ -28,5 +28,6 @@ export default combineReducers({
     importListCheck:importListCheckReducer,
     importSystem:importSystemReducer,
     loginDialogBox:loginDialogBoxReducer,
-    userLogin: userLoginReducer
+    userLogin: userLoginReducer,
+    getHistoryByDate: getHistoryByDateReducer
 })

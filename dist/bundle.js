@@ -37807,6 +37807,37 @@ var withWidth = function withWidth() {
 
 /***/ }),
 
+/***/ "./node_modules/@material-ui/icons/AddToQueue.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/@material-ui/icons/AddToQueue.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+var _interopRequireWildcard = __webpack_require__(/*! @babel/runtime/helpers/interopRequireWildcard */ "./node_modules/@babel/runtime/helpers/interopRequireWildcard.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var React = _interopRequireWildcard(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(/*! ./utils/createSvgIcon */ "./node_modules/@material-ui/icons/utils/createSvgIcon.js"));
+
+var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
+  d: "M21 3H3c-1.11 0-2 .89-2 2v12c0 1.1.89 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.11-.9-2-2-2zm0 14H3V5h18v12zm-5-7v2h-3v3h-2v-3H8v-2h3V7h2v3h3z"
+}), 'AddToQueue');
+
+exports.default = _default;
+
+/***/ }),
+
 /***/ "./node_modules/@material-ui/icons/Delete.js":
 /*!***************************************************!*\
   !*** ./node_modules/@material-ui/icons/Delete.js ***!
@@ -37869,6 +37900,37 @@ exports.default = _default;
 
 /***/ }),
 
+/***/ "./node_modules/@material-ui/icons/History.js":
+/*!****************************************************!*\
+  !*** ./node_modules/@material-ui/icons/History.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+
+var _interopRequireWildcard = __webpack_require__(/*! @babel/runtime/helpers/interopRequireWildcard */ "./node_modules/@babel/runtime/helpers/interopRequireWildcard.js");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var React = _interopRequireWildcard(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(/*! ./utils/createSvgIcon */ "./node_modules/@material-ui/icons/utils/createSvgIcon.js"));
+
+var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
+  d: "M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"
+}), 'History');
+
+exports.default = _default;
+
+/***/ }),
+
 /***/ "./node_modules/@material-ui/icons/ImportExport.js":
 /*!*********************************************************!*\
   !*** ./node_modules/@material-ui/icons/ImportExport.js ***!
@@ -37895,37 +37957,6 @@ var _createSvgIcon = _interopRequireDefault(__webpack_require__(/*! ./utils/crea
 var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
   d: "M9 3L5 6.99h3V14h2V6.99h3L9 3zm7 14.01V10h-2v7.01h-3L15 21l4-3.99h-3z"
 }), 'ImportExport');
-
-exports.default = _default;
-
-/***/ }),
-
-/***/ "./node_modules/@material-ui/icons/ShoppingCart.js":
-/*!*********************************************************!*\
-  !*** ./node_modules/@material-ui/icons/ShoppingCart.js ***!
-  \*********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
-
-var _interopRequireWildcard = __webpack_require__(/*! @babel/runtime/helpers/interopRequireWildcard */ "./node_modules/@babel/runtime/helpers/interopRequireWildcard.js");
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var React = _interopRequireWildcard(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
-var _createSvgIcon = _interopRequireDefault(__webpack_require__(/*! ./utils/createSvgIcon */ "./node_modules/@material-ui/icons/utils/createSvgIcon.js"));
-
-var _default = (0, _createSvgIcon.default)( /*#__PURE__*/React.createElement("path", {
-  d: "M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"
-}), 'ShoppingCart');
 
 exports.default = _default;
 
@@ -44075,7 +44106,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default.a);
 // Module
-___CSS_LOADER_EXPORT___.push([module.i, "@keyframes zoom-1 {\n  from {\n    transform: scale(0); }\n  to {\n    transform: scale(1); } }\n\n@keyframes zoom-2 {\n  0% {\n    transform: scale(0); }\n  50% {\n    transform: scale(1.1); }\n  100% {\n    transform: scale(1); } }\n\n@keyframes zoom-3 {\n  0% {\n    transform: scale(0); }\n  50% {\n    transform: scale(1.2); }\n  100% {\n    transform: scale(1); } }\n\n*, *::before, *::after {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box; }\n\nmain {\n  min-height: 100vh; }\n  main section {\n    padding: .5rem; }\n    main section h5 {\n      margin-bottom: 2rem !important; }\n\n#appbar {\n  background-color: #087995 !important; }\n  #appbar .title {\n    text-decoration: none;\n    margin-right: auto !important;\n    color: #fff; }\n\n.selectbox {\n  width: 100%;\n  margin: 0 0 1rem 0 !important; }\n\n.card {\n  margin: .25rem;\n  align-self: flex-start;\n  width: 25rem; }\n  .card h6 {\n    color: #087995; }\n  .card .cardMedia {\n    height: 14rem; }\n  .card a {\n    margin-left: auto; }\n  .card .avatar {\n    background-color: #087995; }\n  .card .title {\n    color: #087995; }\n  .card .caption {\n    color: black; }\n\nbutton {\n  margin: 0 .5rem 0 .5rem !important; }\n\n.primary-contained {\n  background-color: #087995 !important;\n  color: #fff !important; }\n\n.secondary-contained {\n  background-color: #fff !important;\n  color: #087995 !important; }\n\n.primary-outlined {\n  border-color: #087995 !important;\n  color: #087995 !important; }\n\n.import-list {\n  display: flex; }\n\n.textfield {\n  width: 100%;\n  margin-bottom: 1rem !important; }\n\n.MuiCheckbox-colorPrimary.Mui-checked {\n  color: #087995 !important; }\n\n.load {\n  display: flex;\n  justify-content: center; }\n  .load .loader {\n    border: 2px solid #fff;\n    border-radius: 50%;\n    border-top: 2px solid #087995;\n    width: 20px;\n    height: 20px;\n    -webkit-animation: spin .3s linear infinite;\n    /* Safari */\n    animation: spin .3s linear infinite; }\n\n/* Safari */\n@-webkit-keyframes spin {\n  0% {\n    -webkit-transform: rotate(0deg); }\n  100% {\n    -webkit-transform: rotate(360deg); } }\n\n@keyframes spin {\n  0% {\n    transform: rotate(0deg); }\n  100% {\n    transform: rotate(360deg); } }\n\n.homepage .system-panel .tabs {\n  display: flex; }\n  .homepage .system-panel .tabs .add-system {\n    align-self: flex-start; }\n\n.homepage .system-panel .tab-list {\n  margin-right: auto;\n  width: 60%;\n  height: 10%; }\n\n.homepage .system-panel .flex-list {\n  display: flex;\n  margin-bottom: 1rem;\n  flex-wrap: wrap; }\n\n.connected-system .top, .connected-system .heading {\n  display: flex;\n  justify-content: space-between;\n  align-items: baseline; }\n\n.connected-system .sub-heading {\n  display: flex;\n  justify-content: space-evenly;\n  align-items: baseline; }\n\n.cart .heading {\n  display: flex;\n  justify-content: space-between;\n  align-items: baseline; }\n", "",{"version":3,"sources":["webpack://./src/sass/base/_animations.scss","webpack://./src/sass/base/_base.scss","webpack://./src/sass/base/_main.scss","webpack://./src/sass/components/_appbar.scss","webpack://./src/sass/abstracts/_variables.scss","webpack://./src/sass/components/_selectbox.scss","webpack://./src/sass/components/_card.scss","webpack://./src/sass/components/_button.scss","webpack://./src/sass/components/_dialogBox.scss","webpack://./src/sass/components/_textfield.scss","webpack://./src/sass/components/_checkbox.scss","webpack://./src/sass/components/_loader.scss","webpack://./src/sass/pages/_homepage.scss","webpack://./src/sass/pages/_connectedSystem.scss","webpack://./src/sass/pages/_cart.scss"],"names":[],"mappings":"AAAA;EACI;IAAO,mBAAmB,EAAA;EAC1B;IAAK,mBAAmB,EAAA,EAAA;;AAG5B;EACI;IAAI,mBAAmB,EAAA;EACvB;IAAK,qBAAqB,EAAA;EAC1B;IAAK,mBAAmB,EAAA,EAAA;;AAG5B;EACI;IAAI,mBAAmB,EAAA;EACvB;IAAK,qBAAqB,EAAA;EAC1B;IAAK,mBAAmB,EAAA,EAAA;;ACd5B;EACI,SAAS;EACT,UAAU;EACV,sBAAsB,EAAA;;ACH1B;EACI,iBAAiB,EAAA;EADrB;IAGQ,cAAc,EAAA;IAHtB;MAKY,8BAA8B,EAAA;;ACL1C;EACI,oCAA2C,EAAA;EAD/C;IAMQ,qBAAqB;IACrB,6BAA6B;IAC7B,WCHU,EAAA;;ACLjB;EACO,WAAW;EACX,6BAA6B,EAAA;;ACFrC;EACI,cAAc;EACd,sBAAsB;EACtB,YAAY,EAAA;EAHhB;IAKQ,cFJe,EAAA;EEDvB;IAQQ,aAAa,EAAA;EARrB;IAWQ,iBAAiB,EAAA;EAXzB;IAcQ,yBFbe,EAAA;EEDvB;IAiBQ,cFhBe,EAAA;EEDvB;IAoBQ,YFZW,EAAA;;AGRnB;EACI,kCAAkC,EAAA;;AAGtC;EACI,oCAA2C;EAC3C,sBAA8B,EAAA;;AAElC;EACI,iCAAyC;EACzC,yBAAgC,EAAA;;AAEpC;EACI,gCAAuC;EACvC,yBAAgC,EAAA;;ACdpC;EACI,aAAa,EAAA;;ACDjB;EACI,WAAW;EACX,8BAA6B,EAAA;;ACFjC;EACI,yBAAiC,EAAA;;ACDrC;EACE,aAAa;EACb,uBAAuB,EAAA;EAFzB;IAII,sBPCc;IOAd,kBAAkB;IAClB,6BPLmB;IOMnB,WAAW;IACX,YAAY;IACZ,2CAA2C;IAAE,WAAA;IAC7C,mCAAmC,EAAA;;AAGrC,WAAA;AACA;EACE;IAAK,+BAA+B,EAAA;EACpC;IAAO,iCAAiC,EAAA,EAAA;;AAG1C;EACE;IAAK,uBAAuB,EAAA;EAC5B;IAAO,yBAAyB,EAAA,EAAA;;ACrBpC;EAGI,aAAa,EAAA;EAHjB;IAMc,sBAAsB,EAAA;;AANpC;EAUa,kBAAkB;EAClB,UAAU;EACV,WAAW,EAAA;;AAZxB;EAea,aAAa;EACb,mBAAmB;EACnB,eAAe,EAAA;;ACjB5B;EAEQ,aAAa;EACb,8BAA8B;EAC9B,qBAAqB,EAAA;;AAJ7B;EAQQ,aAAa;EACb,6BAA6B;EAC7B,qBAAqB,EAAA;;ACV7B;EAEQ,aAAa;EACb,8BAA8B;EAC9B,qBAAqB,EAAA","sourcesContent":["@keyframes zoom-1{\r\n    from { transform: scale(0);}\r\n    to { transform: scale(1);}\r\n}\r\n\r\n@keyframes zoom-2{\r\n    0% {transform: scale(0);}\r\n    50% {transform: scale(1.1);}\r\n    100%{transform: scale(1);}\r\n}\r\n\r\n@keyframes zoom-3{\r\n    0% {transform: scale(0);}\r\n    50% {transform: scale(1.2);}\r\n    100%{transform: scale(1);}\r\n}","*,*::before,*::after{\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n}","main{\r\n    min-height: 100vh;\r\n    section{\r\n        padding: .5rem;\r\n        h5{\r\n            margin-bottom: 2rem !important;\r\n        }\r\n    }\r\n}","#appbar{\r\n    background-color: $color-primary !important;\r\n//     .toolbar{\r\n// min-height: 0 !important;\r\n//     }\r\n    .title{\r\n        text-decoration: none;\r\n        margin-right: auto !important;\r\n        color: $color-white;\r\n    }\r\n}\r\n ","// Colors\r\n$color-primary: #087995;\r\n\r\n//#c11616;\r\n$color-footer: #90b8bd;\r\n$color-white: #fff;\r\n$color-grey: grey;\r\n$color-red: red;\r\n$color-black: black;\r\n$color-blue: cadetBlue;\r\n$color-brick:firebrick;\r\n$color-teal: teal;\r\n$color-antique-white:antiquewhite;\r\n$color-brown: brown;\r\n$color-alice-blue: aliceblue;\r\n$color-darks-late-gray: darkslategray;"," .selectbox{\r\n        width: 100%;\r\n        margin: 0 0 1rem 0 !important;\r\n}",".card{\r\n    margin: .25rem;\r\n    align-self: flex-start;\r\n    width: 25rem;\r\n    h6{\r\n        color:$color-primary;\r\n    }\r\n    .cardMedia{\r\n        height: 14rem;\r\n    }\r\n    a{\r\n        margin-left: auto;\r\n    }\r\n    .avatar{\r\n        background-color: $color-primary;\r\n    }\r\n    .title{\r\n        color:$color-primary;\r\n    }\r\n    .caption{\r\n        color: $color-black;\r\n    }\r\n}","button{\r\n    margin: 0 .5rem 0 .5rem !important;\r\n}\r\n\r\n.primary-contained{\r\n    background-color: $color-primary !important;\r\n    color: $color-white !important;\r\n}\r\n.secondary-contained{\r\n    background-color: $color-white !important;\r\n    color: $color-primary !important;\r\n}\r\n.primary-outlined{\r\n    border-color: $color-primary !important;\r\n    color: $color-primary !important;\r\n}",".import-list{\r\n    display: flex;\r\n}",".textfield{\r\n    width: 100%;\r\n    margin-bottom:1rem !important;\r\n}",".MuiCheckbox-colorPrimary.Mui-checked{\r\n    color:  $color-primary !important;\r\n}",".load{\r\n  display: flex;\r\n  justify-content: center;\r\n  .loader {\r\n    border: 2px solid $color-white;\r\n    border-radius: 50%;\r\n    border-top: 2px solid $color-primary;\r\n    width: 20px;\r\n    height: 20px;\r\n    -webkit-animation: spin .3s linear infinite; /* Safari */\r\n    animation: spin .3s linear infinite;\r\n  }\r\n}\r\n  /* Safari */\r\n  @-webkit-keyframes spin {\r\n    0% { -webkit-transform: rotate(0deg); }\r\n    100% { -webkit-transform: rotate(360deg); }\r\n  }\r\n  \r\n  @keyframes spin {\r\n    0% { transform: rotate(0deg); }\r\n    100% { transform: rotate(360deg); }\r\n  }\r\n  ",".homepage{\r\n    .system-panel{\r\n    .tabs{\r\n    display: flex;\r\n     .add-system{\r\n              \r\n              align-self: flex-start;\r\n          }\r\n    }\r\n         .tab-list{\r\n             margin-right: auto;\r\n             width: 60%;\r\n             height: 10%;\r\n         }\r\n         .flex-list{\r\n             display: flex;\r\n             margin-bottom: 1rem;\r\n             flex-wrap: wrap;\r\n         }\r\n         \r\n    }\r\n}",".connected-system{\r\n    .top, .heading{\r\n        display: flex;\r\n        justify-content: space-between;\r\n        align-items: baseline;\r\n    }\r\n\r\n    .sub-heading{\r\n        display: flex;\r\n        justify-content: space-evenly;\r\n        align-items: baseline;\r\n    }\r\n}",".cart{\r\n    .heading{\r\n        display: flex;\r\n        justify-content: space-between;\r\n        align-items: baseline;\r\n    }\r\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.i, "@keyframes zoom-1 {\n  from {\n    transform: scale(0); }\n  to {\n    transform: scale(1); } }\n\n@keyframes zoom-2 {\n  0% {\n    transform: scale(0); }\n  50% {\n    transform: scale(1.1); }\n  100% {\n    transform: scale(1); } }\n\n@keyframes zoom-3 {\n  0% {\n    transform: scale(0); }\n  50% {\n    transform: scale(1.2); }\n  100% {\n    transform: scale(1); } }\n\n*, *::before, *::after {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box; }\n\nmain {\n  min-height: 100vh; }\n  main section {\n    padding: .5rem; }\n    main section h5 {\n      margin-bottom: 2rem !important; }\n\n#appbar {\n  background-color: #087995 !important; }\n  #appbar .title {\n    text-decoration: none;\n    margin-right: auto !important;\n    color: #fff; }\n\n.selectbox {\n  width: 100%;\n  margin: 0 0 1rem 0 !important; }\n\n.card {\n  margin: .25rem;\n  align-self: flex-start;\n  width: 25rem; }\n  .card h6 {\n    color: #087995; }\n  .card .cardMedia {\n    height: 14rem; }\n  .card a {\n    margin-left: auto; }\n  .card .avatar {\n    background-color: #087995; }\n  .card .title {\n    color: #087995; }\n  .card .caption {\n    color: black; }\n\nbutton {\n  margin: 0 .5rem 0 .5rem !important; }\n\n.primary-contained {\n  background-color: #087995 !important;\n  color: #fff !important; }\n\n.secondary-contained {\n  background-color: #fff !important;\n  color: #087995 !important; }\n\n.primary-outlined {\n  border-color: #087995 !important;\n  color: #087995 !important; }\n\n.import-list {\n  display: flex; }\n\n.textfield {\n  width: 100%;\n  margin-bottom: 1rem !important; }\n\n.MuiCheckbox-colorPrimary.Mui-checked {\n  color: #087995 !important; }\n\n.load {\n  display: flex;\n  justify-content: center; }\n  .load .loader {\n    border: 2px solid #fff;\n    border-radius: 50%;\n    border-top: 2px solid #087995;\n    width: 20px;\n    height: 20px;\n    -webkit-animation: spin .3s linear infinite;\n    /* Safari */\n    animation: spin .3s linear infinite; }\n\n/* Safari */\n@-webkit-keyframes spin {\n  0% {\n    -webkit-transform: rotate(0deg); }\n  100% {\n    -webkit-transform: rotate(360deg); } }\n\n@keyframes spin {\n  0% {\n    transform: rotate(0deg); }\n  100% {\n    transform: rotate(360deg); } }\n\n.homepage .system-panel .tabs {\n  display: flex; }\n  .homepage .system-panel .tabs .add-system {\n    align-self: flex-start; }\n\n.homepage .system-panel .tab-list {\n  margin-right: auto;\n  width: 60%;\n  height: 10%; }\n\n.homepage .system-panel .flex-list {\n  display: flex;\n  margin-bottom: 1rem;\n  flex-wrap: wrap; }\n\n.connected-system .top, .connected-system .heading {\n  display: flex;\n  justify-content: space-between;\n  align-items: baseline; }\n\n.connected-system .sub-heading {\n  display: flex;\n  justify-content: space-between;\n  align-items: center; }\n  .connected-system .sub-heading form {\n    display: flex;\n    align-items: baseline; }\n  .connected-system .sub-heading .select {\n    width: 50% !important; }\n\n.cart .heading {\n  display: flex;\n  justify-content: space-between;\n  align-items: baseline; }\n", "",{"version":3,"sources":["webpack://./src/sass/base/_animations.scss","webpack://./src/sass/base/_base.scss","webpack://./src/sass/base/_main.scss","webpack://./src/sass/components/_appbar.scss","webpack://./src/sass/abstracts/_variables.scss","webpack://./src/sass/components/_selectbox.scss","webpack://./src/sass/components/_card.scss","webpack://./src/sass/components/_button.scss","webpack://./src/sass/components/_dialogBox.scss","webpack://./src/sass/components/_textfield.scss","webpack://./src/sass/components/_checkbox.scss","webpack://./src/sass/components/_loader.scss","webpack://./src/sass/pages/_homepage.scss","webpack://./src/sass/pages/_connectedSystem.scss","webpack://./src/sass/pages/_cart.scss"],"names":[],"mappings":"AAAA;EACI;IAAO,mBAAmB,EAAA;EAC1B;IAAK,mBAAmB,EAAA,EAAA;;AAG5B;EACI;IAAI,mBAAmB,EAAA;EACvB;IAAK,qBAAqB,EAAA;EAC1B;IAAK,mBAAmB,EAAA,EAAA;;AAG5B;EACI;IAAI,mBAAmB,EAAA;EACvB;IAAK,qBAAqB,EAAA;EAC1B;IAAK,mBAAmB,EAAA,EAAA;;ACd5B;EACI,SAAS;EACT,UAAU;EACV,sBAAsB,EAAA;;ACH1B;EACI,iBAAiB,EAAA;EADrB;IAGQ,cAAc,EAAA;IAHtB;MAKY,8BAA8B,EAAA;;ACL1C;EACI,oCAA2C,EAAA;EAD/C;IAMQ,qBAAqB;IACrB,6BAA6B;IAC7B,WCHU,EAAA;;ACLjB;EACO,WAAW;EACX,6BAA6B,EAAA;;ACFrC;EACI,cAAc;EACd,sBAAsB;EACtB,YAAY,EAAA;EAHhB;IAKQ,cFJe,EAAA;EEDvB;IAQQ,aAAa,EAAA;EARrB;IAWQ,iBAAiB,EAAA;EAXzB;IAcQ,yBFbe,EAAA;EEDvB;IAiBQ,cFhBe,EAAA;EEDvB;IAoBQ,YFZW,EAAA;;AGRnB;EACI,kCAAkC,EAAA;;AAGtC;EACI,oCAA2C;EAC3C,sBAA8B,EAAA;;AAElC;EACI,iCAAyC;EACzC,yBAAgC,EAAA;;AAEpC;EACI,gCAAuC;EACvC,yBAAgC,EAAA;;ACdpC;EACI,aAAa,EAAA;;ACDjB;EACI,WAAW;EACX,8BAA6B,EAAA;;ACFjC;EACI,yBAAiC,EAAA;;ACDrC;EACE,aAAa;EACb,uBAAuB,EAAA;EAFzB;IAII,sBPCc;IOAd,kBAAkB;IAClB,6BPLmB;IOMnB,WAAW;IACX,YAAY;IACZ,2CAA2C;IAAE,WAAA;IAC7C,mCAAmC,EAAA;;AAGrC,WAAA;AACA;EACE;IAAK,+BAA+B,EAAA;EACpC;IAAO,iCAAiC,EAAA,EAAA;;AAG1C;EACE;IAAK,uBAAuB,EAAA;EAC5B;IAAO,yBAAyB,EAAA,EAAA;;ACrBpC;EAGI,aAAa,EAAA;EAHjB;IAMc,sBAAsB,EAAA;;AANpC;EAUa,kBAAkB;EAClB,UAAU;EACV,WAAW,EAAA;;AAZxB;EAea,aAAa;EACb,mBAAmB;EACnB,eAAe,EAAA;;ACjB5B;EAEQ,aAAa;EACb,8BAA8B;EAC9B,qBAAqB,EAAA;;AAJ7B;EAeQ,aAAa;EACb,8BAA8B;EAC9B,mBAAmB,EAAA;EAjB3B;IASY,aAAa;IACb,qBAAqB,EAAA;EAVjC;IAaY,qBAAqB,EAAA;;ACbjC;EAEQ,aAAa;EACb,8BAA8B;EAC9B,qBAAqB,EAAA","sourcesContent":["@keyframes zoom-1{\r\n    from { transform: scale(0);}\r\n    to { transform: scale(1);}\r\n}\r\n\r\n@keyframes zoom-2{\r\n    0% {transform: scale(0);}\r\n    50% {transform: scale(1.1);}\r\n    100%{transform: scale(1);}\r\n}\r\n\r\n@keyframes zoom-3{\r\n    0% {transform: scale(0);}\r\n    50% {transform: scale(1.2);}\r\n    100%{transform: scale(1);}\r\n}","*,*::before,*::after{\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n}","main{\r\n    min-height: 100vh;\r\n    section{\r\n        padding: .5rem;\r\n        h5{\r\n            margin-bottom: 2rem !important;\r\n        }\r\n    }\r\n}","#appbar{\r\n    background-color: $color-primary !important;\r\n//     .toolbar{\r\n// min-height: 0 !important;\r\n//     }\r\n    .title{\r\n        text-decoration: none;\r\n        margin-right: auto !important;\r\n        color: $color-white;\r\n    }\r\n}\r\n ","// Colors\r\n$color-primary: #087995;\r\n\r\n//#c11616;\r\n$color-footer: #90b8bd;\r\n$color-white: #fff;\r\n$color-grey: grey;\r\n$color-red: red;\r\n$color-black: black;\r\n$color-blue: cadetBlue;\r\n$color-brick:firebrick;\r\n$color-teal: teal;\r\n$color-antique-white:antiquewhite;\r\n$color-brown: brown;\r\n$color-alice-blue: aliceblue;\r\n$color-darks-late-gray: darkslategray;"," .selectbox{\r\n        width: 100%;\r\n        margin: 0 0 1rem 0 !important;\r\n}",".card{\r\n    margin: .25rem;\r\n    align-self: flex-start;\r\n    width: 25rem;\r\n    h6{\r\n        color:$color-primary;\r\n    }\r\n    .cardMedia{\r\n        height: 14rem;\r\n    }\r\n    a{\r\n        margin-left: auto;\r\n    }\r\n    .avatar{\r\n        background-color: $color-primary;\r\n    }\r\n    .title{\r\n        color:$color-primary;\r\n    }\r\n    .caption{\r\n        color: $color-black;\r\n    }\r\n}","button{\r\n    margin: 0 .5rem 0 .5rem !important;\r\n}\r\n\r\n.primary-contained{\r\n    background-color: $color-primary !important;\r\n    color: $color-white !important;\r\n}\r\n.secondary-contained{\r\n    background-color: $color-white !important;\r\n    color: $color-primary !important;\r\n}\r\n.primary-outlined{\r\n    border-color: $color-primary !important;\r\n    color: $color-primary !important;\r\n}",".import-list{\r\n    display: flex;\r\n}",".textfield{\r\n    width: 100%;\r\n    margin-bottom:1rem !important;\r\n}",".MuiCheckbox-colorPrimary.Mui-checked{\r\n    color:  $color-primary !important;\r\n}",".load{\r\n  display: flex;\r\n  justify-content: center;\r\n  .loader {\r\n    border: 2px solid $color-white;\r\n    border-radius: 50%;\r\n    border-top: 2px solid $color-primary;\r\n    width: 20px;\r\n    height: 20px;\r\n    -webkit-animation: spin .3s linear infinite; /* Safari */\r\n    animation: spin .3s linear infinite;\r\n  }\r\n}\r\n  /* Safari */\r\n  @-webkit-keyframes spin {\r\n    0% { -webkit-transform: rotate(0deg); }\r\n    100% { -webkit-transform: rotate(360deg); }\r\n  }\r\n  \r\n  @keyframes spin {\r\n    0% { transform: rotate(0deg); }\r\n    100% { transform: rotate(360deg); }\r\n  }\r\n  ",".homepage{\r\n    .system-panel{\r\n    .tabs{\r\n    display: flex;\r\n     .add-system{\r\n              \r\n              align-self: flex-start;\r\n          }\r\n    }\r\n         .tab-list{\r\n             margin-right: auto;\r\n             width: 60%;\r\n             height: 10%;\r\n         }\r\n         .flex-list{\r\n             display: flex;\r\n             margin-bottom: 1rem;\r\n             flex-wrap: wrap;\r\n         }\r\n         \r\n    }\r\n}",".connected-system{\r\n    .top, .heading{\r\n        display: flex;\r\n        justify-content: space-between;\r\n        align-items: baseline;\r\n    }\r\n\r\n    .sub-heading{\r\n        form{\r\n            display: flex;\r\n            align-items: baseline;\r\n        }\r\n        .select{\r\n            width: 50% !important;\r\n        }\r\n        display: flex;\r\n        justify-content: space-between;\r\n        align-items: center;\r\n    }\r\n}",".cart{\r\n    .heading{\r\n        display: flex;\r\n        justify-content: space-between;\r\n        align-items: baseline;\r\n    }\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -89200,9 +89231,10 @@ const Edit_1 = __importDefault(__webpack_require__(/*! @material-ui/icons/Edit *
 const checkbox_1 = __importDefault(__webpack_require__(/*! ./checkbox */ "./src/components/checkbox.tsx"));
 const Delete_1 = __importDefault(__webpack_require__(/*! @material-ui/icons/Delete */ "./node_modules/@material-ui/icons/Delete.js"));
 const core_1 = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/index.js");
-const ShoppingCart_1 = __importDefault(__webpack_require__(/*! @material-ui/icons/ShoppingCart */ "./node_modules/@material-ui/icons/ShoppingCart.js"));
+const History_1 = __importDefault(__webpack_require__(/*! @material-ui/icons/History */ "./node_modules/@material-ui/icons/History.js"));
+const AddToQueue_1 = __importDefault(__webpack_require__(/*! @material-ui/icons/AddToQueue */ "./node_modules/@material-ui/icons/AddToQueue.js"));
 function Cards(props) {
-    const { title, subHeader, imgUrl, pingActionsLabel, pingActionClick, mediaTitle, avatar, action, onShowIconClick, linkLabel, linkLabelLink, checkbox, onCheckBoxClick, checkBoxId, checked, deleteIcon, onRemoveClick, myCartIcon, onMyCartIconLebel } = props;
+    const { title, subHeader, imgUrl, pingActionsLabel, pingActionClick, mediaTitle, avatar, action, onShowIconClick, linkLabel, linkLabelLink, checkbox, onCheckBoxClick, checkBoxId, checked, deleteIcon, onRemoveClick, myCartIcon, onMyCartIconLebel, historyIcon, historyIconLebelLink } = props;
     const onShowIconClicks = (e) => {
         e.stopPropagation();
         onShowIconClick();
@@ -89222,9 +89254,12 @@ function Cards(props) {
                     deleteIcon && (react_1.default.createElement(core_1.Tooltip, { title: 'Remove the system', placement: 'top' },
                         react_1.default.createElement(IconButton_1.default, { size: "small", onClick: onRemoveClick },
                             react_1.default.createElement(Delete_1.default, { fontSize: 'small' })))),
-                    myCartIcon && (react_1.default.createElement(core_1.Tooltip, { title: 'My Cart', placement: 'top' },
+                    myCartIcon && (react_1.default.createElement(core_1.Tooltip, { title: 'Queue', placement: 'top' },
                         react_1.default.createElement(IconButton_1.default, { size: "small", href: onMyCartIconLebel },
-                            react_1.default.createElement(ShoppingCart_1.default, null))))) }),
+                            react_1.default.createElement(AddToQueue_1.default, null)))),
+                    historyIcon && (react_1.default.createElement(core_1.Tooltip, { title: 'History', placement: 'top' },
+                        react_1.default.createElement(IconButton_1.default, { size: "small", href: historyIconLebelLink },
+                            react_1.default.createElement(History_1.default, null))))) }),
             mediaTitle && react_1.default.createElement(CardMedia_1.default, { className: 'cardMedia', image: imgUrl, title: mediaTitle }),
             react_1.default.createElement(CardActions_1.default, { disableSpacing: true },
                 pingActionsLabel && react_1.default.createElement(button_1.default, { variant: 'contained', color: 'primary', onClick: actionsClick, label: pingActionsLabel }),
@@ -89460,7 +89495,7 @@ function SelectBox(props) {
     const { label, required, menu = [] } = props;
     return (react_1.default.createElement(FormControl_1.default, { variant: "outlined", className: 'selectbox' },
         react_1.default.createElement(InputLabel_1.default, { id: "demo-simple-select-outlined-label" }, label),
-        react_1.default.createElement(Select_1.default, Object.assign({ required: required, labelId: "demo-simple-select-outlined-label", id: "demo-simple-select-outlined", label: label, size: 'small' }, props), menu.map((e, i) => react_1.default.createElement(MenuItem_1.default, { key: i, value: e.value }, e.name)))));
+        react_1.default.createElement(Select_1.default, Object.assign({ required: required, labelId: "demo-simple-select-outlined-label", id: "demo-simple-select-outlined", label: label }, props), menu.map((e, i) => react_1.default.createElement(MenuItem_1.default, { key: i, value: e.value }, e.name)))));
 }
 exports.default = SelectBox;
 
@@ -89513,7 +89548,7 @@ const react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules
 const TextField_1 = __importDefault(__webpack_require__(/*! @material-ui/core/TextField */ "./node_modules/@material-ui/core/esm/TextField/index.js"));
 function Textfield(props) {
     const { id, required, label, defaultValue, error, type, className } = props;
-    return (react_1.default.createElement(TextField_1.default, Object.assign({ className: 'textfield', error: error, required: required, id: id, label: label, type: type, defaultValue: defaultValue, variant: 'outlined', size: 'small' }, props)));
+    return (react_1.default.createElement(TextField_1.default, Object.assign({ className: 'textfield', error: error, required: required, id: id, label: label, type: type, defaultValue: defaultValue, variant: 'outlined' }, props)));
 }
 exports.default = Textfield;
 
@@ -89818,35 +89853,34 @@ function MyCart(props) {
     console.log('type', type);
     return (react_1.default.createElement("section", { className: 'cart' },
         react_1.default.createElement("div", { className: 'heading' },
-            react_1.default.createElement(typography_1.default, { variant: 'h5', label: 'My Cart' }),
+            react_1.default.createElement(typography_1.default, { variant: 'h5', label: 'Items in Queue' }),
             react_1.default.createElement("div", { className: 'action' },
-                react_1.default.createElement(button_1.default, { variant: 'outlined', color: 'primary', onClick: () => emptyCart(), label: 'Empty Cart' }),
+                react_1.default.createElement(button_1.default, { variant: 'outlined', color: 'primary', onClick: () => emptyCart(), label: 'Empty Queue' }),
                 react_1.default.createElement(button_1.default, { variant: 'outlined', color: 'primary', onClick: () => handleImportExport('import'), label: 'Import' }),
                 react_1.default.createElement(button_1.default, { variant: 'outlined', color: 'primary', onClick: () => handleImportExport('export'), label: 'Export' }))),
         cartListLoading && react_1.default.createElement(loader_1.default, null),
         list.map((el, i) => (react_1.default.createElement("div", { key: i }, (el.values || []).length > 0 && react_1.default.createElement(react_1.Fragment, null,
             react_1.default.createElement(TableContainer_1.default, { component: Paper_1.default, key: i },
-                react_1.default.createElement(Table_1.default, { style: { tableLayout: 'fixed' }, size: "small", stickyHeader: true, "aria-label": "sticky table" },
+                react_1.default.createElement(Table_1.default, { style: { tableLayout: 'fixed', fontSize: '15px' }, size: "small", stickyHeader: true, "aria-label": "sticky table" },
                     react_1.default.createElement(TableHead_1.default, null,
                         react_1.default.createElement(TableRow_1.default, null,
                             react_1.default.createElement(TableCell_1.default, { align: "left", colSpan: 3 },
                                 react_1.default.createElement(typography_1.default, { variant: 'h6', label: el.category })),
                             react_1.default.createElement(TableCell_1.default, { colSpan: 1 },
                                 react_1.default.createElement(Tooltip_1.default, { title: `Remove all ${el.category} from cart`, placement: 'left' },
-                                    react_1.default.createElement(IconButton_1.default, { size: 'small', onClick: () => handleRemoveByEntityFromCart(el.category) },
-                                        react_1.default.createElement(Delete_1.default, { fontSize: 'small' }))))),
+                                    react_1.default.createElement(button_1.default, { variant: 'outlined', size: 'small', onClick: () => handleRemoveByEntityFromCart(el.category), label: 'Remove' })))),
                         react_1.default.createElement(TableRow_1.default, null,
                             (el.header || []).length > 0 && react_1.default.createElement(TableCell_1.default, null, "Remove"),
                             (el.header || []).map((e, i) => react_1.default.createElement(TableCell_1.default, { key: i }, e)))),
                     react_1.default.createElement(TableBody_1.default, null, (el.values || []).map((e, i) => react_1.default.createElement(TableRow_1.default, { key: i },
-                        react_1.default.createElement(TableCell_1.default, { style: { fontSize: '10' }, component: "th", scope: "row" },
+                        react_1.default.createElement(TableCell_1.default, { component: "th", scope: "row" },
                             react_1.default.createElement(Tooltip_1.default, { title: 'Remove', placement: 'bottom' },
                                 react_1.default.createElement(IconButton_1.default, { size: 'small', onClick: () => handleRemoveFromCart(el.category, withGkey[el.category][i]) },
                                     react_1.default.createElement(Delete_1.default, { fontSize: 'small' })))),
                         (e || []).map((ee, ii) => react_1.default.createElement(TableCell_1.default, { key: ii, component: "th", scope: "row" }, ee))))))))))),
         react_1.default.createElement(dialogBox_1.default, { maxWidth: 'xl', title: `Total Import Systems ( ${importList.length} )`, open: trigger, handleClose: handleCloseImportDialogBox, content: react_1.default.createElement(react_1.Fragment, null,
                 active.length > 0 && react_1.default.createElement(typography_1.default, { variant: 'overline', label: `Products Selected : ${active.length}` }),
-                react_1.default.createElement("div", { className: 'import-list' }, importList.map((e, i) => react_1.default.createElement(card_1.default, { avatar: e.id.charAt(0).toUpperCase(), key: i, title: e.id, checkbox: true, checkBoxId: e.id, checked: isChecked[e.id], onCheckBoxClick: handleImportCheckbox, subHeader: `${e.complex} / ${e.operator} / ${e.facility} / ${e.yard}` })))), action: react_1.default.createElement(react_1.Fragment, null,
+                react_1.default.createElement("div", { className: 'import-list' }, importList.map((e, i) => react_1.default.createElement(card_1.default, { avatar: e.id.charAt(0).toUpperCase(), key: i, title: e.id, checkbox: true, checkBoxId: e.id, checked: isChecked[e.id], onCheckBoxClick: handleImportCheckbox, subHeader: `${e.operator}/${e.complex}/${e.facility}/${e.yard}` })))), action: react_1.default.createElement(react_1.Fragment, null,
                 react_1.default.createElement(button_1.default, { variant: 'outlined', color: 'primary', onClick: handleCloseImportDialogBox, label: 'Cancel' }),
                 type === 'import' ?
                     react_1.default.createElement(button_1.default, { variant: 'contained', disabled: !active.length, color: 'primary', onClick: () => handleConfirmImport('import'), label: 'Confirm Import' })
@@ -89903,11 +89937,12 @@ const checkbox_1 = __importDefault(__webpack_require__(/*! ../components/checkbo
 const button_1 = __importDefault(__webpack_require__(/*! ../components/button */ "./src/components/button.tsx"));
 const loader_1 = __importDefault(__webpack_require__(/*! ../components/loader */ "./src/components/loader.tsx"));
 const IconButton_1 = __importDefault(__webpack_require__(/*! @material-ui/core/IconButton */ "./node_modules/@material-ui/core/esm/IconButton/index.js"));
-const ShoppingCart_1 = __importDefault(__webpack_require__(/*! @material-ui/icons/ShoppingCart */ "./node_modules/@material-ui/icons/ShoppingCart.js"));
 const Tooltip_1 = __importDefault(__webpack_require__(/*! @material-ui/core/Tooltip */ "./node_modules/@material-ui/core/esm/Tooltip/index.js"));
 const Badge_1 = __importDefault(__webpack_require__(/*! @material-ui/core/Badge */ "./node_modules/@material-ui/core/esm/Badge/index.js"));
 const Toolbar_1 = __importDefault(__webpack_require__(/*! @material-ui/core/Toolbar */ "./node_modules/@material-ui/core/esm/Toolbar/index.js"));
 const textfield_1 = __importDefault(__webpack_require__(/*! ../components/textfield */ "./src/components/textfield.tsx"));
+const AddToQueue_1 = __importDefault(__webpack_require__(/*! @material-ui/icons/AddToQueue */ "./node_modules/@material-ui/icons/AddToQueue.js"));
+const input_1 = __webpack_require__(/*! ../components/input */ "./src/components/input.tsx");
 const react_redux_1 = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 const system_1 = __webpack_require__(/*! ../redux/actions/system */ "./src/redux/actions/system.ts");
 function ConnectedSystem(props) {
@@ -89924,7 +89959,8 @@ function ConnectedSystem(props) {
     const { active = [] } = selectedEntitiesValues;
     const [category, setCategory] = react_1.useState('');
     const [isChecked, setChecked] = react_1.useState({});
-    const [searchText, setSearchText] = react_1.useState(null);
+    const [isAllChecked, setAllChecked] = react_1.useState(false);
+    const { value: searchText, bind: bindSearchText } = input_1.useInputString('');
     react_1.useEffect(() => {
         dispatch(system_1.entitiesByIDAction(connectedSystemName, connectedSystemType));
     }, [category]);
@@ -89932,10 +89968,11 @@ function ConnectedSystem(props) {
         dispatch(system_1.entitiesByIDAction(connectedSystemName, connectedSystemType));
     };
     const searchTextFieldOnChange = (event) => {
-        setSearchText(searchText);
-        console.log(event.target.value);
+        event.preventDefault();
+        console.log(event.target.value, searchText);
     };
     const searchRowsBasedOnWhileCardChar = () => {
+        console.log(searchText);
     };
     const handleCategory = react_1.useCallback((e) => {
         setCategory(e.target.value);
@@ -89944,40 +89981,46 @@ function ConnectedSystem(props) {
         dispatch(system_1.selectedEntitiesValuesByCategoryAction({}));
     }, []);
     const handleAddToCart = () => {
-        const list = active.map(e => e.split(`${category}-`)[1]);
-        dispatch(system_1.entitiesAddToCartAction(connectedSystemName, connectedSystemType, category, list));
+        dispatch(system_1.entitiesAddToCartAction(connectedSystemName, connectedSystemType, category, isAllChecked ? withGkey : active.map(e => e.split(`${category}-`)[1])));
     };
     const handleSingleChecked = (e, i) => {
         setChecked(Object.assign(Object.assign({}, isChecked), { [e.target.id]: e.target.checked }));
         dispatch(system_1.selectedEntitiesValuesByCategoryAction(Object.assign(Object.assign({}, isChecked), { [e.target.id]: e.target.checked })));
+    };
+    const handleMultiChecked = (event) => {
+        setAllChecked(isAllChecked ? false : true);
     };
     return (react_1.default.createElement("section", { className: 'connected-system' },
         react_1.default.createElement("div", { className: 'heading' },
             react_1.default.createElement(Toolbar_1.default, null,
                 react_1.default.createElement("a", { href: `/${connectedSystemType}/${connectedSystemName}`, onClick: handleReloadSystemData, className: 'title' },
                     react_1.default.createElement(typography_1.default, { variant: 'h5', label: connectedSystemName }))),
-            react_1.default.createElement(Tooltip_1.default, { title: 'My Cart', placement: 'left' },
+            react_1.default.createElement(Tooltip_1.default, { title: 'Add to Queue', placement: 'left' },
                 react_1.default.createElement(IconButton_1.default, { href: `/${connectedSystemType}/cart/${connectedSystemName}` },
                     react_1.default.createElement(Badge_1.default, { badgeContent: active.length, color: "primary" },
-                        react_1.default.createElement(ShoppingCart_1.default, null))))),
+                        react_1.default.createElement(AddToQueue_1.default, null))))),
         entitiesLoading && react_1.default.createElement(loader_1.default, null),
         react_1.default.createElement("div", { className: 'sub-heading' },
-            react_1.default.createElement(select_1.default, { label: 'Select Category', value: category, onChange: handleCategory, menu: entities }),
-            react_1.default.createElement(textfield_1.default, { size: 'small', type: 'text', onChange: searchTextFieldOnChange, placement: 'left' }),
-            react_1.default.createElement(button_1.default, { variant: 'contained', color: 'primary', onClick: () => searchRowsBasedOnWhileCardChar, label: 'Search' })),
-        react_1.default.createElement("div", { className: 'top' }, active.length > 0 && (react_1.default.createElement(react_1.Fragment, null,
-            react_1.default.createElement(typography_1.default, { label: `${category} Selected: ${active.length}` }),
-            react_1.default.createElement(button_1.default, { variant: 'contained', color: 'primary', onClick: handleAddToCart, label: 'Add to cart' })))),
+            react_1.default.createElement("div", { className: 'select' },
+                react_1.default.createElement(select_1.default, { label: 'Select Category', value: category, onChange: handleCategory, menu: entities })),
+            react_1.default.createElement("form", { onSubmit: searchTextFieldOnChange },
+                react_1.default.createElement(textfield_1.default, Object.assign({ type: 'text' }, bindSearchText, { label: 'test' })),
+                react_1.default.createElement(button_1.default, { variant: 'contained', color: 'primary', type: 'submit', label: 'Search' }))),
+        react_1.default.createElement("div", { className: 'top' }, (active.length > 0 || isAllChecked) && (react_1.default.createElement(react_1.Fragment, null,
+            react_1.default.createElement(typography_1.default, { label: `${category} Selected: ${isAllChecked ? tableValues.length : active.length}` }),
+            react_1.default.createElement(button_1.default, { variant: 'contained', color: 'primary', onClick: handleAddToCart, label: 'Add to Queue' })))),
         entitiesValuesLoading && react_1.default.createElement(loader_1.default, null),
         react_1.default.createElement(TableContainer_1.default, { component: Paper_1.default },
             react_1.default.createElement(Table_1.default, { size: "small", stickyHeader: true, "aria-label": "sticky table" },
                 react_1.default.createElement(TableHead_1.default, null,
                     react_1.default.createElement(TableRow_1.default, null,
-                        (tableHeaders || []).length > 0 && react_1.default.createElement(TableCell_1.default, null, "Select"),
+                        (tableHeaders || []).length > 0 &&
+                            react_1.default.createElement(TableCell_1.default, null,
+                                react_1.default.createElement(checkbox_1.default, { onChange: handleMultiChecked })),
                         (tableHeaders || []).map((e, i) => react_1.default.createElement(TableCell_1.default, { key: i }, e)))),
                 react_1.default.createElement(TableBody_1.default, null, (tableValues).map((e, i) => react_1.default.createElement(TableRow_1.default, { key: i },
                     react_1.default.createElement(TableCell_1.default, { padding: "checkbox", component: "th", scope: "row" },
-                        react_1.default.createElement(checkbox_1.default, { id: `${category}-${withGkey[i]}`, checked: isChecked[`${category}-${withGkey[i]}`] || false, onChange: (e) => handleSingleChecked(e, withGkey[i]) })),
+                        react_1.default.createElement(checkbox_1.default, { id: `${category}-${withGkey[i]}`, checked: isChecked[`${category}-${withGkey[i]}`] || isAllChecked, onChange: (e) => handleSingleChecked(e, withGkey[i]) })),
                     (e).map((ee, ii) => react_1.default.createElement(TableCell_1.default, { key: ii, component: "th", scope: "row" }, ee)))))))));
 }
 exports.default = ConnectedSystem;
@@ -90019,6 +90062,75 @@ function Default() {
     return (react_1.default.createElement(react_1.Fragment, null, "Please Login to start"));
 }
 exports.default = Default;
+
+
+/***/ }),
+
+/***/ "./src/pages/history.tsx":
+/*!*******************************!*\
+  !*** ./src/pages/history.tsx ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+const typography_1 = __importDefault(__webpack_require__(/*! ../components/typography */ "./src/components/typography.tsx"));
+const select_1 = __importDefault(__webpack_require__(/*! ../components/select */ "./src/components/select.tsx"));
+const loader_1 = __importDefault(__webpack_require__(/*! ../components/loader */ "./src/components/loader.tsx"));
+const react_redux_1 = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+const system_1 = __webpack_require__(/*! ../redux/actions/system */ "./src/redux/actions/system.ts");
+function HistoryPage(props) {
+    const dispatch = react_redux_1.useDispatch();
+    const { match } = props;
+    const connectedSystemName = match.params.system;
+    const connectedSystemType = match.params.type;
+    const getHistoryList = react_redux_1.useSelector(state => state.getHistoryByDate);
+    const entitiesById = react_redux_1.useSelector(state => state.entitiesById);
+    const selectedEntitiesValues = react_redux_1.useSelector(state => state.selectedEntitiesValues);
+    const { loading: entitiesLoading, entities = [] } = entitiesById;
+    const { active = [] } = selectedEntitiesValues;
+    const [category, setCategory] = react_1.useState('');
+    const { loading: getHistoryListLoading, data } = getHistoryList;
+    react_1.useEffect(() => {
+        dispatch(system_1.getHistory(connectedSystemName, connectedSystemType));
+    }, [category]);
+    const selectHistoryByDate = react_1.useCallback((e) => {
+        dispatch(system_1.getHistoryByDate(connectedSystemName, connectedSystemType, e.target.value));
+    }, []);
+    console.log(data);
+    return (react_1.default.createElement("section", { className: 'connected-system' },
+        react_1.default.createElement("div", { className: 'heading' },
+            react_1.default.createElement(typography_1.default, { variant: 'h5', label: connectedSystemName })),
+        entitiesLoading && react_1.default.createElement(loader_1.default, null),
+        react_1.default.createElement("div", { className: 'sub-heading' },
+            react_1.default.createElement(select_1.default, { label: 'Select Date', value: category, onChange: selectHistoryByDate, menu: entities }))));
+}
+exports.default = HistoryPage;
 
 
 /***/ }),
@@ -90238,13 +90350,13 @@ function Homepage() {
                         react_1.default.createElement(divider_1.default, { orientation: 'horizontal' }),
                         impLoading && react_1.default.createElement(loader_1.default, null),
                         react_1.default.createElement(typography_1.default, { variant: 'h6', label: 'Import System' }),
-                        react_1.default.createElement("div", { className: 'flex-list' }, (importList || []).map((e, i) => react_1.default.createElement(card_1.default, { avatar: e.id.charAt(0).toUpperCase(), linkLabel: 'Visit', linkLabelLink: `/import/${e.id}`, key: i, onShowIconClick: () => handleShow(e, 'imp'), title: e.id, subHeader: `${e.operator}/${e.complex}/${e.facility}/${e.yard}`, action: true, pingActionsLabel: 'Ping', pingActionClick: () => handlePingActionClick('import', e.id), deleteIcon: true, onRemoveClick: () => handleRemoveSystem('import', e.id) })))),
+                        react_1.default.createElement("div", { className: 'flex-list' }, (importList || []).map((e, i) => react_1.default.createElement(card_1.default, { avatar: e.id.charAt(0).toUpperCase(), linkLabel: 'Visit', linkLabelLink: `/import/${e.id}`, key: i, onShowIconClick: () => handleShow(e, 'imp'), title: e.id, subHeader: `${e.operator}/${e.complex}/${e.facility}/${e.yard}`, action: true, pingActionsLabel: 'Ping', pingActionClick: () => handlePingActionClick('import', e.id), deleteIcon: true, onRemoveClick: () => handleRemoveSystem('import', e.id), historyIcon: true, historyIconLebelLink: `history/import/${e.id}` })))),
                     react_1.default.createElement(TabPanel_1.default, { value: "export" },
                         expLoading && react_1.default.createElement(loader_1.default, null),
                         react_1.default.createElement("div", { className: 'flex-list' }, (exportList || []).map((e, i) => react_1.default.createElement(card_1.default, { avatar: e.id.charAt(0).toUpperCase(), key: i, linkLabel: 'Visit', linkLabelLink: `/export/${e.id}`, onShowIconClick: () => handleShow(e, 'exp'), title: e.id, subHeader: `${e.operator}/${e.complex}/${e.facility}/${e.yard}`, action: true, pingActionsLabel: 'Ping', pingActionClick: () => handlePingActionClick('export', e.id), deleteIcon: true, onRemoveClick: () => handleRemoveSystem('export', e.id), myCartIcon: true, onMyCartIconLebel: `/export/cart/${e.id}` })))),
                     react_1.default.createElement(TabPanel_1.default, { value: "import" },
                         impLoading && react_1.default.createElement(loader_1.default, null),
-                        react_1.default.createElement("div", { className: 'flex-list' }, (importList || []).map((e, i) => react_1.default.createElement(card_1.default, { avatar: e.id.charAt(0).toUpperCase(), linkLabel: 'Visit', linkLabelLink: `/import/${e.id}`, key: i, onShowIconClick: () => handleShow(e, 'imp'), title: e.id, subHeader: `${e.complex}/${e.operator}/${e.facility}/${e.yard}`, action: true, pingActionsLabel: 'Ping', pingActionClick: () => handlePingActionClick('import', e.id), deleteIcon: true, onRemoveClick: () => handleRemoveSystem('import', e.id) }))))),
+                        react_1.default.createElement("div", { className: 'flex-list' }, (importList || []).map((e, i) => react_1.default.createElement(card_1.default, { avatar: e.id.charAt(0).toUpperCase(), linkLabel: 'Visit', linkLabelLink: `/import/${e.id}`, key: i, onShowIconClick: () => handleShow(e, 'imp'), title: e.id, subHeader: `${e.complex}/${e.operator}/${e.facility}/${e.yard}`, action: true, pingActionsLabel: 'Ping', pingActionClick: () => handlePingActionClick('import', e.id), deleteIcon: true, onRemoveClick: () => handleRemoveSystem('import', e.id), historyIcon: true }))))),
                 react_1.default.createElement(dialogBox_1.default, { handleClose: handleCloseDialogBox, open: t, title: 'Update System', maxWidth: 'sm', content: react_1.default.createElement(react_1.Fragment, null,
                         react_1.default.createElement("form", { onSubmit: handleSystemUpdate },
                             react_1.default.createElement(textfield_1.default, Object.assign({ type: 'text', required: true, label: 'Operator' }, bindUpdateOperator)),
@@ -90328,6 +90440,9 @@ exports.actions = {
     systemCartListLoading: 'SYSTEM_CART_LIST_LOADING',
     systemCartList: 'SYSTEM_CART_LIST',
     systemCartListError: 'SYSTEM_CART_LIST_ERROR',
+    getHistoryByDateLoading: 'GET_HISTORY_BY_DATE_LOADING',
+    getHistoryByDate: 'GET_HISTORY_BY_DATE',
+    getHistoryByDateError: 'GET_HISTORY_BY_DATE_ERROR',
     removeFromCartEntitiesLoading: 'REMOVE_CART_ENTITIES_LOADING',
     removeFromCartEntities: 'REMOVE_CART_ENTITIES',
     removeFromCartEntitiesError: 'REMOVE_CART_ENTITIES_ERROR',
@@ -90426,7 +90541,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.importSystemAction = exports.importListCheckedAction = exports.entityExportAction = exports.emptyCartAction = exports.removeByEntityFromCartEntitiesAction = exports.removeFromCartEntitiesAction = exports.systemCartListAction = exports.entitiesAddToCartAction = exports.selectedEntitiesValuesByCategoryAction = exports.entitiesValuesByCategoryAndSearchTextAction = exports.entitiesValuesByCategoryAction = exports.entitiesByIDAction = exports.connectExportSystemAction = exports.updateImportSystemAction = exports.updateExportSystemAction = exports.removeSystem = exports.pingToSystemAction = exports.addSystemAction = exports.importSystemListAction = exports.exportSystemListAction = void 0;
+exports.importSystemAction = exports.importListCheckedAction = exports.entityExportAction = exports.emptyCartAction = exports.removeByEntityFromCartEntitiesAction = exports.removeFromCartEntitiesAction = exports.getHistoryByDate = exports.systemCartListAction = exports.entitiesAddToCartAction = exports.selectedEntitiesValuesByCategoryAction = exports.entitiesValuesByCategoryAndSearchTextAction = exports.entitiesValuesByCategoryAction = exports.getHistory = exports.entitiesByIDAction = exports.connectExportSystemAction = exports.updateImportSystemAction = exports.updateExportSystemAction = exports.removeSystem = exports.pingToSystemAction = exports.addSystemAction = exports.importSystemListAction = exports.exportSystemListAction = void 0;
 const actionTypes_1 = __webpack_require__(/*! ../actionTypes */ "./src/redux/actionTypes.ts");
 const axios_1 = __importDefault(__webpack_require__(/*! ../../config/axios */ "./src/config/axios.ts"));
 const exportSystemListAction = () => (dispatch) => __awaiter(void 0, void 0, void 0, function* () {
@@ -90562,6 +90677,18 @@ const entitiesByIDAction = (id, connectedSystemType) => (dispatch) => __awaiter(
     }
 });
 exports.entitiesByIDAction = entitiesByIDAction;
+const getHistory = (id, connectedSystemType) => (dispatch) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        dispatch({ type: actionTypes_1.actions.entitiesByIdLoading });
+        const res = yield axios_1.default.post(`/history/${connectedSystemType}/${id}`);
+        const { data } = res;
+        dispatch({ type: actionTypes_1.actions.entitiesById, payload: data });
+    }
+    catch (er) {
+        dispatch({ type: actionTypes_1.actions.entitiesByIdError, payload: 'Something went wrong' });
+    }
+});
+exports.getHistory = getHistory;
 const entitiesValuesByCategoryAction = (id, connectedSystemType, cat) => (dispatch) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         dispatch({ type: actionTypes_1.actions.entitiesValuesByCategoryLoading });
@@ -90619,6 +90746,18 @@ const systemCartListAction = (sys, connectedSystemType) => (dispatch) => __await
     }
 });
 exports.systemCartListAction = systemCartListAction;
+const getHistoryByDate = (sys, connectedSystemType, date) => (dispatch) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        dispatch({ type: actionTypes_1.actions.getHistoryByDateLoading });
+        const res = yield axios_1.default.post(`/history/${connectedSystemType}/${sys}/${date}`);
+        const { data } = res;
+        dispatch({ type: actionTypes_1.actions.getHistoryByDate, payload: data, });
+    }
+    catch (er) {
+        dispatch({ type: actionTypes_1.actions.getHistoryByDateError, payload: 'Something went wrong' });
+    }
+});
+exports.getHistoryByDate = getHistoryByDate;
 const removeFromCartEntitiesAction = (sys, connectedSystemType, cat, ls) => (dispatch) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         dispatch({ type: actionTypes_1.actions.removeFromCartEntitiesLoading });
@@ -90831,7 +90970,8 @@ exports.default = redux_1.combineReducers({
     importListCheck: system_1.importListCheckReducer,
     importSystem: system_1.importSystemReducer,
     loginDialogBox: component_1.loginDialogBoxReducer,
-    userLogin: user_1.userLoginReducer
+    userLogin: user_1.userLoginReducer,
+    getHistoryByDate: system_1.getHistoryByDateReducer
 });
 
 
@@ -90847,7 +90987,7 @@ exports.default = redux_1.combineReducers({
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.importSystemReducer = exports.importListCheckReducer = exports.removeFromCartEntitiesReducer = exports.systemCartListReducer = exports.entitiesAddToCartReducer = exports.selectedEntitiesValuesByCategoryReducer = exports.entitiesValuesByCategoryReducer = exports.entitiesByIdReducer = exports.connectExportSystemReducer = exports.updateImportSystemReducer = exports.pingSystemReducer = exports.updateExportSystemReducer = exports.addSystemReducer = exports.importSystemListReducer = exports.exportSystemListReducer = void 0;
+exports.importSystemReducer = exports.importListCheckReducer = exports.removeFromCartEntitiesReducer = exports.systemCartListReducer = exports.getHistoryByDateReducer = exports.entitiesAddToCartReducer = exports.selectedEntitiesValuesByCategoryReducer = exports.entitiesValuesByCategoryReducer = exports.entitiesByIdReducer = exports.connectExportSystemReducer = exports.updateImportSystemReducer = exports.pingSystemReducer = exports.updateExportSystemReducer = exports.addSystemReducer = exports.importSystemListReducer = exports.exportSystemListReducer = void 0;
 const actionTypes_1 = __webpack_require__(/*! ../actionTypes */ "./src/redux/actionTypes.ts");
 function exportSystemListReducer(state = null, action) {
     switch (action.type) {
@@ -90983,6 +91123,18 @@ function entitiesAddToCartReducer(state = null, action) {
     }
 }
 exports.entitiesAddToCartReducer = entitiesAddToCartReducer;
+function getHistoryByDateReducer(state = null, action) {
+    switch (action.type) {
+        case actionTypes_1.actions.getHistoryByDateLoading:
+            return Object.assign(Object.assign({}, state), { loading: true });
+        case actionTypes_1.actions.getHistoryByDate:
+            const { payload = {} } = action;
+            return Object.assign(Object.assign({}, state), { data: payload, loading: false });
+        default:
+            return Object.assign({}, state);
+    }
+}
+exports.getHistoryByDateReducer = getHistoryByDateReducer;
 function systemCartListReducer(state = null, action) {
     switch (action.type) {
         case actionTypes_1.actions.systemCartListLoading:
@@ -91095,12 +91247,14 @@ const homepage_1 = __importDefault(__webpack_require__(/*! ../pages/homepage */ 
 const default_1 = __importDefault(__webpack_require__(/*! ../pages/default */ "./src/pages/default.tsx"));
 const connectedSystem_1 = __importDefault(__webpack_require__(/*! ../pages/connectedSystem */ "./src/pages/connectedSystem.tsx"));
 const cart_1 = __importDefault(__webpack_require__(/*! ../pages/cart */ "./src/pages/cart.tsx"));
+const history_1 = __importDefault(__webpack_require__(/*! ../pages/history */ "./src/pages/history.tsx"));
 const Main = () => (react_1.default.createElement(react_router_dom_1.BrowserRouter, null,
     react_1.default.createElement(react_router_dom_1.Switch, null,
         react_1.default.createElement(react_router_dom_1.Route, { path: '/', exact: true, component: default_1.default }),
         react_1.default.createElement(react_router_dom_1.Route, { path: '/homepage', exact: true, component: homepage_1.default }),
         react_1.default.createElement(react_router_dom_1.Route, { path: '/:type/:system', exact: true, component: connectedSystem_1.default }),
-        react_1.default.createElement(react_router_dom_1.Route, { path: '/:type/cart/:system', exact: true, component: cart_1.default }))));
+        react_1.default.createElement(react_router_dom_1.Route, { path: '/:type/cart/:system', exact: true, component: cart_1.default }),
+        react_1.default.createElement(react_router_dom_1.Route, { path: '/history/:type/:system', exact: true, component: history_1.default }))));
 exports.default = Main;
 
 

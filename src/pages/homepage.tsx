@@ -241,6 +241,8 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
                   pingActionClick={()=>handlePingActionClick('import', e.id)}
                   deleteIcon
                   onRemoveClick={()=>handleRemoveSystem('import', e.id)}
+                  historyIcon
+                  historyIconLebelLink={`history/import/${e.id}`}
                   />)}
                 </div>
               </TabPanel>
@@ -281,6 +283,7 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
                   pingActionClick={()=>handlePingActionClick('import', e.id)}
                   deleteIcon
                   onRemoveClick={()=>handleRemoveSystem('import', e.id)}
+                  historyIcon
                   />)}
                 </div>
               </TabPanel>

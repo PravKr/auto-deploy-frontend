@@ -17,6 +17,8 @@ import Tooltip from '@material-ui/core/Tooltip';
 import Badge from '@material-ui/core/Badge';
 import Toolbar from '@material-ui/core/Toolbar'
 import Textfield from '../components/textfield'
+import AddToQueueIcon from '@material-ui/icons/AddToQueue';
+import {useInputString} from '../components/input'
 
 import { useSelector, useDispatch } from 'react-redux'
 import { 
@@ -48,7 +50,8 @@ function ConnectedSystem(props){
     const [category, setCategory] = useState('')
     const [isChecked, setChecked] = useState({})
     const [isAllChecked, setAllChecked] = useState(false)
-    const [searchText, setSearchText] = useState(null)
+    //const [searchText, setSearchText] = useState('')
+    const {value: searchText, bind: bindSearchText} = useInputString('')
 
     useEffect(()=>{
       dispatch(entitiesByIDAction(connectedSystemName, connectedSystemType))
@@ -59,12 +62,12 @@ function ConnectedSystem(props){
   }
 
   const searchTextFieldOnChange = (event) => {
-    setSearchText(searchText)
-    console.log(event.target.value)
+    event.preventDefault()
+    console.log(event.target.value, searchText)
   }
 
   const searchRowsBasedOnWhileCardChar = () => {
-    //console.log(searchText)
+    console.log(searchText)
     //dispatch(entitiesValuesByCategoryAndSearchTextAction(connectedSystemName, connectedSystemType, category, searchText))
     //setChecked({})
     //dispatch(selectedEntitiesValuesByCategoryAction({}))
@@ -102,26 +105,30 @@ return  (
                 <Typography variant='h5' label={connectedSystemName}/>
               </a>
             </Toolbar>
-              <Tooltip title='My Cart' placement='left'>
+              <Tooltip title='Add to Queue' placement='left'>
                 <IconButton href={`/${connectedSystemType}/cart/${connectedSystemName}`}>
                   <Badge badgeContent={active.length} color="primary">
-                    <ShoppingCartIcon />
+                    <AddToQueueIcon />
                   </Badge>
                 </IconButton>
               </Tooltip>
             </div>
             {entitiesLoading && <Loader/>}
             <div className='sub-heading'>
-              <Select label='Select Category' value={category} onChange={handleCategory} menu={entities} />
-              <Textfield size='small' type='text' onChange={searchTextFieldOnChange} placement='left'/>
-              <Button variant='contained' color='primary' onClick={()=>searchRowsBasedOnWhileCardChar} label='Search'/>
+              <div className='select' >
+                <Select label='Select Category' value={category} onChange={handleCategory} menu={entities} />
+              </div>
+              <form onSubmit={searchTextFieldOnChange}>
+                <Textfield type='text' {...bindSearchText} label='test'/>
+                <Button variant='contained' color='primary' type='submit' label='Search'/>
+              </form>
             </div>
             <div className='top'>
               {
                 (active.length > 0 || isAllChecked) && (
                   <Fragment>
                     <Typography label={`${category} Selected: ${isAllChecked ? tableValues.length : active.length}`}/>
-                    <Button variant='contained' color='primary' onClick={handleAddToCart} label='Add to cart'/>
+                    <Button variant='contained' color='primary' onClick={handleAddToCart} label='Add to Queue'/>
                   </Fragment>)
               }
             </div>

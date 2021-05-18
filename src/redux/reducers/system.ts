@@ -140,6 +140,18 @@ export function entitiesAddToCartReducer(state=null,action){
     }
 }
 
+export function getHistoryByDateReducer(state=null, action) {
+    switch(action.type){
+        case actions.getHistoryByDateLoading:
+            return{...state, loading:true}
+            case actions.getHistoryByDate:
+                const {payload={}} = action
+                return {...state, data:payload, loading:false}
+            default:
+                return {...state}
+    }
+}
+
 export function systemCartListReducer(state=null,action){
     switch(action.type){
         case actions.systemCartListLoading:

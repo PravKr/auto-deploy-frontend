@@ -6,8 +6,15 @@
     }
 
     .sub-heading{
+        form{
+            display: flex;
+            align-items: baseline;
+        }
+        .select{
+            width: 50% !important;
+        }
         display: flex;
-        justify-content: space-evenly;
-        align-items: baseline;
+        justify-content: space-between;
+        align-items: center;
     }
 }
