@@ -47,6 +47,7 @@ function ConnectedSystem(props){
     const { active=[]} = selectedEntitiesValues
     const [category, setCategory] = useState('')
     const [isChecked, setChecked] = useState({})
+    const [isAllChecked, setAllChecked] = useState(false)
     const [searchText, setSearchText] = useState(null)
 
     useEffect(()=>{
@@ -77,14 +78,21 @@ function ConnectedSystem(props){
   },[])
 
   const handleAddToCart = ()=>{
-    const list = active.map(e=> e.split(`${category}-`)[1])
-    dispatch(entitiesAddToCartAction(connectedSystemName, connectedSystemType, category,list))
+    //const list = 
+    //console.log(isAllChecked + list)
+    dispatch(entitiesAddToCartAction(connectedSystemName,
+       connectedSystemType, 
+       category,isAllChecked ? withGkey : active.map(e=> e.split(`${category}-`)[1])))
   }
 
-    const handleSingleChecked=(e,i)=>{  
-     setChecked({...isChecked, [e.target.id]:e.target.checked })
-     dispatch(selectedEntitiesValuesByCategoryAction({...isChecked, [e.target.id]:e.target.checked }))
-    }
+  const handleSingleChecked=(e,i)=>{ 
+    setChecked({...isChecked, [e.target.id]:e.target.checked })
+    dispatch(selectedEntitiesValuesByCategoryAction({...isChecked, [e.target.id]:e.target.checked }))
+  }
+
+  const handleMultiChecked=(event)=>{
+    setAllChecked(isAllChecked ? false : true)
+  }
 
 return  (
           <section className='connected-system'>
@@ -110,9 +118,9 @@ return  (
             </div>
             <div className='top'>
               {
-                active.length > 0 && (
+                (active.length > 0 || isAllChecked) && (
                   <Fragment>
-                    <Typography label={`${category} Selected: ${active.length}`}/>
+                    <Typography label={`${category} Selected: ${isAllChecked ? tableValues.length : active.length}`}/>
                     <Button variant='contained' color='primary' onClick={handleAddToCart} label='Add to cart'/>
                   </Fragment>)
               }
@@ -122,7 +130,11 @@ return  (
               <Table size="small" stickyHeader aria-label="sticky table">
                 <TableHead>
                   <TableRow>
-                    {(tableHeaders || []).length>0 && <TableCell>Select</TableCell>} 
+                    {
+                      (tableHeaders || []).length>0 && 
+                      <TableCell>
+                        <Checkbox onChange={handleMultiChecked}/>
+                      </TableCell>} 
                     {(tableHeaders || []).map((e,i)=><TableCell key={i}>{e}</TableCell>)}
                   </TableRow>
                 </TableHead>
@@ -132,7 +144,7 @@ return  (
                       <TableCell padding="checkbox" component="th" scope="row">
                         <Checkbox
                           id={`${category}-${withGkey[i]}`}
-                          checked={isChecked[`${category}-${withGkey[i]}`] || false}
+                          checked={isChecked[`${category}-${withGkey[i]}`] || isAllChecked }
                           onChange={(e)=>handleSingleChecked(e,withGkey[i])}
                         />
                       </TableCell> 
