@@ -89850,7 +89850,6 @@ function MyCart(props) {
         setChecked(Object.assign(Object.assign({}, isChecked), { [e.target.id]: e.target.checked }));
         dispatch(system_1.importListCheckedAction(Object.assign(Object.assign({}, isChecked), { [e.target.id]: e.target.checked })));
     };
-    console.log('type', type);
     return (react_1.default.createElement("section", { className: 'cart' },
         react_1.default.createElement("div", { className: 'heading' },
             react_1.default.createElement(typography_1.default, { variant: 'h5', label: 'Items in Queue' }),
@@ -90101,6 +90100,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 const typography_1 = __importDefault(__webpack_require__(/*! ../components/typography */ "./src/components/typography.tsx"));
 const select_1 = __importDefault(__webpack_require__(/*! ../components/select */ "./src/components/select.tsx"));
+const Table_1 = __importDefault(__webpack_require__(/*! @material-ui/core/Table */ "./node_modules/@material-ui/core/esm/Table/index.js"));
+const TableBody_1 = __importDefault(__webpack_require__(/*! @material-ui/core/TableBody */ "./node_modules/@material-ui/core/esm/TableBody/index.js"));
+const TableCell_1 = __importDefault(__webpack_require__(/*! @material-ui/core/TableCell */ "./node_modules/@material-ui/core/esm/TableCell/index.js"));
+const TableContainer_1 = __importDefault(__webpack_require__(/*! @material-ui/core/TableContainer */ "./node_modules/@material-ui/core/esm/TableContainer/index.js"));
+const TableHead_1 = __importDefault(__webpack_require__(/*! @material-ui/core/TableHead */ "./node_modules/@material-ui/core/esm/TableHead/index.js"));
+const TableRow_1 = __importDefault(__webpack_require__(/*! @material-ui/core/TableRow */ "./node_modules/@material-ui/core/esm/TableRow/index.js"));
+const Paper_1 = __importDefault(__webpack_require__(/*! @material-ui/core/Paper */ "./node_modules/@material-ui/core/esm/Paper/index.js"));
 const loader_1 = __importDefault(__webpack_require__(/*! ../components/loader */ "./src/components/loader.tsx"));
 const react_redux_1 = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 const system_1 = __webpack_require__(/*! ../redux/actions/system */ "./src/redux/actions/system.ts");
@@ -90110,25 +90116,33 @@ function HistoryPage(props) {
     const connectedSystemName = match.params.system;
     const connectedSystemType = match.params.type;
     const getHistoryList = react_redux_1.useSelector(state => state.getHistoryByDate);
-    const entitiesById = react_redux_1.useSelector(state => state.entitiesById);
-    const selectedEntitiesValues = react_redux_1.useSelector(state => state.selectedEntitiesValues);
-    const { loading: entitiesLoading, entities = [] } = entitiesById;
-    const { active = [] } = selectedEntitiesValues;
+    const getHistoryy = react_redux_1.useSelector(state => state.getHistory);
+    const { loading: getHistoryLoading, histories = [] } = getHistoryy;
     const [category, setCategory] = react_1.useState('');
-    const { loading: getHistoryListLoading, data } = getHistoryList;
+    const { loading: getHistoryListLoading, list = [], withGkey = {} } = getHistoryList;
     react_1.useEffect(() => {
         dispatch(system_1.getHistory(connectedSystemName, connectedSystemType));
     }, [category]);
     const selectHistoryByDate = react_1.useCallback((e) => {
+        setCategory(e.target.value);
         dispatch(system_1.getHistoryByDate(connectedSystemName, connectedSystemType, e.target.value));
     }, []);
-    console.log(data);
     return (react_1.default.createElement("section", { className: 'connected-system' },
         react_1.default.createElement("div", { className: 'heading' },
             react_1.default.createElement(typography_1.default, { variant: 'h5', label: connectedSystemName })),
-        entitiesLoading && react_1.default.createElement(loader_1.default, null),
+        getHistoryLoading && react_1.default.createElement(loader_1.default, null),
         react_1.default.createElement("div", { className: 'sub-heading' },
-            react_1.default.createElement(select_1.default, { label: 'Select Date', value: category, onChange: selectHistoryByDate, menu: entities }))));
+            react_1.default.createElement(select_1.default, { label: 'Select Date', value: category, onChange: selectHistoryByDate, menu: histories })),
+        getHistoryListLoading && react_1.default.createElement(loader_1.default, null),
+        list.map((el, i) => (react_1.default.createElement("div", { key: i }, (el.values || []).length > 0 && react_1.default.createElement(react_1.Fragment, null,
+            react_1.default.createElement(TableContainer_1.default, { component: Paper_1.default, key: i },
+                react_1.default.createElement(Table_1.default, { style: { tableLayout: 'fixed', fontSize: '15px' }, size: "small", stickyHeader: true, "aria-label": "sticky table" },
+                    react_1.default.createElement(TableHead_1.default, null,
+                        react_1.default.createElement(TableRow_1.default, null,
+                            react_1.default.createElement(TableCell_1.default, { align: "left", colSpan: 3 },
+                                react_1.default.createElement(typography_1.default, { variant: 'h6', label: el.category }))),
+                        react_1.default.createElement(TableRow_1.default, null, (el.header || []).map((e, i) => react_1.default.createElement(TableCell_1.default, { key: i }, e)))),
+                    react_1.default.createElement(TableBody_1.default, null, (el.values || []).map((e, i) => react_1.default.createElement(TableRow_1.default, { key: i }, (e || []).map((ee, ii) => react_1.default.createElement(TableCell_1.default, { key: ii, component: "th", scope: "row" }, ee)))))))))))));
 }
 exports.default = HistoryPage;
 
@@ -90429,6 +90443,9 @@ exports.actions = {
     entitiesByIdLoading: 'ENTITIES_BY_ID_LOADING',
     entitiesById: 'ENTITIES_BY_ID',
     entitiesByIdError: 'ENTITIES_BY_ID_ERROR',
+    getHistoryLoading: 'GET_HISTORY_LOADING',
+    getHistory: 'GET_HISOTRY',
+    getHistoryError: 'GET_HISOTRY_ERROR',
     entitiesValuesByCategoryLoading: 'ENTITIES_VALUES_BY_CATEGORY_LOADING',
     entitiesValuesByCategory: 'ENTITIES_VALUES_BY_CATEGORY',
     entitiesValuesByCategoryError: 'ENTITIES_VALUES_BY_CATEGORY_ERROR',
@@ -90679,13 +90696,13 @@ const entitiesByIDAction = (id, connectedSystemType) => (dispatch) => __awaiter(
 exports.entitiesByIDAction = entitiesByIDAction;
 const getHistory = (id, connectedSystemType) => (dispatch) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        dispatch({ type: actionTypes_1.actions.entitiesByIdLoading });
+        dispatch({ type: actionTypes_1.actions.getHistoryLoading });
         const res = yield axios_1.default.post(`/history/${connectedSystemType}/${id}`);
         const { data } = res;
-        dispatch({ type: actionTypes_1.actions.entitiesById, payload: data });
+        dispatch({ type: actionTypes_1.actions.getHistory, payload: data });
     }
     catch (er) {
-        dispatch({ type: actionTypes_1.actions.entitiesByIdError, payload: 'Something went wrong' });
+        dispatch({ type: actionTypes_1.actions.getHistoryError, payload: 'Something went wrong' });
     }
 });
 exports.getHistory = getHistory;
@@ -90961,6 +90978,7 @@ exports.default = redux_1.combineReducers({
     connectExportSystem: system_1.connectExportSystemReducer,
     addSystem: system_1.addSystemReducer,
     entitiesById: system_1.entitiesByIdReducer,
+    getHistory: system_1.getHistoryReducer,
     entitiesAddToCart: system_1.entitiesAddToCartReducer,
     entitiesValues: system_1.entitiesValuesByCategoryReducer,
     selectedEntitiesValues: system_1.selectedEntitiesValuesByCategoryReducer,
@@ -90987,7 +91005,7 @@ exports.default = redux_1.combineReducers({
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.importSystemReducer = exports.importListCheckReducer = exports.removeFromCartEntitiesReducer = exports.systemCartListReducer = exports.getHistoryByDateReducer = exports.entitiesAddToCartReducer = exports.selectedEntitiesValuesByCategoryReducer = exports.entitiesValuesByCategoryReducer = exports.entitiesByIdReducer = exports.connectExportSystemReducer = exports.updateImportSystemReducer = exports.pingSystemReducer = exports.updateExportSystemReducer = exports.addSystemReducer = exports.importSystemListReducer = exports.exportSystemListReducer = void 0;
+exports.importSystemReducer = exports.importListCheckReducer = exports.removeFromCartEntitiesReducer = exports.systemCartListReducer = exports.getHistoryByDateReducer = exports.entitiesAddToCartReducer = exports.selectedEntitiesValuesByCategoryReducer = exports.entitiesValuesByCategoryReducer = exports.getHistoryReducer = exports.entitiesByIdReducer = exports.connectExportSystemReducer = exports.updateImportSystemReducer = exports.pingSystemReducer = exports.updateExportSystemReducer = exports.addSystemReducer = exports.importSystemListReducer = exports.exportSystemListReducer = void 0;
 const actionTypes_1 = __webpack_require__(/*! ../actionTypes */ "./src/redux/actionTypes.ts");
 function exportSystemListReducer(state = null, action) {
     switch (action.type) {
@@ -91077,6 +91095,17 @@ function entitiesByIdReducer(state = null, action) {
     }
 }
 exports.entitiesByIdReducer = entitiesByIdReducer;
+function getHistoryReducer(state = null, action) {
+    switch (action.type) {
+        case actionTypes_1.actions.getHistoryLoading:
+            return Object.assign(Object.assign({}, state), { loading: true });
+        case actionTypes_1.actions.getHistory:
+            return Object.assign(Object.assign({}, state), { histories: (action.payload || []).map(e => ({ name: e, value: e })), loading: false });
+        default:
+            return Object.assign({}, state);
+    }
+}
+exports.getHistoryReducer = getHistoryReducer;
 function entitiesValuesByCategoryReducer(state = null, action) {
     switch (action.type) {
         case actionTypes_1.actions.entitiesValuesByCategoryLoading:
@@ -91129,7 +91158,20 @@ function getHistoryByDateReducer(state = null, action) {
             return Object.assign(Object.assign({}, state), { loading: true });
         case actionTypes_1.actions.getHistoryByDate:
             const { payload = {} } = action;
-            return Object.assign(Object.assign({}, state), { data: payload, loading: false });
+            const objToArr = Object.keys(payload).map(e => ({ cat: e, val: payload[e] }));
+            let withGkey = JSON.stringify(objToArr);
+            const nonGkey = objToArr.map(e => ({ cat: e.cat, val: e.val.filter(ee => delete ee.gkey) }));
+            const historyTable = nonGkey.map(e => ({
+                values: e.val.map(ee => Object.values(ee)),
+                category: e.cat,
+                header: e.val.map(ee => Object.keys(ee))[0]
+            }));
+            const a = JSON.parse(withGkey);
+            let ab = {};
+            for (let i in a) {
+                ab[a[i].cat] = a[i].val.map(e => e.gkey);
+            }
+            return Object.assign(Object.assign({}, state), { list: historyTable, withGkey: ab, loading: false });
         default:
             return Object.assign({}, state);
     }

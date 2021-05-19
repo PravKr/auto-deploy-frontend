@@ -132,12 +132,12 @@ export const entitiesByIDAction = (id, connectedSystemType) => async dispatch =>
 
 export const getHistory = (id, connectedSystemType) => async dispatch => {
     try {
-        dispatch({type: actions.entitiesByIdLoading})
+        dispatch({type: actions.getHistoryLoading})
             const res = await axios.post(`/history/${connectedSystemType}/${id}`)
         const {data} = res
-        dispatch({ type:actions.entitiesById, payload: data })
+        dispatch({ type:actions.getHistory, payload: data })
     } catch (er){
-        dispatch({type: actions.entitiesByIdError, payload: 'Something went wrong'})
+        dispatch({type: actions.getHistoryError, payload: 'Something went wrong'})
     }
 }
 

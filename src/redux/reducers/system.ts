@@ -91,6 +91,21 @@ export function entitiesByIdReducer(state=null,action){
     }
 }
 
+export function getHistoryReducer(state=null,action){
+    switch(action.type){
+        case actions.getHistoryLoading:
+            return{...state,loading:true}
+            case actions.getHistory:
+                return {...state,
+                     histories: (action.payload || []).map(e=>({name:e, value:e})),
+                      loading: false 
+                    }
+
+            default:
+                return {...state}
+    }
+}
+
 export function entitiesValuesByCategoryReducer(state=null,action){
     switch(action.type){
         case actions.entitiesValuesByCategoryLoading:
@@ -146,7 +161,23 @@ export function getHistoryByDateReducer(state=null, action) {
             return{...state, loading:true}
             case actions.getHistoryByDate:
                 const {payload={}} = action
-                return {...state, data:payload, loading:false}
+                const objToArr = Object.keys(payload).map(e=>({cat:e, val: payload[e]}) )
+
+                 let withGkey = JSON.stringify(objToArr)
+
+                  const nonGkey = objToArr.map(e=>({cat: e.cat, val: e.val.filter(ee=> delete ee.gkey)}))
+                    const historyTable = nonGkey.map(e=>({
+                         values: e.val.map(ee=>Object.values(ee)),
+                         category: e.cat,
+                         header: e.val.map(ee=>Object.keys(ee))[0]
+                        })
+                        )
+                            const a = JSON.parse(withGkey)
+                            let ab = {}
+                            for(let i in a){
+                                  ab[a[i].cat] = a[i].val.map(e=>e.gkey)
+                            }
+                return {...state, list: historyTable, withGkey:ab, loading: false }
             default:
                 return {...state}
     }

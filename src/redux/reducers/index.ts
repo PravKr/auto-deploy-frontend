@@ -4,7 +4,7 @@ import {
          exportSystemListReducer, importSystemListReducer, updateExportSystemReducer, pingSystemReducer, updateImportSystemReducer,
          connectExportSystemReducer, addSystemReducer, entitiesByIdReducer, entitiesAddToCartReducer, 
          entitiesValuesByCategoryReducer, selectedEntitiesValuesByCategoryReducer, systemCartListReducer,
-         removeFromCartEntitiesReducer, importListCheckReducer, importSystemReducer, getHistoryByDateReducer } from './system'
+         removeFromCartEntitiesReducer, importListCheckReducer, importSystemReducer, getHistoryByDateReducer, getHistoryReducer } from './system'
 
 import {importDialogBoxReducer, loginDialogBoxReducer} from './component'
 
@@ -19,6 +19,7 @@ export default combineReducers({
     connectExportSystem: connectExportSystemReducer,
     addSystem: addSystemReducer,
     entitiesById: entitiesByIdReducer,
+    getHistory: getHistoryReducer,
     entitiesAddToCart:entitiesAddToCartReducer,
     entitiesValues:entitiesValuesByCategoryReducer,
     selectedEntitiesValues:selectedEntitiesValuesByCategoryReducer,

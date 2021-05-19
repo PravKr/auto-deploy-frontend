@@ -92,7 +92,7 @@ const handleImportCheckbox=(e)=>{
   setChecked({...isChecked, [e.target.id]:e.target.checked })
   dispatch(importListCheckedAction({...isChecked, [e.target.id]:e.target.checked }))
 }
-console.log('type', type)
+
 return(<section className='cart'>
 
  <div className='heading'>

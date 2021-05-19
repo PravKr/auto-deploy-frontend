@@ -35,6 +35,10 @@ export const actions = {
     entitiesByIdLoading: 'ENTITIES_BY_ID_LOADING',
     entitiesById: 'ENTITIES_BY_ID',
     entitiesByIdError: 'ENTITIES_BY_ID_ERROR',
+
+    getHistoryLoading: 'GET_HISTORY_LOADING',
+    getHistory: 'GET_HISOTRY',
+    getHistoryError: 'GET_HISOTRY_ERROR',
     
     // Entity Values according to selected Category
     entitiesValuesByCategoryLoading: 'ENTITIES_VALUES_BY_CATEGORY_LOADING',
