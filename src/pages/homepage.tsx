@@ -222,6 +222,8 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
                     onRemoveClick={()=>handleRemoveSystem('export', e.id)}
                     myCartIcon
                     onMyCartIconLebel={`/export/cart/${e.id}`}
+                    historyIcon
+                    historyIconLebelLink={`history/export/${e.id}`}
                   />)}
                 </div>
                 <Divider orientation='horizontal'/>
@@ -264,6 +266,8 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
                   onRemoveClick={()=>handleRemoveSystem('export', e.id)}
                   myCartIcon
                   onMyCartIconLebel={`/export/cart/${e.id}`}
+                  historyIcon
+                  historyIconLebelLink={`history/export/${e.id}`}
                   />)}
                 </div>
               </TabPanel>
@@ -284,6 +288,7 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
                   deleteIcon
                   onRemoveClick={()=>handleRemoveSystem('import', e.id)}
                   historyIcon
+                  historyIconLebelLink={`history/import/${e.id}`}
                   />)}
                 </div>
               </TabPanel>

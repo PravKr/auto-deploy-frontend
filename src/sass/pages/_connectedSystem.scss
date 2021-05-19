@@ -1,5 +1,9 @@
 .connected-system{
     .top, .heading{
+        .left{
+            display: flex;
+            align-items: baseline;
+        }
         display: flex;
         justify-content: space-between;
         align-items: baseline;

@@ -12,7 +12,6 @@ import Checkbox from '../components/checkbox'
 import Button from '../components/button'
 import Loader from '../components/loader'
 import IconButton from '@material-ui/core/IconButton'
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Tooltip from '@material-ui/core/Tooltip';
 import Badge from '@material-ui/core/Badge';
 import Toolbar from '@material-ui/core/Toolbar'
@@ -26,7 +25,6 @@ import {
   entitiesAddToCartAction, 
   entitiesValuesByCategoryAction,
   selectedEntitiesValuesByCategoryAction,
-  entitiesValuesByCategoryAndSearchTextAction
  } from '../redux/actions/system'
 
 function ConnectedSystem(props){
@@ -42,7 +40,6 @@ function ConnectedSystem(props){
     const entitiesValues = useSelector(state=> state.entitiesValues)
     const addToCart = useSelector(state=>state.entitiesAddToCart)
     const selectedEntitiesValues = useSelector(state=> state.selectedEntitiesValues)
-    //const searchTextt = props.searchText;
 
     const { loading:entitiesLoading, entities=[] } = entitiesById
     const {loading: entitiesValuesLoading, tableHeaders=[], tableValues=[], withGkey=[]} = entitiesValues
@@ -50,7 +47,6 @@ function ConnectedSystem(props){
     const [category, setCategory] = useState('')
     const [isChecked, setChecked] = useState({})
     const [isAllChecked, setAllChecked] = useState(false)
-    //const [searchText, setSearchText] = useState('')
     const {value: searchText, bind: bindSearchText} = useInputString('')
 
     useEffect(()=>{

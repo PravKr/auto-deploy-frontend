@@ -24,7 +24,7 @@ import { systemCartListAction,
   } from '../redux/actions/system'
 import {importDialogBoxAction} from '../redux/actions/component'
 import Card from '../components/card'
-import Alert from '@material-ui/lab/Alert';
+import { AddToQueue } from '@material-ui/icons';
 
 function MyCart(props){
 
@@ -96,12 +96,19 @@ const handleImportCheckbox=(e)=>{
 return(<section className='cart'>
 
  <div className='heading'>
- <Typography variant='h5' label='Items in Queue'/>
+  <div className='left'>
+    <Tooltip title='History'>
+        <IconButton size="medium">
+            <AddToQueue />
+        </IconButton>
+    </Tooltip>
+    <Typography variant='h5' label='Items in Queue'/>
+  </div>
    <div className='action'>
-   <Button variant='outlined' color='primary' onClick={()=>emptyCart()} label='Empty Queue'/>
-   <Button variant='outlined' color='primary' onClick={()=>handleImportExport('import')} label='Import'/>
-   <Button variant='outlined' color='primary' onClick={()=>handleImportExport('export')} label='Export'/>
-   {/*<Button variant='contained' color='primary' onClick={()=>handleImportExport('export_import')} label='Export & Import'/>*/}
+    <Button variant='outlined' color='primary' onClick={()=>emptyCart()} label='Empty Queue'/>
+    <Button variant='outlined' color='primary' onClick={()=>handleImportExport('import')} label='Import'/>
+    <Button variant='outlined' color='primary' onClick={()=>handleImportExport('export')} label='Export'/>
+    {/*<Button variant='contained' color='primary' onClick={()=>handleImportExport('export_import')} label='Export & Import'/>*/}
    </div>
  </div>
  
