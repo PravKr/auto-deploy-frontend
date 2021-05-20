@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react'
+import Snackbar from '@material-ui/core/Snackbar';
 import Typography from '../components/typography'
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -36,6 +37,7 @@ function MyCart(props){
   const systemType = match.params.type
 
   const [isChecked, setChecked] = useState({})
+  const [openSnack, setSnack] = useState(true)
 
   const cartList = useSelector(state=>state.systemCartList)
   const removeFromCart = useSelector(state=> state.removeFromCart)
@@ -44,7 +46,7 @@ function MyCart(props){
   const importListCheck = useSelector(state=> state.importListCheck)
   const importSystem = useSelector(state=> state.importSystem)
 
-
+  const { msg: importSystemMsg, loading: importSSystemLoading} = importSystem
   const { loading: importSystemLoading, importList=[]} = impSystem
   const {loading:cartListLoading, list=[], withGkey={}} = cartList
   const {loading:removeLoading, msg} = removeFromCart
@@ -54,6 +56,10 @@ function MyCart(props){
   useEffect(()=>{
     dispatch(systemCartListAction(systemCart, systemType))
 },[])
+
+const handleClose = () => {
+  setSnack(false)
+};
 
 const handleRemoveFromCart=(cat,gkey)=> {
   dispatch(removeFromCartEntitiesAction(systemCart,systemType,cat,[gkey]))
@@ -85,7 +91,8 @@ const handleCloseImportDialogBox=()=>{
   dispatch(importListCheckedAction({}))
 }
 const handleConfirmImport = (type) => {
-    dispatch(importSystemAction(systemCart,systemType,active,type))
+  setSnack(true)
+  dispatch(importSystemAction(systemCart,systemType,active,type))
 }
 
 const handleImportCheckbox=(e)=>{
@@ -189,6 +196,7 @@ return(<section className='cart'>
    </Fragment>
  }
  />
+ {openSnack && <Snackbar open={importSystemMsg} onClose={handleClose} message={importSystemMsg}/>}
 </section>)
 }
 export default MyCart

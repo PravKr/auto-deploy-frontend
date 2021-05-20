@@ -1,6 +1,6 @@
 import React, { Fragment, useState,useEffect, useLayoutEffect, } from 'react'
 import Select from '../components/select'
-import Snackbar from '../components/snackbar'
+import Snackbar from '@material-ui/core/Snackbar';
 import {useInputString, useToggle} from '../components/input'
 import { useSelector, useDispatch } from 'react-redux'
 import { 
@@ -77,6 +77,19 @@ function Homepage(){
     const {value: addPassword, bind: bindAddPassword, reset: resetAddPassword} = useInputString('')
 
     const {value: systemList, bind: bindSystemList, reset: resetSystemList} = useInputString('')
+
+    const { exportList, loading: expLoading } = expSystem
+    const { importList, loading: impLoading } = impSystem
+    const { msg: addSystemMsg, loading: addSystemLoading } = addSystem
+    const { msg: expUpdate, loading: expUpdateLoading} = updateExp
+    const { msg: impUpdate, loading: impUpdateLoading} = updateImp
+    const { msg: pingSystemMsg, loading: pingSystemLoading} = pingSystem
+
+    const handleClose = () => {
+      setSnack(false)
+    };
+
+    console.log('pingSystemMsg' + pingSystemMsg);
     
     const handleCloseDialogBox = () => { 
       st(false)
@@ -102,6 +115,7 @@ function Homepage(){
       }
     };
     const handlePingActionClick = (systemType, systemId)=>{
+      setSnack(true)
       dispatch(pingToSystemAction(systemType, systemId))
     }
     const handleShow = (e,type) => {
@@ -178,13 +192,6 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
            username: updateUsername, yard: updateYard}))
       }
     }
-
-    const { exportList, loading: expLoading } = expSystem
-    const { importList, loading: impLoading } = impSystem
-    const { msg: addSystemMsg, loading: addSystemLoading } = addSystem
-    const { msg: expUpdate, loading: expUpdateLoading} = updateExp
-    const { msg: impUpdate, loading: impUpdateLoading} = updateImp
-    const { msg: pingSystemMsg, loading: pingSystemLoading} = pingSystem
 
     return( <Fragment>
         <section className='homepage'>
@@ -341,11 +348,11 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
               />
           </div>
           
-          {openSnack && 
+          {/*{openSnack && 
             <Snackbar type={'success'} 
-            open={(expUpdate || impUpdate || addSystemMsg || pingSystemMsg)} 
-            label={(expUpdate || impUpdate || addSystemMsg || pingSystemMsg)}/>}
-          {/*{openSnack && <Snackbar type={pingSystemMsg === 'Not successfull' ? 'error':'success'} open={(pingSystemMsg)} label={(pingSystemMsg)}/>}*/}
+            open={(expUpdate || impUpdate || addSystemMsg)} 
+            label={(expUpdate || impUpdate || addSystemMsg)}/>*/}
+            {openSnack && <Snackbar open={pingSystemMsg} onClose={handleClose} message={pingSystemMsg}/>}
         </section>
       
     </Fragment>)

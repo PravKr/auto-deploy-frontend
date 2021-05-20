@@ -18,7 +18,7 @@ function Cards(props){
   const { title, subHeader, imgUrl, pingActionsLabel, pingActionClick,
       mediaTitle, avatar, action, onShowIconClick, linkLabel, linkLabelLink, 
       checkbox, onCheckBoxClick, checkBoxId, checked, deleteIcon, onRemoveClick,
-      myCartIcon, onMyCartIconLebel, historyIcon, historyIconLebelLink
+      myCartIcon, onMyCartIconLebel, historyIcon, historyIconLebelLink, pingButtonColor
     } = props
   const onShowIconClicks = (e)=> {
     e.stopPropagation()
@@ -83,7 +83,7 @@ title={mediaTitle}
 />}
 
 <CardActions disableSpacing>
-  {pingActionsLabel && <Button variant='contained' color='primary' onClick={actionsClick} label={pingActionsLabel}/>}
+  {pingActionsLabel && <Button variant='outlined' color='primary' onClick={actionsClick} label={pingActionsLabel}/>}
   {linkLabel && <Button variant='outlined' href={linkLabelLink} color='primary' label={linkLabel}/>}
 </CardActions> 
 </Card>
