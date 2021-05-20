@@ -11,8 +11,8 @@ import HistoryPage from '../pages/history'
 const Main=()=>(
     <Router>
         <Switch>
-            <Route path='/' exact component={Default} />
-            <Route path='/homepage' exact component={Homepage} />
+            <Route path='/default' exact component={Default} />
+            <Route path='/' exact component={Homepage} />
             <Route path='/:type/:system' exact component={ConnectedSystem} />
             <Route path='/:type/cart/:system' exact component={Cart} />
             <Route path='/history/:type/:system' exact component={HistoryPage} />
