@@ -154,12 +154,12 @@ export const entitiesValuesByCategoryAction = (id,connectedSystemType,cat) => as
 
 export const entitiesValuesByCategoryAndSearchTextAction = (id,connectedSystemType,cat, searchText) => async dispatch => {
     try {
-        dispatch({type: actions.entitiesValuesByCategoryLoading})
+        dispatch({type: actions.entitiesValuesByCategoryAndSearchTextLoading})
             const res = await axios.post(`/entities/${connectedSystemType}/${id}/${cat}/${searchText}`)
         const {data} = res
-        dispatch({ type:actions.entitiesValuesByCategory, payload: data })
+        dispatch({ type:actions.entitiesValuesByCategoryAndSearchText, payload: data })
     } catch (er){
-        dispatch({type: actions.entitiesValuesByCategoryError, payload: 'Something went wrong'})
+        dispatch({type: actions.entitiesValuesByCategoryAndSearchTextError, payload: 'Something went wrong'})
     }
 }  
 
@@ -256,6 +256,22 @@ export const entityExportAction = (sys, connectedSystemType) => async dispatch =
         dispatch({type: actions.entityExportError, payload: 'Something went wrong'})
     }
 }
+
+export const entityExportByHistoryDateAction = (sys, connectedSystemType, historyDate) => async dispatch => {
+    try {
+        dispatch({type: actions.entityExportByHistoryDateLoading})
+            const res = await axios.post(`/history/${connectedSystemType}/${sys}/${historyDate}/export`)
+        const {data} = res
+        const url = await window.URL.createObjectURL(new Blob([data]));
+        const link = await document.createElement('a');
+        link.href = url;
+        await link.setAttribute('download', `${sys + new Date()}.xml`);
+        await document.body.appendChild(link);
+            await link.click();
+    } catch (er){
+        dispatch({type: actions.entityExportByHistoryDateError, payload: 'Something went wrong'})
+    }
+}
         
 export const importListCheckedAction = (val) => async dispatch => {
     try {
@@ -281,5 +297,24 @@ export const importSystemAction = (sys,connectedSystemType, ls, type) => async d
         }
     } catch (er){
         dispatch({type: actions.importSystemError, payload: 'Something went wrong'})
+    }
+}
+
+export const entityImportByHistoryDateAction = (sys,connectedSystemType, ls, type, catogery) => async dispatch => {
+    try {
+        dispatch({type: actions.importByHistoryDateLoading})
+        if(type === 'import'){
+            const res = await axios.post(`/history/${connectedSystemType}/${sys}/${catogery}/import`,ls)
+            const {data} = res
+            dispatch({ type:actions.importByHistoryDate,  payload: data })
+        }
+        if(type === 'export_import' ){
+            const res = await axios.post(`/history/${connectedSystemType}/${sys}/${catogery}/import`,ls)
+            const {data} = res
+            dispatch({ type:actions.importByHistoryDate,  payload: data })
+            dispatch(entityExportAction(sys,connectedSystemType))
+        }
+    } catch (er){
+        dispatch({type: actions.importByHistoryDateError, payload: 'Something went wrong'})
     }
 }

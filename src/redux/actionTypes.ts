@@ -44,6 +44,10 @@ export const actions = {
     entitiesValuesByCategoryLoading: 'ENTITIES_VALUES_BY_CATEGORY_LOADING',
     entitiesValuesByCategory: 'ENTITIES_VALUES_BY_CATEGORY',
     entitiesValuesByCategoryError: 'ENTITIES_VALUES_BY_CATEGORY_ERROR',
+
+    entitiesValuesByCategoryAndSearchTextLoading: 'ENTITIES_VALUES_BY_CATEGORY_AND_SEARCH_TEXT_LOADING',
+    entitiesValuesByCategoryAndSearchText: 'ENTITIES_VALUES_BY_CATEGORY_AND_SEARCH_TEXT',
+    entitiesValuesByCategoryAndSearchTextError: 'ENTITIES_VALUES_BY_CATEGORY_AND_SEARCH_TEXT_ERROR',
     
     // selected values from entities values
     selectedEntitiesValuesByCategory: 'SELECTED_ENTITIES_VALUES_BY_CATEGORY',
@@ -79,6 +83,9 @@ export const actions = {
     entityExportLoading: 'ENTITY_EXPORT_LOADING',
     entityExportError: 'ENTITY_EXPORT_ERROR',
 
+    entityExportByHistoryDateLoading: 'ENTITY_EXPORT_BY_HISTORY_DATE_LOADING',
+    entityExportByHistoryDateError: 'ENTITY_EXPORT_BY_HISTORY_DATE_ERROR',
+
    // entityImportLoading: 'ENTITY_IMPORT_'
 
    importDialogBox: 'IMPORT_DIALOG_BOX',
@@ -92,6 +99,10 @@ export const actions = {
    importSystemLoading: 'IMPORT_SYSTEM_LOADING',
    importSystem: 'IMPORT_SYSTEM',
    importSystemError: 'IMPORT_SYSTEM_ERROR',
+
+   importByHistoryDateLoading: 'IMPORT_BY_HISTORY_DATE_LOADING',
+   importByHistoryDate: 'IMPORT_BY_HISTORY_DATE',
+   importByHistoryDateError: 'IMPORT_BY_HISTORY_DATE_ERROR',
    
    openLoginDialogBox: 'OPEN_LOGIN_DIALOG_BOX',
    openLoginDialogBoxError: 'OPEN_LOGIN_DIALOG_BOX_ERROR',

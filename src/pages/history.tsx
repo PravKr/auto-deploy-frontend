@@ -16,14 +16,16 @@ import Card from '../components/card'
 import HistoryIcon from '@material-ui/icons/History';
 import IconButton from '@material-ui/core/IconButton'
 import { Tooltip } from '@material-ui/core'
+import {useInputString} from '../components/input'
 
 import { useSelector, useDispatch } from 'react-redux'
 import { 
   getHistory,
   getHistoryByDate,
-  entityExportAction,
   importListCheckedAction,
   importSystemAction,
+  entityExportByHistoryDateAction,
+  entityImportByHistoryDateAction,
  } from '../redux/actions/system'
 
 function HistoryPage(props) {
@@ -61,7 +63,7 @@ function HistoryPage(props) {
 
   const handleImportExport = (type)=>{
     if(type==='export'){
-      dispatch(entityExportAction(connectedSystemName, connectedSystemType))
+      dispatch(entityExportByHistoryDateAction(connectedSystemName, connectedSystemType, category))
     } 
     if(type === 'import'){
       dispatch(importDialogBoxAction(true,'import'))
@@ -79,7 +81,7 @@ function HistoryPage(props) {
   }
 
   const handleConfirmImport = (type) => {
-    dispatch(importSystemAction(connectedSystemName,connectedSystemType,active,type))
+    dispatch(entityImportByHistoryDateAction(connectedSystemName, connectedSystemType, active, type, category))
 }
 
 return  (
