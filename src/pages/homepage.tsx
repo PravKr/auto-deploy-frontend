@@ -54,7 +54,10 @@ function Homepage(){
     const [value, setValue] = useState('all');
     const [t, st] = useState(false)
     const [addSystemDialogBox, setAddSystem] = useState(false)
-    const [openSnack, setSnack] = useState(true)
+    const [pingSystemMsgOpenSnack, setPingSystemMsgOpenSnack] = useState(true)
+    const [expUpdateOpenSnack, setExpUpdateOpenSnack] = useState(true)
+    const [impUpdateOpenSnack, setImpUpdateOpenSnack] = useState(true)
+    const [addSystemMsgOpenSnack, setAddSystemMsgOpenSnack] = useState(true)
 
     const {value: updateId, setValue: setId, reset: resetId} = useInputString('')
     const {value: updateType, setValue: setType, reset: resetType} = useInputString('')
@@ -85,11 +88,12 @@ function Homepage(){
     const { msg: impUpdate, loading: impUpdateLoading} = updateImp
     const { msg: pingSystemMsg, loading: pingSystemLoading} = pingSystem
 
-    const handleClose = () => {
-      setSnack(false)
-    };
-
-    console.log('pingSystemMsg' + pingSystemMsg);
+    const handleSnackClose = () => {
+      setPingSystemMsgOpenSnack(false)
+      setExpUpdateOpenSnack(false)
+      setImpUpdateOpenSnack(false)
+      setAddSystemMsgOpenSnack(false)
+    }
     
     const handleCloseDialogBox = () => { 
       st(false)
@@ -102,7 +106,6 @@ function Homepage(){
       resetEndPoint()
       resetUsername()
       resetPassword()
-      setSnack(false)
     }
 
     const handleChange = (event, newValue) => {
@@ -113,11 +116,13 @@ function Homepage(){
         dispatch(exportSystemListAction())
         dispatch(importSystemListAction())
       }
-    };
+    }
+
     const handlePingActionClick = (systemType, systemId)=>{
-      setSnack(true)
+      setPingSystemMsgOpenSnack(true)
       dispatch(pingToSystemAction(systemType, systemId))
     }
+
     const handleShow = (e,type) => {
       st(true)
       setType(type)
@@ -130,8 +135,10 @@ function Homepage(){
       setUsername(updateUsername || e.username)
       setPassword(updatePassword || e.password)
     }
+    
     const handleSystemAdd = (e) =>{
       e.preventDefault()
+      setAddSystemMsgOpenSnack(true)
       dispatch(addSystemAction(systemList,{id:addId, complex:addComplex,
         endPoint: addEndPoint, facility:addFacility, 
         operator:addOperator, password:addPassword,
@@ -148,7 +155,6 @@ function Homepage(){
       resetAddEndPoint()
       resetAddUsername()
       resetAddPassword()
-      setSnack(false)
     }
     const handleCloseSystemAddDialogBox = (e) =>{
       setAddSystem(false)
@@ -161,7 +167,6 @@ function Homepage(){
       resetAddEndPoint()
       resetAddUsername()
       resetAddPassword()
-      setSnack(false)
     }
     const handleOpenSystemUpdateDialogBox = (e) =>{
       setAddSystem(true)
@@ -178,12 +183,13 @@ function Homepage(){
 
     const handleSystemUpdate = (e) =>{
       e.preventDefault()
+      setExpUpdateOpenSnack(true)
       resetSystemList()
       if(updateType === 'exp'){
-dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
-  endPoint: updateEndPoint, facility:updateFacility, 
-  operator:updateOperator, password:updatePassword,
-   username: updateUsername, yard: updateYard}))
+        dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
+        endPoint: updateEndPoint, facility:updateFacility, 
+        operator:updateOperator, password:updatePassword,
+        username: updateUsername, yard: updateYard}))
       }
       if(updateType === 'imp'){
         dispatch(updateImportSystemAction({id:updateId, complex:updateComplex,
@@ -348,11 +354,10 @@ dispatch(updateExportSystemAction({id:updateId, complex:updateComplex,
               />
           </div>
           
-          {/*{openSnack && 
-            <Snackbar type={'success'} 
-            open={(expUpdate || impUpdate || addSystemMsg)} 
-            label={(expUpdate || impUpdate || addSystemMsg)}/>*/}
-            {openSnack && <Snackbar open={pingSystemMsg} onClose={handleClose} message={pingSystemMsg}/>}
+            {pingSystemMsgOpenSnack && <Snackbar open={pingSystemMsg} onClose={handleSnackClose} message={pingSystemMsg}/>}
+            {expUpdateOpenSnack && <Snackbar open={expUpdate} onClose={handleSnackClose} message={expUpdate}/>}
+            {impUpdateOpenSnack && <Snackbar open={impUpdate} onClose={handleSnackClose} message={impUpdate}/>}
+            {addSystemMsgOpenSnack && <Snackbar open={addSystemMsg} onClose={handleSnackClose} message={addSystemMsg}/>}
         </section>
       
     </Fragment>)

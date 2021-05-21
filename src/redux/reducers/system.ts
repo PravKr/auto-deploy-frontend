@@ -132,6 +132,32 @@ export function entitiesValuesByCategoryReducer(state=null,action){
     }
 }
 
+export function entitiesBySearchTextActionReducer(state=null,action){
+    switch(action.type){
+        case actions.entitiesValuesByCategoryAndSearchTextLoading:
+            return{...state,loading:true}
+            case actions.entitiesValuesByCategoryAndSearchText:
+                const { payload=[] } = action
+                let gVal = []
+
+                for( let i = 0, len = payload.length; i< len; i++){
+                    gVal[i] = {}
+                    for(var prop in payload[i]){
+                        gVal[i][prop] = payload[i][prop]
+                    }
+                }
+
+                const nonGkey =  payload.filter(e=> delete e.gkey)
+                const tableHeaders = nonGkey.map(e=> Object.keys(e))[0] 
+                const tableValues = nonGkey.map(e=> Object.values(e))
+                const withGkey = gVal.map(e=>e.gkey)
+
+                return {...state, tableHeaders, tableValues, withGkey, loading: false }
+            default:
+                return {...state}
+    }
+}
+
 export function selectedEntitiesValuesByCategoryReducer(state=null,action){
     switch(action.type){
         case actions.selectedEntitiesValuesByCategory:

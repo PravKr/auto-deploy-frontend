@@ -25,6 +25,7 @@ import {
   entitiesAddToCartAction, 
   entitiesValuesByCategoryAction,
   selectedEntitiesValuesByCategoryAction,
+  entitiesBySearchTextAction,
  } from '../redux/actions/system'
 
 function ConnectedSystem(props){
@@ -57,14 +58,9 @@ function ConnectedSystem(props){
     dispatch(entitiesByIDAction(connectedSystemName, connectedSystemType))
   }
 
-  const searchTextFieldOnChange = (event) => {
-    event.preventDefault()
-    console.log(event.target.value, searchText)
-  }
-
-  const searchRowsBasedOnWhileCardChar = () => {
-    console.log(searchText)
-    //dispatch(entitiesValuesByCategoryAndSearchTextAction(connectedSystemName, connectedSystemType, category, searchText))
+  const searchTextFieldOnChange = () => {
+    console.log(category + searchText)
+    dispatch(entitiesBySearchTextAction(connectedSystemName, connectedSystemType,category, {text:searchText}))
     //setChecked({})
     //dispatch(selectedEntitiesValuesByCategoryAction({}))
   }
@@ -96,11 +92,12 @@ function ConnectedSystem(props){
 return  (
           <section className='connected-system'>
             <div className='heading'>
-            <Toolbar>
-            <a href={`/${connectedSystemType}/${connectedSystemName}`} onClick={handleReloadSystemData} className='title'>
-                <Typography variant='h5' label={connectedSystemName}/>
-              </a>
-            </Toolbar>
+              <Toolbar>
+              <Typography variant='h5' label={connectedSystemName}/>
+              {/*<a href={`/${connectedSystemType}/${connectedSystemName}`} onClick={handleReloadSystemData} className='title'>
+                  
+</a>*/}
+              </Toolbar>
               <Tooltip title='Add to Queue' placement='left'>
                 <IconButton href={`/${connectedSystemType}/cart/${connectedSystemName}`}>
                   <Badge badgeContent={active.length} color="primary">
@@ -114,52 +111,52 @@ return  (
               <div className='select' >
                 <Select label='Select Category' value={category} onChange={handleCategory} menu={entities} />
               </div>
-              <form onSubmit={searchTextFieldOnChange}>
-                <Textfield type='text' {...bindSearchText} label='test'/>
-                <Button variant='contained' color='primary' type='submit' label='Search'/>
-              </form>
-            </div>
-            <div className='top'>
-              {
-                (active.length > 0 || isAllChecked) && (
-                  <Fragment>
-                    <Typography label={`${category} Selected: ${isAllChecked ? tableValues.length : active.length}`}/>
-                    <Button variant='contained' color='primary' onClick={handleAddToCart} label='Add to Queue'/>
-                  </Fragment>)
-              }
-            </div>
-            {entitiesValuesLoading && <Loader/>}
-            <TableContainer component={Paper}>
-              <Table size="small" stickyHeader aria-label="sticky table">
-                <TableHead>
-                  <TableRow>
-                    {
-                      (tableHeaders || []).length>0 && 
-                      <TableCell>
-                        <Checkbox onChange={handleMultiChecked}/>
-                      </TableCell>} 
-                    {(tableHeaders || []).map((e,i)=><TableCell key={i}>{e}</TableCell>)}
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {(tableValues).map((e,i)=> 
-                    <TableRow key={i}> 
-                      <TableCell padding="checkbox" component="th" scope="row">
-                        <Checkbox
-                          id={`${category}-${withGkey[i]}`}
-                          checked={isChecked[`${category}-${withGkey[i]}`] || isAllChecked }
-                          onChange={(e)=>handleSingleChecked(e,withGkey[i])}
-                        />
-                      </TableCell> 
-                      {(e).map((ee,ii)=>
-                      <TableCell key={ii} component="th" scope="row">
-                        {ee}
-                      </TableCell>)} 
+                {/*<form onSubmit={searchTextFieldOnChange}>*/}
+                  <Textfield type='text' {...bindSearchText} label='Search Text'/>
+                  <Button variant='contained' color='primary' type='submit' label='Search' onClick={searchTextFieldOnChange}/>
+                {/*</form>*/}
+              </div>
+              <div className='top'>
+                {
+                  (active.length > 0 || isAllChecked) && (
+                    <Fragment>
+                      <Typography label={`${category} Selected: ${isAllChecked ? tableValues.length : active.length}`}/>
+                      <Button variant='contained' color='primary' onClick={handleAddToCart} label='Add to Queue'/>
+                    </Fragment>)
+                }
+              </div>
+              {entitiesValuesLoading && <Loader/>}
+              <TableContainer component={Paper}>
+                <Table size="small" stickyHeader aria-label="sticky table">
+                  <TableHead>
+                    <TableRow>
+                      {
+                        (tableHeaders || []).length>0 && 
+                        <TableCell>
+                          <Checkbox onChange={handleMultiChecked}/>
+                        </TableCell>} 
+                      {(tableHeaders || []).map((e,i)=><TableCell key={i}>{e}</TableCell>)}
                     </TableRow>
-                  )}
-                </TableBody>
-              </Table>
-            </TableContainer>
+                  </TableHead>
+                  <TableBody>
+                    {(tableValues).map((e,i)=> 
+                      <TableRow key={i}> 
+                        <TableCell padding="checkbox" component="th" scope="row">
+                          <Checkbox
+                            id={`${category}-${withGkey[i]}`}
+                            checked={isChecked[`${category}-${withGkey[i]}`] || isAllChecked }
+                            onChange={(e)=>handleSingleChecked(e,withGkey[i])}
+                          />
+                        </TableCell> 
+                        {(e).map((ee,ii)=>
+                        <TableCell key={ii} component="th" scope="row">
+                          {ee}
+                        </TableCell>)} 
+                      </TableRow>
+                    )}
+                  </TableBody>
+                </Table>
+              </TableContainer>
           </section>
         )
 }

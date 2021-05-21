@@ -37,7 +37,7 @@ function MyCart(props){
   const systemType = match.params.type
 
   const [isChecked, setChecked] = useState({})
-  const [openSnack, setSnack] = useState(true)
+  const [importSystemMsgOpenSnack, setImportSystemMsgOpenSnack] = useState(true)
 
   const cartList = useSelector(state=>state.systemCartList)
   const removeFromCart = useSelector(state=> state.removeFromCart)
@@ -58,7 +58,7 @@ function MyCart(props){
 },[])
 
 const handleClose = () => {
-  setSnack(false)
+  setImportSystemMsgOpenSnack(false)
 };
 
 const handleRemoveFromCart=(cat,gkey)=> {
@@ -91,7 +91,7 @@ const handleCloseImportDialogBox=()=>{
   dispatch(importListCheckedAction({}))
 }
 const handleConfirmImport = (type) => {
-  setSnack(true)
+  setImportSystemMsgOpenSnack(true)
   dispatch(importSystemAction(systemCart,systemType,active,type))
 }
 
@@ -196,7 +196,7 @@ return(<section className='cart'>
    </Fragment>
  }
  />
- {openSnack && <Snackbar open={importSystemMsg} onClose={handleClose} message={importSystemMsg}/>}
+ {importSystemMsgOpenSnack && <Snackbar open={importSystemMsg} onClose={handleClose} message={importSystemMsg}/>}
 </section>)
 }
 export default MyCart

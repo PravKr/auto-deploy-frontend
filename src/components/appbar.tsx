@@ -37,7 +37,7 @@ const handleDialogBox = (e)=> {
         resetPassword()
     }
 }
-console.log(isAuthenticated, user)
+
 return (
     <Fragment>
         <AppBar position="sticky" id='appbar'>
