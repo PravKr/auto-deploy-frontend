@@ -25,7 +25,7 @@ import { systemCartListAction,
   } from '../redux/actions/system'
 import {importDialogBoxAction} from '../redux/actions/component'
 import Card from '../components/card'
-import { AddToQueue } from '@material-ui/icons';
+import { AddToQueue, Label } from '@material-ui/icons';
 
 function MyCart(props){
 
@@ -33,7 +33,7 @@ function MyCart(props){
 
   const { match } = props
 
-  const systemCart = match.params.system
+  const systemName = match.params.system
   const systemType = match.params.type
 
   const [isChecked, setChecked] = useState({})
@@ -54,7 +54,7 @@ function MyCart(props){
   const {active=[]} = importListCheck
 
   useEffect(()=>{
-    dispatch(systemCartListAction(systemCart, systemType))
+    dispatch(systemCartListAction(systemName, systemType))
 },[])
 
 const handleClose = () => {
@@ -62,20 +62,20 @@ const handleClose = () => {
 };
 
 const handleRemoveFromCart=(cat,gkey)=> {
-  dispatch(removeFromCartEntitiesAction(systemCart,systemType,cat,[gkey]))
+  dispatch(removeFromCartEntitiesAction(systemName,systemType,cat,[gkey]))
 }
 
 const handleRemoveByEntityFromCart=(cat)=> {
-  dispatch(removeByEntityFromCartEntitiesAction(systemCart, systemType, cat))
+  dispatch(removeByEntityFromCartEntitiesAction(systemName, systemType, cat))
 }
 
 const emptyCart = () => {
-  dispatch(emptyCartAction(systemCart, systemType))
+  dispatch(emptyCartAction(systemName, systemType))
 }
 
 const handleImportExport = (type)=>{
   if(type==='export'){
-    dispatch(entityExportAction(systemCart, systemType))
+    dispatch(entityExportAction(systemName, systemType))
   } 
   if(type === 'import'){
     dispatch(importDialogBoxAction(true,'import'))
@@ -92,13 +92,15 @@ const handleCloseImportDialogBox=()=>{
 }
 const handleConfirmImport = (type) => {
   setImportSystemMsgOpenSnack(true)
-  dispatch(importSystemAction(systemCart,systemType,active,type))
+  dispatch(importSystemAction(systemName,systemType,active,type))
 }
 
 const handleImportCheckbox=(e)=>{
   setChecked({...isChecked, [e.target.id]:e.target.checked })
   dispatch(importListCheckedAction({...isChecked, [e.target.id]:e.target.checked }))
 }
+
+console.log('item count ' + list.length)
 
 return(<section className='cart'>
 
@@ -109,7 +111,7 @@ return(<section className='cart'>
             <AddToQueue />
         </IconButton>
     </Tooltip>
-    <Typography variant='h5' label='Items in Queue'/>
+    <Typography variant='h5' label={`Items in Queue for ${systemName}`}/>
   </div>
    <div className='action'>
     <Button variant='outlined' color='primary' onClick={()=>emptyCart()} label='Empty Queue'/>
@@ -120,6 +122,15 @@ return(<section className='cart'>
  </div>
  
  {cartListLoading && <Loader/>}
+ {
+ list.length === 0 && 
+  <Fragment>
+    <div className='center'>
+      Your Queue is empty ! Please add some item
+    </div>
+  </Fragment>
+  }
+ 
  {list.map((el, i)=> (
    <div key={i}>
      { (el.values || []).length> 0 && <Fragment>
@@ -128,7 +139,6 @@ return(<section className='cart'>
     <Table style={{ tableLayout: 'fixed', fontSize: '15px' }} size="small" stickyHeader aria-label="sticky table">
       <TableHead>
         <TableRow>
-          {/*style={{backgroundColor: 'black', color: 'white'}}*/}
           <TableCell align="left" colSpan={3}>
             <Typography variant='h6' label={el.category}/>
           </TableCell> 

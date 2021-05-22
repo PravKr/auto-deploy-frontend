@@ -133,7 +133,7 @@ export const entitiesByIDAction = (id, connectedSystemType) => async dispatch =>
 export const entitiesBySearchTextAction = (id, connectedSystemType, category, searchText) => async dispatch => {
     try {
         dispatch({type: actions.entitiesValuesByCategoryLoading})
-        const res = await axios.post(`/entities/${connectedSystemType}/${id}/${category}/wilecard`, searchText)
+        const res = await axios.post(`/entities/${connectedSystemType}/${id}/${category}/wildcard`, searchText)
         const {data} = res
         dispatch({ type:actions.entitiesValuesByCategory, payload: data })
     } catch (er){

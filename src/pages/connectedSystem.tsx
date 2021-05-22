@@ -93,7 +93,7 @@ return  (
           <section className='connected-system'>
             <div className='heading'>
               <Toolbar>
-              <Typography variant='h5' label={connectedSystemName}/>
+              <Typography variant='h5' label={`[ System Name: ${connectedSystemName}, System Type: ${connectedSystemType} ]`}/>
               {/*<a href={`/${connectedSystemType}/${connectedSystemName}`} onClick={handleReloadSystemData} className='title'>
                   
 </a>*/}
@@ -126,6 +126,14 @@ return  (
                 }
               </div>
               {entitiesValuesLoading && <Loader/>}
+              {
+                (tableValues.length === 0) && 
+                  <Fragment>
+                    <div className='center'>
+                      {category.length === 0 ? 'Select Category' : `No ${category} found`!} 
+                    </div>
+                  </Fragment>
+              }
               <TableContainer component={Paper}>
                 <Table size="small" stickyHeader aria-label="sticky table">
                   <TableHead>

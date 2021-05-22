@@ -93,7 +93,7 @@ return  (
                       <HistoryIcon />
                   </IconButton>
                 </Tooltip>
-              <Typography variant='h5' label={connectedSystemName}/>
+              <Typography variant='h5' label={`[ System Name: ${connectedSystemName}, System Type: ${connectedSystemType} ]`}/>
               </div>
               <div className='action'>
                 <Button variant='outlined' color='primary' onClick={()=>handleImportExport('import')} label='Import'/>
