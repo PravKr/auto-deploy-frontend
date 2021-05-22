@@ -14,15 +14,24 @@ import IconButton from '@material-ui/core/IconButton'
 import DeleteIcon from '@material-ui/icons/Delete';
 import Tooltip from '@material-ui/core/Tooltip';
 import Button from '../components/button'
+import Select from '../components/select'
 import { useSelector, useDispatch } from 'react-redux'
-import { systemCartListAction,
-   removeFromCartEntitiesAction,
-   entityExportAction, 
+import { entityExportAction, 
    importListCheckedAction, 
    importSystemAction,
-   removeByEntityFromCartEntitiesAction,
-   emptyCartAction
   } from '../redux/actions/system'
+
+import { systemCartListAction,
+  removeFromCartEntitiesAction,
+  removeByEntityFromCartEntitiesAction,
+  emptyCartAction
+  } from '../redux/actions/cart'
+
+  import {
+    getVisitHistory,
+    getVisitHistoryByDate,
+   } from '../redux/actions/connectedSystem'
+
 import {importDialogBoxAction} from '../redux/actions/component'
 import Card from '../components/card'
 import { AddToQueue, Label } from '@material-ui/icons';
@@ -35,9 +44,14 @@ function MyCart(props){
 
   const systemName = match.params.system
   const systemType = match.params.type
+  const historyDate = match.params.history
 
   const [isChecked, setChecked] = useState({})
   const [importSystemMsgOpenSnack, setImportSystemMsgOpenSnack] = useState(true)
+
+  const getVisitHistoryData = useSelector(state=>state.getVisitHistoryCombiner)
+  const { loading:historyLoading, histories=[] } = getVisitHistoryData
+  const [history, setHistory] = useState('')
 
   const cartList = useSelector(state=>state.systemCartList)
   const removeFromCart = useSelector(state=> state.removeFromCart)
@@ -54,28 +68,37 @@ function MyCart(props){
   const {active=[]} = importListCheck
 
   useEffect(()=>{
-    dispatch(systemCartListAction(systemName, systemType))
+    if(historyDate === 'homepage') {
+      dispatch(getVisitHistory(systemName, systemType))
+    } else {
+      dispatch(systemCartListAction(systemName, systemType, historyDate))
+    } 
 },[])
+
+const handleVisitHistory = (event) => {
+  setHistory(event.target.value)
+  dispatch(systemCartListAction(systemName, systemType, event.target.value))
+}
 
 const handleClose = () => {
   setImportSystemMsgOpenSnack(false)
 };
 
 const handleRemoveFromCart=(cat,gkey)=> {
-  dispatch(removeFromCartEntitiesAction(systemName,systemType,cat,[gkey]))
+  dispatch(removeFromCartEntitiesAction(systemName,systemType,historyDate, cat,[gkey]))
 }
 
 const handleRemoveByEntityFromCart=(cat)=> {
-  dispatch(removeByEntityFromCartEntitiesAction(systemName, systemType, cat))
+  dispatch(removeByEntityFromCartEntitiesAction(systemName, systemType, historyDate, cat))
 }
 
 const emptyCart = () => {
-  dispatch(emptyCartAction(systemName, systemType))
+  dispatch(emptyCartAction(systemName, systemType, historyDate))
 }
 
 const handleImportExport = (type)=>{
   if(type==='export'){
-    dispatch(entityExportAction(systemName, systemType))
+    dispatch(entityExportAction(systemName, systemType, historyDate))
   } 
   if(type === 'import'){
     dispatch(importDialogBoxAction(true,'import'))
@@ -92,7 +115,7 @@ const handleCloseImportDialogBox=()=>{
 }
 const handleConfirmImport = (type) => {
   setImportSystemMsgOpenSnack(true)
-  dispatch(importSystemAction(systemName,systemType,active,type))
+  dispatch(importSystemAction(systemName,systemType,historyDate, active,type))
 }
 
 const handleImportCheckbox=(e)=>{
@@ -120,7 +143,12 @@ return(<section className='cart'>
     {/*<Button variant='contained' color='primary' onClick={()=>handleImportExport('export_import')} label='Export & Import'/>*/}
    </div>
  </div>
- 
+ {
+    historyDate === 'homepage' && 
+    <div className='sub-heading'>
+      <Select label='Select Visit date' value={history} onChange={handleVisitHistory} menu={histories} />
+    </div>
+    }
  {cartListLoading && <Loader/>}
  {
  list.length === 0 && 

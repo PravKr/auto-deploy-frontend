@@ -135,7 +135,7 @@ function Homepage(){
       setUsername(updateUsername || e.username)
       setPassword(updatePassword || e.password)
     }
-    
+
     const handleSystemAdd = (e) =>{
       e.preventDefault()
       setAddSystemMsgOpenSnack(true)
@@ -144,6 +144,7 @@ function Homepage(){
         operator:addOperator, password:addPassword,
          username: addUsername, yard: addYard } ))
     }
+
     const handleResetAddSystem = (e)=>{
       e.preventDefault()
       resetAddId()
@@ -156,6 +157,7 @@ function Homepage(){
       resetAddUsername()
       resetAddPassword()
     }
+
     const handleCloseSystemAddDialogBox = (e) =>{
       setAddSystem(false)
       resetAddId()
@@ -168,6 +170,7 @@ function Homepage(){
       resetAddUsername()
       resetAddPassword()
     }
+    
     const handleOpenSystemUpdateDialogBox = (e) =>{
       setAddSystem(true)
     }
@@ -234,7 +237,7 @@ function Homepage(){
                     deleteIcon
                     onRemoveClick={()=>handleRemoveSystem('export', e.id)}
                     myCartIcon
-                    onMyCartIconLebel={`/export/cart/${e.id}`}
+                    onMyCartIconLebel={`/export/${e.id}/homepage/cart`}
                     historyIcon
                     historyIconLebelLink={`history/export/${e.id}`}
                   />)}
@@ -278,7 +281,7 @@ function Homepage(){
                   deleteIcon
                   onRemoveClick={()=>handleRemoveSystem('export', e.id)}
                   myCartIcon
-                  onMyCartIconLebel={`/export/cart/${e.id}`}
+                  onMyCartIconLebel={`/export/${e.id}/homepage/cart`}
                   historyIcon
                   historyIconLebelLink={`history/export/${e.id}`}
                   />)}

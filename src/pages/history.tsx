@@ -81,7 +81,7 @@ function HistoryPage(props) {
   }
 
   const handleConfirmImport = (type) => {
-    dispatch(entityImportByHistoryDateAction(connectedSystemName, connectedSystemType, active, type, category))
+    //dispatch(entityImportByHistoryDateAction(connectedSystemName, connectedSystemType, active, type, category))
 }
 
 return  (

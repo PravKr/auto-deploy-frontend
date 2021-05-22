@@ -2,16 +2,27 @@ import {combineReducers}  from 'redux'
 
 import { 
          exportSystemListReducer, importSystemListReducer, updateExportSystemReducer, pingSystemReducer, updateImportSystemReducer,
-         connectExportSystemReducer, addSystemReducer, entitiesByIdReducer, entitiesAddToCartReducer, 
-         entitiesValuesByCategoryReducer, selectedEntitiesValuesByCategoryReducer, systemCartListReducer,
-         removeFromCartEntitiesReducer, importListCheckReducer, importSystemReducer, getHistoryByDateReducer, getHistoryReducer,
+         connectExportSystemReducer, addSystemReducer, entitiesByIdReducer, 
+         selectedEntitiesValuesByCategoryReducer, importListCheckReducer, importSystemReducer, getHistoryByDateReducer, getHistoryReducer,
          entitiesBySearchTextActionReducer } from './system'
+
+import {getVisitHistoryReducer, getVisitHistoryByDateReducer, entitiesValuesByCategoryReducer, entitiesAddToCartReducer} from './connectedSystem'
+
+import {systemCartListReducer, removeFromCartEntitiesReducer} from './cart'
 
 import {importDialogBoxReducer, loginDialogBoxReducer} from './component'
 
 import { userLoginReducer} from './user'
 
 export default combineReducers({
+    getVisitHistoryCombiner:getVisitHistoryReducer,
+    getVisitHistoryByDateCombiner:getVisitHistoryByDateReducer,
+    entitiesValues:entitiesValuesByCategoryReducer,
+    entitiesAddToCart:entitiesAddToCartReducer,
+
+    systemCartList:systemCartListReducer,
+    removeFromCart:removeFromCartEntitiesReducer,
+    
     exportSystemList:exportSystemListReducer,
     importSystemList:importSystemListReducer,
     updateExportSystem:updateExportSystemReducer,
@@ -21,12 +32,9 @@ export default combineReducers({
     addSystem: addSystemReducer,
     entitiesById: entitiesByIdReducer,
     getHistory: getHistoryReducer,
-    entitiesAddToCart:entitiesAddToCartReducer,
-    entitiesValues:entitiesValuesByCategoryReducer,
     entitiesBySearch:entitiesBySearchTextActionReducer,
     selectedEntitiesValues:selectedEntitiesValuesByCategoryReducer,
-    systemCartList:systemCartListReducer,
-    removeFromCart:removeFromCartEntitiesReducer,
+    
     importDialogBox:importDialogBoxReducer,
     importListCheck:importListCheckReducer,
     importSystem:importSystemReducer,

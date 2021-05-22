@@ -9,6 +9,19 @@
         align-items: baseline;
     }
 
+    .sub-heading{
+        form{
+            display: flex;
+            align-items: baseline;
+        }
+        .select{
+            width: 100% !important;
+        }
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
     .center {
         position: absolute;
         top: 50%;

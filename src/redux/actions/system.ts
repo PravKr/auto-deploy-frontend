@@ -130,17 +130,6 @@ export const entitiesByIDAction = (id, connectedSystemType) => async dispatch =>
     }
 }
 
-export const entitiesBySearchTextAction = (id, connectedSystemType, category, searchText) => async dispatch => {
-    try {
-        dispatch({type: actions.entitiesValuesByCategoryLoading})
-        const res = await axios.post(`/entities/${connectedSystemType}/${id}/${category}/wildcard`, searchText)
-        const {data} = res
-        dispatch({ type:actions.entitiesValuesByCategory, payload: data })
-    } catch (er){
-        dispatch({type: actions.entitiesValuesByCategoryError, payload: 'Something went wrong'})
-    }
-}
-
 export const getHistory = (id, connectedSystemType) => async dispatch => {
     try {
         dispatch({type: actions.getHistoryLoading})
@@ -150,46 +139,13 @@ export const getHistory = (id, connectedSystemType) => async dispatch => {
     } catch (er){
         dispatch({type: actions.getHistoryError, payload: 'Something went wrong'})
     }
-}
-
-export const entitiesValuesByCategoryAction = (id,connectedSystemType,cat) => async dispatch => {
-    try {
-        dispatch({type: actions.entitiesValuesByCategoryLoading})
-            const res = await axios.post(`/entities/${connectedSystemType}/${id}/${cat}`)
-        const {data} = res
-        dispatch({ type:actions.entitiesValuesByCategory, payload: data })
-    } catch (er){
-        dispatch({type: actions.entitiesValuesByCategoryError, payload: 'Something went wrong'})
-    }
-}   
+} 
 
 export const selectedEntitiesValuesByCategoryAction = (val) => async dispatch => {
     try {
         dispatch({ type:actions.selectedEntitiesValuesByCategory, payload: val })
     } catch (er){
         dispatch({type: actions.selectedEntitiesValuesByCategoryError, payload: 'Something went wrong'})
-    }
-}
-    
-export const entitiesAddToCartAction = (sys,connectedSystemType,id, list) => async dispatch => {
-    try {
-        dispatch({type: actions.entitiesAddToCartLoading})
-            const res = await axios.post(`/entities/${connectedSystemType}/${sys}/addToCart/${id}`,list)
-        const {data} = res
-        dispatch({ type:actions.entitiesAddToCart,  payload: data, })
-    } catch (er){
-        dispatch({type: actions.entitiesAddToCartError, payload: 'Something went wrong'})
-    }
-}
-
-export const systemCartListAction = (sys, connectedSystemType) => async dispatch => {
-    try {
-        dispatch({type: actions.systemCartListLoading})
-            const res = await axios.post(`/entities/${connectedSystemType}/${sys}/cart`)
-        const {data} = res
-        dispatch({ type:actions.systemCartList,  payload: data, })
-    } catch (er){
-        dispatch({type: actions.systemCartListError, payload: 'Something went wrong'})
     }
 }
 
@@ -204,47 +160,10 @@ export const getHistoryByDate = (sys, connectedSystemType, date) => async dispat
     }
 }
 
-
-export const removeFromCartEntitiesAction = (sys,connectedSystemType,cat,ls) => async dispatch => {
-    try {
-        dispatch({type: actions.removeFromCartEntitiesLoading})
-            const res = await axios.post(`/entities/${connectedSystemType}/${sys}/removeFromCart/${cat}`,ls)
-        const {data} = res
-        dispatch({ type:actions.removeFromCartEntities,  payload: data, })
-        await dispatch(systemCartListAction(sys, connectedSystemType))
-    } catch (er){
-        dispatch({type: actions.removeFromCartEntitiesError, payload: 'Something went wrong'})
-    }
-}
-
-export const removeByEntityFromCartEntitiesAction = (sys,connectedSystemType,cat) => async dispatch => {
-    try {
-        dispatch({type: actions.removeByEntityFromCartEntitiesLoading})
-            const res = await axios.post(`/entities/${connectedSystemType}/${sys}/removeByEntityFromCart/${cat}`)
-        const {data} = res
-        dispatch({ type:actions.removeByEntityFromCartEntities,  payload: data, })
-        await dispatch(systemCartListAction(sys, connectedSystemType))
-    } catch (er){
-        dispatch({type: actions.removeByEntityFromCartEntitiesError, payload: 'Something went wrong'})
-    }
-}
-
-export const emptyCartAction = (sys,connectedSystemType) => async dispatch => {
-    try {
-        dispatch({type: actions.emptyCartLoading})
-            const res = await axios.post(`/entities/${connectedSystemType}/${sys}/emptyCart`)
-        const {data} = res
-        dispatch({ type:actions.emptyCart,  payload: data, })
-        await dispatch(systemCartListAction(sys, connectedSystemType))
-    } catch (er){
-        dispatch({type: actions.emptyCartError, payload: 'Something went wrong'})
-    }
-}
-    
-export const entityExportAction = (sys, connectedSystemType) => async dispatch => {
+export const entityExportAction = (sys, connectedSystemType, historyDate) => async dispatch => {
     try {
         dispatch({type: actions.entityExportLoading})
-            const res = await axios.post(`/entities/${connectedSystemType}/${sys}/export`)
+            const res = await axios.post(`/entities/${connectedSystemType}/${sys}/${historyDate}/export`)
         const {data} = res
         const url = await window.URL.createObjectURL(new Blob([data]));
         const link = await document.createElement('a');
@@ -281,11 +200,11 @@ export const importListCheckedAction = (val) => async dispatch => {
     }
 }
 
-export const importSystemAction = (sys,connectedSystemType, ls, type) => async dispatch => {
+export const importSystemAction = (sys,connectedSystemType, historyDate, ls, type) => async dispatch => {
     try {
         dispatch({type: actions.importSystemLoading})
         if(type === 'import'){
-            const res = await axios.post(`/entities/${connectedSystemType}/${sys}/import`,ls)
+            const res = await axios.post(`/entities/${connectedSystemType}/${sys}/${historyDate}/import`,ls)
             const {data} = res
             dispatch({ type:actions.importSystem,  payload: data })
         }
@@ -293,14 +212,14 @@ export const importSystemAction = (sys,connectedSystemType, ls, type) => async d
             const res = await axios.post(`/entities/${connectedSystemType}/${sys}/import`,ls)
             const {data} = res
             dispatch({ type:actions.importSystem,  payload: data })
-            dispatch(entityExportAction(sys,connectedSystemType))
+            dispatch(entityExportAction(sys,connectedSystemType, historyDate))
         }
     } catch (er){
         dispatch({type: actions.importSystemError, payload: 'Something went wrong'})
     }
 }
 
-export const entityImportByHistoryDateAction = (sys,connectedSystemType, ls, type, catogery) => async dispatch => {
+export const entityImportByHistoryDateAction = (sys,connectedSystemType, historyDate, ls, type, catogery) => async dispatch => {
     try {
         dispatch({type: actions.importByHistoryDateLoading})
         if(type === 'import'){
@@ -312,7 +231,7 @@ export const entityImportByHistoryDateAction = (sys,connectedSystemType, ls, typ
             const res = await axios.post(`/history/${connectedSystemType}/${sys}/${catogery}/import`,ls)
             const {data} = res
             dispatch({ type:actions.importByHistoryDate,  payload: data })
-            dispatch(entityExportAction(sys,connectedSystemType))
+            dispatch(entityExportAction(sys,connectedSystemType, historyDate))
         }
     } catch (er){
         dispatch({type: actions.importByHistoryDateError, payload: 'Something went wrong'})

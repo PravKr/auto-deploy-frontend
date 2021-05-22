@@ -40,11 +40,6 @@ export const actions = {
     getHistory: 'GET_HISOTRY',
     getHistoryError: 'GET_HISOTRY_ERROR',
     
-    // Entity Values according to selected Category
-    entitiesValuesByCategoryLoading: 'ENTITIES_VALUES_BY_CATEGORY_LOADING',
-    entitiesValuesByCategory: 'ENTITIES_VALUES_BY_CATEGORY',
-    entitiesValuesByCategoryError: 'ENTITIES_VALUES_BY_CATEGORY_ERROR',
-
     entitiesValuesByCategoryAndSearchTextLoading: 'ENTITIES_VALUES_BY_CATEGORY_AND_SEARCH_TEXT_LOADING',
     entitiesValuesByCategoryAndSearchText: 'ENTITIES_VALUES_BY_CATEGORY_AND_SEARCH_TEXT',
     entitiesValuesByCategoryAndSearchTextError: 'ENTITIES_VALUES_BY_CATEGORY_AND_SEARCH_TEXT_ERROR',
@@ -53,32 +48,9 @@ export const actions = {
     selectedEntitiesValuesByCategory: 'SELECTED_ENTITIES_VALUES_BY_CATEGORY',
     selectedEntitiesValuesByCategoryError: 'SELECTED_ENTITIES_VALUES_BY_CATEGORY_ERROR',
 
-    // add to cart
-    entitiesAddToCartLoading: 'ENTITIES_ADD_TO_CART_LOADING',
-    entitiesAddToCart: 'ENTITIES_ADD_TO_CART',
-    entitiesAddToCartError: 'ENTITIES_ADD_TO_CART_Error',
-
-    // system cart list
-    systemCartListLoading: 'SYSTEM_CART_LIST_LOADING',
-    systemCartList: 'SYSTEM_CART_LIST',
-    systemCartListError: 'SYSTEM_CART_LIST_ERROR',
-
     getHistoryByDateLoading: 'GET_HISTORY_BY_DATE_LOADING',
     getHistoryByDate: 'GET_HISTORY_BY_DATE',
     getHistoryByDateError: 'GET_HISTORY_BY_DATE_ERROR',
-
-    removeFromCartEntitiesLoading: 'REMOVE_CART_ENTITIES_LOADING',
-    removeFromCartEntities: 'REMOVE_CART_ENTITIES',
-    removeFromCartEntitiesError: 'REMOVE_CART_ENTITIES_ERROR',
-
-    removeByEntityFromCartEntitiesLoading: 'REMOVE_BY_ENTITY_FROM_CART_ENTITIES_LOADING',
-    removeByEntityFromCartEntities: 'REMOVE_BY_ENTITY_FROM_CART_ENTITIES',
-    removeByEntityFromCartEntitiesError: 'REMOVE_BY_ENTITY_FROM_CART_ENTITIES_ERROR',
-
-    emptyCartLoading: 'EMPTY_CART_LOADING',
-    emptyCart: 'EMPTY_CART',
-    emptyCartError: 'EMPTY_CART_ERROR',
-
 
     entityExportLoading: 'ENTITY_EXPORT_LOADING',
     entityExportError: 'ENTITY_EXPORT_ERROR',

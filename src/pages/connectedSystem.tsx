@@ -22,11 +22,15 @@ import {useInputString} from '../components/input'
 import { useSelector, useDispatch } from 'react-redux'
 import { 
   entitiesByIDAction, 
-  entitiesAddToCartAction, 
-  entitiesValuesByCategoryAction,
   selectedEntitiesValuesByCategoryAction,
-  entitiesBySearchTextAction,
  } from '../redux/actions/system'
+ import {
+  getVisitHistory,
+  getVisitHistoryByDate,
+  entitiesValuesByCategoryAction,
+  entitiesBySearchTextAction,
+  entitiesAddToCartAction,
+ } from '../redux/actions/connectedSystem'
 
 function ConnectedSystem(props){
 
@@ -37,6 +41,14 @@ function ConnectedSystem(props){
     const connectedSystemName = match.params.system
     const connectedSystemType = match.params.type
 
+    const getVisitHistoryData = useSelector(state=>state.getVisitHistoryCombiner)
+    const { loading:historyLoading, histories=[] } = getVisitHistoryData
+    const [history, setHistory] = useState('')
+    
+    const getVisitHistoryByDateData = useSelector(state=>state.getVisitHistoryByDateCombiner)
+    const { loading:historyByDateDataLoading, historyByDate=[] } = getVisitHistoryByDateData
+    const [category, setCategory] = useState('')
+    
     const entitiesById = useSelector(state=>state.entitiesById)
     const entitiesValues = useSelector(state=> state.entitiesValues)
     const addToCart = useSelector(state=>state.entitiesAddToCart)
@@ -45,38 +57,33 @@ function ConnectedSystem(props){
     const { loading:entitiesLoading, entities=[] } = entitiesById
     const {loading: entitiesValuesLoading, tableHeaders=[], tableValues=[], withGkey=[]} = entitiesValues
     const { active=[]} = selectedEntitiesValues
-    const [category, setCategory] = useState('')
     const [isChecked, setChecked] = useState({})
     const [isAllChecked, setAllChecked] = useState(false)
     const {value: searchText, bind: bindSearchText} = useInputString('')
 
     useEffect(()=>{
-      dispatch(entitiesByIDAction(connectedSystemName, connectedSystemType))
-  },[category])
-   
-  const handleReloadSystemData = () => {
-    dispatch(entitiesByIDAction(connectedSystemName, connectedSystemType))
+      dispatch(getVisitHistory(connectedSystemName, connectedSystemType))
+  },[history])
+
+  const handleVisitHistory = (event) => {
+    setHistory(event.target.value)
+    dispatch(getVisitHistoryByDate(connectedSystemName, connectedSystemType, event.target.value))
   }
 
+  const handleCategory = (e) => {
+    setCategory(e.target.value)
+    dispatch(entitiesValuesByCategoryAction(connectedSystemName, connectedSystemType, history, e.target.value))
+    setChecked({})
+  }
+   
   const searchTextFieldOnChange = () => {
     console.log(category + searchText)
-    dispatch(entitiesBySearchTextAction(connectedSystemName, connectedSystemType,category, {text:searchText}))
-    //setChecked({})
-    //dispatch(selectedEntitiesValuesByCategoryAction({}))
+    dispatch(entitiesBySearchTextAction(connectedSystemName, connectedSystemType, history, category, {text:searchText}))
   }
 
-  const handleCategory = useCallback((e) => {
-    setCategory(e.target.value)
-    dispatch(entitiesValuesByCategoryAction(connectedSystemName, connectedSystemType,e.target.value))
-    setChecked({})
-    dispatch(selectedEntitiesValuesByCategoryAction({}))
-  },[])
-
   const handleAddToCart = ()=>{
-    //const list = 
-    //console.log(isAllChecked + list)
     dispatch(entitiesAddToCartAction(connectedSystemName,
-       connectedSystemType, 
+       connectedSystemType, history, 
        category,isAllChecked ? withGkey : active.map(e=> e.split(`${category}-`)[1])))
   }
 
@@ -94,12 +101,9 @@ return  (
             <div className='heading'>
               <Toolbar>
               <Typography variant='h5' label={`[ System Name: ${connectedSystemName}, System Type: ${connectedSystemType} ]`}/>
-              {/*<a href={`/${connectedSystemType}/${connectedSystemName}`} onClick={handleReloadSystemData} className='title'>
-                  
-</a>*/}
               </Toolbar>
               <Tooltip title='Add to Queue' placement='left'>
-                <IconButton href={`/${connectedSystemType}/cart/${connectedSystemName}`}>
+                <IconButton href={`/${connectedSystemType}/${connectedSystemName}/${history}/cart`}>
                   <Badge badgeContent={active.length} color="primary">
                     <AddToQueueIcon />
                   </Badge>
@@ -108,13 +112,10 @@ return  (
             </div>
             {entitiesLoading && <Loader/>}
             <div className='sub-heading'>
-              <div className='select' >
-                <Select label='Select Category' value={category} onChange={handleCategory} menu={entities} />
-              </div>
-                {/*<form onSubmit={searchTextFieldOnChange}>*/}
-                  <Textfield type='text' {...bindSearchText} label='Search Text'/>
-                  <Button variant='contained' color='primary' type='submit' label='Search' onClick={searchTextFieldOnChange}/>
-                {/*</form>*/}
+                <Select label='Select Visit date' value={history} onChange={handleVisitHistory} menu={histories} />
+                <Select label='Select Entities' value={category} onChange={handleCategory} menu={historyByDate} /> 
+                <Textfield type='text' {...bindSearchText} label='Search Text'/>
+                <Button variant='contained' color='primary' type='submit' label='Search' onClick={searchTextFieldOnChange}/>
               </div>
               <div className='top'>
                 {
@@ -130,7 +131,8 @@ return  (
                 (tableValues.length === 0) && 
                   <Fragment>
                     <div className='center'>
-                      {category.length === 0 ? 'Select Category' : `No ${category} found`!} 
+                      {history.length === 0 ?
+                       'Select Visit Date' : category.length === 0 ? 'Select Category' : `No ${category} found`!}
                     </div>
                   </Fragment>
               }
