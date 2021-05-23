@@ -67,10 +67,13 @@ function MyCart(props){
   const {trigger, type} = importDialogBox
   const {active=[]} = importListCheck
 
+  console.log(historyDate)
+
   useEffect(()=>{
     if(historyDate === 'homepage') {
       dispatch(getVisitHistory(systemName, systemType))
     } else {
+      setHistory(historyDate)
       dispatch(systemCartListAction(systemName, systemType, historyDate))
     } 
 },[])
@@ -85,20 +88,20 @@ const handleClose = () => {
 };
 
 const handleRemoveFromCart=(cat,gkey)=> {
-  dispatch(removeFromCartEntitiesAction(systemName,systemType,historyDate, cat,[gkey]))
+  dispatch(removeFromCartEntitiesAction(systemName,systemType,history, cat,[gkey]))
 }
 
 const handleRemoveByEntityFromCart=(cat)=> {
-  dispatch(removeByEntityFromCartEntitiesAction(systemName, systemType, historyDate, cat))
+  dispatch(removeByEntityFromCartEntitiesAction(systemName, systemType, history, cat))
 }
 
 const emptyCart = () => {
-  dispatch(emptyCartAction(systemName, systemType, historyDate))
+  dispatch(emptyCartAction(systemName, systemType, history))
 }
 
 const handleImportExport = (type)=>{
   if(type==='export'){
-    dispatch(entityExportAction(systemName, systemType, historyDate))
+    dispatch(entityExportAction(systemName, systemType, history))
   } 
   if(type === 'import'){
     dispatch(importDialogBoxAction(true,'import'))
@@ -115,15 +118,13 @@ const handleCloseImportDialogBox=()=>{
 }
 const handleConfirmImport = (type) => {
   setImportSystemMsgOpenSnack(true)
-  dispatch(importSystemAction(systemName,systemType,historyDate, active,type))
+  dispatch(importSystemAction(systemName,systemType,history, active,type))
 }
 
 const handleImportCheckbox=(e)=>{
   setChecked({...isChecked, [e.target.id]:e.target.checked })
   dispatch(importListCheckedAction({...isChecked, [e.target.id]:e.target.checked }))
 }
-
-console.log('item count ' + list.length)
 
 return(<section className='cart'>
 
