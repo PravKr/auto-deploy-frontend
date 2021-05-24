@@ -1,44 +1,60 @@
-import {combineReducers}  from 'redux'
+import { combineReducers } from "redux";
 
-import { 
-         exportSystemListReducer, importSystemListReducer, updateExportSystemReducer, pingSystemReducer, updateImportSystemReducer,
-         connectExportSystemReducer, addSystemReducer, entitiesByIdReducer, 
-         selectedEntitiesValuesByCategoryReducer, importListCheckReducer, importSystemReducer, getHistoryByDateReducer, getHistoryReducer,
-         entitiesBySearchTextActionReducer } from './system'
+import {
+  exportSystemListReducer,
+  importSystemListReducer,
+  updateExportSystemReducer,
+  pingSystemReducer,
+  updateImportSystemReducer,
+  connectExportSystemReducer,
+  addSystemReducer,
+  entitiesByIdReducer,
+  selectedEntitiesValuesByCategoryReducer,
+  importListCheckReducer,
+  importSystemReducer,
+  getHistoryByDateReducer,
+  getHistoryReducer,
+  entitiesBySearchTextActionReducer,
+} from "./system";
 
-import {getVisitHistoryReducer, getVisitHistoryByDateReducer, entitiesValuesByCategoryReducer, entitiesAddToCartReducer} from './connectedSystem'
+import {
+  getVisitHistoryReducer,
+  getVisitHistoryByDateReducer,
+  entitiesValuesByCategoryReducer,
+  entitiesAddToCartReducer,
+} from "./connectedSystem";
 
-import {systemCartListReducer, removeFromCartEntitiesReducer} from './cart'
+import { systemCartListReducer, removeFromCartEntitiesReducer } from "./cart";
 
-import {importDialogBoxReducer, loginDialogBoxReducer} from './component'
+import { importDialogBoxReducer, loginDialogBoxReducer } from "./component";
 
-import { userLoginReducer} from './user'
+import { userLoginReducer } from "./user";
 
 export default combineReducers({
-    getVisitHistoryCombiner:getVisitHistoryReducer,
-    getVisitHistoryByDateCombiner:getVisitHistoryByDateReducer,
-    entitiesValues:entitiesValuesByCategoryReducer,
-    entitiesAddToCart:entitiesAddToCartReducer,
+  getVisitHistoryCombiner: getVisitHistoryReducer,
+  getVisitHistoryByDateCombiner: getVisitHistoryByDateReducer,
+  entitiesValues: entitiesValuesByCategoryReducer,
+  entitiesAddToCart: entitiesAddToCartReducer,
 
-    systemCartList:systemCartListReducer,
-    removeFromCart:removeFromCartEntitiesReducer,
-    
-    exportSystemList:exportSystemListReducer,
-    importSystemList:importSystemListReducer,
-    updateExportSystem:updateExportSystemReducer,
-    pingSystem: pingSystemReducer,
-    updateImportSystem:updateImportSystemReducer,
-    connectExportSystem: connectExportSystemReducer,
-    addSystem: addSystemReducer,
-    entitiesById: entitiesByIdReducer,
-    getHistory: getHistoryReducer,
-    entitiesBySearch:entitiesBySearchTextActionReducer,
-    selectedEntitiesValues:selectedEntitiesValuesByCategoryReducer,
-    
-    importDialogBox:importDialogBoxReducer,
-    importListCheck:importListCheckReducer,
-    importSystem:importSystemReducer,
-    loginDialogBox:loginDialogBoxReducer,
-    userLogin: userLoginReducer,
-    getHistoryByDate: getHistoryByDateReducer
-})
+  systemCartList: systemCartListReducer,
+  removeFromCart: removeFromCartEntitiesReducer,
+
+  exportSystemList: exportSystemListReducer,
+  importSystemList: importSystemListReducer,
+  updateExportSystem: updateExportSystemReducer,
+  pingSystem: pingSystemReducer,
+  updateImportSystem: updateImportSystemReducer,
+  connectExportSystem: connectExportSystemReducer,
+  addSystem: addSystemReducer,
+  entitiesById: entitiesByIdReducer,
+  getHistory: getHistoryReducer,
+  entitiesBySearch: entitiesBySearchTextActionReducer,
+  selectedEntitiesValues: selectedEntitiesValuesByCategoryReducer,
+
+  importDialogBox: importDialogBoxReducer,
+  importListCheck: importListCheckReducer,
+  importSystem: importSystemReducer,
+  loginDialogBox: loginDialogBoxReducer,
+  userLogin: userLoginReducer,
+  getHistoryByDate: getHistoryByDateReducer,
+});

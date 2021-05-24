@@ -1,8 +1,8 @@
-import axios from 'axios'
-import { _basePath } from './basePath'
+import axios from "axios";
+import { _basePath } from "./basePath";
 
 const instance = axios.create({
-    baseURL: _basePath
-})
+  baseURL: _basePath,
+});
 
-export default instance
+export default instance;
