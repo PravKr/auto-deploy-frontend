@@ -227,7 +227,7 @@ export const entityExportAction =
       const url = await window.URL.createObjectURL(new Blob([data]));
       const link = await document.createElement("a");
       link.href = url;
-      await link.setAttribute("download", `${sys + new Date()}.xml`);
+      await link.setAttribute("download", `${sys + new Date().toDateString}.xml`);
       await document.body.appendChild(link);
       await link.click();
     } catch (er) {
@@ -283,15 +283,6 @@ export const importSystemAction =
         const { data } = res;
         dispatch({ type: actions.importSystem, payload: data });
       }
-      if (type === "export_import") {
-        const res = await axios.post(
-          `/entities/${connectedSystemType}/${sys}/import`,
-          ls
-        );
-        const { data } = res;
-        dispatch({ type: actions.importSystem, payload: data });
-        dispatch(entityExportAction(sys, connectedSystemType, historyDate));
-      }
     } catch (er) {
       dispatch({
         type: actions.importSystemError,
@@ -301,26 +292,17 @@ export const importSystemAction =
   };
 
 export const entityImportByHistoryDateAction =
-  (sys, connectedSystemType, historyDate, ls, type, catogery) =>
+  (sys, connectedSystemType, historyDate, ls, type) =>
   async (dispatch) => {
     try {
       dispatch({ type: actions.importByHistoryDateLoading });
       if (type === "import") {
         const res = await axios.post(
-          `/history/${connectedSystemType}/${sys}/${catogery}/import`,
+          `/history/import/${sys}/${historyDate}/import`,
           ls
         );
         const { data } = res;
         dispatch({ type: actions.importByHistoryDate, payload: data });
-      }
-      if (type === "export_import") {
-        const res = await axios.post(
-          `/history/${connectedSystemType}/${sys}/${catogery}/import`,
-          ls
-        );
-        const { data } = res;
-        dispatch({ type: actions.importByHistoryDate, payload: data });
-        dispatch(entityExportAction(sys, connectedSystemType, historyDate));
       }
     } catch (er) {
       dispatch({

@@ -266,6 +266,8 @@ function Homepage() {
 
   const handleRemoveSystem = (connectedSystemType, connectedSystemId) => {
     dispatch(removeSystem(connectedSystemType, connectedSystemId));
+    dispatch(exportSystemListAction());
+    dispatch(importSystemListAction());
   };
 
   const handleMyCartClick = (connectedSystemType, connectedSystemId) => {

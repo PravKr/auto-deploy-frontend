@@ -48,6 +48,7 @@ function MyCart(props) {
   const historyDate = match.params.history;
 
   const [isChecked, setChecked] = useState({});
+  const [isImported, setIsImported] = useState(false);
   const [importSystemMsgOpenSnack, setImportSystemMsgOpenSnack] =
     useState(true);
 
@@ -64,7 +65,11 @@ function MyCart(props) {
   const importListCheck = useSelector((state) => state.importListCheck);
   const importSystem = useSelector((state) => state.importSystem);
 
-  const { msg: importSystemMsg, loading: importSSystemLoading } = importSystem;
+  const {
+    msg: importSystemMsg,
+    setMsg,
+    loading: importSSystemLoading,
+  } = importSystem;
   const { loading: importSystemLoading, importList = [] } = impSystem;
   const { loading: cartListLoading, list = [], withGkey = {} } = cartList;
   const { loading: removeLoading, msg } = removeFromCart;
@@ -83,6 +88,7 @@ function MyCart(props) {
   const handleVisitHistory = (event) => {
     setHistory(event.target.value);
     dispatch(systemCartListAction(systemName, systemType, event.target.value));
+    setIsImported(true);
   };
 
   const handleClose = () => {
@@ -112,9 +118,6 @@ function MyCart(props) {
     if (type === "import") {
       dispatch(importDialogBoxAction(true, "import"));
     }
-    if (type === "export_import") {
-      dispatch(importDialogBoxAction(true, "export_import"));
-    }
   };
 
   const handleCloseImportDialogBox = () => {
@@ -122,9 +125,11 @@ function MyCart(props) {
     setChecked({});
     dispatch(importListCheckedAction({}));
   };
+
   const handleConfirmImport = (type) => {
     setImportSystemMsgOpenSnack(true);
     dispatch(importSystemAction(systemName, systemType, history, active, type));
+    //dispatch(systemCartListAction(systemName, systemType, history));
   };
 
   const handleImportCheckbox = (e) => {
@@ -145,27 +150,28 @@ function MyCart(props) {
           </Tooltip>
           <Typography variant="h5" label={`Items in Queue for ${systemName}`} />
         </div>
-        <div className="action">
-          <Button
-            variant="outlined"
-            color="primary"
-            onClick={() => emptyCart()}
-            label="Empty Queue"
-          />
-          <Button
-            variant="outlined"
-            color="primary"
-            onClick={() => handleImportExport("import")}
-            label="Import"
-          />
-          <Button
-            variant="outlined"
-            color="primary"
-            onClick={() => handleImportExport("export")}
-            label="Export"
-          />
-          {/*<Button variant='contained' color='primary' onClick={()=>handleImportExport('export_import')} label='Export & Import'/>*/}
-        </div>
+        {isImported && (
+          <div className="action">
+            <Button
+              variant="outlined"
+              color="primary"
+              onClick={() => emptyCart()}
+              label="Empty Queue"
+            />
+            <Button
+              variant="outlined"
+              color="primary"
+              onClick={() => handleImportExport("import")}
+              label="Import"
+            />
+            <Button
+              variant="outlined"
+              color="primary"
+              onClick={() => handleImportExport("export")}
+              label="Export"
+            />
+          </div>
+        )}
       </div>
       {historyDate === "homepage" && (
         <div className="sub-heading">
@@ -311,6 +317,7 @@ function MyCart(props) {
           </Fragment>
         }
       />
+      {importSSystemLoading && <Loader />}
       {importSystemMsgOpenSnack && (
         <Snackbar
           open={importSystemMsg}

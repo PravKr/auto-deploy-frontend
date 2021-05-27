@@ -1,4 +1,5 @@
 import React, { useState, Fragment, useEffect, useCallback } from "react";
+import Snackbar from "@material-ui/core/Snackbar";
 import Typography from "../components/typography";
 import Select from "../components/select";
 import Table from "@material-ui/core/Table";
@@ -12,6 +13,16 @@ import Loader from "../components/loader";
 import HistoryIcon from "@material-ui/icons/History";
 import IconButton from "@material-ui/core/IconButton";
 import { Tooltip } from "@material-ui/core";
+import DialogBox from "../components/dialogBox";
+import Button from "../components/button";
+import Card from "../components/card";
+
+import { importDialogBoxAction } from "../redux/actions/component";
+import {
+  importListCheckedAction,
+  entityImportByHistoryDateAction,
+  entityExportByHistoryDateAction,
+} from "../redux/actions/system";
 
 import { useSelector, useDispatch } from "react-redux";
 import { getHistory, getHistoryByDate } from "../redux/actions/system";
@@ -26,25 +37,67 @@ function HistoryPage(props) {
 
   const getHistoryList = useSelector((state) => state.getHistoryByDate);
   const getHistoryy = useSelector((state) => state.getHistory);
+  const importDialogBox = useSelector((state) => state.importDialogBox);
+  const impSystem = useSelector((state) => state.importSystemList);
+  const importListCheck = useSelector((state) => state.importListCheck);
+  const importSystem = useSelector((state) => state.importSystem);
 
+  const { msg: importSystemMsg, loading: importSSystemLoading } = importSystem;
+  const { loading: importSystemLoading, importList = [] } = impSystem;
+  const { trigger, type } = importDialogBox;
+  const { active = [] } = importListCheck;
   const { loading: getHistoryLoading, histories = [] } = getHistoryy;
-  const [category, setCategory] = useState("");
+  const [isChecked, setChecked] = useState({});
+  const [history, setHistory] = useState("");
+  const [importSystemMsgOpenSnack, setImportSystemMsgOpenSnack] =
+    useState(true);
   const {
     loading: getHistoryListLoading,
     list = [],
     withGkey = {},
   } = getHistoryList;
 
+  const handleClose = () => {
+    setImportSystemMsgOpenSnack(false);
+  };
+
   useEffect(() => {
     dispatch(getHistory(connectedSystemName, connectedSystemType));
-  }, [category]);
+  }, [history]);
 
   const selectHistoryByDate = (e) => {
     e.preventDefault();
-    setCategory(e.target.value);
+    setHistory(e.target.value);
     dispatch(
       getHistoryByDate(connectedSystemName, connectedSystemType, e.target.value)
     );
+  };
+
+  const handleCloseImportDialogBox = () => {
+    dispatch(importDialogBoxAction(false, ""));
+    setChecked({});
+    dispatch(importListCheckedAction({}));
+  };
+
+  const handleConfirmImport = (type) => {
+    setImportSystemMsgOpenSnack(true);
+    dispatch(entityImportByHistoryDateAction(connectedSystemName, connectedSystemType, history, active, type));
+  };
+
+  const handleImportCheckbox = (e) => {
+    setChecked({ ...isChecked, [e.target.id]: e.target.checked });
+    dispatch(
+      importListCheckedAction({ ...isChecked, [e.target.id]: e.target.checked })
+    );
+  };
+
+  const handleImportExport = (type) => {
+    if (type === "export") {
+      dispatch(entityExportByHistoryDateAction(connectedSystemName, connectedSystemType, history));
+    }
+    if (type === "import") {
+      dispatch(importDialogBoxAction(true, "import"));
+    }
   };
 
   return (
@@ -61,12 +114,26 @@ function HistoryPage(props) {
             label={`[ System Name: ${connectedSystemName}, System Type: ${connectedSystemType} ]`}
           />
         </div>
+        <div className="action">
+          <Button
+            variant="outlined"
+            color="primary"
+            onClick={() => handleImportExport("import")}
+            label="Import"
+          />
+          <Button
+            variant="outlined"
+            color="primary"
+            onClick={() => handleImportExport("export")}
+            label="Export"
+          />
+        </div>
       </div>
       {getHistoryLoading && <Loader />}
       <div className="heading">
         <Select
           label="Select Date"
-          value={category}
+          value={history}
           onChange={selectHistoryByDate}
           menu={histories}
         />
@@ -112,6 +179,70 @@ function HistoryPage(props) {
           )}
         </div>
       ))}
+      <DialogBox
+        maxWidth="xl"
+        title={`Total Import Systems ( ${importList.length} )`}
+        open={trigger}
+        handleClose={handleCloseImportDialogBox}
+        content={
+          <Fragment>
+            {active.length > 0 && (
+              <Typography
+                variant="overline"
+                label={`Products Selected : ${active.length}`}
+              />
+            )}
+            <div className="import-list">
+              {importList.map((e, i) => (
+                <Card
+                  avatar={e.id.charAt(0).toUpperCase()}
+                  key={i}
+                  title={e.id}
+                  checkbox
+                  checkBoxId={e.id}
+                  checked={isChecked[e.id]}
+                  onCheckBoxClick={handleImportCheckbox}
+                  subHeader={`${e.operator}/${e.complex}/${e.facility}/${e.yard}`}
+                />
+              ))}
+            </div>
+          </Fragment>
+        }
+        action={
+          <Fragment>
+            <Button
+              variant="outlined"
+              color="primary"
+              onClick={handleCloseImportDialogBox}
+              label="Cancel"
+            />
+            {type === "import" ? (
+              <Button
+                variant="contained"
+                disabled={!active.length}
+                color="primary"
+                onClick={() => handleConfirmImport("import")}
+                label="Confirm Import"
+              />
+            ) : (
+              <Button
+                variant="contained"
+                disabled={!active.length}
+                color="primary"
+                onClick={() => handleConfirmImport("export_import")}
+                label="Confirm Export & Import"
+              />
+            )}
+          </Fragment>
+        }
+      />
+      {importSystemMsgOpenSnack && (
+        <Snackbar
+          open={importSystemMsg}
+          onClose={handleClose}
+          message={importSystemMsg}
+        />
+      )}
     </section>
   );
 }
