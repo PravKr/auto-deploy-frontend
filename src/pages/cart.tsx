@@ -150,7 +150,7 @@ function MyCart(props) {
           </Tooltip>
           <Typography variant="h5" label={`Items in Queue for ${systemName}`} />
         </div>
-        {isImported && (
+        {list.length !== 0 && (
           <div className="action">
             <Button
               variant="outlined"

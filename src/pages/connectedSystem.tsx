@@ -166,6 +166,7 @@ function ConnectedSystem(props) {
           onChange={handleVisitHistory}
           menu={histories}
         />
+        {historyByDateDataLoading && <Loader />}
         <Select
           label="Select Entities"
           value={category}
