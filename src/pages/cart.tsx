@@ -129,7 +129,6 @@ function MyCart(props) {
   const handleConfirmImport = (type) => {
     setImportSystemMsgOpenSnack(true);
     dispatch(importSystemAction(systemName, systemType, history, active, type));
-    //dispatch(systemCartListAction(systemName, systemType, history));
   };
 
   const handleImportCheckbox = (e) => {

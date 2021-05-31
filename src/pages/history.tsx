@@ -22,6 +22,8 @@ import {
   importListCheckedAction,
   entityImportByHistoryDateAction,
   entityExportByHistoryDateAction,
+  getImportSystemListByDate,
+  rollbackFromHistoryAction,
 } from "../redux/actions/system";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -35,20 +37,23 @@ function HistoryPage(props) {
   const connectedSystemName = match.params.system;
   const connectedSystemType = match.params.type;
 
+  const getImportSystemList = useSelector((state) => state.getImportSystemList);
   const getHistoryList = useSelector((state) => state.getHistoryByDate);
   const getHistoryy = useSelector((state) => state.getHistory);
   const importDialogBox = useSelector((state) => state.importDialogBox);
   const impSystem = useSelector((state) => state.importSystemList);
   const importListCheck = useSelector((state) => state.importListCheck);
-  const importSystem = useSelector((state) => state.importSystem);
+  const entityImportByHistoryDate = useSelector(
+    (state) => state.entityImportByHistoryDate
+  );
 
-  const { msg: importSystemMsg, loading: importSSystemLoading } = importSystem;
   const { loading: importSystemLoading, importList = [] } = impSystem;
   const { trigger, type } = importDialogBox;
   const { active = [] } = importListCheck;
   const { loading: getHistoryLoading, histories = [] } = getHistoryy;
   const [isChecked, setChecked] = useState({});
   const [history, setHistory] = useState("");
+  const [importSystem, setimportSystem] = useState("");
   const [importSystemMsgOpenSnack, setImportSystemMsgOpenSnack] =
     useState(true);
   const {
@@ -56,6 +61,15 @@ function HistoryPage(props) {
     list = [],
     withGkey = {},
   } = getHistoryList;
+
+  const { loading: getImportSystemListByDateLoading, importedSystems = [] } =
+    getImportSystemList;
+
+  const {
+    msg: importSystemMsg,
+    setMsg,
+    loading: importSSystemLoading,
+  } = entityImportByHistoryDate;
 
   const handleClose = () => {
     setImportSystemMsgOpenSnack(false);
@@ -71,6 +85,17 @@ function HistoryPage(props) {
     dispatch(
       getHistoryByDate(connectedSystemName, connectedSystemType, e.target.value)
     );
+    dispatch(
+      getImportSystemListByDate(
+        connectedSystemName,
+        connectedSystemType,
+        e.target.value
+      )
+    );
+  };
+
+  const selectImportSystem = (e) => {
+    setimportSystem(e.target.value);
   };
 
   const handleCloseImportDialogBox = () => {
@@ -81,7 +106,15 @@ function HistoryPage(props) {
 
   const handleConfirmImport = (type) => {
     setImportSystemMsgOpenSnack(true);
-    dispatch(entityImportByHistoryDateAction(connectedSystemName, connectedSystemType, history, active, type));
+    dispatch(
+      entityImportByHistoryDateAction(
+        connectedSystemName,
+        connectedSystemType,
+        history,
+        active,
+        type
+      )
+    );
   };
 
   const handleImportCheckbox = (e) => {
@@ -93,11 +126,29 @@ function HistoryPage(props) {
 
   const handleImportExport = (type) => {
     if (type === "export") {
-      dispatch(entityExportByHistoryDateAction(connectedSystemName, connectedSystemType, history));
+      dispatch(
+        entityExportByHistoryDateAction(
+          connectedSystemName,
+          connectedSystemType,
+          history
+        )
+      );
     }
     if (type === "import") {
       dispatch(importDialogBoxAction(true, "import"));
     }
+  };
+
+  const handleRollBack = () => {
+    console.log(history, { id: importSystem });
+    dispatch(
+      rollbackFromHistoryAction(
+        connectedSystemName,
+        connectedSystemType,
+        history,
+        { id: importSystem }
+      )
+    );
   };
 
   return (
@@ -115,18 +166,30 @@ function HistoryPage(props) {
           />
         </div>
         <div className="action">
-          <Button
-            variant="outlined"
-            color="primary"
-            onClick={() => handleImportExport("import")}
-            label="Import"
-          />
-          <Button
-            variant="outlined"
-            color="primary"
-            onClick={() => handleImportExport("export")}
-            label="Export"
-          />
+          {importSystem !== "" && (
+            <Button
+              variant="outlined"
+              color="primary"
+              onClick={() => handleRollBack()}
+              label="Rollback"
+            />
+          )}
+          {history !== "" && (
+            <Button
+              variant="outlined"
+              color="primary"
+              onClick={() => handleImportExport("import")}
+              label="Import"
+            />
+          )}
+          {history !== "" && (
+            <Button
+              variant="outlined"
+              color="primary"
+              onClick={() => handleImportExport("export")}
+              label="Export"
+            />
+          )}
         </div>
       </div>
       {getHistoryLoading && <Loader />}
@@ -136,6 +199,13 @@ function HistoryPage(props) {
           value={history}
           onChange={selectHistoryByDate}
           menu={histories}
+        />
+        {getImportSystemListByDateLoading && <Loader />}
+        <Select
+          label="Imported to System's"
+          value={importSystem}
+          onChange={selectImportSystem}
+          menu={importedSystems}
         />
       </div>
       {getHistoryListLoading && <Loader />}
@@ -236,6 +306,7 @@ function HistoryPage(props) {
           </Fragment>
         }
       />
+      {importSSystemLoading && <Loader />}
       {importSystemMsgOpenSnack && (
         <Snackbar
           open={importSystemMsg}

@@ -108,6 +108,22 @@ export function getHistoryReducer(state = null, action) {
   }
 }
 
+export function getImportSystemListByDateReducer(state = null, action) {
+  switch (action.type) {
+    case actions.getImportSystemListByDateLoading:
+      return { ...state, loading: true };
+    case actions.getImportSystemListByDate:
+      return {
+        ...state,
+        importedSystems: (action.payload || []).map((e) => ({ name: e, value: e })),
+        loading: false,
+      };
+
+    default:
+      return { ...state };
+  }
+}
+
 export function entitiesBySearchTextActionReducer(state = null, action) {
   switch (action.type) {
     case actions.entitiesValuesByCategoryAndSearchTextLoading:
@@ -196,6 +212,17 @@ export function importSystemReducer(state = null, action) {
     case actions.importSystemLoading:
       return { ...state, loading: true };
     case actions.importSystem:
+      return { ...state, msg: action.payload, loading: false };
+    default:
+      return { ...state };
+  }
+}
+
+export function entityImportByHistoryDateReducer(state = null, action) {
+  switch (action.type) {
+    case actions.importByHistoryDateLoading:
+      return { ...state, loading: true };
+    case actions.importByHistoryDate:
       return { ...state, msg: action.payload, loading: false };
     default:
       return { ...state };

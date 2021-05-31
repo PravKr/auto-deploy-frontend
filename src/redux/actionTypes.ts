@@ -56,6 +56,10 @@ export const actions = {
   getHistoryByDate: "GET_HISTORY_BY_DATE",
   getHistoryByDateError: "GET_HISTORY_BY_DATE_ERROR",
 
+  getImportSystemListByDateLoading: "GET_IMPORTED_SYSTEM_LIST_BY_DATE_LOADING",
+  getImportSystemListByDate: "GET_IMPORTED_SYSTEM_LIST_BY_DATE",
+  getImportSystemListByDateError: "GET_IMPORTED_SYSTEM_LIST_BY_DATE_ERROR",
+
   entityExportLoading: "ENTITY_EXPORT_LOADING",
   entityExportError: "ENTITY_EXPORT_ERROR",
 

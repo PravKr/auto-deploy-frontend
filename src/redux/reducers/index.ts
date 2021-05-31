@@ -15,6 +15,8 @@ import {
   getHistoryByDateReducer,
   getHistoryReducer,
   entitiesBySearchTextActionReducer,
+  entityImportByHistoryDateReducer,
+  getImportSystemListByDateReducer,
 } from "./system";
 
 import {
@@ -54,7 +56,9 @@ export default combineReducers({
   importDialogBox: importDialogBoxReducer,
   importListCheck: importListCheckReducer,
   importSystem: importSystemReducer,
+  entityImportByHistoryDate: entityImportByHistoryDateReducer,
   loginDialogBox: loginDialogBoxReducer,
   userLogin: userLoginReducer,
   getHistoryByDate: getHistoryByDateReducer,
+  getImportSystemList:getImportSystemListByDateReducer,
 });

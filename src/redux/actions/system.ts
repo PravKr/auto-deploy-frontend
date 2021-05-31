@@ -216,6 +216,23 @@ export const getHistoryByDate =
     }
   };
 
+  export const getImportSystemListByDate =
+  (sys, connectedSystemType, date) => async (dispatch) => {
+    try {
+      dispatch({ type: actions.getImportSystemListByDateLoading });
+      const res = await axios.post(
+        `/history/${connectedSystemType}/${sys}/importedSystem/${date}`
+      );
+      const { data } = res;
+      dispatch({ type: actions.getImportSystemListByDate, payload: data });
+    } catch (er) {
+      dispatch({
+        type: actions.getImportSystemListByDateError,
+        payload: "Something went wrong",
+      });
+    }
+  };
+
 export const entityExportAction =
   (sys, connectedSystemType, historyDate) => async (dispatch) => {
     try {
@@ -298,12 +315,31 @@ export const entityImportByHistoryDateAction =
       dispatch({ type: actions.importByHistoryDateLoading });
       if (type === "import") {
         const res = await axios.post(
-          `/history/import/${sys}/${historyDate}/import`,
+          `/history/${connectedSystemType}/${sys}/${historyDate}/import`,
           ls
         );
         const { data } = res;
         dispatch({ type: actions.importByHistoryDate, payload: data });
       }
+    } catch (er) {
+      dispatch({
+        type: actions.importByHistoryDateError,
+        payload: "Something went wrong",
+      });
+    }
+  };
+
+  export const rollbackFromHistoryAction =
+  (sys, connectedSystemType, historyDate, ls) =>
+  async (dispatch) => {
+    try {
+      dispatch({ type: actions.importByHistoryDateLoading });
+        const res = await axios.post(
+          `/history/${connectedSystemType}/${sys}/${historyDate}/rollback`,
+          ls
+        );
+        const { data } = res;
+        dispatch({ type: actions.importByHistoryDate, payload: data });
     } catch (er) {
       dispatch({
         type: actions.importByHistoryDateError,
