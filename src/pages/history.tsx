@@ -161,7 +161,6 @@ function HistoryPage(props) {
             </IconButton>
           </Tooltip>
           <Typography
-            variant="h5"
             label={`[ System Name: ${connectedSystemName}, System Type: ${connectedSystemType} ]`}
           />
         </div>

@@ -144,7 +144,6 @@ function ConnectedSystem(props) {
       <div className="heading">
         <Toolbar>
           <Typography
-            variant="h5"
             label={`[ System Name: ${connectedSystemName}, System Type: ${connectedSystemType} ]`}
           />
         </Toolbar>

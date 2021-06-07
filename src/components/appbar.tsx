@@ -11,6 +11,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { openLoginDialogBoxAction } from "../redux/actions/component";
 import { userLoginAction, userLogoutAction } from "../redux/actions/user";
 
+import {
+  downloadHelp,
+  downoladN4Plugins,
+} from "../redux/actions/system";
+
 function Appbar() {
   const dispatch = useDispatch();
 
@@ -45,6 +50,14 @@ function Appbar() {
     }
   };
 
+  const handleHelp = () => {
+    dispatch(downloadHelp());
+  };
+
+  const handledownoladN4Plugins = () => {
+    dispatch(downoladN4Plugins());
+  }
+
   return (
     <Fragment>
       <AppBar position="sticky" id="appbar">
@@ -56,6 +69,16 @@ function Appbar() {
               className="appbarTitle"
             />
           </a>
+          <Button
+            onClick={handledownoladN4Plugins}
+            color="primary"
+            label="Download N4 Plugins"
+          />
+          <Button
+            onClick={handleHelp}
+            color="primary"
+            label="Help"
+          />
           <Fragment>
             {/*{ isAuthenticated ? 
                     <LoginButton color="inherit" onClick={handleLogout}>Logout</LoginButton>

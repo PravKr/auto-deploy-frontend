@@ -244,7 +244,7 @@ export const entityExportAction =
       const url = await window.URL.createObjectURL(new Blob([data]));
       const link = await document.createElement("a");
       link.href = url;
-      await link.setAttribute("download", `${sys + new Date().toDateString}.xml`);
+      await link.setAttribute("download", `${sys + '_' + historyDate}.xml`);
       await document.body.appendChild(link);
       await link.click();
     } catch (er) {
@@ -269,6 +269,52 @@ export const entityExportByHistoryDateAction =
       await link.setAttribute("download", `${sys + new Date()}.xml`);
       await document.body.appendChild(link);
       await link.click();
+    } catch (er) {
+      dispatch({
+        type: actions.entityExportByHistoryDateError,
+        payload: "Something went wrong",
+      });
+    }
+  };
+
+  export const downoladN4Plugins =
+  () => async (dispatch) => {
+    try {
+      dispatch({ type: actions.entityExportByHistoryDateLoading });
+      const res = await axios.post(
+        `/download/n4Plugins`
+      );
+      const { data } = res;
+      const url = await window.URL.createObjectURL(new Blob([data]));
+      const link = await document.createElement("a");
+      link.href = url;
+      await link.setAttribute("download", `n4Plugins.xml`);
+      await document.body.appendChild(link);
+      await link.click();
+    } catch (er) {
+      dispatch({
+        type: actions.entityExportByHistoryDateError,
+        payload: "Something went wrong",
+      });
+    }
+  };
+
+  export const downloadHelp =
+  () => async (dispatch) => {
+    try {
+      dispatch({ type: actions.entityExportByHistoryDateLoading });
+      axios({
+        url: '/download/help',
+        method: 'POST',
+        responseType: 'blob',
+      }).then((response) => {
+        const url = window.URL.createObjectURL(new Blob([response.data]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'help.docx'); //or any other extension
+        document.body.appendChild(link);
+        link.click();
+     });
     } catch (er) {
       dispatch({
         type: actions.entityExportByHistoryDateError,
