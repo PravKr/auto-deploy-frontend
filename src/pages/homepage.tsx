@@ -60,6 +60,12 @@ function Homepage() {
   const [expUpdateOpenSnack, setExpUpdateOpenSnack] = useState(true);
   const [impUpdateOpenSnack, setImpUpdateOpenSnack] = useState(true);
   const [addSystemMsgOpenSnack, setAddSystemMsgOpenSnack] = useState(true);
+  const { exportList, loading: expLoading } = expSystem;
+  const { importList, loading: impLoading } = impSystem;
+  const { msg: addSystemMsg, loading: addSystemLoading } = addSystem;
+  const { msg: expUpdate, loading: expUpdateLoading } = updateExp;
+  const { msg: impUpdate, loading: impUpdateLoading } = updateImp;
+  const { msg: pingSystemMsg, loading: pingSystemLoading } = pingSystem;
 
   const {
     value: updateId,
@@ -162,13 +168,6 @@ function Homepage() {
     reset: resetSystemList,
   } = useInputString("");
 
-  const { exportList, loading: expLoading } = expSystem;
-  const { importList, loading: impLoading } = impSystem;
-  const { msg: addSystemMsg, loading: addSystemLoading } = addSystem;
-  const { msg: expUpdate, loading: expUpdateLoading } = updateExp;
-  const { msg: impUpdate, loading: impUpdateLoading } = updateImp;
-  const { msg: pingSystemMsg, loading: pingSystemLoading } = pingSystem;
-
   const handleSnackClose = () => {
     setPingSystemMsgOpenSnack(false);
     setExpUpdateOpenSnack(false);
@@ -200,8 +199,8 @@ function Homepage() {
   };
 
   const handlePingActionClick = (systemType, systemId) => {
-    setPingSystemMsgOpenSnack(true);
     dispatch(pingToSystemAction(systemType, systemId));
+    setPingSystemMsgOpenSnack(true);
   };
 
   const handleShow = (e, type) => {
@@ -599,17 +598,18 @@ function Homepage() {
             }
           />
         </div>
-
+        {pingSystemLoading && <Loader/>}
         {pingSystemMsgOpenSnack && (
           <Snackbar
             open={pingSystemMsg}
             onClose={handleSnackClose}
             message={pingSystemMsg}
-          />
-        )}
+          />)
+        }
         {expUpdateOpenSnack && (
           <Snackbar
             open={expUpdate}
+            autoHideDuration={6000}
             onClose={handleSnackClose}
             message={expUpdate}
           />
