@@ -71,11 +71,13 @@ function Appbar() {
           </a>
           <Button
             onClick={handledownoladN4Plugins}
+            variant="contained"
             color="primary"
             label="Download N4 Plugins"
           />
           <Button
             onClick={handleHelp}
+            variant="contained"
             color="primary"
             label="Help"
           />

@@ -70,7 +70,7 @@ function ConnectedSystem(props) {
   const { active = [] } = selectedEntitiesValues;
   const [isChecked, setChecked] = useState({});
   const [isAllChecked, setAllChecked] = useState(false);
-  const { value: searchText, bind: bindSearchText } = useInputString("");
+  const { value: searchText, setValue: setSearchText, bind: bindSearchText } = useInputString("");
 
   useEffect(() => {
     dispatch(getVisitHistory(connectedSystemName, connectedSystemType));
@@ -89,6 +89,7 @@ function ConnectedSystem(props) {
 
   const handleCategory = (e) => {
     setCategory(e.target.value);
+    setSearchText('')
     dispatch(
       entitiesValuesByCategoryAction(
         connectedSystemName,
@@ -101,7 +102,6 @@ function ConnectedSystem(props) {
   };
 
   const searchTextFieldOnChange = () => {
-    console.log(category + searchText);
     dispatch(
       entitiesBySearchTextAction(
         connectedSystemName,
