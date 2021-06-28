@@ -219,18 +219,23 @@ function MyCart(props) {
                       </TableCell>
                     </TableRow>
                     <TableRow>
-                      {(el.header || []).length > 0 && (
-                        <TableCell>Remove</TableCell>
-                      )}
                       {(el.header || []).map((e, i) => (
                         <TableCell key={i}>{e}</TableCell>
                       ))}
+                      {(el.header || []).length > 0 && (
+                        <TableCell></TableCell>
+                      )}
                     </TableRow>
                   </TableHead>
                   <TableBody>
                     {(el.values || []).map((e, i) => (
                       <TableRow key={i}>
-                        <TableCell component="th" scope="row">
+                        {(e || []).map((ee, ii) => (
+                          <TableCell key={ii} component="th" scope="row">
+                            {ee}
+                          </TableCell>
+                        ))}
+                        <TableCell component="th" scope="row" >
                           <Tooltip title="Remove" placement="bottom">
                             <IconButton
                               size="small"
@@ -245,11 +250,6 @@ function MyCart(props) {
                             </IconButton>
                           </Tooltip>
                         </TableCell>
-                        {(e || []).map((ee, ii) => (
-                          <TableCell key={ii} component="th" scope="row">
-                            {ee}
-                          </TableCell>
-                        ))}
                       </TableRow>
                     ))}
                   </TableBody>
