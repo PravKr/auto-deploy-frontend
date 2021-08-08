@@ -18,7 +18,7 @@ function SelectBox(props) {
       >
         {menu.map((e, i) => (
           <MenuItem key={i} value={e.value}>
-            {e.name}
+            {e.name.replace(/([A-Z])/g, ' $1')}
           </MenuItem>
         ))}
       </Select>
