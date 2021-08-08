@@ -218,7 +218,14 @@ function ConnectedSystem(props) {
                 <TableCell>
                   <Checkbox onChange={handleMultiChecked} />
                 </TableCell>
-              )}
+              )
+              }
+              {(tableHeaders || []).length > 0 && (
+                <TableCell>
+                  #SNo
+                </TableCell>
+              )
+              }
               {(tableHeaders || []).map((e, i) => (
                 <TableCell key={i}>{e}</TableCell>
               ))}
@@ -236,6 +243,7 @@ function ConnectedSystem(props) {
                     onChange={(e) => handleSingleChecked(e, withGkey[i])}
                   />
                 </TableCell>
+                <TableCell>{i+1}</TableCell>
                 {e.map((ee, ii) => (
                   <TableCell key={ii} component="th" scope="row">
                     {ee}
