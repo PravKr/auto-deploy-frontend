@@ -4,8 +4,7 @@ import Snackbar from "@material-ui/core/Snackbar";
 import { useInputString, useToggle } from "../components/input";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  exportSystemListAction,
-  importSystemListAction,
+  getSystemListAction,
   updateExportSystemAction,
   updateImportSystemAction,
   connectExportSystemAction,
@@ -26,17 +25,6 @@ import Button from "../components/button";
 import Textfield from "../components/textfield";
 import Loader from "../components/loader";
 
-const addSystemList = [
-  {
-    name: "Export",
-    value: "export",
-  },
-  {
-    name: "Import",
-    value: "import",
-  },
-];
-
 function Homepage() {
   const dispatch = useDispatch();
 
@@ -49,8 +37,7 @@ function Homepage() {
   const pingSystem = useSelector((state) => state.pingSystem);
 
   useEffect(() => {
-    dispatch(exportSystemListAction());
-    dispatch(importSystemListAction());
+    dispatch(getSystemListAction());
   }, []);
 
   const [value, setValue] = useState("all");
@@ -162,12 +149,6 @@ function Homepage() {
     reset: resetAddPassword,
   } = useInputString("");
 
-  const {
-    value: systemList,
-    bind: bindSystemList,
-    reset: resetSystemList,
-  } = useInputString("");
-
   const handleSnackClose = () => {
     setPingSystemMsgOpenSnack(false);
     setExpUpdateOpenSnack(false);
@@ -190,11 +171,9 @@ function Homepage() {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-    if (newValue === "export") dispatch(exportSystemListAction());
-    if (newValue === "import") dispatch(importSystemListAction());
+    if (newValue === "export") dispatch(getSystemListAction());
     if (newValue === "all") {
-      dispatch(exportSystemListAction());
-      dispatch(importSystemListAction());
+      dispatch(getSystemListAction());
     }
   };
 
@@ -220,7 +199,7 @@ function Homepage() {
     e.preventDefault();
     setAddSystemMsgOpenSnack(true);
     dispatch(
-      addSystemAction(systemList, {
+      addSystemAction({
         id: addId,
         complex: addComplex,
         endPoint: addEndPoint,
@@ -240,7 +219,6 @@ function Homepage() {
     resetAddFacility();
     resetAddOperator();
     resetAddYard();
-    resetSystemList();
     resetAddEndPoint();
     resetAddUsername();
     resetAddPassword();
@@ -253,7 +231,6 @@ function Homepage() {
     resetAddFacility();
     resetAddOperator();
     resetAddYard();
-    resetSystemList();
     resetAddEndPoint();
     resetAddUsername();
     resetAddPassword();
@@ -265,8 +242,7 @@ function Homepage() {
 
   const handleRemoveSystem = (connectedSystemType, connectedSystemId) => {
     dispatch(removeSystem(connectedSystemType, connectedSystemId));
-    dispatch(exportSystemListAction());
-    dispatch(importSystemListAction());
+    dispatch(getSystemListAction());
   };
 
   const handleMyCartClick = (connectedSystemType, connectedSystemId) => {
@@ -277,7 +253,6 @@ function Homepage() {
   const handleSystemUpdate = (e) => {
     e.preventDefault();
     setExpUpdateOpenSnack(true);
-    resetSystemList();
     if (updateType === "exp") {
       dispatch(
         updateExportSystemAction({
@@ -312,143 +287,40 @@ function Homepage() {
     <Fragment>
       <section className="homepage">
         <div className="system-panel">
-          <TabContext value={value}>
-            <div className="tabs">
-              <TabList
-                className="tab-list"
-                onChange={handleChange}
-                aria-label="icon label tabs example"
-              >
-                <Tab icon={<ImportExportIcon />} label="All" value="all" />
-                <Tab
-                  icon={<ImportExportIcon />}
-                  label="Export"
-                  value="export"
-                />
-                <Tab
-                  icon={<ImportExportIcon />}
-                  label="Import"
-                  value="import"
-                />
-              </TabList>
-              <div className="add-system">
-                <Button
-                  onClick={handleOpenSystemUpdateDialogBox}
-                  variant="contained"
-                  type="submit"
-                  color="primary"
-                  label="Add System"
-                />
-              </div>
+            <div className="right-navigation">
+              <Button
+                onClick={handleOpenSystemUpdateDialogBox}
+                variant="contained"
+                type="submit"
+                color="primary"
+                label="Add System"
+              />
             </div>
-            <TabPanel value="all">
-              <div className="label-with-add">
-                <Typography variant="h6" label="Export System" />
-                {expLoading && <Loader />}
-              </div>
-              <div className="flex-list">
-                {(exportList || []).map((e, i) => (
-                  <Card
-                    avatar={e.id.charAt(0).toUpperCase()}
-                    linkLabel="Visit"
-                    linkLabelLink={`/export/${e.id}`}
-                    key={i}
-                    onShowIconClick={() => handleShow(e, "exp")}
-                    title={e.id}
-                    subHeader={`${e.operator}/${e.complex}/${e.facility}/${e.yard}`}
-                    action
-                    pingActionsLabel="Ping"
-                    pingActionClick={() =>
-                      handlePingActionClick("export", e.id)
-                    }
-                    deleteIcon
-                    onRemoveClick={() => handleRemoveSystem("export", e.id)}
-                    myCartIcon
-                    onMyCartIconLebel={`/export/${e.id}/homepage/cart`}
-                    historyIcon
-                    historyIconLebelLink={`history/export/${e.id}`}
-                  />
-                ))}
-              </div>
-              <Divider orientation="horizontal" />
-              {impLoading && <Loader />}
-              <Typography variant="h6" label="Import System" />
-              <div className="flex-list">
-                {(importList || []).map((e, i) => (
-                  <Card
-                    avatar={e.id.charAt(0).toUpperCase()}
-                    linkLabel="Visit"
-                    linkLabelLink={`/import/${e.id}`}
-                    key={i}
-                    onShowIconClick={() => handleShow(e, "imp")}
-                    title={e.id}
-                    subHeader={`${e.operator}/${e.complex}/${e.facility}/${e.yard}`}
-                    action
-                    pingActionsLabel="Ping"
-                    pingActionClick={() =>
-                      handlePingActionClick("import", e.id)
-                    }
-                    deleteIcon
-                    onRemoveClick={() => handleRemoveSystem("import", e.id)}
-                    historyIcon
-                    historyIconLebelLink={`history/import/${e.id}`}
-                  />
-                ))}
-              </div>
-            </TabPanel>
-            <TabPanel value="export">
-              {expLoading && <Loader />}
-              <div className="flex-list">
-                {(exportList || []).map((e, i) => (
-                  <Card
-                    avatar={e.id.charAt(0).toUpperCase()}
-                    key={i}
-                    linkLabel="Visit"
-                    linkLabelLink={`/export/${e.id}`}
-                    onShowIconClick={() => handleShow(e, "exp")}
-                    title={e.id}
-                    subHeader={`${e.operator}/${e.complex}/${e.facility}/${e.yard}`}
-                    action
-                    pingActionsLabel="Ping"
-                    pingActionClick={() =>
-                      handlePingActionClick("export", e.id)
-                    }
-                    deleteIcon
-                    onRemoveClick={() => handleRemoveSystem("export", e.id)}
-                    myCartIcon
-                    onMyCartIconLebel={`/export/${e.id}/homepage/cart`}
-                    historyIcon
-                    historyIconLebelLink={`history/export/${e.id}`}
-                  />
-                ))}
-              </div>
-            </TabPanel>
-            <TabPanel value="import">
-              {impLoading && <Loader />}
-              <div className="flex-list">
-                {(importList || []).map((e, i) => (
-                  <Card
-                    avatar={e.id.charAt(0).toUpperCase()}
-                    linkLabel="Visit"
-                    linkLabelLink={`/import/${e.id}`}
-                    key={i}
-                    onShowIconClick={() => handleShow(e, "imp")}
-                    title={e.id}
-                    subHeader={`${e.complex}/${e.operator}/${e.facility}/${e.yard}`}
-                    action
-                    pingActionsLabel="Ping"
-                    pingActionClick={() =>
-                      handlePingActionClick("import", e.id)
-                    }
-                    deleteIcon
-                    onRemoveClick={() => handleRemoveSystem("import", e.id)}
-                    historyIcon
-                    historyIconLebelLink={`history/import/${e.id}`}
-                  />
-                ))}
-              </div>
-            </TabPanel>
-          </TabContext>
+            <Typography variant="h6" label="N4 Enviroments" />
+          <div className="flex-list">
+            {(exportList || []).map((e, i) => (
+              <Card
+                avatar={e.id.charAt(0).toUpperCase()}
+                linkLabel="Visit"
+                linkLabelLink={`/export/${e.id}`}
+                key={i}
+                onShowIconClick={() => handleShow(e, "exp")}
+                title={e.id}
+                subHeader={`${e.operator}/${e.complex}/${e.facility}/${e.yard}`}
+                action
+                pingActionsLabel="Ping"
+                pingActionClick={() =>
+                  handlePingActionClick("export", e.id)
+                }
+                deleteIcon
+                onRemoveClick={() => handleRemoveSystem("export", e.id)}
+                myCartIcon
+                onMyCartIconLebel={`/export/${e.id}/homepage/cart`}
+                historyIcon
+                historyIconLebelLink={`history/export/${e.id}`}
+              />
+            ))}
+          </div>
           <DialogBox
             handleClose={handleCloseDialogBox}
             open={t}
@@ -518,12 +390,6 @@ function Homepage() {
             content={
               <Fragment>
                 <form onSubmit={handleSystemAdd}>
-                  <Select
-                    required
-                    label="Select System"
-                    {...bindSystemList}
-                    menu={addSystemList}
-                  />
                   <Textfield type="text" required label="ID" {...bindAddId} />
                   <Textfield
                     type="text"
@@ -577,7 +443,6 @@ function Homepage() {
                       !addFacility ||
                       !addOperator ||
                       !addYard ||
-                      !systemList ||
                       !addEndPoint ||
                       !addUsername ||
                       !addPassword

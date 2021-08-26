@@ -2,10 +2,10 @@ import { actions } from "../actionTypes";
 import { _basePath } from "../../config/basePath";
 import axios from "../../config/axios";
 
-export const exportSystemListAction = () => async (dispatch) => {
+export const getSystemListAction = () => async (dispatch) => {
   try {
     dispatch({ type: actions.exportSystemListLoading });
-    const res = await axios.post("argo/export");
+    const res = await axios.post("argo");
     const { data } = res;
     dispatch({ type: actions.exportSystemList, payload: data });
   } catch (er) {
@@ -16,25 +16,11 @@ export const exportSystemListAction = () => async (dispatch) => {
   }
 };
 
-export const importSystemListAction = () => async (dispatch) => {
-  try {
-    dispatch({ type: actions.importSystemListLoading });
-    const res = await axios.post("argo/import");
-    const { data } = res;
-    dispatch({ type: actions.importSystemList, payload: data });
-  } catch (er) {
-    dispatch({
-      type: actions.importSystemListError,
-      payload: "Something went wrong",
-    });
-  }
-};
-
 // Add System ( export or import)
-export const addSystemAction = (type, values) => async (dispatch) => {
+export const addSystemAction = (values) => async (dispatch) => {
   try {
     dispatch({ type: actions.addSystemLoading });
-    const res = await axios.post(`add/argo/${type}`, values);
+    const res = await axios.post(`add/argo`, values);
     console.log(res);
     const { data } = res;
     if (Object.keys(data).length > 0) {
@@ -42,12 +28,8 @@ export const addSystemAction = (type, values) => async (dispatch) => {
         type: actions.addSystem,
         payload: "System Added Successfully",
       });
-      if (type === "export") {
-        await dispatch(exportSystemListAction());
-      }
-      if (type === "import") {
-        await dispatch(importSystemListAction());
-      }
+        
+      await dispatch(getSystemListAction());
     }
   } catch (er) {
     dispatch({ type: actions.addSystemError, payload: "Something went wrong" });
@@ -87,10 +69,7 @@ export const removeSystem =
           payload: "System removed Successfully",
         });
         if (connectedSystemType === "export") {
-          await dispatch(exportSystemListAction());
-        }
-        if (connectedSystemType === "import") {
-          await dispatch(importSystemListAction());
+          await dispatch(getSystemListAction());
         }
       }
     } catch (er) {
@@ -111,7 +90,7 @@ export const updateExportSystemAction = (values) => async (dispatch) => {
         type: actions.updateExportSystem,
         payload: "Export System updated Successfully",
       });
-      await dispatch(exportSystemListAction());
+      await dispatch(getSystemListAction());
     }
   } catch (er) {
     dispatch({
@@ -131,7 +110,7 @@ export const updateImportSystemAction = (values) => async (dispatch) => {
         type: actions.updateImportSystem,
         payload: "Import System updated Successfully",
       });
-      await dispatch(importSystemListAction());
+      await dispatch(getSystemListAction());
     }
   } catch (er) {
     dispatch({
