@@ -17,6 +17,7 @@ function Buttons(props) {
     <Fragment>
       {(variant == "contained" && (
         <Button
+          size="small"
           type={type}
           className={btnColorsContained[color]}
           variant="contained"
@@ -30,6 +31,7 @@ function Buttons(props) {
       )) ||
         (variant == "outlined" && (
           <Button
+          size="small"
             type={type}
             className={btnColorsOutlined[color]}
             variant="outlined"
@@ -42,6 +44,7 @@ function Buttons(props) {
           </Button>
         )) || (
           <Button
+            size="small"
             className={btnColorsContained[color]}
             onClick={onClick}
             onChange={onChange}
