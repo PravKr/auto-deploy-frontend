@@ -19,9 +19,9 @@ export const actions = {
   removeSystem: "REMOVE_SYSTEM",
   removeSystemError: "REMOVE_SYSTEM_ERROR",
 
-  updateExportSystemLoading: "UPDATE_EXPORT_SYSTEM_LOADING",
-  updateExportSystem: "UPDATE_EXPORT_SYSTEM",
-  updateExportSystemError: "UPDATE_EXPORT_SYSTEM_ERROR",
+  updateSystemLoading: "UPDATE_SYSTEM_LOADING",
+  updateSystem: "UPDATE_SYSTEM",
+  updateSystemError: "UPDATE_SYSTEM_ERROR",
 
   updateImportSystemLoading: "UPDATE_IMPORT_SYSTEM_LOADING",
   updateImportSystem: "UPDATE_IMPORT_SYSTEM",

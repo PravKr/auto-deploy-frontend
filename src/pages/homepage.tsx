@@ -28,9 +28,7 @@ function Homepage() {
   const dispatch = useDispatch();
 
   const expSystem = useSelector((state) => state.exportSystemList);
-  const impSystem = useSelector((state) => state.importSystemList);
-  const updateExp = useSelector((state) => state.updateExportSystem);
-  const updateImp = useSelector((state) => state.updateImportSystem);
+  const updateExp = useSelector((state) => state.updateSystem);
   const connectExp = useSelector((state) => state.connectExportSystem);
   const addSystem = useSelector((state) => state.addSystem);
   const pingSystem = useSelector((state) => state.pingSystem);
@@ -44,13 +42,10 @@ function Homepage() {
   const [addSystemDialogBox, setAddSystem] = useState(false);
   const [pingSystemMsgOpenSnack, setPingSystemMsgOpenSnack] = useState(true);
   const [expUpdateOpenSnack, setExpUpdateOpenSnack] = useState(true);
-  const [impUpdateOpenSnack, setImpUpdateOpenSnack] = useState(true);
   const [addSystemMsgOpenSnack, setAddSystemMsgOpenSnack] = useState(true);
   const { exportList, loading: expLoading } = expSystem;
-  const { importList, loading: impLoading } = impSystem;
   const { msg: addSystemMsg, loading: addSystemLoading } = addSystem;
   const { msg: expUpdate, loading: expUpdateLoading } = updateExp;
-  const { msg: impUpdate, loading: impUpdateLoading } = updateImp;
   const { msg: pingSystemMsg, loading: pingSystemLoading } = pingSystem;
 
   const {
@@ -151,7 +146,6 @@ function Homepage() {
   const handleSnackClose = () => {
     setPingSystemMsgOpenSnack(false);
     setExpUpdateOpenSnack(false);
-    setImpUpdateOpenSnack(false);
     setAddSystemMsgOpenSnack(false);
   };
 
@@ -354,7 +348,7 @@ function Homepage() {
                     label="Password"
                     {...bindUpdatePassword}
                   />
-                  {(expUpdateLoading || impUpdateLoading) && <Loader />}
+                  {(expUpdateLoading) && <Loader />}
                   <Button
                     variant="contained"
                     type="submit"
@@ -460,13 +454,6 @@ function Homepage() {
             autoHideDuration={6000}
             onClose={handleSnackClose}
             message={expUpdate}
-          />
-        )}
-        {impUpdateOpenSnack && (
-          <Snackbar
-            open={impUpdate}
-            onClose={handleSnackClose}
-            message={impUpdate}
           />
         )}
         {addSystemMsgOpenSnack && (

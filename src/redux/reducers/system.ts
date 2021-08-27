@@ -32,11 +32,11 @@ export function addSystemReducer(state = null, action) {
   }
 }
 
-export function updateExportSystemReducer(state = null, action) {
+export function updateSystemReducer(state = null, action) {
   switch (action.type) {
-    case actions.updateExportSystemLoading:
+    case actions.updateSystemLoading:
       return { ...state, loading: true };
-    case actions.updateExportSystem:
+    case actions.updateSystem:
       return { ...state, msg: action.payload, loading: false };
     default:
       return { ...state };

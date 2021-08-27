@@ -80,19 +80,19 @@ export const removeSystem =
 
 export const updateSystem = (values) => async (dispatch) => {
   try {
-    dispatch({ type: actions.updateExportSystemLoading });
+    dispatch({ type: actions.updateSystemLoading });
     const res = await axios.post(`add/argo`, values);
     const { data } = res;
     if (Object.keys(data).length > 0) {
       dispatch({
-        type: actions.updateExportSystem,
+        type: actions.updateSystem,
         payload: "Export System updated Successfully",
       });
       await dispatch(getSystemListAction());
     }
   } catch (er) {
     dispatch({
-      type: actions.updateExportSystemError,
+      type: actions.updateSystemError,
       payload: "Something went wrong",
     });
   }

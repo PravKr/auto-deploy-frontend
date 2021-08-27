@@ -3,7 +3,7 @@ import { combineReducers } from "redux";
 import {
   exportSystemListReducer,
   importSystemListReducer,
-  updateExportSystemReducer,
+  updateSystemReducer,
   pingSystemReducer,
   updateImportSystemReducer,
   connectExportSystemReducer,
@@ -43,7 +43,7 @@ export default combineReducers({
 
   exportSystemList: exportSystemListReducer,
   importSystemList: importSystemListReducer,
-  updateExportSystem: updateExportSystemReducer,
+  updateSystem: updateSystemReducer,
   pingSystem: pingSystemReducer,
   updateImportSystem: updateImportSystemReducer,
   connectExportSystem: connectExportSystemReducer,
