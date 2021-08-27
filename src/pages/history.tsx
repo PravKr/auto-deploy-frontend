@@ -41,13 +41,30 @@ function HistoryPage(props) {
   const getHistoryList = useSelector((state) => state.getHistoryByDate);
   const getHistoryy = useSelector((state) => state.getHistory);
   const importDialogBox = useSelector((state) => state.importDialogBox);
-  const impSystem = useSelector((state) => state.importSystemList);
+  const impSystem = useSelector((state) => state.systemList);
   const importListCheck = useSelector((state) => state.importListCheck);
   const entityImportByHistoryDate = useSelector(
     (state) => state.entityImportByHistoryDate
   );
 
-  const { loading: importSystemLoading, importList = [] } = impSystem;
+  const operationValues = [
+    {
+      name: "Export",
+      value: "export",
+    },
+    {
+      name: "Import",
+      value: "import",
+    },
+  ];
+
+  const updateOperation = (event) => {
+    setOperation(event.target.value);
+    dispatch(getHistory(event.target.value, connectedSystemName));
+  };
+
+  const [operation, setOperation] = useState("");
+  const { loading: importSystemLoading, systemList = [] } = impSystem;
   const { trigger, type } = importDialogBox;
   const { active = [] } = importListCheck;
   const { loading: getHistoryLoading, histories = [] } = getHistoryy;
@@ -75,20 +92,19 @@ function HistoryPage(props) {
     setImportSystemMsgOpenSnack(false);
   };
 
-  useEffect(() => {
-    dispatch(getHistory(connectedSystemName, connectedSystemType));
-  }, [history]);
+  /*useEffect(() => {
+    dispatch(getHistory(connectedSystemName));
+  }, [history]);*/
 
   const selectHistoryByDate = (e) => {
     e.preventDefault();
     setHistory(e.target.value);
     dispatch(
-      getHistoryByDate(connectedSystemName, connectedSystemType, e.target.value)
+      getHistoryByDate(connectedSystemName, operation, e.target.value)
     );
     dispatch(
       getImportSystemListByDate(
         connectedSystemName,
-        connectedSystemType,
         e.target.value
       )
     );
@@ -194,6 +210,12 @@ function HistoryPage(props) {
       {getHistoryLoading && <Loader />}
       <div className="heading">
         <Select
+          label="Select type"
+          value={operation}
+          onChange={updateOperation}
+          menu={operationValues}
+        />
+        <Select
           label="Select Date"
           value={history}
           onChange={selectHistoryByDate}
@@ -250,7 +272,7 @@ function HistoryPage(props) {
       ))}
       <DialogBox
         maxWidth="xl"
-        title={`Total Import Systems ( ${importList.length} )`}
+        title={`Total Import Systems ( ${systemList.length} )`}
         open={trigger}
         handleClose={handleCloseImportDialogBox}
         content={
@@ -262,7 +284,7 @@ function HistoryPage(props) {
               />
             )}
             <div className="import-list">
-              {importList.map((e, i) => (
+              {systemList.map((e, i) => (
                 <Card
                   avatar={e.id.charAt(0).toUpperCase()}
                   key={i}

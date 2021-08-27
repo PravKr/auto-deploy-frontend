@@ -292,7 +292,7 @@ function Homepage() {
                 deleteIcon
                 onRemoveClick={() => handleRemoveSystem(e.id)}
                 myCartIcon
-                onMyCartIconLebel={`/export/${e.id}/homepage/cart`}
+                onMyCartIconLebel={`/${e.id}/homepage/cart`}
                 historyIcon
                 historyIconLebelLink={`history/export/${e.id}`}
               />

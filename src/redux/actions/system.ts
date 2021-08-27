@@ -127,10 +127,10 @@ export const entitiesByIDAction =
     }
   };
 
-export const getHistory = (id, connectedSystemType) => async (dispatch) => {
+export const getHistory = (operation, id) => async (dispatch) => {
   try {
     dispatch({ type: actions.getHistoryLoading });
-    const res = await axios.post(`/history/${connectedSystemType}/${id}`);
+    const res = await axios.post(`/history/${operation}/${id}`);
     const { data } = res;
     dispatch({ type: actions.getHistory, payload: data });
   } catch (er) {
@@ -157,11 +157,11 @@ export const selectedEntitiesValuesByCategoryAction =
   };
 
 export const getHistoryByDate =
-  (sys, connectedSystemType, date) => async (dispatch) => {
+  (sys, operation, date) => async (dispatch) => {
     try {
       dispatch({ type: actions.getHistoryByDateLoading });
       const res = await axios.post(
-        `/history/${connectedSystemType}/${sys}/${date}`
+        `/history/${sys}/${date}`
       );
       const { data } = res;
       dispatch({ type: actions.getHistoryByDate, payload: data });
@@ -174,11 +174,11 @@ export const getHistoryByDate =
   };
 
   export const getImportSystemListByDate =
-  (sys, connectedSystemType, date) => async (dispatch) => {
+  (sys, date) => async (dispatch) => {
     try {
       dispatch({ type: actions.getImportSystemListByDateLoading });
       const res = await axios.post(
-        `/history/${connectedSystemType}/${sys}/importedSystem/${date}`
+        `/history/${sys}/importedSystem/${date}`
       );
       const { data } = res;
       dispatch({ type: actions.getImportSystemListByDate, payload: data });
