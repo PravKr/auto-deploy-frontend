@@ -5,8 +5,7 @@ import { useInputString, useToggle } from "../components/input";
 import { useSelector, useDispatch } from "react-redux";
 import {
   getSystemListAction,
-  updateExportSystemAction,
-  updateImportSystemAction,
+  updateSystem,
   connectExportSystemAction,
   addSystemAction,
   removeSystem,
@@ -177,8 +176,8 @@ function Homepage() {
     }
   };
 
-  const handlePingActionClick = (systemType, systemId) => {
-    dispatch(pingToSystemAction(systemType, systemId));
+  const handlePingActionClick = (systemId) => {
+    dispatch(pingToSystemAction(systemId));
     setPingSystemMsgOpenSnack(true);
   };
 
@@ -240,9 +239,9 @@ function Homepage() {
     setAddSystem(true);
   };
 
-  const handleRemoveSystem = (connectedSystemType, connectedSystemId) => {
-    dispatch(removeSystem(connectedSystemType, connectedSystemId));
-    dispatch(getSystemListAction());
+  const handleRemoveSystem = (connectedSystemId) => {
+    dispatch(removeSystem(connectedSystemId));
+    //dispatch(getSystemListAction());
   };
 
   const handleMyCartClick = (connectedSystemType, connectedSystemId) => {
@@ -253,9 +252,8 @@ function Homepage() {
   const handleSystemUpdate = (e) => {
     e.preventDefault();
     setExpUpdateOpenSnack(true);
-    if (updateType === "exp") {
       dispatch(
-        updateExportSystemAction({
+        updateSystem({
           id: updateId,
           complex: updateComplex,
           endPoint: updateEndPoint,
@@ -266,21 +264,6 @@ function Homepage() {
           yard: updateYard,
         })
       );
-    }
-    if (updateType === "imp") {
-      dispatch(
-        updateImportSystemAction({
-          id: updateId,
-          complex: updateComplex,
-          endPoint: updateEndPoint,
-          facility: updateFacility,
-          operator: updateOperator,
-          password: updatePassword,
-          username: updateUsername,
-          yard: updateYard,
-        })
-      );
-    }
   };
 
   return (
@@ -310,10 +293,10 @@ function Homepage() {
                 action
                 pingActionsLabel="Ping"
                 pingActionClick={() =>
-                  handlePingActionClick("export", e.id)
+                  handlePingActionClick(e.id)
                 }
                 deleteIcon
-                onRemoveClick={() => handleRemoveSystem("export", e.id)}
+                onRemoveClick={() => handleRemoveSystem(e.id)}
                 myCartIcon
                 onMyCartIconLebel={`/export/${e.id}/homepage/cart`}
                 historyIcon

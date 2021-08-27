@@ -37,10 +37,10 @@ export const addSystemAction = (values) => async (dispatch) => {
 };
 
 export const pingToSystemAction =
-  (systemType, systemId) => async (dispatch) => {
+  (systemId) => async (dispatch) => {
     try {
       dispatch({ type: actions.pingSystemLoading });
-      const res = await axios.post(`ping/argo/${systemType}/${systemId}`);
+      const res = await axios.post(`ping/argo/${systemId}`);
       console.log(res);
       const { data } = res;
       if (Object.keys(data).length > 0) {
@@ -55,11 +55,11 @@ export const pingToSystemAction =
   };
 
 export const removeSystem =
-  (connectedSystemType, connectedSystemId) => async (dispatch) => {
+  (connectedSystemId) => async (dispatch) => {
     try {
       dispatch({ type: actions.removeSystemLoading });
       const res = await axios.post(
-        `remove/argo/${connectedSystemType}/${connectedSystemId}`
+        `remove/argo/${connectedSystemId}`
       );
       console.log(res);
       const { data } = res;
@@ -68,9 +68,7 @@ export const removeSystem =
           type: actions.removeSystem,
           payload: "System removed Successfully",
         });
-        if (connectedSystemType === "export") {
-          await dispatch(getSystemListAction());
-        }
+        await dispatch(getSystemListAction());
       }
     } catch (er) {
       dispatch({
@@ -80,10 +78,10 @@ export const removeSystem =
     }
   };
 
-export const updateExportSystemAction = (values) => async (dispatch) => {
+export const updateSystem = (values) => async (dispatch) => {
   try {
     dispatch({ type: actions.updateExportSystemLoading });
-    const res = await axios.post(`add/argo/export`, values);
+    const res = await axios.post(`add/argo`, values);
     const { data } = res;
     if (Object.keys(data).length > 0) {
       dispatch({
@@ -95,26 +93,6 @@ export const updateExportSystemAction = (values) => async (dispatch) => {
   } catch (er) {
     dispatch({
       type: actions.updateExportSystemError,
-      payload: "Something went wrong",
-    });
-  }
-};
-
-export const updateImportSystemAction = (values) => async (dispatch) => {
-  try {
-    dispatch({ type: actions.updateImportSystemLoading });
-    const res = await axios.post(`add/argo/import`, values);
-    const { data } = res;
-    if (Object.keys(data).length > 0) {
-      dispatch({
-        type: actions.updateImportSystem,
-        payload: "Import System updated Successfully",
-      });
-      await dispatch(getSystemListAction());
-    }
-  } catch (er) {
-    dispatch({
-      type: actions.updateImportSystemError,
       payload: "Something went wrong",
     });
   }
