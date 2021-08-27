@@ -44,7 +44,6 @@ function MyCart(props) {
   const { match } = props;
 
   const systemName = match.params.system;
-  const systemType = match.params.type;
   const historyDate = match.params.history;
 
   const [isChecked, setChecked] = useState({});
@@ -61,7 +60,7 @@ function MyCart(props) {
   const cartList = useSelector((state) => state.systemCartList);
   const removeFromCart = useSelector((state) => state.removeFromCart);
   const importDialogBox = useSelector((state) => state.importDialogBox);
-  const impSystem = useSelector((state) => state.importSystemList);
+  const impSystem = useSelector((state) => state.systemList);
   const importListCheck = useSelector((state) => state.importListCheck);
   const importSystem = useSelector((state) => state.importSystem);
 
@@ -70,7 +69,7 @@ function MyCart(props) {
     setMsg,
     loading: importSSystemLoading,
   } = importSystem;
-  const { loading: importSystemLoading, importList = [] } = impSystem;
+  const { loading: importSystemLoading, systemList = [] } = impSystem;
   const { loading: cartListLoading, list = [], withGkey = {} } = cartList;
   const { loading: removeLoading, msg } = removeFromCart;
   const { trigger, type } = importDialogBox;
@@ -78,16 +77,16 @@ function MyCart(props) {
 
   useEffect(() => {
     if (historyDate === "homepage") {
-      dispatch(getVisitHistory(systemName, systemType));
+      dispatch(getVisitHistory(systemName));
     } else {
       setHistory(historyDate);
-      dispatch(systemCartListAction(systemName, systemType, historyDate));
+      dispatch(systemCartListAction(systemName, historyDate));
     }
   }, []);
 
   const handleVisitHistory = (event) => {
     setHistory(event.target.value);
-    dispatch(systemCartListAction(systemName, systemType, event.target.value));
+    dispatch(systemCartListAction(systemName, event.target.value));
     setIsImported(true);
   };
 
@@ -97,23 +96,23 @@ function MyCart(props) {
 
   const handleRemoveFromCart = (cat, gkey) => {
     dispatch(
-      removeFromCartEntitiesAction(systemName, systemType, history, cat, [gkey])
+      removeFromCartEntitiesAction(systemName, history, cat, [gkey])
     );
   };
 
   const handleRemoveByEntityFromCart = (cat) => {
     dispatch(
-      removeByEntityFromCartEntitiesAction(systemName, systemType, history, cat)
+      removeByEntityFromCartEntitiesAction(systemName, history, cat)
     );
   };
 
   const emptyCart = () => {
-    dispatch(emptyCartAction(systemName, systemType, history));
+    dispatch(emptyCartAction(systemName, history));
   };
 
   const handleImportExport = (type) => {
     if (type === "export") {
-      dispatch(entityExportAction(systemName, systemType, history));
+      dispatch(entityExportAction(systemName, history));
     }
     if (type === "import") {
       dispatch(importDialogBoxAction(true, "import"));
@@ -128,7 +127,7 @@ function MyCart(props) {
 
   const handleConfirmImport = (type) => {
     setImportSystemMsgOpenSnack(true);
-    dispatch(importSystemAction(systemName, systemType, history, active, type));
+    dispatch(importSystemAction(systemName, history, active, type));
   };
 
   const handleImportCheckbox = (e) => {
@@ -261,7 +260,7 @@ function MyCart(props) {
       ))}
       <DialogBox
         maxWidth="xl"
-        title={`Total Import Systems ( ${importList.length} )`}
+        title={`Total Import Systems ( ${systemList.length} )`}
         open={trigger}
         handleClose={handleCloseImportDialogBox}
         content={
@@ -273,7 +272,7 @@ function MyCart(props) {
               />
             )}
             <div className="import-list">
-              {importList.map((e, i) => (
+              {systemList.map((e, i) => (
                 <Card
                   avatar={e.id.charAt(0).toUpperCase()}
                   key={i}

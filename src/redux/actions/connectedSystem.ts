@@ -3,11 +3,11 @@ import { _basePath } from "../../config/basePath";
 import axios from "../../config/axios";
 
 export const getVisitHistory =
-  (connectedSystemId, connectedSystemType) => async (dispatch) => {
+  (connectedSystemId) => async (dispatch) => {
     try {
       dispatch({ type: connectedSystemActions.getVisitHistoryLoading });
       const res = await axios.post(
-        `/entities/${connectedSystemType}/${connectedSystemId}`
+        `/entities/${connectedSystemId}`
       );
       const { data } = res;
       dispatch({ type: connectedSystemActions.getVisitHistory, payload: data });
@@ -20,11 +20,11 @@ export const getVisitHistory =
   };
 
 export const getVisitHistoryByDate =
-  (connectedSystemId, connectedSystemType, historyDate) => async (dispatch) => {
+  (connectedSystemId, historyDate) => async (dispatch) => {
     try {
       dispatch({ type: connectedSystemActions.getVisitHistoryByDateLoading });
       const res = await axios.post(
-        `/entities/${connectedSystemType}/${connectedSystemId}/${historyDate}`
+        `/entities/${connectedSystemId}/${historyDate}`
       );
       const { data } = res;
       dispatch({
@@ -40,13 +40,13 @@ export const getVisitHistoryByDate =
   };
 
 export const entitiesValuesByCategoryAction =
-  (id, connectedSystemType, visitedDate, category) => async (dispatch) => {
+  (id, visitedDate, category) => async (dispatch) => {
     try {
       dispatch({
         type: connectedSystemActions.entitiesValuesByCategoryLoading,
       });
       const res = await axios.post(
-        `/entities/${connectedSystemType}/${id}/${visitedDate}/${category}`
+        `/entities/${id}/${visitedDate}/${category}`
       );
       const { data } = res;
       dispatch({
@@ -62,14 +62,14 @@ export const entitiesValuesByCategoryAction =
   };
 
 export const entitiesBySearchTextAction =
-  (id, connectedSystemType, historyDate, category, searchText) =>
+  (id, historyDate, category, searchText) =>
   async (dispatch) => {
     try {
       dispatch({
         type: connectedSystemActions.entitiesValuesByCategoryLoading,
       });
       const res = await axios.post(
-        `/entities/${connectedSystemType}/${id}/${historyDate}/${category}/wildcard`,
+        `/entities/${id}/${historyDate}/${category}/wildcard`,
         searchText
       );
       const { data } = res;
@@ -86,12 +86,12 @@ export const entitiesBySearchTextAction =
   };
 
 export const entitiesAddToCartAction =
-  (connectedSystemName, connectedSystemType, historyDate, category, list) =>
+  (connectedSystemName, historyDate, category, list) =>
   async (dispatch) => {
     try {
       dispatch({ type: connectedSystemActions.entitiesAddToCartLoading });
       const res = await axios.post(
-        `/entities/${connectedSystemType}/${connectedSystemName}/${historyDate}/addToCart/${category}`,
+        `/entities/${connectedSystemName}/${historyDate}/addToCart/${category}`,
         list
       );
       const { data } = res;

@@ -3,11 +3,11 @@ import { _basePath } from "../../config/basePath";
 import axios from "../../config/axios";
 
 export const systemCartListAction =
-  (sys, connectedSystemType, historyDate) => async (dispatch) => {
+  (sys, historyDate) => async (dispatch) => {
     try {
       dispatch({ type: cartActionTypes.systemCartListLoading });
       const res = await axios.post(
-        `/entities/${connectedSystemType}/${sys}/${historyDate}/cart`
+        `/entities/${sys}/${historyDate}/cart`
       );
       const { data } = res;
       dispatch({ type: cartActionTypes.systemCartList, payload: data });
@@ -20,17 +20,17 @@ export const systemCartListAction =
   };
 
 export const removeFromCartEntitiesAction =
-  (sys, connectedSystemType, historyDate, cat, ls) => async (dispatch) => {
+  (sys, historyDate, cat, ls) => async (dispatch) => {
     try {
       dispatch({ type: cartActionTypes.removeFromCartEntitiesLoading });
       const res = await axios.post(
-        `/entities/${connectedSystemType}/${sys}/${historyDate}/removeFromCart/${cat}`,
+        `/entities/${sys}/${historyDate}/removeFromCart/${cat}`,
         ls
       );
       const { data } = res;
       dispatch({ type: cartActionTypes.removeFromCartEntities, payload: data });
       await dispatch(
-        systemCartListAction(sys, connectedSystemType, historyDate)
+        systemCartListAction(sys, historyDate)
       );
     } catch (er) {
       dispatch({
@@ -41,11 +41,11 @@ export const removeFromCartEntitiesAction =
   };
 
 export const removeByEntityFromCartEntitiesAction =
-  (sys, connectedSystemType, historyDate, cat) => async (dispatch) => {
+  (sys, historyDate, cat) => async (dispatch) => {
     try {
       dispatch({ type: cartActionTypes.removeByEntityFromCartEntitiesLoading });
       const res = await axios.post(
-        `/entities/${connectedSystemType}/${sys}/${historyDate}/removeByEntityFromCart/${cat}`
+        `/entities/${sys}/${historyDate}/removeByEntityFromCart/${cat}`
       );
       const { data } = res;
       dispatch({
@@ -53,7 +53,7 @@ export const removeByEntityFromCartEntitiesAction =
         payload: data,
       });
       await dispatch(
-        systemCartListAction(sys, connectedSystemType, historyDate)
+        systemCartListAction(sys, historyDate)
       );
     } catch (er) {
       dispatch({
@@ -64,16 +64,16 @@ export const removeByEntityFromCartEntitiesAction =
   };
 
 export const emptyCartAction =
-  (sys, connectedSystemType, historyDate) => async (dispatch) => {
+  (sys, historyDate) => async (dispatch) => {
     try {
       dispatch({ type: cartActionTypes.emptyCartLoading });
       const res = await axios.post(
-        `/entities/${connectedSystemType}/${sys}/${historyDate}/emptyCart`
+        `/entities/${sys}/${historyDate}/emptyCart`
       );
       const { data } = res;
       dispatch({ type: cartActionTypes.emptyCart, payload: data });
       await dispatch(
-        systemCartListAction(sys, connectedSystemType, historyDate)
+        systemCartListAction(sys, historyDate)
       );
     } catch (er) {
       dispatch({

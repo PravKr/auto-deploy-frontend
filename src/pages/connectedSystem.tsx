@@ -73,7 +73,7 @@ function ConnectedSystem(props) {
   const { value: searchText, setValue: setSearchText, bind: bindSearchText } = useInputString("");
 
   useEffect(() => {
-    dispatch(getVisitHistory(connectedSystemName, connectedSystemType));
+    dispatch(getVisitHistory(connectedSystemName));
   }, [history]);
 
   const handleVisitHistory = (event) => {
@@ -81,7 +81,6 @@ function ConnectedSystem(props) {
     dispatch(
       getVisitHistoryByDate(
         connectedSystemName,
-        connectedSystemType,
         event.target.value
       )
     );
@@ -93,7 +92,6 @@ function ConnectedSystem(props) {
     dispatch(
       entitiesValuesByCategoryAction(
         connectedSystemName,
-        connectedSystemType,
         history,
         e.target.value
       )
@@ -105,7 +103,6 @@ function ConnectedSystem(props) {
     dispatch(
       entitiesBySearchTextAction(
         connectedSystemName,
-        connectedSystemType,
         history,
         category,
         { text: searchText }
@@ -117,7 +114,6 @@ function ConnectedSystem(props) {
     dispatch(
       entitiesAddToCartAction(
         connectedSystemName,
-        connectedSystemType,
         history,
         category,
         isAllChecked ? withGkey : active.map((e) => e.split(`${category}-`)[1])
@@ -144,12 +140,12 @@ function ConnectedSystem(props) {
       <div className="heading">
         <Toolbar>
           <Typography
-            label={`[ System Name: ${connectedSystemName}, System Type: ${connectedSystemType} ]`}
+            label={connectedSystemName}
           />
         </Toolbar>
         <Tooltip title="Add to Queue" placement="left">
           <IconButton
-            href={`/${connectedSystemType}/${connectedSystemName}/${history}/cart`}
+            href={`/${connectedSystemName}/${history}/cart`}
           >
             <Badge badgeContent={active.length} color="primary">
               <AddToQueueIcon />

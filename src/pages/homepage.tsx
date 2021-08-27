@@ -279,7 +279,7 @@ function Homepage() {
               <Card
                 avatar={e.id.charAt(0).toUpperCase()}
                 linkLabel="Visit"
-                linkLabelLink={`/export/${e.id}`}
+                linkLabelLink={`/${e.id}`}
                 key={i}
                 onShowIconClick={() => handleShow(e, "exp")}
                 title={e.id}

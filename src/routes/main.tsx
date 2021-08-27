@@ -13,8 +13,8 @@ const Main = () => (
     <Switch>
       <Route path="/default" exact component={Default} />
       <Route path="/" exact component={Homepage} />
-      <Route path="/:type/:system" exact component={ConnectedSystem} />
-      <Route path="/:type/:system/:history/cart" exact component={Cart} />
+      <Route path="/:system" exact component={ConnectedSystem} />
+      <Route path="/:system/:history/cart" exact component={Cart} />
       <Route path="/history/:type/:system" exact component={HistoryPage} />
     </Switch>
   </Router>

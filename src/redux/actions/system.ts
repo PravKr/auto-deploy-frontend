@@ -191,11 +191,11 @@ export const getHistoryByDate =
   };
 
 export const entityExportAction =
-  (sys, connectedSystemType, historyDate) => async (dispatch) => {
+  (sys, historyDate) => async (dispatch) => {
     try {
       dispatch({ type: actions.entityExportLoading });
       const res = await axios.post(
-        `/entities/${connectedSystemType}/${sys}/${historyDate}/export`
+        `/entities/${sys}/${historyDate}/export`
       );
       const { data } = res;
       const url = await window.URL.createObjectURL(new Blob([data]));
@@ -292,12 +292,12 @@ export const importListCheckedAction = (val) => async (dispatch) => {
 };
 
 export const importSystemAction =
-  (sys, connectedSystemType, historyDate, ls, type) => async (dispatch) => {
+  (sys, historyDate, ls, type) => async (dispatch) => {
     try {
       dispatch({ type: actions.importSystemLoading });
       if (type === "import") {
         const res = await axios.post(
-          `/entities/${connectedSystemType}/${sys}/${historyDate}/import`,
+          `/entities/${sys}/${historyDate}/import`,
           ls
         );
         const { data } = res;
