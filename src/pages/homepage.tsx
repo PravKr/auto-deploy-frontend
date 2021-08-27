@@ -27,7 +27,7 @@ import Loader from "../components/loader";
 function Homepage() {
   const dispatch = useDispatch();
 
-  const expSystem = useSelector((state) => state.exportSystemList);
+  const systems = useSelector((state) => state.systemList);
   const updateExp = useSelector((state) => state.updateSystem);
   const connectExp = useSelector((state) => state.connectExportSystem);
   const addSystem = useSelector((state) => state.addSystem);
@@ -43,7 +43,7 @@ function Homepage() {
   const [pingSystemMsgOpenSnack, setPingSystemMsgOpenSnack] = useState(true);
   const [expUpdateOpenSnack, setExpUpdateOpenSnack] = useState(true);
   const [addSystemMsgOpenSnack, setAddSystemMsgOpenSnack] = useState(true);
-  const { exportList, loading: expLoading } = expSystem;
+  const { systemList, loading: expLoading } = systems;
   const { msg: addSystemMsg, loading: addSystemLoading } = addSystem;
   const { msg: expUpdate, loading: expUpdateLoading } = updateExp;
   const { msg: pingSystemMsg, loading: pingSystemLoading } = pingSystem;
@@ -275,7 +275,7 @@ function Homepage() {
             </div>
             <Typography variant="h6" label="N4 Enviroments" />
           <div className="flex-list">
-            {(exportList || []).map((e, i) => (
+            {(systemList || []).map((e, i) => (
               <Card
                 avatar={e.id.charAt(0).toUpperCase()}
                 linkLabel="Visit"

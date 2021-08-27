@@ -1,11 +1,7 @@
 export const actions = {
-  exportSystemListLoading: "EXPORT_SYSTEM_LIST_LOADING",
-  exportSystemList: "EXPORT_SYSTEM_LIST",
-  exportSystemListError: "EXPORT_SYSTEM_LIST_ERROR",
-
-  importSystemListLoading: "IMPORT_SYSTEM_LIST_LOADING",
-  importSystemList: "IMPORT_SYSTEM_LIST",
-  importSystemListError: "IMPORT_SYSTEM_LIST_ERROR",
+  systemListLoading: "SYSTEM_LIST_LOADING",
+  systemList: "SYSTEM_LIST",
+  systemListError: "SYSTEM_LIST_ERROR",
 
   addSystemLoading: "ADD_SYSTEM_LOADING",
   addSystem: "ADD_SYSTEM",

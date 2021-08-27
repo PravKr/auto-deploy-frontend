@@ -4,13 +4,13 @@ import axios from "../../config/axios";
 
 export const getSystemListAction = () => async (dispatch) => {
   try {
-    dispatch({ type: actions.exportSystemListLoading });
+    dispatch({ type: actions.systemListLoading });
     const res = await axios.post("argo");
     const { data } = res;
-    dispatch({ type: actions.exportSystemList, payload: data });
+    dispatch({ type: actions.systemList, payload: data });
   } catch (er) {
     dispatch({
-      type: actions.exportSystemListError,
+      type: actions.systemListError,
       payload: "Something went wrong",
     });
   }

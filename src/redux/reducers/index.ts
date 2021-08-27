@@ -1,8 +1,7 @@
 import { combineReducers } from "redux";
 
 import {
-  exportSystemListReducer,
-  importSystemListReducer,
+  systemListReducer,
   updateSystemReducer,
   pingSystemReducer,
   updateImportSystemReducer,
@@ -41,8 +40,7 @@ export default combineReducers({
   systemCartList: systemCartListReducer,
   removeFromCart: removeFromCartEntitiesReducer,
 
-  exportSystemList: exportSystemListReducer,
-  importSystemList: importSystemListReducer,
+  systemList: systemListReducer,
   updateSystem: updateSystemReducer,
   pingSystem: pingSystemReducer,
   updateImportSystem: updateImportSystemReducer,

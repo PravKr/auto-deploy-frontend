@@ -1,21 +1,11 @@
 import { actions } from "../actionTypes";
 
-export function exportSystemListReducer(state = null, action) {
+export function systemListReducer(state = null, action) {
   switch (action.type) {
-    case actions.exportSystemListLoading:
+    case actions.systemListLoading:
       return { ...state, loading: true };
-    case actions.exportSystemList:
-      return { ...state, exportList: action.payload, loading: false };
-    default:
-      return { ...state };
-  }
-}
-export function importSystemListReducer(state = null, action) {
-  switch (action.type) {
-    case actions.importSystemListLoading:
-      return { ...state, loading: true };
-    case actions.importSystemList:
-      return { ...state, importList: action.payload, loading: false };
+    case actions.systemList:
+      return { ...state, systemList: action.payload, loading: false };
     default:
       return { ...state };
   }
