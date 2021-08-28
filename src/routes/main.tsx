@@ -15,7 +15,7 @@ const Main = () => (
       <Route path="/" exact component={Homepage} />
       <Route path="/:system" exact component={ConnectedSystem} />
       <Route path="/:system/:history/cart" exact component={Cart} />
-      <Route path="/history/:type/:system" exact component={HistoryPage} />
+      <Route path="/history/:system" exact component={HistoryPage} />
     </Switch>
   </Router>
 );

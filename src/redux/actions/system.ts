@@ -161,7 +161,7 @@ export const getHistoryByDate =
     try {
       dispatch({ type: actions.getHistoryByDateLoading });
       const res = await axios.post(
-        `/history/${sys}/${date}`
+        `/history/${operation}/${sys}/${date}`
       );
       const { data } = res;
       dispatch({ type: actions.getHistoryByDate, payload: data });
@@ -174,11 +174,11 @@ export const getHistoryByDate =
   };
 
   export const getImportSystemListByDate =
-  (sys, date) => async (dispatch) => {
+  (sys,operation, date) => async (dispatch) => {
     try {
       dispatch({ type: actions.getImportSystemListByDateLoading });
       const res = await axios.post(
-        `/history/${sys}/importedSystem/${date}`
+        `/history/${operation}/${sys}/importedSystem/${date}`
       );
       const { data } = res;
       dispatch({ type: actions.getImportSystemListByDate, payload: data });

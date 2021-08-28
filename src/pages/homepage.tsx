@@ -294,7 +294,7 @@ function Homepage() {
                 myCartIcon
                 onMyCartIconLebel={`/${e.id}/homepage/cart`}
                 historyIcon
-                historyIconLebelLink={`history/export/${e.id}`}
+                historyIconLebelLink={`history/${e.id}`}
               />
             ))}
           </div>

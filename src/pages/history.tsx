@@ -35,7 +35,6 @@ function HistoryPage(props) {
   const { match } = props;
 
   const connectedSystemName = match.params.system;
-  const connectedSystemType = match.params.type;
 
   const getImportSystemList = useSelector((state) => state.getImportSystemList);
   const getHistoryList = useSelector((state) => state.getHistoryByDate);
@@ -105,6 +104,7 @@ function HistoryPage(props) {
     dispatch(
       getImportSystemListByDate(
         connectedSystemName,
+        operation,
         e.target.value
       )
     );
@@ -125,7 +125,7 @@ function HistoryPage(props) {
     dispatch(
       entityImportByHistoryDateAction(
         connectedSystemName,
-        connectedSystemType,
+        operation,
         history,
         active,
         type
@@ -145,7 +145,7 @@ function HistoryPage(props) {
       dispatch(
         entityExportByHistoryDateAction(
           connectedSystemName,
-          connectedSystemType,
+          operation,
           history
         )
       );
@@ -160,7 +160,7 @@ function HistoryPage(props) {
     dispatch(
       rollbackFromHistoryAction(
         connectedSystemName,
-        connectedSystemType,
+        operation,
         history,
         { id: importSystem }
       )
@@ -177,7 +177,7 @@ function HistoryPage(props) {
             </IconButton>
           </Tooltip>
           <Typography
-            label={`[ System Name: ${connectedSystemName}, System Type: ${connectedSystemType} ]`}
+            label={`[ System Name: ${connectedSystemName}]`}
           />
         </div>
         <div className="action">
