@@ -177,9 +177,17 @@ export const getHistoryByDate =
   (sys,operation, date) => async (dispatch) => {
     try {
       dispatch({ type: actions.getImportSystemListByDateLoading });
-      const res = await axios.post(
-        `/history/${operation}/${sys}/importedSystem/${date}`
-      );
+      var res;
+      if(operation == 'import'){
+        res = await axios.post(
+          `/history/${operation}/${sys}/exportedSystem/${date}`
+        );
+      } else if(operation == 'export'){
+        res = await axios.post(
+          `/history/${operation}/${sys}/importedSystem/${date}`
+        );
+      }
+      
       const { data } = res;
       dispatch({ type: actions.getImportSystemListByDate, payload: data });
     } catch (er) {
