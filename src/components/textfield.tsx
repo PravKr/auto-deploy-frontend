@@ -5,6 +5,7 @@ function Textfield(props) {
   const { id, required, label, defaultValue, error, type, className } = props;
   return (
     <TextField
+      size='small'
       className="textfield"
       error={error}
       required={required}

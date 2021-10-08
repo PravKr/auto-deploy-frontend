@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment} from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "./typography";
@@ -15,6 +15,7 @@ import {
   downloadHelp,
   downoladN4Plugins,
 } from "../redux/actions/system";
+import { Fab } from "@material-ui/core";
 
 function Appbar() {
   const dispatch = useDispatch();
@@ -62,6 +63,7 @@ function Appbar() {
     <Fragment>
       <AppBar position="sticky" id="appbar">
         <Toolbar className="toolbar">
+          <img src="./image/favicon.ico" alt="logo"/>
           <a href="/" className="title">
             <Typography
               variant="h6"
@@ -69,18 +71,16 @@ function Appbar() {
               className="appbarTitle"
             />
           </a>
-          <Button
+          <Fab
             onClick={handledownoladN4Plugins}
-            variant="contained"
-            color="primary"
-            label="Download N4 Plugins"
-          />
-          <Button
+            variant="extended"
+            size="small"
+          >Download N4 Plugins</Fab>
+          <Fab
             onClick={handleHelp}
-            variant="contained"
-            color="primary"
-            label="Help"
-          />
+            variant="extended"
+            size="small"
+          >Help </Fab>
           <Fragment>
             {/*{ isAuthenticated ? 
                     <LoginButton color="inherit" onClick={handleLogout}>Logout</LoginButton>

@@ -221,11 +221,11 @@ export const entityExportAction =
   };
 
 export const entityExportByHistoryDateAction =
-  (sys, connectedSystemType, historyDate) => async (dispatch) => {
+  (sys, operation, historyDate) => async (dispatch) => {
     try {
       dispatch({ type: actions.entityExportByHistoryDateLoading });
       const res = await axios.post(
-        `/history/${connectedSystemType}/${sys}/${historyDate}/export`
+        `/history/${operation}/${sys}/${historyDate}/export`
       );
       const { data } = res;
       const url = await window.URL.createObjectURL(new Blob([data]));

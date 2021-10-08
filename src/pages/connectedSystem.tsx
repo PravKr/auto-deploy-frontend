@@ -139,9 +139,9 @@ function ConnectedSystem(props) {
     <section className="connected-system">
       <div className="heading">
         <Toolbar>
-          <Typography
-            label={connectedSystemName}
-          />
+          <h1>
+            {connectedSystemName}
+          </h1>
         </Toolbar>
         <Tooltip title="Add to Queue" placement="left">
           <IconButton
@@ -164,6 +164,7 @@ function ConnectedSystem(props) {
         {historyByDateDataLoading && <Loader />}
         <Select
           label="Select Entities"
+          size="sm"
           value={category}
           onChange={handleCategory}
           menu={historyByDate}

@@ -203,7 +203,7 @@ function MyCart(props) {
                 >
                   <TableHead>
                     <TableRow>
-                      <TableCell align="left" colSpan={4}>
+                      <TableCell align="left" colSpan={list.length+1}>
                         <Typography variant="h6" label={el.category} />
                       </TableCell>
                       <TableCell colSpan={1}>
